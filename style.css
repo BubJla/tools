@@ -1,0 +1,71 @@
+.navigationsleiste{
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    padding-top: 1%;
+    width: 16%;
+    height: 100%;
+    position: fixed;
+    overflow: auto;
+    background-color: rgba(118, 118, 118, 0.25) !important;
+}
+
+.divges{
+    margin-left: 16%;
+}
+
+body{
+    margin: 0;
+    background-color: black;
+}
+
+a{
+    color: white;
+    text-decoration: none;
+}
+
+li a{
+    padding-left: 10px;
+    padding-bottom: 10px;
+    padding-top: 10px;
+    padding-right: 50px;
+    display: block;
+}
+
+li a.aktiv{
+    background-color: rgb(30, 30, 105);
+}
+
+li a:hover:not(.aktiv){
+    background-color: rgb(150, 150, 255);
+}
+
+.head{
+    color: white;
+    margin: 0;
+    padding: 0;
+    padding-top: 2%;
+    display: flex;
+    justify-content: center;
+
+}
+
+span{
+    display: flex;
+    justify-content: center;
+
+}
+input{
+    width: 7%;
+}
+d{
+    color: white;
+    display: flex;
+    justify-content: center;
+
+}
+
+hr{
+    margin-bottom: 5%;
+    margin-top: 5%;
+}
