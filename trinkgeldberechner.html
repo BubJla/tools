@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="style.css" rel="stylesheet">
+    <title>Trinkgeldberechner</title>
+    <script src="scriptTrinkgeld.js"></script>
+</head>
+<body>
+    <ul class = "navigationsleiste">
+        <li>
+            <a href="startseite.html">Startseite</a>
+        </li>
+        <li>
+            <a class="aktiv">Trinkgeldrechner</a>
+        </li>
+        <li>
+            <a href="zeit.html">Zeit</a>
+        </li>
+        <li>
+            <a href="WRO.html">WRO-senior</a>
+        </li>
+        <li>
+            <a href="impressum.html">Impressum</a>
+        </li>
+    </ul>
+    <div class = "divges">
+        <h1 class = "head">Trinkgeldrechner</h1>
+        <h2 class = "head">Deutschland</h2>
+        <hr>
+        <d>Betrag zu Zahlen: </d>
+        <br>
+        <span>
+            <input type="number" min="0" value="0" id="Betrag">
+            &ensp;
+            <d>  €</d>
+        </span>
+        <br>
+        <d>Anzahl der Personen: </d>
+        <br>
+        <span>
+            <input type="number" min="1" value="1" id="personen">
+            &ensp;
+        </span>
+        <hr>
+        <d>Betrag zu Geben:</d>
+        <br>
+        <span>
+            <d id="betragZuZahlen">0</d>
+            &ensp;
+            <d>€</d>
+        </span>
+        <br>
+        <d>Trinkgeld: </d>
+        <br>
+        <span>
+            <d id="trinkgeld">0</d>
+            &ensp;
+            <d>€</d>
+        </span>
+    </div>
+
+</body>
+</html>

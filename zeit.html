@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="style.css" rel="stylesheet">
+    <title>Uhr</title>
+    <link href="zeitUhr.css" rel="stylesheet">
+    <script defer src="zeitUhr.js"></script>
+  </head>
+<body>
+    <ul class = "navigationsleiste">
+        <li>
+            <a href="startseite.html">Startseite</a>
+        </li>
+        <li>
+            <a href="trinkgeldberechner.html">Trinkgeldrechner</a>
+        </li>
+        <li>
+            <a class="aktiv">Zeit</a>
+        </li>
+        <li>
+            <a href="WRO.html">WRO-senior</a>
+        </li>
+        <li>
+            <a href="impressum.html">Impressum</a>
+        </li>
+    </ul>
+    <div class = "divges">
+        <h1 class = "head">Zeit</h1>
+        <hr>
+        <ul class="listeNebeneinander">
+            <li class="nebeneinander">
+                <a class="aktiv">Uhr</a>
+            </li>
+            <li class="nebeneinander">
+                <a href="zeitStoppuhr.html">Stoppuhr</a>
+            </li>
+            <li class="nebeneinander">
+                <a href="zeitTimer.html">Timer</a>
+            </li>
+        </ul>
+        <div id="Uhrzeit">
+            <span>
+                <d id="datum">datum</d>
+                &emsp;
+                <d id="stunde">hour</d>
+                <d>:</d>
+                <d id="minute">minute</d>
+                <d>:</d>
+                <d id="sekunde">second</d>
+            </span>
+        </div>
+
+
+        <div id="divclock">
+        <div class="clock">
+            <div class="hand hour" data-hour-hand></div>
+            <div class="hand minute" data-minute-hand></div>
+            <div class="hand second" data-second-hand></div>
+            <div class="number number1">1</div>
+            <div class="number number2">2</div>
+            <div class="number number3">3</div>
+            <div class="number number4">4</div>
+            <div class="number number5">5</div>
+            <div class="number number6">6</div>
+            <div class="number number7">7</div>
+            <div class="number number8">8</div>
+            <div class="number number9">9</div>
+            <div class="number number10">10</div>
+            <div class="number number11">11</div>
+            <div class="number number12">12</div>
+          </div>
+        </div>
+    </div>
+</body>
+</html>

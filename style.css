@@ -1,0 +1,130 @@
+.navigationsleiste{
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    padding-top: 1%;
+    width: 16%;
+    height: 100%;
+    position: fixed;
+    overflow: auto;
+    background-color: rgba(118, 118, 118, 0.25) !important;
+}
+
+.divges{
+    margin-left: 16%;
+}
+
+body{
+    font-family: Gotham Rounded, sans-serif;
+    margin: 0;
+    background-color: black;
+}
+
+a{
+    color: white;
+    text-decoration: none;
+}
+
+li a{
+    padding: 10px 10px 10px 10px;
+    display: block;
+}
+
+.navigationsleiste li a.aktiv{
+    background-color: rgb(10, 10, 70);
+}
+
+.navigationsleiste li a:hover:not(.aktiv){
+    background-color: rgb(90, 90, 160);
+}
+
+.head{
+    color: white;
+    margin: 0;
+    padding: 0;
+    padding-top: 2%;
+    display: flex;
+    justify-content: center;
+
+}
+
+span{
+    display: flex;
+    justify-content: center;
+}
+
+.timer{
+    display: flex;
+    justify-content: space-around;
+}
+
+input{
+    width: 7%;
+}
+
+d{
+    color: white;
+    display: flex;
+    justify-content: center;
+
+}
+
+hr{
+    margin-bottom: 3%;
+    margin-top: 3%;
+}
+
+.listeNebeneinander{
+    list-style-type: none;
+    width: 100%;
+    overflow: auto;
+    background-color: rgba(118, 118, 118, 0.5) !important;
+    display: flex;
+    justify-content: space-around;
+    margin: 0;
+    padding: 0;
+    margin-bottom: 2%;
+    }
+
+.nebeneinander{
+    float: left;
+    text-align: center;
+    width: 33%;
+    }
+
+.listeNebeneinander a.aktiv{
+    background-color: rgb(10, 60, 10);
+}
+
+.listeNebeneinander li a:hover:not(.aktiv){
+    background-color: rgb(90, 160, 90);
+}
+
+.anderes a.aktiv{
+    background-color: rgb(70, 10, 10);
+}
+
+.anderes li a:hover:not(.aktiv){
+    background-color: rgb(160, 80, 80);
+}
+
+#stoppuhr{
+    font-size: xx-large;
+}
+
+#timer{
+    font-size: xx-large;
+}
+
+#Zwischenergebnisse{
+    padding: 0;
+    margin: 0;
+}
+
+.Impressum  a{
+    text-decoration: none;
+    color: rgb(180, 200, 250);
+}
+.Impressum  a:hover{
+    color: blue;
+}
