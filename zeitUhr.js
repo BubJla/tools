@@ -1,13 +1,12 @@
-var auto_refresh = setInterval(function() {zeit();}, 100);
+var auto_refresh = setInterval(function() {zeit();}, 1);
 
 function zeit(){
-    var year = new Date().getFullYear();
-    var month = new Date().getMonth()+1;
-    var wochentag = new Date().getDay();
-    var day = new Date().getDate();
     var hour = new Date().getHours();
     var minute = new Date().getMinutes();
     var second = new Date().getSeconds();
+    var millisecond = new Date().getMilliseconds();
+    if(millisecond < 10) millisecond="00"+millisecond;
+    else if(millisecond < 100) millisecond="0"+millisecond;
     if(second < 10) second="0"+second;
     if(minute < 10) minute="0"+minute;
     if(hour < 10) hour="0"+hour;
@@ -18,6 +17,7 @@ function zeit(){
     document.getElementById("stunde").innerHTML = hour;
     document.getElementById("minute").innerHTML = minute;
     document.getElementById("sekunde").innerHTML = second;
+    document.getElementById("millisekunde").innerHTML = millisecond;
 }
 
 
