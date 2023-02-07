@@ -4,7 +4,9 @@
   }
   
   #divclock {
-    margin-top: 2%;
+    z-index: 15;
+    padding-top: 4%;
+    padding-bottom: 4%;
     background-color: black;
     display: flex;
     justify-content: center;
@@ -73,6 +75,21 @@
     height: 45%;
     background-color: red;
     z-index: 8;
+  }
+  
+  .clock .hand.millisecond {
+    height: 100%;
+    background-color: rgb(255, 200, 0, 0);
+    display: flex;
+    justify-content: right;
+  }
+
+  .clock .hand.millisecondin {
+    width: 10px;
+    height: 3%;
+    background-color: rgb(245, 255, 0);
+    z-index: 20;
+    border-radius: 0;
   }
   
   .clock .hand.minute {
