@@ -46,3 +46,7 @@ function setRotation(element, rotationRatio) {
   element.style.setProperty('--rotation', rotationRatio * 360)
 }
 
+function sekundenPunkte(){
+  if(document.getElementById("buttonMillisekundenzeiger").checked==1) document.getElementsByClassName("point").setAttribute("class", "uhrHintergrundGrau");
+  else document.getElementsByClassName("point").setAttribute("class", "uhrHintergrundGrau");
+}

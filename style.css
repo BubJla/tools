@@ -10,8 +10,32 @@
     background-color: rgba(118, 118, 118, 0.25) !important;
 }
 
+.navigationsleistespiele{
+    text-align: center;
+    width: 3.5%;
+    list-style-type: none;
+    margin: 0;
+    margin-left: 96.5%;
+    padding: 0;
+    height: 100%;
+    position: fixed;
+    overflow: auto;
+    background-color: rgba(118, 118, 118, 0.19) !important;
+}
+
+
+.notused{
+    writing-mode: vertical-lr; 
+    text-orientation: upright; 
+}
+
 .divges{
     margin-left: 16%;
+}
+
+.divspiele{
+    margin-left: 16%;
+    margin-right: 3.5%;
 }
 
 body{
@@ -90,8 +114,8 @@ hr{
     float: left;
     text-align: center;
     width: 33%;
-    }
-
+}
+    
 .listeNebeneinander a.aktiv{
     background-color: rgb(10, 60, 10);
 }
@@ -100,12 +124,16 @@ hr{
     background-color: rgb(90, 160, 90);
 }
 
-.anderes a.aktiv{
+.anderes{
     background-color: rgb(70, 10, 10);
+    background-color: rgb(160, 80, 80);
+}
+.navigationsleistespiele a.aktiv{
+    background-color: rgb(10, 60, 10);
 }
 
-.anderes li a:hover:not(.aktiv){
-    background-color: rgb(160, 80, 80);
+.navigationsleistespiele li a:hover:not(.aktiv){
+    background-color: rgb(90, 160, 90);
 }
 
 #stoppuhr{
@@ -127,4 +155,76 @@ hr{
 }
 .Impressum  a:hover{
     color: blue;
+}
+
+#reaktionsfeld{
+    border-radius: 10px;
+    margin-top: 5%;
+    border: 2px solid white;
+    height: 20em;
+    width: 70%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.white {
+    background-color: rgb(200, 200, 200);
+}
+  
+.red {
+    background-color: rgb(255, 150, 150);
+}
+
+.green {
+    background-color: rgb(150, 200, 150);
+}
+#reaktionsfeld d{
+    color: black;
+    font-size: 5em;
+}
+
+polygon{
+    stroke-width: 2%; 
+    stroke: white;
+    border-radius: 200px;
+    stroke-width: 2%;
+}
+
+circle{
+    stroke-width: 2%; 
+    stroke: white;
+    border-radius: 200px;
+    fill: black;
+}
+
+.kaestchen{
+    border: 2px solid white;
+    width: 150px;
+    height: 150px;
+}
+
+.spanGesamtTicTacToeEnd{
+    color: black;
+}
+
+#spielfeld{
+    padding-left: 5%;
+}
+
+.feldGewonnen {
+    border: 2px solid white;
+    width: 150px;
+    height: 150px;
+    background-color: yellow;
+}
+
+.feldGewonnen circle{
+    stroke: black;
+    fill: yellow;
+}
+
+.feldGewonnen polygon{
+    stroke: black;
 }

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="style.css" rel="stylesheet">
+    <title>Werkzeuge</title>
+    <script src="spieleReaktion.js"></script>
+</head>
+<body>
+    <ul class = "navigationsleiste">
+        <li>
+            <a href="index.html">Startseite</a>
+        </li>
+        <li>
+            <a href="trinkgeldberechner.html">Trinkgeldrechner</a>
+        </li>
+        <li>
+            <a href="zeit.html">Zeit</a>
+        </li>
+        <li>
+            <a href="WRO.html">WRO-senior</a>
+        </li>
+        <li>
+            <a class="aktiv">Spiele</a>
+        </li>
+        <li>
+            <a href="impressum.html">Impressum</a>
+        </li>
+    </ul>
+    <ul class = "navigationsleistespiele">
+        <li>
+            <a class = "aktiv">R<br>E<br>A<br>K<br>T<br>I<br>O<br>N</a>
+        </li>
+        <li>
+            <a href="TicTacToe.html">T<br>I<br>C<br><br>T<br>a<br>C<br><br>T<br>O<br>E</a>
+        </li>
+        <li>
+            <a>R<br>E<br>A<br>K<br>T<br>I<br>O<br>N</a>
+        </li>
+    </ul>   
+    <div class = "divspiele">
+        <h1 class = "head">Spiele</h1>
+        <hr>
+        <span>
+        <input type="button" value = "START" onclick="start()" id="startbutton">
+        </span>
+        <span onclick="fertig()">
+            <div id="reaktionsfeld">
+                <d id = "zeitReaktion"></d>
+                <span id="timer">
+                    <d id="sekunde"></d>
+                    <d id="millisekunde" style="width: 7%; margin-left: 2%"></d>
+                </span>        
+            </div>
+        </span>
+    </div>
+</body>
+</html>

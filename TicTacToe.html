@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="style.css" rel="stylesheet">
+    <title>Werkzeuge</title>
+    <script src="spieleTicTacToe.js"></script>
+</head>
+<body>
+    <ul class = "navigationsleiste">
+        <li>
+            <a href="index.html">Startseite</a>
+        </li>
+        <li>
+            <a href="trinkgeldberechner.html">Trinkgeldrechner</a>
+        </li>
+        <li>
+            <a href="zeit.html">Zeit</a>
+        </li>
+        <li>
+            <a href="WRO.html">WRO-senior</a>
+        </li>
+        <li>
+            <a class="aktiv">Spiele</a>
+        </li>
+        <li>
+            <a href="impressum.html">Impressum</a>
+        </li>
+    </ul>
+    <ul class = "navigationsleistespiele">
+        <li>
+            <a href="spiele.html">R<br>E<br>A<br>K<br>T<br>I<br>O<br>N</a>
+        </li>
+        <li>
+            <a class="aktiv">T<br>I<br>C<br><br>T<br>a<br>C<br><br>T<br>O<br>E</a>
+        </li>
+        <li>
+            <a>R<br>E<br>A<br>K<br>T<br>I<br>O<br>N</a>
+        </li>
+    </ul>   
+    <div class = "divspiele">
+        <h1 class = "head">TicTacToe</h1>
+        <hr>
+        <span>
+            <div style="display: grid;">
+                <d class="spanGesamtTicTacToeStart">Gegner:</d>
+                <span>
+                    <d>Computer</d>
+                    &emsp;&emsp;
+                    <d> Freund</d>
+                    &emsp;
+                </span>
+                <span>
+                    <input type="radio" name="gegner" id="gegnerComputer" value="Computer" checked="true" onclick='document.getElementById("gegner").innerHTML = "Computer"'>
+                    &emsp;&emsp;&emsp;&emsp;
+                    <input type="radio" name="gegner" id="gegnerFreund" value="Freund" onclick='document.getElementById("gegner").innerHTML = "&ensp;&nbsp;Freund&ensp;"'>
+                </span>
+                <br>
+                <d class="spanGesamtTicTacToeStart">Beginner:</d>
+                <span>
+                    &emsp;&emsp;&ensp;
+                    <d>Ich</d>
+                    &emsp;&emsp;&emsp;&ensp;
+                    <d id="gegner">Computer</d>
+                    &emsp;
+                </span>
+                <span>
+                    <input type="radio" name="beginner" id="beginnerIch" value="Computer" checked="true">
+                    &emsp;&emsp;&emsp;&emsp;&ensp;
+                    <input type="radio" name="beginner" id="beginnerGegner" value="Freund">
+                </span>
+                <br>
+                <d>Schwierigkeitsgrad</d>
+                <span>
+                    &emsp;&emsp;&ensp;
+                    <d>leicht</d>
+                    &emsp;&emsp;&emsp;&ensp;
+                    <d>mittel</d>
+                    &emsp;&emsp;
+                    <d>unbesiegbar</d>
+                    &emsp;
+                </span>
+                <span>
+                    <input type="radio" name="schwierigkeitsgrad" id="schwierigkeitLeicht" value="leicht" checked="true">
+                    &emsp;&emsp;&emsp;&emsp;
+                    <input type="radio" name="schwierigkeitsgrad" id="schwierigkeitMittel" value="mittel" checked="true" >
+                    &emsp;&emsp;&emsp;&emsp;
+                    <input type="radio" name="schwierigkeitsgrad" id="schwierigkeitUnbesiegbar" value="unbesiegbar">
+                </span>
+                <br>
+                <span>
+                    <input type="button" value="START" onclick="start()" style="height: 25px; width: 70%" id="startfeld">
+                </span>
+                <span>
+                    <input type="button" value="LÖSCHEN" onclick="location.reload(true)" style="height: 25px; width: 30%">
+                </span>
+            </div>
+            <div id="spielfeld">
+                <span>
+                    <div class="kaestchen" id="feld1" onclick="printFeld(1)">
+                    </div>
+                    <div class="kaestchen" id="feld2" onclick="printFeld(2)">
+                    </div>
+                    <div class="kaestchen" id="feld3" onclick="printFeld(3)">
+                    </div>
+                </span>
+                <span>
+                    <div class="kaestchen" id="feld4" onclick="printFeld(4)">
+                    </div>
+                    <div class="kaestchen" id="feld5" onclick="printFeld(5)">
+                    </div>
+                    <div class="kaestchen" id="feld6" onclick="printFeld(6)">
+                    </div>
+                </span>
+                <span>
+                    <div class="kaestchen" id="feld7" onclick="printFeld(7)">
+                    </div>
+                    <div class="kaestchen" id="feld8" onclick="printFeld(8)">
+                    </div>
+                    <div class="kaestchen" id="feld9" onclick="printFeld(9)">
+                    </div>
+                </span>
+            </div>
+            <d class="spanGesamtTicTacToeEnd"></d>
+        </span>
+    </div>
+</body>
+</html>

@@ -24,6 +24,9 @@
             <a href="WRO.html">WRO-senior</a>
         </li>
         <li>
+            <a href="spiele.html">Spiele</a>
+        </li>
+        <li>
             <a href="impressum.html">Impressum</a>
         </li>
     </ul>
@@ -51,7 +54,7 @@
                 <d>:</d>
                 <d id="sekunde">second</d>
                 <d>:</d>
-                <d id="millisekunde" style="width: 3%">millisecond</d>
+                <d id="millisekunde" style="width: 4%">millisecond</d>
             </span>
         </div>
 
@@ -61,7 +64,7 @@
             <div class="hand hour" data-hour-hand></div>
             <div class="hand minute" data-minute-hand></div>
             <div class="hand second" data-second-hand></div>
-            <div class="hand millisecond" data-millisecond-hand>
+            <div class="hand millisecond" data-millisecond-hand id="millisecondsHand">
                 <div class="hand millisecondin"></div>
             </div>
             <div class="number number1">1</div>
@@ -76,8 +79,62 @@
             <div class="number number10">10</div>
             <div class="number number11">11</div>
             <div class="number number12">12</div>
-          </div>
+
+            <div class="point point1"><d class="">･</d></div>
+            <div class="point point2">･</div>
+            <div class="point point3">･</div>
+            <div class="point point4">･</div>
+            <div class="point point6">･</div>
+            <div class="point point7">･</div>
+            <div class="point point8">･</div>
+            <div class="point point9">･</div>
+            <div class="point point11">･</div>
+            <div class="point point12">･</div>
+            <div class="point point13">･</div>
+            <div class="point point14">･</div>
+            <div class="point point16">･</div>
+            <div class="point point17">･</div>
+            <div class="point point18">･</div>
+            <div class="point point19">･</div>
+            <div class="point point21">･</div>
+            <div class="point point22">･</div>
+            <div class="point point23">･</div>
+            <div class="point point24">･</div>
+            <div class="point point26">･</div>
+            <div class="point point27">･</div>
+            <div class="point point28">･</div>
+            <div class="point point29">･</div>
+            <div class="point point31">･</div>
+            <div class="point point32">･</div>
+            <div class="point point33">･</div>
+            <div class="point point34">･</div>
+            <div class="point point36">･</div>
+            <div class="point point37">･</div>
+            <div class="point point38">･</div>
+            <div class="point point39">･</div>
+            <div class="point point41">･</div>
+            <div class="point point42">･</div>
+            <div class="point point43">･</div>
+            <div class="point point44">･</div>
+            <div class="point point46">･</div>
+            <div class="point point47">･</div>
+            <div class="point point48">･</div>
+            <div class="point point49">･</div>
+            <div class="point point51">･</div>
+            <div class="point point52">･</div>
+            <div class="point point53">･</div>
+            <div class="point point54">･</div>
+            <div class="point point56">･</div>
+            <div class="point point57">･</div>
+            <div class="point point58">･</div>
+            <div class="point point59">･</div>
         </div>
     </div>
+    <span>
+        <d>Millisekundenanzeiger:</d>
+        <input type="checkbox" onclick="millisekundenzeiger()" id="buttonMillisekundenzeiger" checked>
+        <d>Sekunden-Punkte:</d>
+        <input type="checkbox" onclick="sekundenPunkte()" id="buttonSekundenPunkte">
+    </span>
 </body>
 </html>
