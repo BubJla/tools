@@ -64,8 +64,8 @@
             <div class="hand hour" data-hour-hand></div>
             <div class="hand minute" data-minute-hand></div>
             <div class="hand second" data-second-hand></div>
-            <div class="hand millisecond" data-millisecond-hand id="millisecondsHand">
-                <div class="hand millisecondin"></div>
+            <div class="hand millisecond" data-millisecond-hand>
+                <div class="hand millisecondin" id="millisecondsHand"></div>
             </div>
             <div class="number number1">1</div>
             <div class="number number2">2</div>
@@ -80,7 +80,69 @@
             <div class="number number11">11</div>
             <div class="number number12">12</div>
 
-            <div class="point point1"><d class="">･</d></div>
+            <div class="strich strich1">
+                <svg>
+                    <polygon points="150, 3, 150, 23" class="strich1">
+                </svg>
+            </div>
+            <div class="strich strich2">
+                <svg>
+                    <polygon points="150, 3, 150, 23" class="strich2">
+                </svg>
+            </div>
+            <div class="strich strich3"> 
+                <svg>
+                    <polygon points="150, 3, 150, 23" class="strich3">
+                </svg>
+            </div>
+            <div class="strich strich4">  
+                <svg>
+                    <polygon points="150, 3, 150, 23" class="strich4">
+                </svg>
+            </div>
+            <div class="strich strich5">
+                <svg>
+                    <polygon points="150, 3, 150, 23" class="strich5">
+                </svg>
+            </div>
+            <div class="strich strich6">
+                <svg>
+                    <polygon points="150, 3, 150, 23" class="strich6">
+                </svg>
+            </div>
+            <div class="strich strich7"> 
+                <svg>
+                    <polygon points="150, 3, 150, 23" class="strich7">
+                </svg>
+            </div>
+            <div class="strich strich8">  
+                <svg>
+                    <polygon points="150, 3, 150, 23" class="strich8">
+                </svg>
+            </div>
+            <div class="strich strich9">
+                <svg>
+                    <polygon points="150, 3, 150, 23" class="strich9">
+                </svg>
+            </div>
+            <div class="strich strich10">
+                <svg>
+                    <polygon points="150, 3, 150, 23" class="strich10">
+                </svg>
+            </div>
+            <div class="strich strich11"> 
+                <svg>
+                    <polygon points="150, 3, 150, 23" class="strich11">
+                </svg>
+            </div>
+            <div class="strich strich12">  
+                <svg>
+                    <polygon points="150, 3, 150, 23" class="strich12">
+                </svg>
+            </div>
+
+
+            <div class="point point1">･ </div>
             <div class="point point2">･</div>
             <div class="point point3">･</div>
             <div class="point point4">･</div>
@@ -133,6 +195,8 @@
     <span>
         <d>Millisekundenanzeiger:</d>
         <input type="checkbox" onclick="millisekundenzeiger()" id="buttonMillisekundenzeiger" checked>
+        <d>Zahlen:</d>
+        <input type="checkbox" onclick="zehlen()" id="buttonZahlen" checked>
         <d>Sekunden-Punkte:</d>
         <input type="checkbox" onclick="sekundenPunkte()" id="buttonSekundenPunkte">
     </span>

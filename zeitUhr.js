@@ -46,7 +46,40 @@ function setRotation(element, rotationRatio) {
   element.style.setProperty('--rotation', rotationRatio * 360)
 }
 
-function sekundenPunkte(){
-  if(document.getElementById("buttonMillisekundenzeiger").checked==1) document.getElementsByClassName("point").setAttribute("class", "uhrHintergrundGrau");
-  else document.getElementsByClassName("point").setAttribute("class", "uhrHintergrundGrau");
+function zahlen(){
+  var elements = document.getElementById("millisecondsHand");
+  if(document.getElementById("buttonMillisekundenzeiger").checked==true) {
+      elements.setAttribute("class", "hand millisecondin");
+  } 
+  else {
+    elements.setAttribute("class", "hand millisecondin transparent");
+  }
 }
+
+function millisekundenzeiger(){
+  var elements = document.getElementById("millisecondsHand");
+  if(document.getElementById("buttonMillisekundenzeiger").checked==true) {
+      elements.setAttribute("class", "hand millisecondin");
+  } 
+  else {
+    elements.setAttribute("class", "hand millisecondin transparent");
+  }
+}
+
+function sekundenPunkte(){
+  var elements = document.getElementsByClassName("point");
+  if(document.getElementById("buttonSekundenPunkte").checked==true) {
+    for(let i = 0; i< elements.length; i++) {
+      elements[i].setAttribute("class", "point point"+(i+Math.round(i/4+0.5)));
+    }   
+  } 
+  else {
+    for(let i = 0; i< elements.length; i++) {
+      elements[i].setAttribute("class", "uhrHintergrundGrau point");
+    }
+  }
+}
+
+millisekundenzeiger();
+sekundenPunkte();
+zehlen();
