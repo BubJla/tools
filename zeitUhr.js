@@ -47,12 +47,23 @@ function setRotation(element, rotationRatio) {
 }
 
 function zahlen(){
-  var elements = document.getElementById("millisecondsHand");
-  if(document.getElementById("buttonMillisekundenzeiger").checked==true) {
-      elements.setAttribute("class", "hand millisecondin");
+  var elementszahlen = document.getElementsByClassName("number");
+  var elementsstriche = document.getElementsByTagName("polygon");
+  if(document.getElementById("buttonZahlen").checked==true) {
+    for(let i = 0; i< elementsstriche.length; i++) {
+      elementsstriche[i].setAttribute("class", "strich transparent");
+    }   
+    for(let i = 0; i< elementszahlen.length; i++) {
+      elementszahlen[i].setAttribute("class", "number number"+(i+1));
+    }   
   } 
   else {
-    elements.setAttribute("class", "hand millisecondin transparent");
+    for(let i = 0; i< elementsstriche.length; i++) {
+      elementsstriche[i].setAttribute("class", "strich"+(i+1));
+    }   
+    for(let i = 0; i< elementszahlen.length; i++) {
+      elementszahlen[i].setAttribute("class", "number transparent number"+(i+1));
+    }   
   }
 }
 
@@ -82,4 +93,4 @@ function sekundenPunkte(){
 
 millisekundenzeiger();
 sekundenPunkte();
-zehlen();
+zahlen();
