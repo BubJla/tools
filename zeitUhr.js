@@ -1,5 +1,12 @@
 var auto_refresh = setInterval(function() {zeit();}, 1);
 
+var auto_refresh2 = setInterval(function() {setClock();}, 1);
+
+var hourHand = document.querySelector("[hour-hand]")
+var minuteHand = document.querySelector("[minute-hand]")
+var secondHand = document.querySelector("[second-hand]")
+var millisecondHand = document.querySelector("[millisecond-hand]")
+
 function zeit(){
     var hour = new Date().getHours();
     var minute = new Date().getMinutes();
@@ -19,16 +26,6 @@ function zeit(){
     document.getElementById("sekunde").innerHTML = second;
     document.getElementById("millisekunde").innerHTML = millisecond;
 }
-
-
-
-
-setInterval(setClock, 1)
-
-const hourHand = document.querySelector('[data-hour-hand]')
-const minuteHand = document.querySelector('[data-minute-hand]')
-const secondHand = document.querySelector('[data-second-hand]')
-const millisecondHand = document.querySelector('[data-millisecond-hand]')
 
 function setClock() {
   const currentDate = new Date()
@@ -86,7 +83,7 @@ function sekundenPunkte(){
   } 
   else {
     for(let i = 0; i< elements.length; i++) {
-      elements[i].setAttribute("class", "uhrHintergrundGrau point");
+      elements[i].setAttribute("class", "transparent point");
     }
   }
 }

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="style.css" rel="stylesheet">
+    <title>Umrechner</title>
+    <script src="rechnerBinaer.js"></script>
+</head>
+<body>
+    <ul class = "navigationsleiste">
+        <li>
+            <a href="index.html">Startseite</a>
+        </li>
+        <li>
+            <a href="trinkgeldberechner.html">Trinkgeldrechner</a>
+        </li>
+        <li>
+            <a class="aktiv">Zeit</a>
+        </li>
+        <li>
+            <a href="WRO.html">WRO-senior</a>
+        </li>
+        <li>
+            <a href="spiele.html">Spiele</a>
+        </li>
+        <li>
+            <a href="impressum.html">Impressum</a>
+        </li>
+    </ul>
+    <div class = "divges">
+        <h1 class = "head">Rechner</h1>
+        <hr>
+        <ul class="listeNebeneinander">
+            <li class="nebeneinander">
+                <a href="rechner.html">Taschenrechner</a>
+            </li>
+            <li class="nebeneinander">
+                <a class="aktiv">Binär-/Hexadezimalumrechner</a>
+            </li>
+            <li class="nebeneinander">
+                <a href="zeitTimer.html">Timer</a>
+            </li>
+        </ul>
+        <br>
+        <span>
+            <div class="inputDivBinaer">
+                <span><d>Dezimalzahl:</d></span>
+                <br>
+                <input type="text" id="dezimalzahl" onkeyup="dezimalzahleingabe()" placeholder="z.B. 1438" class="inputUmrechnerBinaer"> 
+            </div>
+            <div class="inputDivBinaer">
+                <span><d>Binärcode:</d></span>
+                <br>
+                <input type="text" id="binaercode" onkeyup="binaercodeeingabe()" placeholder="z.B. 10010" class="inputUmrechnerBinaer"> 
+            </div>
+            <div class="inputDivBinaer">
+                <span><d>Hexadezimalcode:</d></span>
+                <br>
+                <input type="text" id="hexadezimalcode" onkeyup="hexadezimalcodeeingabe()" placeholder="z.B. 5FE0" class="inputUmrechnerBinaer"> 
+            </div>
+       </span>
+    </div>
+</body>
+</html>

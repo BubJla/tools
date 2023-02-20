@@ -93,17 +93,6 @@ function abgelaufen(){
     document.getElementById("minute").innerHTML = minutes;
     document.getElementById("sekunde").innerHTML = seconds;
     document.getElementById("millisekunde").innerHTML = milliseconds;
-    /*if(soll-jetzt > 0) {
-        window.onbeforeunload = function (e) {
-        e = e || window.event;
-    
-        // For IE and Firefox prior to version 4
-        if (e) {
-            e.returnValue = 'Sure?';
-        }
-        // For Safari
-        return 'Dialog text here.';        };
-    }*/
 }
 
  
