@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="style.css" rel="stylesheet">
     <title>Umrechner</title>
-    <script src="rechnerBinaer.js"></script>
+    <script src="rechner.js"></script>
 </head>
 <body>
     <ul class = "navigationsleiste">
@@ -63,58 +63,57 @@
        </span>-->
     <span>
        <div class="ausgabefeld">
-        <input type="text" >
+            <input type="text" id = "ausgabefeld" onkeyup="eingabeTastatur()">
        </div>
     </span>
     <hr style="margin-top: 1%; margin-bottom: 1%">
     <span>
     <div class="zahlenfelder">
             <span>
-                <div>
+                <div onclick='eingabe+="1"; refreshEingabe()'>
                     <d>1</d>
                 </div>
-                <div>
+                <div onclick='eingabe+="2"; refreshEingabe()'>
                     <d>2</d>
 
                 </div>
-                <div>
+                <div onclick='eingabe+="3"; refreshEingabe()'>
                     <d>3</d>
 
                 </div>
             </span>
             <span>
-                <div>
+                <div onclick='eingabe+="4"; refreshEingabe()'>
                     <d>4</d>
 
                 </div>
-                <div>
+                <div onclick='eingabe+="5"; refreshEingabe()'>
                     <d>5</d>
 
                 </div>
-                <div>
+                <div onclick='eingabe+="6"; refreshEingabe()'>
                     <d>6</d>
 
                 </div>
             </span>
             <span>
-                <div>
+                <div onclick='eingabe+="7"; refreshEingabe()'>
                     <d>7</d>
 
                 </div>
-                <div>
+                <div onclick='eingabe+="8"; refreshEingabe()'>
                     <d>8</d>
 
                 </div>
-                <div>
+                <div onclick='eingabe+="9"; refreshEingabe()'>
                     <d>9</d>
-
                 </div>
             </span>
             <span>
-                <div>
+                <div onclick='eingabeKomma(); refreshEingabe()'>
                     <d>,</d>
                 </div>
-                <div>
+                <div onclick='eingabe+="0"; refreshEingabe()'>
                     <d>0</d>
 
                 </div>

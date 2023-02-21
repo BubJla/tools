@@ -92,3 +92,17 @@ function endfunction()
     boot.setAttribute("max", "2");
 }
 
+function allesAuswaehlen() {
+    document.getElementById("BeliebigerContainerSchiff").value = 2;
+    document.getElementById("BootKVoll").checked = true;
+    document.getElementById("kraftstoffsteinBoot").checked = true;
+    document.getElementById("containerWBootG").checked = true;
+    document.getElementById("ContainerFarbeBootG").value = 2;
+    document.getElementById("BootGVoll").checked = true;
+    document.getElementById("KranB").checked = true;
+    document.getElementById("KranAktiv").checked = true;
+    document.getElementById("BootMeer").value = 2;
+    document.getElementById("Molenelement").value = 4;
+    document.getElementById("RoboLiegeplatz").checked = true;
+
+}
