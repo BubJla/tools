@@ -3,9 +3,10 @@ var auto_refreshscore = setInterval(function() { score();}, 500);
 var punkte = 0;
 var robo = document.getElementById("RoboStart"); 
 var spetialcontainer;
-var containerBootK = document.getElementById("BootKVoll");
-var containerBootG = document.getElementById("BootGVoll");
+const containerBootK = document.getElementById("BootKVoll");
+const containerBootG = document.getElementById("BootGVoll");
 var boot;
+
 function score()
 {
     punkte =  document.getElementById("BeliebigerContainerSchiff").value*10
@@ -66,26 +67,24 @@ function endfunction()
     }
     if(document.getElementById("BeliebigerContainerSchiff").value == 2)
     {
-        containerBootK = document.getElementById("BootKVoll");
-        containerBootK.setAttribute("checked", "true");
+        containerBootK.checked = true;
         containerBootK.removeAttribute("disabled");
     }
     else
     {
-        containerBootK.removeAttribute("checked");
+        containerBootK.checked = false;
         containerBootK.setAttribute("disabled", "");
     }
 
     if(document.getElementById("containerWBootG").checked == true && document.getElementById("ContainerFarbeBootG").value == 2)
     {
-        containerBootG = document.getElementById("BootGVoll");
-        containerBootG.setAttribute("checked", "true");
+        containerBootG.checked = true;
         containerBootG.removeAttribute("disabled");
     }
     else
     {
         containerBootG.setAttribute("disabled", "");
-        containerBootG.removeAttribute("checked");
+        containerBootG.checked = false;
     }
     //alert(document.getElementById("SpetialcontainerRobo").checked);
     boot = document.getElementById("BeliebigerContainerSchiff");
@@ -94,11 +93,9 @@ function endfunction()
 
 function allesAuswaehlen() {
     document.getElementById("BeliebigerContainerSchiff").value = 2;
-    document.getElementById("BootKVoll").checked = true;
     document.getElementById("kraftstoffsteinBoot").checked = true;
     document.getElementById("containerWBootG").checked = true;
     document.getElementById("ContainerFarbeBootG").value = 2;
-    document.getElementById("BootGVoll").checked = true;
     document.getElementById("KranB").checked = true;
     document.getElementById("KranAktiv").checked = true;
     document.getElementById("BootMeer").value = 2;
