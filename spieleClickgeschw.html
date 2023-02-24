@@ -5,8 +5,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="style.css" rel="stylesheet">
-    <title>Reaktionstest</title>
-    <script src="spieleReaktion.js"></script>
+    <title>Click pro sec</title>
+    <script src="spieleClickgeschw.html"></script>
 </head>
 <body>
     <ul class = "navigationsleiste">
@@ -34,28 +34,42 @@
     </ul>
     <ul class = "navigationsleistespiele">
         <li>
-            <a class="aktiv"><br>R<br>E<br>A<br>K<br>T<br>I<br>O<br>N</a>
+            <a href = "spiele.html"><br>R<br>E<br>A<br>K<br>T<br>I<br>O<br>N</a>
         </li>
         <li>
             <a href="TicTacToe.html"><br>T<br>I<br>C<br>T<br>A<br>C<br>T<br>O<br>E</a>
         </li>
         <li>
-            <a href = "spieleClickgeschw.html"><br>C<br>L<br>I<br>C<br>K<br>/<br>S<br>E<br>C</a>
+            <a class = "aktiv"><br>C<br>L<br>I<br>C<br>K<br>/<br>S<br>E<br>C</a>
         </li>
     </ul>   
     <div class = "divspiele">
         <h1 class = "head">Spiele</h1>
         <hr>
-        <span>
-        <input type="button" value = "START" onclick="start()" id="startbutton">
+        <span class="zeitauswahlClickgeschw">
+            <d>Zeit:</d>
+            <d>5s</d>
+            <d>10s</d>
+            <d>30s</d>
+            <d>60s</d>
+            <d style="margin-right: 9.1%">keine</d>
         </span>
-        <span onclick="fertig()">
+        <br>
+        <span class="zeitauswahlClickgeschw">
+            <input type="radio" name = "clickzeit" value = "5s" onclick="start()" id="zeit5s" style="margin-left: 8%">
+            <input type="radio" name = "clickzeit"  value = "10s" onclick="start()" id="zeit10s" checked>
+            <input type="radio" name = "clickzeit" value = "30s" onclick="start()" id="zeit30s">
+            <input type="radio" name = "clickzeit" value = "60s" onclick="start()" id="zeit60s">
+            <input type="radio" name = "clickzeit" value = "keine" onclick="start()" id="zeitkeine">
+            <input type="button" value = "START" onclick="start()" id="startbutton">
+        </span>
+        <span onclick="">
             <div id="reaktionsfeld">
                 <d id = "zeitReaktion"></d>
                 <span id="timer">
                     <d id="sekunde"></d>
                     <d id="millisekunde" style="width: 7%; margin-left: 2%"></d>
-                </span>        
+                </span>
             </div>
         </span>
     </div>

@@ -23,11 +23,25 @@
     background-color: rgba(118, 118, 118, 0.19) !important;
 }
 
-
-.notused{
-    writing-mode: vertical-lr; 
-    text-orientation: upright; 
+.navigationsleistespiele li{
+    height: 33%;
 }
+
+.zeitauswahlClickgeschw d{
+    width: 8.8%;
+}
+
+.zeitauswahlClickgeschw input{
+    width: 8%;
+}
+
+.navigationsleistespiele li a{
+    display: block;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
 
 .divges{
     margin-left: 16%;

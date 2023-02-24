@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="style.css" rel="stylesheet">
-    <title>Umrechner</title>
+    <title>Taschenrechner</title>
     <script src="rechner.js"></script>
 </head>
 <body>
@@ -17,13 +17,16 @@
             <a href="trinkgeldberechner.html">Trinkgeldrechner</a>
         </li>
         <li>
-            <a class="aktiv">Zeit</a>
+            <a href="zeit.html">Zeit</a>
         </li>
         <li>
             <a href="WRO.html">WRO-senior</a>
         </li>
         <li>
             <a href="spiele.html">Spiele</a>
+        </li>
+        <li>
+            <a class="aktiv">Rechner</a>
         </li>
         <li>
             <a href="impressum.html">Impressum</a>
@@ -43,30 +46,12 @@
                 <a href="zeitTimer.html">Timer</a>
             </li>
         </ul>
-        <!--
-        <span>
-            <div class="inputDivBinaer">
-                <span><d>Dezimalzahl:</d></span>
-                <br>
-                <input type="text" id="dezimalzahl" onkeyup="dezimalzahleingabe()" placeholder="z.B. 1438" class="inputUmrechnerBinaer"> 
-            </div>
-            <div class="inputDivBinaer">
-                <span><d>Binärcode:</d></span>
-                <br>
-                <input type="text" id="binaercode" onkeyup="binaercodeeingabe()" placeholder="z.B. 10010" class="inputUmrechnerBinaer"> 
-            </div>
-            <div class="inputDivBinaer">
-                <span><d>Hexadezimalcode:</d></span>
-                <br>
-                <input type="text" id="hexadezimalcode" onkeyup="hexadezimalcodeeingabe()" placeholder="z.B. 5FE0" class="inputUmrechnerBinaer"> 
-            </div>
-       </span>-->
     <span>
        <div class="ausgabefeld">
             <input type="text" id = "ausgabefeld" onkeyup="eingabeTastatur()">
        </div>
     </span>
-    <hr style="margin-top: 1%; margin-bottom: 1%">
+    <hr style="margin-top: 0.5%; margin-bottom: 0.5%">
     <span>
     <div class="zahlenfelder">
             <span>
@@ -110,71 +95,70 @@
                 </div>
             </span>
             <span>
-                <div onclick='eingabeKomma(); refreshEingabe()'>
+                <div onclick='eingabe+=","; refreshEingabe()'>
                     <d>,</d>
                 </div>
                 <div onclick='eingabe+="0"; refreshEingabe()'>
                     <d>0</d>
 
                 </div>
-                <div>
+                <div onclick = "result()">
                     <d>=</d>
                 </div>
             </span>
        </div>
     <div class="operatorenfelder">
         <span>
-            <div>
+            <div onclick='eingabe+="+"; refreshEingabe()'>
                 <d>+</d>
             </div>
-            <div>
+            <div onclick="loeschen()">
                 <d>⇐</d>
             </div>
-            <div style="width: 140px">
+            <div style="width: 140px" onclick="reset()">
                 <d>CE</d>
             </div>
         </span>
         <span>
-            <div>
+            <div onclick='eingabe+="-"; refreshEingabe()'>
                 <d>-</d>
             </div>
-            <div>
+            <div onclick='eingabe+="("; refreshEingabe()'>
                 <d>(</d>
             </div>
-            <div>
+            <div onclick='eingabe+=")"; refreshEingabe()'>
                 <d>)</d>
             </div>
-            <div>
-                <d></d>
+            <div onclick='eingabe+="%"; refreshEingabe()'>
+                <d>%</d>
             </div>
         </span>
         <span>
-            <div>
+            <div onclick='eingabe+="×"; refreshEingabe()'>
                 <d>×</d>
 
             </div>
-            <div>
+            <div onclick='eingabe+="!"; refreshEingabe()'>
                 <d>!</d>
 
             </div>
-            <div>
+            <div onclick='eingabe+="²"; refreshEingabe()'>
                 <d>²</d>
-
             </div>
-            <div>
+            <div onclick='eingabe+="^"; refreshEingabe()'>
                 <d>^</d>
 
             </div>
         </span>
         <span>
-            <div>
+            <div onclick='eingabe+="÷"; refreshEingabe()'>
                 <d>÷</d>
             </div>
-            <div>
+            <div  onclick='eingabe+="√("; refreshEingabe()'>
                 <d>√</d>
 
             </div>
-            <div style="width: 140px">
+            <div style="width: 140px"  onclick='eingabe+="ANS"; refreshEingabe()'>
                 <d>ANS</d>
             </div>
         </span>
