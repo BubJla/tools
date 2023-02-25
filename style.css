@@ -261,11 +261,23 @@ circle{
 
 .inputDivBinaer{
     font-size: 1.5rem;
-    width: 33%;
+    width: 33.33%;
 }
 
 .zahlenfelder{
     margin-right: 5%;
+    width: 30%;
+}
+
+.operatorenfelder{
+    width: 50%;
+}
+
+.unused{
+    height: 65px;
+    width: 65px;
+    margin: 5px;
+
 }
 
 .zahlenfelder div{
