@@ -27,12 +27,8 @@
     height: 33%;
 }
 
-.zeitauswahlClickgeschw d{
-    width: 8.8%;
-}
-
-.zeitauswahlClickgeschw input{
-    width: 8%;
+.zeitauswahlClickgeschw{
+    width: 90%;
 }
 
 .navigationsleistespiele li a{
@@ -183,6 +179,18 @@ hr{
     text-align: center;
 }
 
+#clickfeld{
+    border-radius: 10px;
+    margin-top: 5%;
+    border: 2px solid white;
+    height: 22em;
+    width: 90%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
 .white {
     background-color: rgb(200, 200, 200)!important;
 }
@@ -203,6 +211,11 @@ hr{
 }
 
 #reaktionsfeld d{
+    color: black;
+    font-size: 5em;
+}
+
+#clickfeld d{
     color: black;
     font-size: 5em;
 }

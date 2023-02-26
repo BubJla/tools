@@ -44,10 +44,11 @@
         </li>
     </ul>   
     <div class = "divspiele">
-        <h1 class = "head">TicTacToe</h1>
+        <h1 class = "head">TicTacToe*</h1>
+        <span><d style="font-size: 0.5rem;">*auf schmaleren Formaten als 3:2 schwer spielbar</d></span>
         <hr>
         <span>
-            <div style="display: grid;">
+            <div style="display: grid; width: 25%">
                 <d class="spanGesamtTicTacToeStart">Gegner:</d>
                 <span>
                     <d>Computer</d>
@@ -75,32 +76,35 @@
                     <input type="radio" name="beginner" id="beginnerGegner" value="Freund">
                 </span>
                 <br>
-                <d>Schwierigkeitsgrad</d>
+                <d class="spanGesamtTicTacToeStart">Schwierigkeitsgrad:</d>
                 <span>
-                    &emsp;&emsp;&ensp;
-                    <d>leicht</d>
-                    &emsp;&emsp;&emsp;&ensp;
-                    <d>mittel</d>
-                    &emsp;&emsp;
-                    <d>unbesiegbar</d>
-                    &emsp;
-                </span>
-                <span>
-                    <input type="radio" name="schwierigkeitsgrad" id="schwierigkeitLeicht" value="leicht" checked="true">
-                    &emsp;&emsp;&emsp;&emsp;
-                    <input type="radio" name="schwierigkeitsgrad" id="schwierigkeitMittel" value="mittel" checked="true" >
-                    &emsp;&emsp;&emsp;&emsp;
-                    <input type="radio" name="schwierigkeitsgrad" id="schwierigkeitUnbesiegbar" value="unbesiegbar">
+                    <div style="width: 33.3%">
+                        <span><d>leicht</d></span>
+                        <br>
+                        <span><input type="radio" name="schwierigkeitsgrad" id="schwierigkeitLeicht" value="leicht" style="width: 20px; height: 20px"></span>
+                    </div>
+                    <div style="width: 33.3%">
+                        <span><d>mittel</d></span>
+                        <br>
+                        <span><input type="radio" name="schwierigkeitsgrad" id="schwierigkeitMittel" value="mittel" checked="true" style="width: 20px; height: 20px" ></span>
+     
+                    </div>
+                    <div style="width: 33.3%">
+                        <span><d>unbesiegbar</d></span>
+                        <br>
+                        <span><input type="radio" name="schwierigkeitsgrad" id="schwierigkeitUnbesiegbar" value="unbesiegbar" style="width: 20px; height: 20px"></span>
+
+                    </div>
                 </span>
                 <br>
                 <span>
                     <input type="button" value="START" onclick="start()" style="height: 25px; width: 70%" id="startfeld">
                 </span>
                 <span>
-                    <input type="button" value="LÖSCHEN" onclick="location.reload(true)" style="height: 25px; width: 30%">
+                    <input type="button" value="LÖSCHEN" onclick="location.reload(true)" style="height: 25px; width: 50%">
                 </span>
             </div>
-            <div id="spielfeld">
+            <div id="spielfeld" style="width: 75%">
                 <span>
                     <div class="kaestchen" id="feld1" onclick="printFeld(1)">
                     </div>
