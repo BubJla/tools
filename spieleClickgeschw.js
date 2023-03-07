@@ -25,5 +25,5 @@ function ueberpruefen() {
 function ausgabe() {
     var zeit = (new Date().getTime() - anfangszeit)/1000;
     document.getElementById("clickfeld").setAttribute("class", "white");
-    document.getElementById("werte").innerHTML = "Zeit: " + Math.round(zeit) +"s<br>" + "Clicks: "+clicks + " <br>Clicks/sec: "+Math.round(clicks/zeit*19)/10;
+    document.getElementById("werte").innerHTML = "Zeit: " + Math.round(zeit) +"s<br>" + "Clicks: "+clicks + " <br>Clicks/sec: "+Math.round(clicks/zeit*10)/10;
 }

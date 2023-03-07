@@ -20,9 +20,6 @@
             <a href="zeit.html">Zeit</a>
         </li>
         <li>
-            <a href="WRO.html">WRO-senior</a>
-        </li>
-        <li>
             <a href="spiele.html">Spiele</a>
         </li>
         <li>
@@ -33,37 +30,49 @@
         </li>
     </ul>
     <div class = "divges">
-        <h1 class = "head">Rechner</h1>
+        <h1 class = "head">Umrechner</h1>
         <hr>
         <ul class="listeNebeneinander">
             <li class="nebeneinander">
                 <a href="rechner.html">Taschenrechner</a>
             </li>
             <li class="nebeneinander">
-                <a class="aktiv">Binär-/Hexadezimalumrechner</a>
+                <a class="aktiv">Umrechner</a>
             </li>
             <li class="nebeneinander">
                 <a href="zeitTimer.html">Timer</a>
             </li>
         </ul>
-        <br>
+        <hr>
         <span>
             <div class="inputDivBinaer">
                 <span><d>Dezimalzahl:</d></span>
-                <br>
                 <input type="text" id="dezimalzahl" onkeyup="dezimalzahleingabe()" placeholder="z.B. 1438" class="inputUmrechnerBinaer" maxlength="8"> 
             </div>
             <div class="inputDivBinaer">
                 <span><d>Binärcode:</d></span>
-                <br>
                 <input type="text" id="binaercode" onkeyup="binaercodeeingabe()" placeholder="z.B. 10010" class="inputUmrechnerBinaer" maxlength="28"> 
             </div>
             <div class="inputDivBinaer">
                 <span><d>Hexadezimalcode:</d></span>
-                <br>
                 <input type="text" id="hexadezimalcode" onkeyup="hexadezimalcodeeingabe()" placeholder="z.B. 5FE0" class="inputUmrechnerBinaer" maxlength="7"> 
             </div>
        </span>
-    </div>
+       <hr>
+       <span>
+        <div class="inputDivBinaer">
+            <span><d>Grundwert:</d></span>
+            <input type="text" id="groundvalue" onkeyup="grundwert()" placeholder="z.B. 225" class="inputUmrechnerBinaer" maxlength="28"> 
+        </div>
+        <div class="inputDivBinaer">
+            <span><d>Prozentwert:</d></span>
+            <input type="text" id="percentvalue" onkeyup="prozentwert()" placeholder="z.B. 18" class="inputUmrechnerBinaer" maxlength="28"> 
+        </div>
+        <div class="inputDivBinaer">
+            <span><d>Prozentsatz:</d></span>
+            <input type="text" id="percentage" onkeyup="prozentsatz()" placeholder="z.B. 8%" class="inputUmrechnerBinaer" maxlength="28"> 
+        </div>
+   </span>
+</div>
 </body>
 </html>

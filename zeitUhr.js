@@ -88,6 +88,12 @@ function sekundenPunkte(){
   }
 }
 
+function groeseplus(){
+  element.style.setProperty('--rotation', "500px")
+
+}
+
 millisekundenzeiger();
 sekundenPunkte();
 zahlen();
+

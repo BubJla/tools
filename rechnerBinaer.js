@@ -205,3 +205,129 @@ function dezimalzahleingabe() {
     }
     document.getElementById("dezimalzahl").value = inhalt;
 }
+
+
+var last = 0;//1: grundwert; 2: prozentwert; 3: prozentsatz
+var last2 = 0;//1: grundwert; 2: prozentwert; 3: prozentsatz
+
+function grundwert() {
+    var grund = document.getElementById("groundvalue").value.replace(",", ".");
+    var prozent = document.getElementById("percentvalue").value.replace(",", ".");
+    var satz = document.getElementById("percentage").value.replace("%", "/100").replace(",", ".");
+    if(grund[grund.length-1] == ".") return;
+    else if(prozent[prozent.length-1] == ".") return;
+    else if(satz[satz.length-1] == ".") return;
+    var prozentzeichen = satz.replace("/100", "*0");
+    if(prozentzeichen == "") ;
+    else if(eval(prozentzeichen) == 0) prozentzeichen = 1;
+    else prozentzeichen = 0;
+    if(satz != "") satz = eval(satz);
+    if(grund == "") {
+        last = 0;
+        document.getElementById("groundvalue").value = "";
+        document.getElementById("percentvalue").value = "";
+        document.getElementById("percentage").value = "";
+        return;
+    }
+    if(last == 1) {
+        last = last2;
+    }
+    else {
+        last2 = last;
+    }
+    if(last == 2) {
+        satz = prozent / grund;
+        prozentzeichen = 1;
+    }
+    else if(last == 3) {
+        prozent = grund * satz;
+    }
+    if(grund != "") grund = Math.round(grund*1000) / 1000;
+    if(prozent != "") prozent = Math.round(prozent*1000) / 1000;
+    if(satz != "") satz = Math.round(satz*100000) / 1000;
+    document.getElementById("groundvalue").value = grund.toString().replace(".", ",");
+    document.getElementById("percentvalue").value = prozent.toString().replace(".", ",");
+    if(satz != "" && prozentzeichen == 1) document.getElementById("percentage").value = satz.toString().replace(".", ",")+"%";
+    last = 1;
+}
+
+function prozentwert() {
+    var grund = document.getElementById("groundvalue").value.replace(",", ".");
+    var prozent = document.getElementById("percentvalue").value.replace(",", ".");
+    var satz = document.getElementById("percentage").value.replace("%", "/100").replace(",", ".");
+    if(grund[grund.length-1] == ".") return;
+    else if(prozent[prozent.length-1] == ".") return;
+    else if(satz[satz.length-1] == ".") return;
+    var prozentzeichen = satz.replace("/100", "*0");
+    if(prozentzeichen == "") ;
+    else if(eval(prozentzeichen) == 0) prozentzeichen = 1;
+    else prozentzeichen = 0;
+    if(satz != "") satz = eval(satz);
+    if(prozent == "") {
+        last = 0;
+        document.getElementById("groundvalue").value = "";
+        document.getElementById("percentvalue").value = "";
+        document.getElementById("percentage").value = "";
+        return;
+    }
+    if(last == 2) {
+        last = last2;
+    }
+    else {
+        last2 = last;
+    }
+    if(last == 1) {
+        satz = prozent / grund;
+        prozentzeichen = 1;
+    }
+    else if(last == 3) {
+        grund = prozent / satz;
+    }
+    if(grund != "") grund = Math.round(grund*1000) / 1000;
+    if(prozent != "") prozent = Math.round(prozent*1000) / 1000;
+    if(satz != "") satz = Math.round(satz*100000) / 1000;
+    document.getElementById("groundvalue").value = grund.toString().replace(".", ",");
+    document.getElementById("percentvalue").value = prozent.toString().replace(".", ",");
+    if(satz != "" && prozentzeichen == 1) document.getElementById("percentage").value = satz.toString().replace(".", ",")+"%";
+    last = 2;
+}
+
+function prozentsatz() {
+    var grund = document.getElementById("groundvalue").value.replace(",", ".");
+    var prozent = document.getElementById("percentvalue").value.replace(",", ".");
+    var satz = document.getElementById("percentage").value.replace("%", "/100").replace(",", ".");
+    if(grund[grund.length-1] == ".") return;
+    else if(prozent[prozent.length-1] == ".") return;
+    else if(satz[satz.length-1] == ".") return;
+    var prozentzeichen = satz.replace("/100", "*0");
+    if(prozentzeichen == "") ;
+    else if(eval(prozentzeichen) == 0) prozentzeichen = 1;
+    else prozentzeichen = 0;
+    if(satz != "") satz = eval(satz);
+    if(satz == "") {
+        document.getElementById("groundvalue").value = "";
+        document.getElementById("percentvalue").value = "";
+        document.getElementById("percentage").value = "";
+        last = 0;
+        return;
+    }
+    if(last == 3) {
+        last = last2;
+    }
+    else {
+        last2 = last;
+    }
+    if(last == 1) {
+        prozent = grund / satz;
+    }
+    else if(last == 2) {
+        grund = prozent / satz;
+    }     
+    if(grund != "") grund = Math.round(grund*1000) / 1000;
+    if(prozent != "") prozent = Math.round(prozent*1000) / 1000;
+    if(satz != "") satz = Math.round(satz*100000) / 1000;
+    document.getElementById("groundvalue").value = grund.toString().replace(".", ",");
+    document.getElementById("percentvalue").value = prozent.toString().replace(".", ",");
+    if(satz != "" && prozentzeichen == 1) document.getElementById("percentage").value = satz.toString().replace(".", ",")+"%";
+    last = 3;
+}
