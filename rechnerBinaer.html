@@ -60,19 +60,38 @@
        </span>
        <hr>
        <span>
-        <div class="inputDivBinaer">
-            <span><d>Grundwert:</d></span>
+            <div class="inputDivBinaer">
+                <span><d>Grundwert:</d></span>
+                <input type="text" id="groundvalue" onkeyup="grundwert()" placeholder="z.B. 225" class="inputUmrechnerBinaer" maxlength="28"> 
+            </div>
+            <div class="inputDivBinaer">
+                <span><d>Prozentwert:</d></span>
+                <input type="text" id="percentvalue" onkeyup="prozentwert()" placeholder="z.B. 18" class="inputUmrechnerBinaer" maxlength="28"> 
+            </div>
+            <div class="inputDivBinaer">
+                <span><d>Prozentsatz:</d></span>
+                <input type="text" id="percentage" onkeyup="prozentsatz()" placeholder="z.B. 8%" class="inputUmrechnerBinaer" maxlength="28"> 
+            </div>
+        </span>
+        <hr>
+        <span class = "einheiten">
+            <input type="text" id="gradcelsius" onkeyup="temperatur(1)" placeholder="z.B. 10" class="inputUmrechnerBinaer" maxlength="10"> 
+            <span><d>°C</d></span>
+            <input type="text" id="kelvin" onkeyup="temperatur(2)" placeholder="z.B. 283" class="inputUmrechnerBinaer" maxlength="10"> 
+            <span><d>K</d></span>
+            <input type="text" id="gradfahrenheit" onkeyup="temperatur(3)" placeholder="z.B. 50" class="inputUmrechnerBinaer" maxlength="10"> 
+            <span><d>°F</d></span>
+        </span>
+        <br>
+        <br>
+        <span class = "einheiten">
             <input type="text" id="groundvalue" onkeyup="grundwert()" placeholder="z.B. 225" class="inputUmrechnerBinaer" maxlength="28"> 
-        </div>
-        <div class="inputDivBinaer">
-            <span><d>Prozentwert:</d></span>
+            <span><d>m</d></span>
             <input type="text" id="percentvalue" onkeyup="prozentwert()" placeholder="z.B. 18" class="inputUmrechnerBinaer" maxlength="28"> 
-        </div>
-        <div class="inputDivBinaer">
-            <span><d>Prozentsatz:</d></span>
+            <span><d>mile</d></span>
             <input type="text" id="percentage" onkeyup="prozentsatz()" placeholder="z.B. 8%" class="inputUmrechnerBinaer" maxlength="28"> 
+            <span><d>yd/ ft / ″ </d></span>
+        </span>
         </div>
-   </span>
-</div>
 </body>
 </html>

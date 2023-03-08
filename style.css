@@ -337,3 +337,12 @@ circle{
     text-align: right;
     border: 0;
 }
+
+.einheiten d{
+    font-size: 1.5rem;
+    margin-right: 2%;
+}
+
+.einheiten input{
+    width: 28%;
+}

@@ -318,7 +318,7 @@ function prozentsatz() {
         last2 = last;
     }
     if(last == 1) {
-        prozent = grund / satz;
+        prozent = grund * satz;
     }
     else if(last == 2) {
         grund = prozent / satz;
@@ -330,4 +330,46 @@ function prozentsatz() {
     document.getElementById("percentvalue").value = prozent.toString().replace(".", ",");
     if(satz != "" && prozentzeichen == 1) document.getElementById("percentage").value = satz.toString().replace(".", ",")+"%";
     last = 3;
+}
+
+function gradToFahrenheit(grad) {
+    return 1.8*grad + 32;
+}
+function gradToKelvin(grad) {
+    return 1.8*grad + 273.15;
+}
+function fahrenheitToGrad(fahrenheit) {
+    return (fahrenheit - 32)*5/9;
+}
+function kelvinToGrad(kelvin) {
+    return kelvin - 273.15;
+}
+
+function temperatur(eingabe) {//1: grad  2: kelvin  3: fahrenheit
+    var grad = document.getElementById("gradcelsius").value;
+    var kelvin = document.getElementById("kelvin").value;
+    var fahrenheit = document.getElementById("gradfahrenheit").value;
+    switch(eingabe) {
+        case 1:
+            document.getElementById("kelvin").value = gradToKelvin(grad);
+            document.getElementById("gradfahrenheit").value = gradToFahrenheit(grad);
+            break;
+        case 2:
+            document.getElementById("gradcelsius").value = kelvinToGrad(kelvin);
+            document.getElementById("gradfahrenheit").value = gradToFahrenheit(kelvinToGrad(kelvin));
+            break;
+        case 3:
+            document.getElementById("kelvin").value = gradToKelvin(fahrenheitToGrad(fahrenheit));
+            document.getElementById("gradcelsius").value = fahrenheitToGrad(fahrenheit);
+            break;
+        default:
+    }
+    grad = document.getElementById("gradcelsius").value;
+    kelvin = document.getElementById("kelvin").value;
+    fahrenheit = document.getElementById("gradfahrenheit").value;
+    if(grad == "" || kelvin == "" || fahrenheit == "") {
+        document.getElementById("gradcelsius").value = "";
+        document.getElementById("kelvin").value = "";
+        document.getElementById("gradfahrenheit").value = "";
+    }
 }

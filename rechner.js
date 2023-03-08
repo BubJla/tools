@@ -33,7 +33,7 @@ function loeschen() {
 }
 
 function fak(zahl) {
-    for(let i = 0; i < 100; i++) zahl = zahl.replace("×", "*").replace("÷", "/").replace(",", ".").replace("√(", "Math.sqrt(").replace("%", "*(1/100)").replace("ANS", ergebnisletzt).replace("²", "**2").replace("^", "**");
+    for(let i = 0; i < 100; i++) zahl = zahl.replace("×", "*").replace("÷", "/").replace(",", ".").replace("π", "Math.PI").replace("%", "*(1/100)").replace("ANS", ergebnisletzt).replace("²", "**2").replace("^", "**");
     for(let i = 0; i < 100; i++) zahl = ersetzen(zahl);
     zahl = eval(zahl);
     if(zahl < 0) return "NaN";
@@ -82,8 +82,8 @@ function ersetzen(text) {
 
 function result() {
     for(let i = 0; i < 100; i++) eingabe = ersetzen(eingabe);
-    var formel = eingabe.replace("×", "*").replace("÷", "/").replace(",", ".").replace("√(", "Math.sqrt(").replace("%", "*(1/100)").replace("ANS", ergebnisletzt).replace("²", "**2").replace("^", "**");
-    for(let i = 0; i < 100; i++) formel = formel.replace("×", "*").replace("÷", "/").replace(",", ".").replace("√(", "Math.sqrt(").replace("%", "*(1/100)").replace("ANS", ergebnisletzt).replace("²", "**2").replace("^", "**");
+    var formel = eingabe.replace("×", "*").replace("÷", "/").replace(",", ".").replace("π", "Math.PI").replace("%", "*(1/100)").replace("ANS", ergebnisletzt).replace("²", "**2").replace("^", "**");
+    for(let i = 0; i < 100; i++) formel = formel.replace("×", "*").replace("÷", "/").replace(",", ".").replace("π", "Math.PI").replace("%", "*(1/100)").replace("ANS", ergebnisletzt).replace("²", "**2").replace("^", "**");
     let ergebnis = eval(formel).toString().replace(".", ",");
     document.getElementById("ausgabefeld").value = ergebnis;
     ergebnisletzt = ergebnis;
