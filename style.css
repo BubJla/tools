@@ -338,11 +338,20 @@ circle{
     border: 0;
 }
 
-.einheiten d{
+.einheitentemp d{
     font-size: 1.5rem;
-    margin-right: 2%;
+    margin-right: 20px;
 }
 
-.einheiten input{
-    width: 28%;
+.einheitentemp input{
+    width: 28.3%;
+}
+
+.einheitenlaeng d{
+    font-size: 1.5rem;
+    margin-right: 20px;
+}
+
+.einheitenlaeng input{
+    width: 15.5%;
 }

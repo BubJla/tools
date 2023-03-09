@@ -62,19 +62,19 @@
        <span>
             <div class="inputDivBinaer">
                 <span><d>Grundwert:</d></span>
-                <input type="text" id="groundvalue" onkeyup="grundwert()" placeholder="z.B. 225" class="inputUmrechnerBinaer" maxlength="28"> 
+                <input type="text" id="groundvalue" onkeyup="grundwert()" placeholder="z.B. 225" class="inputUmrechnerBinaer" maxlength="13"> 
             </div>
             <div class="inputDivBinaer">
                 <span><d>Prozentwert:</d></span>
-                <input type="text" id="percentvalue" onkeyup="prozentwert()" placeholder="z.B. 18" class="inputUmrechnerBinaer" maxlength="28"> 
+                <input type="text" id="percentvalue" onkeyup="prozentwert()" placeholder="z.B. 18" class="inputUmrechnerBinaer" maxlength="13"> 
             </div>
             <div class="inputDivBinaer">
                 <span><d>Prozentsatz:</d></span>
-                <input type="text" id="percentage" onkeyup="prozentsatz()" placeholder="z.B. 8%" class="inputUmrechnerBinaer" maxlength="28"> 
+                <input type="text" id="percentage" onkeyup="prozentsatz()" placeholder="z.B. 8%" class="inputUmrechnerBinaer" maxlength="13"> 
             </div>
         </span>
         <hr>
-        <span class = "einheiten">
+        <span class = "einheitentemp">
             <input type="text" id="gradcelsius" onkeyup="temperatur(1)" placeholder="z.B. 10" class="inputUmrechnerBinaer" maxlength="10"> 
             <span><d>°C</d></span>
             <input type="text" id="kelvin" onkeyup="temperatur(2)" placeholder="z.B. 283" class="inputUmrechnerBinaer" maxlength="10"> 
@@ -84,13 +84,17 @@
         </span>
         <br>
         <br>
-        <span class = "einheiten">
-            <input type="text" id="groundvalue" onkeyup="grundwert()" placeholder="z.B. 225" class="inputUmrechnerBinaer" maxlength="28"> 
+        <span class = "einheitenlaeng">
+            <input type="text" id="meter" onkeyup="laenge(1)" placeholder="z.B. 225" class="inputUmrechnerBinaer" maxlength="10"> 
             <span><d>m</d></span>
-            <input type="text" id="percentvalue" onkeyup="prozentwert()" placeholder="z.B. 18" class="inputUmrechnerBinaer" maxlength="28"> 
-            <span><d>mile</d></span>
-            <input type="text" id="percentage" onkeyup="prozentsatz()" placeholder="z.B. 8%" class="inputUmrechnerBinaer" maxlength="28"> 
-            <span><d>yd/ ft / ″ </d></span>
+            <input type="text" id="zoll" onkeyup="laenge(2)" placeholder="z.B. 225" class="inputUmrechnerBinaer" maxlength="10"> 
+            <span><d>in</d></span><!--   ″   -->
+            <input type="text" id="fuss" onkeyup="laenge(3)" placeholder="z.B. 225" class="inputUmrechnerBinaer" maxlength="10"> 
+            <span><d>ft</d></span>
+            <input type="text" id="meile" onkeyup="laenge(4)" placeholder="z.B. 18" class="inputUmrechnerBinaer" maxlength="10"> 
+            <span><d>mi</d></span>
+            <input type="text" id="yard" onkeyup="laenge(5)" placeholder="z.B. 8%" class="inputUmrechnerBinaer" maxlength="10"> 
+            <span><d>yd</d></span>
         </span>
         </div>
 </body>

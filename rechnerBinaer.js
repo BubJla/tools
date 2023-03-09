@@ -283,9 +283,9 @@ function prozentwert() {
     else if(last == 3) {
         grund = prozent / satz;
     }
-    if(grund != "") grund = Math.round(grund*1000) / 1000;
-    if(prozent != "") prozent = Math.round(prozent*1000) / 1000;
-    if(satz != "") satz = Math.round(satz*100000) / 1000;
+    if(grund != "") grund = Math.round(grund*1000000) / 1000000;
+    if(prozent != "") prozent = Math.round(prozent*1000000) / 1000000;
+    if(satz != "") satz = Math.round(satz*1000000000) / 1000000;
     document.getElementById("groundvalue").value = grund.toString().replace(".", ",");
     document.getElementById("percentvalue").value = prozent.toString().replace(".", ",");
     if(satz != "" && prozentzeichen == 1) document.getElementById("percentage").value = satz.toString().replace(".", ",")+"%";
@@ -323,9 +323,9 @@ function prozentsatz() {
     else if(last == 2) {
         grund = prozent / satz;
     }     
-    if(grund != "") grund = Math.round(grund*1000) / 1000;
-    if(prozent != "") prozent = Math.round(prozent*1000) / 1000;
-    if(satz != "") satz = Math.round(satz*100000) / 1000;
+    if(grund != "") grund = Math.round(grund*1000000) / 1000000;
+    if(prozent != "") prozent = Math.round(prozent*1000000) / 1000000;
+    if(satz != "") satz = Math.round(satz*1000000000) / 1000000;
     document.getElementById("groundvalue").value = grund.toString().replace(".", ",");
     document.getElementById("percentvalue").value = prozent.toString().replace(".", ",");
     if(satz != "" && prozentzeichen == 1) document.getElementById("percentage").value = satz.toString().replace(".", ",")+"%";
@@ -372,4 +372,84 @@ function temperatur(eingabe) {//1: grad  2: kelvin  3: fahrenheit
         document.getElementById("kelvin").value = "";
         document.getElementById("gradfahrenheit").value = "";
     }
+}
+
+
+function meterToInch(value) {
+    return Math.round(value/0.0254*1000000)/1000000;
+}
+function meterToFeet(value) {
+    return Math.round(value/0.3048*1000000)/1000000;
+}
+function meterToYard(value) {
+    return Math.round(value/0.9144*1000000)/1000000;
+}
+function meterToMile(value) {
+    return Math.round(value/1609.344*1000000)/1000000;
+}
+
+function inchToMeter(value) {
+    return Math.round(value*0.0254*1000000)/1000000;
+}
+function feetToMeter(value) {
+    return Math.round(value*0.3048*1000000)/1000000;
+}
+function yardToMeter(value) {
+    return Math.round(value*0.9144*1000000)/1000000;
+}
+function mileToMeter(value) {
+    return Math.round(value*1609.344*1000000)/1000000;
+}
+
+function laenge(eingabe) {//1: meter  2: inch  3: feet  4: meile  5: yard
+    var meterF = document.getElementById("meter").value;
+    var zollF = document.getElementById("zoll").value;
+    var fussF = document.getElementById("fuss").value;
+    var meileF = document.getElementById("meile").value;
+    var yardF = document.getElementById("yard").value;
+    switch(eingabe) {
+        case 1:
+            document.getElementById("zoll").value = meterToInch(meterF);
+            document.getElementById("fuss").value = meterToFeet(meterF);
+            document.getElementById("meile").value = meterToMile(meterF);
+            document.getElementById("yard").value = meterToYard(meterF);
+            break;
+        case 2:
+            document.getElementById("meter").value = inchToMeter(zollF);
+            document.getElementById("fuss").value = meterToFeet(inchToMeter(zollF));
+            document.getElementById("meile").value = meterToMile(inchToMeter(zollF));
+            document.getElementById("yard").value = meterToYard(inchToMeter(zollF));
+            break;
+        case 3:
+            document.getElementById("meter").value = feetToMeter(fussF);
+            document.getElementById("zoll").value = meterToInch(feetToMeter(fussF));
+            document.getElementById("meile").value = meterToMile(feetToMeter(fussF));
+            document.getElementById("yard").value = meterToYard(feetToMeter(fussF));
+            break;
+        case 4:
+            document.getElementById("meter").value = mileToMeter(meileF);
+            document.getElementById("zoll").value = meterToInch(mileToMeter(meileF));
+            document.getElementById("fuss").value = meterToFeet(mileToMeter(meileF));
+            document.getElementById("yard").value = meterToYard(mileToMeter(meileF));
+            break;
+        case 5:
+            document.getElementById("meter").value = yardToMeter(yardF);
+            document.getElementById("zoll").value = meterToInch(yardToMeter(yardF));
+            document.getElementById("fuss").value = meterToFeet(yardToMeter(yardF));
+            document.getElementById("meile").value = meterToMile(yardToMeter(yardF));
+            break;
+        default:
+    }
+    meterF = document.getElementById("meter").value;
+    zollF = document.getElementById("zoll").value;
+    fussF = document.getElementById("fuss").value;
+    meileF = document.getElementById("meile").value;
+    yardF = document.getElementById("yard").value;
+    if(meterF == "" || zollF == "" || fussF == "" || meileF == "" || yardF == "") {
+        document.getElementById("meter").value = "";
+        document.getElementById("zoll").value = "";
+        document.getElementById("fuss").value = "";
+        document.getElementById("meile").value = "";
+        document.getElementById("yard").value = "";
+        }
 }
