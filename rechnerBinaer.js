@@ -346,9 +346,9 @@ function kelvinToGrad(kelvin) {
 }
 
 function temperatur(eingabe) {//1: grad  2: kelvin  3: fahrenheit
-    var grad = document.getElementById("gradcelsius").value;
-    var kelvin = document.getElementById("kelvin").value;
-    var fahrenheit = document.getElementById("gradfahrenheit").value;
+    var grad = document.getElementById("gradcelsius").value.replace(",", ".");
+    var kelvin = document.getElementById("kelvin").value.replace(",", ".");
+    var fahrenheit = document.getElementById("gradfahrenheit").value.replace(",", ".");
     switch(eingabe) {
         case 1:
             document.getElementById("kelvin").value = gradToKelvin(grad);
@@ -372,6 +372,9 @@ function temperatur(eingabe) {//1: grad  2: kelvin  3: fahrenheit
         document.getElementById("kelvin").value = "";
         document.getElementById("gradfahrenheit").value = "";
     }
+    document.getElementById("gradcelsius").value = document.getElementById("gradcelsius").value.replace(".", ",");
+    document.getElementById("kelvin").value = document.getElementById("kelvin").value.replace(".", ",");
+    document.getElementById("gradfahrenheit").value = document.getElementById("gradfahrenheit").value.replace(".", ",");
 }
 
 
@@ -402,11 +405,11 @@ function mileToMeter(value) {
 }
 
 function laenge(eingabe) {//1: meter  2: inch  3: feet  4: meile  5: yard
-    var meterF = document.getElementById("meter").value;
-    var zollF = document.getElementById("zoll").value;
-    var fussF = document.getElementById("fuss").value;
-    var meileF = document.getElementById("meile").value;
-    var yardF = document.getElementById("yard").value;
+    var meterF = document.getElementById("meter").value.replace(",", ".");
+    var zollF = document.getElementById("zoll").value.replace(",", ".");
+    var fussF = document.getElementById("fuss").value.replace(",", ".");
+    var meileF = document.getElementById("meile").value.replace(",", ".");
+    var yardF = document.getElementById("yard").value.replace(",", ".");
     switch(eingabe) {
         case 1:
             document.getElementById("zoll").value = meterToInch(meterF);
@@ -451,5 +454,10 @@ function laenge(eingabe) {//1: meter  2: inch  3: feet  4: meile  5: yard
         document.getElementById("fuss").value = "";
         document.getElementById("meile").value = "";
         document.getElementById("yard").value = "";
-        }
+    }
+    document.getElementById("meter").value = document.getElementById("meter").value.replace(".", ",");
+    document.getElementById("zoll").value = document.getElementById("zoll").value.replace(".", ",");
+    document.getElementById("fuss").value = document.getElementById("fuss").value.replace(".", ",");
+    document.getElementById("meile").value = document.getElementById("meile").value.replace(".", ",");
+    document.getElementById("yard").value = document.getElementById("yard").value.replace(".", ",");
 }

@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="style.css" rel="stylesheet">
-    <title>Binär-/Hexadezimalumrechner</title>
+    <title>Umrechner</title>
     <script src="rechnerBinaer.js"></script>
 </head>
 <body>
@@ -43,7 +43,7 @@
                 <a href="zeitTimer.html">Timer</a>
             </li>
         </ul>
-        <hr>
+        <hr style="margin-top: 25px; margin-bottom: 25px">
         <span>
             <div class="inputDivBinaer">
                 <span><d>Dezimalzahl:</d></span>
@@ -58,7 +58,7 @@
                 <input type="text" id="hexadezimalcode" onkeyup="hexadezimalcodeeingabe()" placeholder="z.B. 5FE0" class="inputUmrechnerBinaer" maxlength="7"> 
             </div>
        </span>
-       <hr>
+       <hr style="margin-top: 25px; margin-bottom: 25px">
        <span>
             <div class="inputDivBinaer">
                 <span><d>Grundwert:</d></span>
@@ -73,7 +73,7 @@
                 <input type="text" id="percentage" onkeyup="prozentsatz()" placeholder="z.B. 8%" class="inputUmrechnerBinaer" maxlength="13"> 
             </div>
         </span>
-        <hr>
+        <hr style="margin-top: 25px; margin-bottom: 25px">
         <span class = "einheitentemp">
             <input type="text" id="gradcelsius" onkeyup="temperatur(1)" placeholder="z.B. 10" class="inputUmrechnerBinaer" maxlength="10"> 
             <span><d>°C</d></span>
@@ -96,6 +96,11 @@
             <input type="text" id="yard" onkeyup="laenge(5)" placeholder="z.B. 8%" class="inputUmrechnerBinaer" maxlength="10"> 
             <span><d>yd</d></span>
         </span>
-        </div>
+        <hr style="margin-top: 25px; margin-bottom: 25px">
+        <span><d style="font-size: 1.5rem;">Farbwähler:</d></span>
+        <span>
+            <input type="color" id="favcolor" style="height: 50px; width: 95%" value="#2222AA" >
+        </span>
+    </div>
 </body>
 </html>
