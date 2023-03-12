@@ -242,9 +242,9 @@ function grundwert() {
     else if(last == 3) {
         prozent = grund * satz;
     }
-    if(grund != "") grund = Math.round(grund*1000) / 1000;
-    if(prozent != "") prozent = Math.round(prozent*1000) / 1000;
-    if(satz != "") satz = Math.round(satz*100000) / 1000;
+    if(grund != "") grund = Math.round(grund*1000000) / 1000000;
+    if(prozent != "") prozent = Math.round(prozent*1000000) / 1000000;
+    if(satz != "") satz = Math.round(satz*100000000) / 1000000;
     document.getElementById("groundvalue").value = grund.toString().replace(".", ",");
     document.getElementById("percentvalue").value = prozent.toString().replace(".", ",");
     if(satz != "" && prozentzeichen == 1) document.getElementById("percentage").value = satz.toString().replace(".", ",")+"%";
@@ -285,7 +285,7 @@ function prozentwert() {
     }
     if(grund != "") grund = Math.round(grund*1000000) / 1000000;
     if(prozent != "") prozent = Math.round(prozent*1000000) / 1000000;
-    if(satz != "") satz = Math.round(satz*1000000000) / 1000000;
+    if(satz != "") satz = Math.round(satz*100000000) / 1000000;
     document.getElementById("groundvalue").value = grund.toString().replace(".", ",");
     document.getElementById("percentvalue").value = prozent.toString().replace(".", ",");
     if(satz != "" && prozentzeichen == 1) document.getElementById("percentage").value = satz.toString().replace(".", ",")+"%";
@@ -323,9 +323,10 @@ function prozentsatz() {
     else if(last == 2) {
         grund = prozent / satz;
     }     
+    //alert(satz);
     if(grund != "") grund = Math.round(grund*1000000) / 1000000;
     if(prozent != "") prozent = Math.round(prozent*1000000) / 1000000;
-    if(satz != "") satz = Math.round(satz*1000000000) / 1000000;
+    if(satz != "") satz = Math.round(satz*100000000) / 1000000;
     document.getElementById("groundvalue").value = grund.toString().replace(".", ",");
     document.getElementById("percentvalue").value = prozent.toString().replace(".", ",");
     if(satz != "" && prozentzeichen == 1) document.getElementById("percentage").value = satz.toString().replace(".", ",")+"%";

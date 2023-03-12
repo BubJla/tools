@@ -355,3 +355,22 @@ circle{
 .einheitenlaeng input{
     width: 15.5%;
 }
+
+.kopfrechenfeld{
+    height: 150px;
+    width: 45%;
+    display: flex;
+    align-items: center;
+    justify-content: end;
+    font-size: 5rem;
+    margin-right: 20px;
+}
+.inputergebniskopfrechnen {
+    height: 150px;
+    width: 33%;
+    font-size: 5rem;
+    background-color: black;
+    color: white;
+    border: 1px solid black;
+}
+

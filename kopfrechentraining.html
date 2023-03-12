@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="style.css" rel="stylesheet">
+    <title>Kopfrechentrainer</title>
+</head>
+<body>
+    <ul class = "navigationsleiste">
+        <li>
+            <a href="index.html">Startseite</a>
+        </li>
+        <li>
+            <a href="trinkgeldberechner.html">Trinkgeldrechner</a>
+        </li>
+        <li>
+            <a href="zeit.html">Zeit</a>
+        </li>
+        <li>
+            <a href="spiele.html">Spiele</a>
+        </li>
+        <li>
+            <a class="aktiv">Rechner</a>
+        </li>
+        <li>
+            <a href="impressum.html">Impressum</a>
+        </li>
+    </ul>
+    <div class = "divges">
+        <h1 class = "head">Umrechner</h1>
+        <hr>
+        <ul class="listeNebeneinander">
+            <li class="nebeneinander">
+                <a href="rechner.html">Taschenrechner</a>
+            </li>
+            <li class="nebeneinander">
+                <a href="rechnerBinaer.html">Umrechner</a>
+            </li>
+            <li class="nebeneinander">
+                <a class="aktiv">Kopfrechnen</a>
+            </li>
+        </ul>
+        <span class="zeitauswahlClickgeschw">
+            <div style="width: 11%">
+                <span><d>Level:</d></span>
+            </div>
+            <div style="width: 11%">
+                <d>0</d>
+                <span><input type="radio" name = "clickzeit" value = "0" id="level0checked" onclick="levle = 0" style="width: 14px; height: 14px"></span>
+                <br>
+                <d>besondere Zahlen wie PI</d>
+            </div>
+            <div style="width: 11%">
+                <span><d>1</d></span>
+                <span><input type="radio" name = "clickzeit"  value = "1" id="level1checked" onclick="levle = 1" style="width: 14px; height: 14px"></span>
+                <br>
+                <d>+/-: 0 - 100</d>
+            </div>
+            <div style="width: 11%">
+                <span><d>2</d></span>
+                <span><input type="radio" name = "clickzeit" value = "2" id="level2checked" onclick="level = 2" style="width: 14px; height: 14px" checked></span>
+                <br>
+                <d>+/-: -400 - 400
+                    <br>
+                    */÷: 0 - 100
+                </d>
+            </div>
+            <div style="width: 11%">
+                <span><d>3</d></span>
+                <span><input type="radio" name = "clickzeit" value = "3" id="level3checked" onclick="level = 3" style="width: 14px; height: 14px"></span>
+                <br>
+                <d>+/-: -1000 - 1000
+                    <br>
+                    */÷: -400 - 400
+                </d>
+            </div>
+            <div style="width: 11%">
+                <span><d>4</d></span>
+                <span><input type="radio" name = "clickzeit" value = "4" id="level4checked" onclick="level = 4" style="width: 14px; height: 14px"></span>
+                <br>
+                <d>+/-: -5000 - 5000
+                    <br>
+                    */÷: -625 - 625
+                </d>
+            </div>
+            <div style="width: 12%">
+                <span><d>automatischer</d></span><span><d>Levelaufstieg</d></span>
+                <br>
+                <span><input type="checkbox" id="autoPerformance" style="width: 1rem; height: 1rem;" checked></span>
+            </div>
+            <div style="width: 11%">
+                <input type="button" value = "NÄCHSTE" onclick="aufgabe()" id="startbutton" style="height: 90px; width: 100%; font-weight: 900;">
+            </div>
+            <div style="width: 11%">
+                <input type="button" value = "ABGEBEN" onclick="ueberpruefen()" id="startbutton" style="height: 90px; width: 100%; font-weight: 900;">
+            </div>
+        </span>
+        <hr>
+        <span>
+            <div class="kopfrechenfeld">
+                <d id="aufgabenfeld">Aufgabe</d>
+                <d>=</d>
+            </div>
+            <input type="text" class="inputergebniskopfrechnen" placeholder="Ergebnis" maxlength="8" id="ergebnisfeld">
+        </span>
+        <hr>
+        <span style="font-size: xx-large">
+            <d>Punkte*:&ensp;</d>
+            <d id="punkte">0</d>
+            <d>&ensp;&ensp;&ensp;Zeit:&ensp;</d>
+            <d id="zeit">0</d>
+            <d>s</d>
+            <d>&ensp;&ensp;&ensp;Aufgaben:&ensp;</d>
+            <d id="aufgaben">0</d>
+            <d>&ensp;&ensp;&ensp;Fehler:&ensp;</d>
+            <d id="fehler">0</d>
+        </span>
+        <br>
+        <d style="font-size: small;">*aus Zeit, Aufgaben und Fehler berechnet</d>
+    </div> 
+    <script src="kopfrechentrainer.js"></script>
+</body>
+</html>
