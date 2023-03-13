@@ -48,13 +48,19 @@
             </div>
             <div style="width: 11%">
                 <d>0</d>
-                <span><input type="radio" name = "clickzeit" value = "0" id="level0checked" onclick="levle = 0" style="width: 14px; height: 14px"></span>
+                <span><input type="radio" name = "clickzeit" value = "0" id="level0checked" onclick="level = 0" style="width: 14px; height: 14px"></span>
                 <br>
                 <d>besondere Zahlen wie PI</d>
             </div>
             <div style="width: 11%">
+                <d>2+</d>
+                <span><input type="radio" name = "clickzeit" value = "2+" id="level2+checked" onclick="level = 22" style="width: 14px; height: 14px"></span>
+                <br>
+                <d>kleines Einmaleins</d>
+            </div>
+            <div style="width: 11%">
                 <span><d>1</d></span>
-                <span><input type="radio" name = "clickzeit"  value = "1" id="level1checked" onclick="levle = 1" style="width: 14px; height: 14px"></span>
+                <span><input type="radio" name = "clickzeit"  value = "1" id="level1checked" onclick="level = 1" style="width: 14px; height: 14px"></span>
                 <br>
                 <d>+/-: 0 - 100</d>
             </div>
@@ -64,7 +70,7 @@
                 <br>
                 <d>+/-: -400 - 400
                     <br>
-                    */÷: 0 - 100
+                    ×/÷: 0 - 100
                 </d>
             </div>
             <div style="width: 11%">
@@ -73,7 +79,7 @@
                 <br>
                 <d>+/-: -1000 - 1000
                     <br>
-                    */÷: -400 - 400
+                    ×/÷: 400 - 400
                 </d>
             </div>
             <div style="width: 11%">
@@ -82,7 +88,7 @@
                 <br>
                 <d>+/-: -5000 - 5000
                     <br>
-                    */÷: -625 - 625
+                    ×/÷: 625 - 625
                 </d>
             </div>
             <div style="width: 12%">
@@ -91,7 +97,7 @@
                 <span><input type="checkbox" id="autoPerformance" style="width: 1rem; height: 1rem;" checked></span>
             </div>
             <div style="width: 11%">
-                <input type="button" value = "NÄCHSTE" onclick="aufgabe()" id="startbutton" style="height: 90px; width: 100%; font-weight: 900;">
+                <input type="button" value = "NÄCHSTE" onclick="fehler++;neueaufgabe = true;" id="startbutton" style="height: 90px; width: 100%; font-weight: 900;">
             </div>
             <div style="width: 11%">
                 <input type="button" value = "ABGEBEN" onclick="ueberpruefen()" id="startbutton" style="height: 90px; width: 100%; font-weight: 900;">
@@ -103,7 +109,7 @@
                 <d id="aufgabenfeld">Aufgabe</d>
                 <d>=</d>
             </div>
-            <input type="text" class="inputergebniskopfrechnen" placeholder="Ergebnis" maxlength="8" id="ergebnisfeld">
+            <input type="text" class="inputergebniskopfrechnen" placeholder="Ergebnis" maxlength="8" id="ergebnisfeld" onkeyup="if(event.keyCode === 13) ueberpruefen();">
         </span>
         <hr>
         <span style="font-size: xx-large">
