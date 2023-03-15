@@ -12,6 +12,7 @@ var aufgabeLetzt;
 var neueaufgabe = true;
 var interval = setInterval(function() {aufgabe();}, 10);
 
+var zeitAnfang = new Date().getTime();
 
 
 function level0() {
@@ -119,7 +120,9 @@ function aufgabe() {
     document.getElementById("zeit").innerHTML = zeit;
     document.getElementById("aufgaben").innerHTML = aufgaben;
     document.getElementById("fehler").innerHTML = fehler;
-    if(zeit!= 0) punkte = Math.round(1000/(zeit/aufgaben)/((fehler/aufgaben)+1));
+    zeit = Math.round((new Date().getTime() - zeitAnfang) / 100)/10;
+    if(zeit!= 0 && level != 0 && level != 22) punkte = level * Math.round(1000/(zeit/aufgaben)/((fehler/aufgaben)+1));
+    else if(zeit != 0) Math.round(1000/(zeit/aufgaben)/((fehler/aufgaben)+1));
     document.getElementById("punkte").innerHTML = punkte;
     switch(level) {
         case 0:
@@ -160,7 +163,9 @@ function ueberpruefen() {
     document.getElementById("zeit").innerHTML = zeit;
     document.getElementById("aufgaben").innerHTML = aufgaben;
     document.getElementById("fehler").innerHTML = fehler;
-    if(zeit!= 0) punkte = Math.round(1000/(zeit/aufgaben)/((fehler/aufgaben)+1));
+    zeit = Math.round((new Date().getTime() - zeitAnfang) / 100)/10;
+    if(zeit!= 0 && level != 0 && level != 22) punkte = level * Math.round(1000/(zeit/aufgaben)/((fehler/aufgaben)+1));
+    else if(zeit != 0) Math.round(1000/(zeit/aufgaben)/((fehler/aufgaben)+1));
     document.getElementById("punkte").innerHTML = punkte;
 }
 

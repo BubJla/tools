@@ -462,3 +462,49 @@ function laenge(eingabe) {//1: meter  2: inch  3: feet  4: meile  5: yard
     document.getElementById("meile").value = document.getElementById("meile").value.replace(".", ",");
     document.getElementById("yard").value = document.getElementById("yard").value.replace(".", ",");
 }
+
+var intervalcolors = setInterval(function() {colors();}, 10);
+
+function colors() {
+    var hex = document.getElementById("favcolor").value.replace("a", "A").replace("b", "B").replace("c", "C").replace("d", "D").replace("e", "E").replace("f", "F");
+    hex = hex.replace("a", "A").replace("b", "B").replace("c", "C").replace("d", "D").replace("e", "E").replace("f", "F");//?? aber nötig
+    hex = hex.replace("a", "A").replace("b", "B").replace("c", "C").replace("d", "D").replace("e", "E").replace("f", "F");
+    hex = hex.replace("a", "A").replace("b", "B").replace("c", "C").replace("d", "D").replace("e", "E").replace("f", "F");
+    hex = hex.replace("a", "A").replace("b", "B").replace("c", "C").replace("d", "D").replace("e", "E").replace("f", "F");
+    hex = hex.replace("a", "A").replace("b", "B").replace("c", "C").replace("d", "D").replace("e", "E").replace("f", "F");
+    var r = hexadezimalTOdezimal(hex[1] + hex[2]);
+    var g = hexadezimalTOdezimal(hex[3]+hex[4]);
+    var b = hexadezimalTOdezimal(hex[5]+hex[6]);
+    var rgb = r+" "+g+" "+b;
+    var h = Math.round(rgbToHsl(r, g, b)[0]*10)/10;
+    var s = Math.round(rgbToHsl(r, g, b)[1]*1000)/10;
+    var l = Math.round(rgbToHsl(r, g, b)[2]*1000)/10;
+    var hsl = h + " " + s + "%" + " " + l + "%";
+    document.getElementById("rgb").innerHTML = rgb;
+    document.getElementById("hsl").innerHTML = hsl;
+    document.getElementById("hex").innerHTML = hex;
+}
+
+function rgbToHsl(r, g, b) {
+    r /= 255, g /= 255, b /= 255;
+  
+    var max = Math.max(r, g, b), min = Math.min(r, g, b);
+    var h, s, l = (max + min) / 2;
+  
+    if (max == min) {
+      h = s = 0; // achromatic
+    } else {
+      var d = max - min;
+      s = l > 0.5 ? d / (2 - max - min) : d / (max + min);
+  
+      switch (max) {
+        case r: h = (g - b) / d + (g < b ? 6 : 0); break;
+        case g: h = (b - r) / d + 2; break;
+        case b: h = (r - g) / d + 4; break;
+      }
+  
+      h /= 6;
+    }
+    h *= 360;
+    return [ h, s, l ];
+  }
