@@ -121,8 +121,8 @@ function aufgabe() {
     document.getElementById("aufgaben").innerHTML = aufgaben;
     document.getElementById("fehler").innerHTML = fehler;
     zeit = Math.round((new Date().getTime() - zeitAnfang) / 100)/10;
-    if(zeit!= 0 && level != 0 && level != 22) punkte = level * Math.round(1000/(zeit/aufgaben)/((fehler/aufgaben)+1));
-    else if(zeit != 0) Math.round(1000/(zeit/aufgaben)/((fehler/aufgaben)+1));
+    if(aufgaben!= 0 && zeit!= 0 && level != 0 && level != 22) punkte = level * Math.round(1000/(zeit/aufgaben)/((fehler/aufgaben)+1));
+    else if(aufgaben!= 0 && zeit != 0) punkte =  Math.round(1000/(zeit/aufgaben)/((fehler/aufgaben)+1));
     document.getElementById("punkte").innerHTML = punkte;
     switch(level) {
         case 0:
@@ -167,8 +167,49 @@ function ueberpruefen() {
     if(zeit!= 0 && level != 0 && level != 22) punkte = level * Math.round(1000/(zeit/aufgaben)/((fehler/aufgaben)+1));
     else if(zeit != 0) Math.round(1000/(zeit/aufgaben)/((fehler/aufgaben)+1));
     document.getElementById("punkte").innerHTML = punkte;
+    var aufstieg = document.getElementById("autoPerformance").checked;
+    if(punkte/level < 30 && level != 1 && level != 0 && level != 22 && aufgaben > 2 && aufstieg == true) {
+        level --;
+        reset();
+    }
+    else if(punkte/level > 130 && level != 4 && level != 0 && level != 22 && aufgaben > 3 && aufstieg == true) {
+        level++;
+        reset();
+    }
 }
 
+function reset() {
+    punkte = 0;
+    aufgaben = 0;
+    fehler = 0;
+    zeit = 0;
+    document.getElementById("zeit").innerHTML = zeit;
+    document.getElementById("aufgaben").innerHTML = aufgaben;
+    document.getElementById("fehler").innerHTML = fehler;
+    document.getElementById("punkte").innerHTML = punkte;
+    switch(level) {
+        case 0:
+            document.getElementById("level0checked").checked = true;
+            break;
+        case 22:
+            document.getElementById("level2+checked").checked = true;
+            break;
+        case 1:
+            document.getElementById("level1checked").checked = true;
+            break;
+        case 2:
+            document.getElementById("level2checked").checked = true;
+            break;
+        case 3:
+            document.getElementById("level3checked").checked = true;
+            break;
+        case 4:
+            document.getElementById("level4checked").checked = true;
+            break;
+        default:
+        }
+    neueaufgabe = true;
+}
 
 for(let i = 0; i< new Date().getMilliseconds(); i++) {
     Math.random();
