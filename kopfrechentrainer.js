@@ -179,6 +179,7 @@ function ueberpruefen() {
 }
 
 function reset() {
+    zeitAnfang = new Date().getTime();
     punkte = 0;
     aufgaben = 0;
     fehler = 0;

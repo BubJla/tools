@@ -374,3 +374,14 @@ circle{
     border: 1px solid black;
 }
 
+.passwortgeneratorlaengenauswahl div input{
+    width: 20px;
+    height: 20px;
+}
+
+.passwortgeneratorlaengenauswahl {
+    margin-left: 10%;
+    margin-right: 10%;
+    justify-content: space-between;
+}
+

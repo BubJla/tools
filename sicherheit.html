@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="style.css" rel="stylesheet">
+    <title>Passwortgenerator</title>
+    <script src="sicherheit.js"></script>
+</head>
+<body>
+    <ul class = "navigationsleiste">
+        <li>
+            <a href="index.html">Startseite</a>
+        </li>
+        <li>
+            <a href="zeit.html">Zeit</a>
+        </li>
+        <li>
+            <a href="spiele.html">Spiele</a>
+        </li>
+        <li>
+            <a href="rechner.html">Rechner</a>
+        </li>
+        <li>
+            <a class="aktiv">Sicherheit</a>
+        </li>
+        <li>
+            <a href="impressum.html">Impressum</a>
+        </li>
+    </ul>
+    <div class = "divges">
+        <h1 class = "head">Passwortgenerator</h1>
+        <hr>
+        <span class="passwortgeneratorlaengenauswahl">
+            <div><d>Länge:</d></div>
+            <div>
+                <d>6</d>
+                <input type="radio" name="laenge" onclick="laenge = 6">
+            </div>
+            <div>
+                <d>8</d>
+                <input type="radio" name="laenge" onclick="laenge = 8" checked>
+            </div>
+            <div>
+                <d>12</d>
+                <input type="radio" name="laenge" onclick="laenge = 12">
+            </div>
+            <div>
+                <d>18</d>
+                <input type="radio" name="laenge" onclick="laenge = 18">
+            </div>
+            <div>
+                <input type="number" placeholder="Wert" style="width: 50px" min="1">
+                <input type="radio" name="laenge" onclick="laenge = 99">
+            </div>
+            <div>
+                <input type="submit" value="GENERIEREN" style="width: 100px; height: 40px;">
+            </div>
+        </span>
+</body>
+</html>
