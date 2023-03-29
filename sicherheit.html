@@ -50,13 +50,31 @@
                 <d>18</d>
                 <input type="radio" name="laenge" onclick="laenge = 18">
             </div>
-            <div>
-                <input type="number" placeholder="Wert" style="width: 50px" min="1">
+            <div style="width: 40px;">
+                <input type="number" id="variabelLaenge" placeholder="Wert" style="width: 50px" min="1">
                 <input type="radio" name="laenge" onclick="laenge = 99">
             </div>
             <div>
-                <input type="submit" value="GENERIEREN" style="width: 100px; height: 40px;">
+                <input type="submit" value="GENERIEREN" style="width: 100px; height: 40px;" onclick="generatePassword()">
             </div>
         </span>
-</body>
+        <span class="passwortgeneratorlaengenauswahl">
+            <div style="margin-left: 20%;">
+                <d>Buchstaben</d>
+                <input type="checkbox" id= "buchstaben" checked onclick="document.getElementById('buchstaben').checked = true;">
+            </div>
+            <div>
+                <d>Zahlen</d>
+                <input type="checkbox" id= "zahlen" checked>
+            </div>
+            <div style="margin-right: 20%;">
+                <d>Zeichen</d>
+                <input type="checkbox" id= "zeichen" checked>
+            </div>
+        </span>
+        <br>
+        <br>
+        <br>
+        <span id = "passwortfeld" style="height: 400px; width:100%; font-size: 3rem; color: white"></span>
+    </body>
 </html>
