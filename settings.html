@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="style.css" rel="stylesheet">             
     <title>Werkzeuge</title>
-    <script src="settings.js"></script>
+    <script src="start.js"></script>
 </head>
 <body>
     <ul class = "navigationsleiste">
@@ -42,37 +42,49 @@
         <div style="width: 30%;">  
             <d>Hintergrundfarbe:</d>
             <span>
-                <input type="color" id="favcolor" style="height: 30px; width: 95%" value="#2222AA">
+                <input type="color" id="hintergrundfarbe" style="height: 40px; width: 95%" value="#000000" onchange="changeSetting()">
             </span>
-            <br>
             <d>Akzentfarbe 1:</d>
             <span>
-                <input type="color" id="favcolor" style="height: 30px; width: 95%" value="#2222AA">
+                <input type="color" id="akzentfarbe1" style="height: 40px; width: 95%" value="#5A5AA0" onchange="changeSetting()">
             </span>
-            <br>
             <d>Akzentfarbe 2:</d>
             <span>
-                <input type="color" id="favcolor" style="height: 30px; width: 95%" value="#2222AA">
+                <input type="color" id="akzentfarbe2" style="height: 40px; width: 95%" value="#5AA05A" onchange="changeSetting()">
+            </span>
+            <d>Akzentfarbe 3:</d>
+            <span>
+                <input type="color" id="akzentfarbe3" style="height: 40px; width: 95%" value="#4444FF" onchange="changeSetting()">
+            </span>
+            <span style="width: 100%;">
+                <div style="width: 70%;">  
+                    <d>Schriftfarbe:</d>              
+                    <span>
+                        <input type="color" id="schriftfarbe" style="height: 40px; width: 92%" value="#FFFFFF" onchange="changeSetting()">
+                    </span>
+                </div>
+                <div>    
+                    <d>automatisch</d>            
+                    <input type="checkbox" id="automatisch" value="#FFFFFF" style="width: 20px" checked onclick="changeSetting()">
+                </div>
+            </span>
+            <d>Schriftgröße:</d>
+            <span>
+                <input type="range" id="groesseSchrift" min="0.5" max ="1.5" step="0.01" value="1" style="height: 20px; width: 95%" onchange="changeSetting()">
             </span>
             <br>
-            <d>Schriftfarbe:</d>
             <span>
-                <input type="color" id="favcolor" style="height: 30px; width: 95%" value="#2222AA">
-            </span>
-            <br>
-            <d>Cookies:</d>
-            <span>
-                <input type="checkbox" id="favcolor" checked>
+                <input type="button" value="ZURÜCKSETZEN" style="height: 30px; width: 80%"   onclick="loeschen()" >
             </span>
         </div>
         <div style="width: 80%">        
-            <d>Vorschau</d>
+            <d>Vorschau*:</d>
             <span>            
-                <div style="background: black; width: 640px; height: 360px; border: 5px solid white;">
+                <div style="width: 640px; height: 360px; border: 5px solid white;">
                     <ul class = "navigationsleiste" style="height: 348px; width: 102.4px; position: absolute;">
-                        <div style="height: 80%;">
+                        <div style="height: 83%;">
                         <li>
-                            <a class="aktiv">Akzent 1</a>
+                            <a class="aktiv">generiert</a>
                         </li>
                         <li>
                             <a>Akzent 1</a>
@@ -81,14 +93,14 @@
                             <a>Akzent 1</a>
                         </li>
                         </div>
-                            <a class="gear">&#9881;</a>
+                            <a class="gear" style="padding-left: 10px">&#9881;</a>
                     </ul>
                     <div class = "divges">
                         <h1 class = "head">Überschrift</h1>
                         <hr>
                         <ul class="listeNebeneinander">
                             <li class="nebeneinander">
-                                <a class="aktiv">Akzent 2</a>
+                                <a class="aktiv">generiert</a>
                             </li>
                             <li class="nebeneinander">
                                 <a>Akzent 2</a>
@@ -100,13 +112,22 @@
                         <d>Das ist ein Beispieltext!</d>
                         <d>Gefällt es ihnen so?</d>
                         <br>
-                        <d>Links können sie die Erscheinung der gesamten Website auf ihre Bedürfnisse anpassen.</d>
-                    </div>
+                        <d id="qwert">Links können sie die Erscheinung der gesamten Website auf ihre Bedürfnisse anpassen.</d>
+                        <br>
+                        <span>
+                            <d>Akzentfarbe 3:</d>
+                            <input type="radio" checked>
+                            <input type="checkbox" checked>
+                            <input type="range" style="width: 200px">
+                        </span>
+                        </div>
                 
                 </div>
             </span>
+            <d style="font-size: 0.7rem!important;">*nicht Maßstabsgetreu</d>
         </div>
     </span>
     </div>
 </body>
+<script src="settings.js"></script>
 </html>

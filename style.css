@@ -1,3 +1,15 @@
+:root {
+    --groesse: 1rem;
+    --groesseUeberschrift: 2rem;
+    --schriftfarbe: #FFFFFF;
+    --hintergrundfarbe: #000000;
+    --akzentfarbe1: #5A5AA0;
+    --akzentfarbe2: #5AA05A;
+    --akzentfarbe1aktiv: #1A1A60;
+    --akzentfarbe2aktiv: #1A601A;
+    --akzentfarbe3: #4444ff;
+}
+
 .navigationsleiste{
     list-style-type: none;
     margin: 0;
@@ -65,11 +77,11 @@ li a{
 }
 
 .navigationsleiste li a.aktiv{
-    background-color: rgb(10, 10, 70);
+    background-color: var(--akzentfarbe1aktiv);
 }
 
 .navigationsleiste li a:hover:not(.aktiv){
-    background-color: rgb(90, 90, 160);
+    background-color: var(--akzentfarbe1);
 }
 
 .head{
@@ -127,11 +139,11 @@ hr{
 }
     
 .listeNebeneinander a.aktiv{
-    background-color: rgb(10, 60, 10);
+    background-color: var(--akzentfarbe2aktiv);
 }
 
 .listeNebeneinander li a:hover:not(.aktiv){
-    background-color: rgb(90, 160, 90);
+    background-color: var(--akzentfarbe2);
 }
 
 .anderes{
@@ -139,11 +151,11 @@ hr{
     background-color: rgb(160, 80, 80);
 }
 .navigationsleistespiele a.aktiv{
-    background-color: rgb(10, 60, 10);
+    background-color: var(--akzentfarbe2aktiv);
 }
 
 .navigationsleistespiele li a:hover:not(.aktiv){
-    background-color: rgb(90, 160, 90);
+    background-color: var(--akzentfarbe2);
 }
 
 #stoppuhr{
@@ -161,16 +173,17 @@ hr{
 
 .Impressum  a{
     text-decoration: none;
-    color: rgb(180, 200, 250);
+    color: rgb(180, 200, 250)!important;
 }
 .Impressum  a:hover{
-    color: blue;
+    color: blue!important;
 }
 
 #reaktionsfeld{
     border-radius: 10px;
     margin-top: 5%;
-    border: 2px solid white;
+    border: 2px solid;
+    border-color: var(--schriftfarbe);
     height: 20em;
     width: 70%;
     display: flex;
@@ -182,7 +195,8 @@ hr{
 #clickfeld{
     border-radius: 10px;
     margin-top: 5%;
-    border: 2px solid white;
+    border: 2px solid;
+    border-color: var(--schriftfarbe);
     height: 22em;
     width: 90%;
     display: flex;
@@ -222,19 +236,20 @@ hr{
 
 polygon{
     stroke-width: 2%; 
-    stroke: white;
+    stroke: var(--schriftfarbe);
     border-radius: 200px;
 }
 
 circle{
     stroke-width: 2%; 
-    stroke: white;
+    stroke: var(--schriftfarbe);
     border-radius: 200px;
-    fill: black;
+    fill: var(--hintergrundfarbe);
 }
 
 .kaestchen{
-    border: 2px solid white;
+    border: 2px solid;
+    border-color: var(--schriftfarbe);
     width: 150px;
     height: 150px;
 }
@@ -280,6 +295,17 @@ circle{
 .zahlenfelder{
     margin-right: 5%;
     width: 30%;
+}
+
+.zahlenfelder d{
+    font-size: 2rem!important;
+    color: white!important;
+
+}
+
+.operatorenfelder d{
+    font-size: 2rem!important;
+    color: white!important;
 }
 
 .operatorenfelder{
@@ -390,7 +416,7 @@ circle{
 }
 
 input {
-    accent-color: #4444ff!important;
+    accent-color: var(--akzentfarbe3)!important;
 }
 
 .gear {
@@ -400,15 +426,27 @@ input {
     margin-top: auto;
 }
 
+body{
+    background-color: var(--hintergrundfarbe);
+}
+
 d{
-    font-size: 1rem;
+    font-size: var(--groesse);
+    color: var(--schriftfarbe);
 }
 a{
-    font-size: 1rem ;
+    font-size: var(--groesse);
+    color: var(--schriftfarbe);
 }
 
 h6{
     text-align: center;
     color: white;
-    font-size: 0.65rem;
+    font-size: 0.65;
+}
+
+h1{
+    text-align: center;
+    color: var(--schriftfarbe)!important;
+    font-size: var(--groesseUeberschrift);
 }
