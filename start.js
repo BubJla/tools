@@ -22,6 +22,7 @@ if(readCookie("groesse") == undefined) {
 }
 document.querySelector(":root").style.setProperty("--groesse", readCookie("groesse")+"rem");
 document.querySelector(":root").style.setProperty("--groesseUeberschrift", 2*readCookie("groesse")+"rem");
+document.querySelector(":root").style.setProperty("--groesseUnterUeberschrift", 0.65*readCookie("groesse")+"rem");
 document.querySelector(":root").style.setProperty("--schriftfarbe", readCookie("schriftfarbe"));
 document.querySelector(":root").style.setProperty("--hintergrundfarbe", readCookie("hintergrundfarbe"));
 document.querySelector(":root").style.setProperty("--akzentfarbe3", readCookie("akzentfarbe3"));
@@ -30,5 +31,5 @@ document.querySelector(":root").style.setProperty("--akzentfarbe2", readCookie("
 document.querySelector(":root").style.setProperty("--akzentfarbe1aktiv", readCookie("akzentfarbe1aktiv"));
 document.querySelector(":root").style.setProperty("--akzentfarbe2aktiv", readCookie("akzentfarbe2aktiv"));
 let summe = readCookie("hintergrundfarbe").split("#");
-if(readCookie("automatikAktiv") && summe[1][0] <= 9 && summe[1][2] <= 9 && summe[1][4] <= 9 && summe[1][0] >= 0 && summe[1][2] >= 0 && summe[1][4] >= 0) document.querySelector(":root").style.setProperty("--schriftfarbe", "#FFFFFF");
-else if(readCookie("automatikAktiv")) document.querySelector(":root").style.setProperty("--schriftfarbe", "#000000");
+if(readCookie("automatikAktiv") == "true" && summe[1][0] <= 9 && summe[1][2] <= 9 && summe[1][4] <= 9 && summe[1][0] >= 0 && summe[1][2] >= 0 && summe[1][4] >= 0) document.querySelector(":root").style.setProperty("--schriftfarbe", "#FFFFFF");
+else if(readCookie("automatikAktiv") == "true") document.querySelector(":root").style.setProperty("--schriftfarbe", "#000000");

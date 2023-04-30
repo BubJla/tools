@@ -29,6 +29,7 @@ function changeSetting(){
     if(!navigator.cookieEnabled) alert("Cookies müssen aktiviert sein um diese Funktion zu nutzen");
     document.querySelector(":root").style.setProperty("--groesse", groesse+"rem");
     document.querySelector(":root").style.setProperty("--groesseUeberschrift", 2*groesse+"rem");
+    document.querySelector(":root").style.setProperty("--groesseUnterUeberschrift", 0.65*groesse+"rem");
     document.querySelector(":root").style.setProperty("--schriftfarbe", schriftfarbe);
     document.querySelector(":root").style.setProperty("--hintergrundfarbe", hintergrundfarbe);
     document.querySelector(":root").style.setProperty("--akzentfarbe3", akzentfarbe3);
@@ -226,4 +227,5 @@ document.getElementById("hintergrundfarbe").value = readCookie("hintergrundfarbe
 document.getElementById("akzentfarbe3").value = readCookie("akzentfarbe3");
 document.getElementById("akzentfarbe2").value = readCookie("akzentfarbe2");
 document.getElementById("akzentfarbe1").value = readCookie("akzentfarbe1");
-document.getElementById("automatisch").checked = readCookie("automatikAktiv");
+if(readCookie("automatikAktiv")=="true") document.getElementById("automatisch").checked = true;
+else document.getElementById("automatisch").checked = false;
