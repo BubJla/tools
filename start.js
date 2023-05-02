@@ -61,4 +61,6 @@ aktuelleSeite =  aktuelleSeite.replace("zeitStoppuhr", "zeit");
 aktuelleSeite =  aktuelleSeite.replace("zeitTimer", "zeit");
 aktuelleSeite =  aktuelleSeite.replace("integral", "analysis");
 aktuelleSeite =  aktuelleSeite.replace("settings", "se11ngs");
+alert(aktuelleSeite);
+alert(document.getElementById("bhwdves")==null);
 document.getElementById(aktuelleSeite).setAttribute("class", "aktiv");
