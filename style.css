@@ -6,8 +6,8 @@
     --hintergrundfarbe: #000000;
     --akzentfarbe1: #5A5AA0;
     --akzentfarbe2: #5AA05A;
-    --akzentfarbe1aktiv: #1A1A60;
-    --akzentfarbe2aktiv: #1A601A;
+    --akzentfarbe1aktiv: #2A2A70;
+    --akzentfarbe2aktiv: #2A702A;
     --akzentfarbe3: #4444ff;
 }
 
@@ -422,10 +422,9 @@ input {
 }
 
 .gear {
-    padding-left: 30px;
+    padding-left: 30px!important;
     font-size: 3rem;
     justify-content: left;
-    margin-top: auto;
 }
 
 body{

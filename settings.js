@@ -124,55 +124,55 @@ function changeSetting(){
             break;
         case "3": 
             akzentfarbe2aktiv += 0;
-            akzentfarbe2aktiv += 0;
+            akzentfarbe2aktiv += akzentfarbe2[i+1];
             break;
         case "4": 
             akzentfarbe2aktiv += 1;
-            akzentfarbe2aktiv += akzentfarbe1[i+1];
+            akzentfarbe2aktiv += akzentfarbe2[i+1];
             break;
         case "5": 
             akzentfarbe2aktiv += 2;
-            akzentfarbe2aktiv += akzentfarbe1[i+1];
+            akzentfarbe2aktiv += akzentfarbe2[i+1];
             break;
         case "6": 
             akzentfarbe2aktiv += 3;
-            akzentfarbe2aktiv += akzentfarbe1[i+1];
+            akzentfarbe2aktiv += akzentfarbe2[i+1];
             break;
         case "7": 
             akzentfarbe2aktiv += 4;
-            akzentfarbe2aktiv += akzentfarbe1[i+1];
+            akzentfarbe2aktiv += akzentfarbe2[i+1];
             break;
         case "8": 
             akzentfarbe2aktiv += 5;
-            akzentfarbe2aktiv += akzentfarbe1[i+1];
+            akzentfarbe2aktiv += akzentfarbe2[i+1];
             break;
         case "9": 
             akzentfarbe2aktiv += 6;
-            akzentfarbe2aktiv += akzentfarbe1[i+1];
+            akzentfarbe2aktiv += akzentfarbe2[i+1];
             break;
         case "a" || "A": 
             akzentfarbe2aktiv += 7;
-            akzentfarbe2aktiv += akzentfarbe1[i+1];
+            akzentfarbe2aktiv += akzentfarbe2[i+1];
             break;
         case "b" || "B": 
             akzentfarbe2aktiv += 8;
-            akzentfarbe2aktiv += akzentfarbe1[i+1];
+            akzentfarbe2aktiv += akzentfarbe2[i+1];
             break;
         case "c" || "C": 
             akzentfarbe2aktiv += 9;
-            akzentfarbe2aktiv += akzentfarbe1[i+1];
+            akzentfarbe2aktiv += akzentfarbe2[i+1];
             break;
         case "d" || "D": 
             akzentfarbe2aktiv += "a";
-            akzentfarbe2aktiv += akzentfarbe1[i+1];
+            akzentfarbe2aktiv += akzentfarbe2[i+1];
             break;
         case "e" || "E": 
             akzentfarbe2aktiv += "b";
-            akzentfarbe2aktiv += akzentfarbe1[i+1];
+            akzentfarbe2aktiv += akzentfarbe2[i+1];
             break;
         case "f" || "F": 
             akzentfarbe2aktiv += "c";
-            akzentfarbe2aktiv += akzentfarbe1[i+1];
+            akzentfarbe2aktiv += akzentfarbe2[i+1];
             break;
         }
     }
@@ -219,7 +219,7 @@ if(readCookie("groesse") == undefined) {
     setCookie("akzentfarbe1aktiv", "#1A1A60");
     setCookie("akzentfarbe2aktiv", "#1A601A");
     setCookie("groesse", 1);
-    setCookie("automatikAktiv", 1);
+    setCookie("automatikAktiv", "true");
 }
 document.getElementById("groesseSchrift").value = readCookie("groesse");
 document.getElementById("schriftfarbe").value = readCookie("schriftfarbe");

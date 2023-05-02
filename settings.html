@@ -6,34 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="style.css" rel="stylesheet">             
     <title>Werkzeuge</title>
-    <script src="start.js"></script>
 </head>
 <body>
-    <ul class = "navigationsleiste">
-        <div style="height: 86%;">
-        <li>
-            <a href="index.html">Startseite</a>
-        </li>
-        <li>
-            <a href="zeit.html">Zeit</a>
-        </li>
-        <li>
-            <a href="spiele.html">Spiele</a>
-        </li>
-        <li>
-            <a href="rechner.html">Mathematik</a>
-        </li>
-        <li>
-            <a href="sicherheit.html">Sicherheit</a>
-        </li>
-        <li>
-            <a href="intelligenz.html">Intelligenz</a>
-        </li>
-        <li>
-            <a href="impressum.html">Impressum</a>
-        </li>
-        </div>
-            <a class="gear" href="settings.html">&#9881;</a>
+    <ul class = "navigationsleiste" id="navigationsleiste">
     </ul>
     <div class = "divges">
         <h1 class = "head">Einstellungen</h1>
@@ -70,7 +45,7 @@
             </span>
             <d>Schriftgröße:</d>
             <span>
-                <input type="range" id="groesseSchrift" min="0.5" max ="1.5" step="0.01" value="1" style="height: 20px; width: 95%" onchange="changeSetting()">
+                <input type="range" id="groesseSchrift" min="0.5" max ="2.0" step="0.01" value="1" style="height: 20px; width: 95%" onchange="changeSetting()">
             </span>
             <br>
             <span>
@@ -130,4 +105,5 @@
     </div>
 </body>
 <script src="settings.js"></script>
+<script src="start.js"></script>
 </html>

@@ -117,7 +117,7 @@ function aufgabe() {
     if(neueaufgabe == false) return;
     document.getElementById("ergebnisfeld").value = "";
     neueaufgabe = false;
-    document.getElementById("zeit").innerHTML = zeit;
+    document.getElementById("zeitRechner").innerHTML = zeit;
     document.getElementById("aufgaben").innerHTML = aufgaben;
     document.getElementById("fehler").innerHTML = fehler;
     zeit = Math.round((new Date().getTime() - zeitAnfang) / 100)/10;
@@ -160,7 +160,7 @@ function ueberpruefen() {
         document.getElementById("ergebnisfeld").value = "";
         fehler++;
     }
-    document.getElementById("zeit").innerHTML = zeit;
+    document.getElementById("zeitRechner").innerHTML = zeit;
     document.getElementById("aufgaben").innerHTML = aufgaben;
     document.getElementById("fehler").innerHTML = fehler;
     zeit = Math.round((new Date().getTime() - zeitAnfang) / 100)/10;
@@ -184,7 +184,7 @@ function reset() {
     aufgaben = 0;
     fehler = 0;
     zeit = 0;
-    document.getElementById("zeit").innerHTML = zeit;
+    document.getElementById("zeitRechner").innerHTML = zeit;
     document.getElementById("aufgaben").innerHTML = aufgaben;
     document.getElementById("fehler").innerHTML = fehler;
     document.getElementById("punkte").innerHTML = punkte;
