@@ -3,7 +3,7 @@
 var funktionsterm = "x";
 var zeit;
 
-function integral(xWert0, xWert1, genauigkeit = 10000) {
+function integral2(xWert0, xWert1, genauigkeit = 10000) {
     if(genauigkeit < 10) genauigkeit = 10;
     var term = funktionsterm.replace("0", 0).replace("1", 1).replace("2", 2).replace("3", 3).replace("4", 4).replace("5", 5).replace("6", 6).replace("7", 7).replace("8", 8).replace("9", 9).replace("π", "Math.PI").replace("e", "Math.E").replace("÷", "/").replace("×", "*");
     var ergebnis = 0;
@@ -11,22 +11,35 @@ function integral(xWert0, xWert1, genauigkeit = 10000) {
     for(var x = xWert0+abstand; x <= xWert1-abstand; x += abstand){
         ergebnis += eval(term)*abstand;
     }
-    return Math.round(ergebnis*1000000000)/1000000000;
+    return Math.round(ergebnis*1000)/1000;
 }
 
 function zeitschätzung() {
     var t0 = new Date().getTime();
-    integral(0, 1, 50000);
+    integral2(0, 1, 50000);
     var t1 = new Date().getTime();
     zeit = t1 - t0;
 }
 
-zeitschätzung();
+function ableitung2(xWert, genauigkeit = 10000) {
+    var term = funktionsterm.replace("0", 0).replace("1", 1).replace("2", 2).replace("3", 3).replace("4", 4).replace("5", 5).replace("6", 6).replace("7", 7).replace("8", 8).replace("9", 9).replace("π", "Math.PI").replace("e", "Math.E").replace("÷", "/").replace("×", "*");
+    let x = xWert-1/genauigkeit;
+    let wert1 = eval(term)
+    x = xWert+1/genauigkeit;
+    let wert2 = eval(term)
+    return ((wert2-wert1)/(2/genauigkeit));
+}
 
-var genau = 100000;
-var wert0 = 0;
-var wert1 = 3;
+function ableitung() {
+    let wert = Number(document.getElementById("wert").value);
+    funktionsterm = document.getElementById("termDifferential").value;
+    document.getElementById("ergebnisDifferential").value = ableitung2(wert, 1000000000);
+}
 
-alert("zeitschätzung:"+genau/50000000*zeit*(wert1-wert0));
+function integral() {
+    let grenze1 = Number(document.getElementById("grenzwert1").value);
+    let grenze2 = Number(document.getElementById("grenzwert2").value);
+    funktionsterm = document.getElementById("termIntegral").value;
+    document.getElementById("ergebnisIntegral").value = integral2(grenze1, grenze2, 10000);
+}
 
-alert(integral(wert0, wert1, genau));

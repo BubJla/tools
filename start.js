@@ -13,7 +13,7 @@ function setCookie(name, value) {
     var date = new Date();
     date.setTime(date.getTime() + (60*24*60*60*1000));
     var clear = "expires="+date.toUTCString();
-    document.cookie = name + "=" + value + ";" + clear;
+    document.cookie = name + "=" + value + ";" + clear + ";SameSite=Lax";
 }
 
 
@@ -43,7 +43,7 @@ if(readCookie("automatikAktiv") == "true" && summe[1][0] <= 9 && summe[1][2] <= 
 else if(readCookie("automatikAktiv") == "true") document.querySelector(":root").style.setProperty("--schriftfarbe", "#000000");
 
 
-document.getElementById("navigationsleiste").innerHTML='<div style="height: 86%"><li>    <a href="index.html" id="start">Startseite</a></li><li>    <a id="zeit" href="zeit.html">Zeit</a></li><li>    <a id="spiele" href="spiele.html">Spiele</a></li><li>    <a id="mathe" href="rechner.html">Mathematik</a></li><li>    <a id="sicherheit" href="sicherheit.html">Sicherheit</a></li><li>    <a id="analysis" href="integral.html">Integral</a></li><li>    <a id="impressum" href="impressum.html">Impressum</a></li></div>    <a id="settings" class="gear" href="settings.html">&#9881;</a>'
+document.getElementById("navigationsleiste").innerHTML='<div style="height: 86%"><li>    <a href="index.html" id="start">Startseite</a></li><li>    <a id="zeit" href="zeit.html">Zeit</a></li><li>    <a id="spiele" href="spiele.html">Spiele</a></li><li>    <a id="mathe" href="rechner.html">Mathematik</a></li><li>    <a id="sicherheit" href="sicherheit.html">Sicherheit</a></li><li>    <a id="analysis" href="integral.html">Analysis</a></li><li>    <a id="impressum" href="impressum.html">Impressum</a></li></div>    <a id="settings" class="gear" href="settings.html">&#9881;</a>'
 //document.getElementById("navigationsleiste").innerHTML="<li><a href='settings.html'>12345</a></li>"
 
 let aktuelleSeite = document.URL;
@@ -60,8 +60,8 @@ aktuelleSeite =  aktuelleSeite.replace("TicTacToe", "spiele");
 aktuelleSeite =  aktuelleSeite.replace("zeitStoppuhr", "zeit");
 aktuelleSeite =  aktuelleSeite.replace("zeitTimer", "zeit");
 aktuelleSeite =  aktuelleSeite.replace("integral", "analysis");
-aktuelleSeite =  aktuelleSeite.replace("settings", "se11ngs");
+//aktuelleSeite =  aktuelleSeite.replace("settings", "se11ngs");
 if(aktuelleSeite == '')aktuelleSeite = "start";
 //alert(aktuelleSeite);
 //alert(document.getElementById("bhwdves")==null);
-document.getElementById(aktuelleSeite).setAttribute("class", "aktiv");
+if(aktuelleSeite != 'settings') document.getElementById(aktuelleSeite).setAttribute("class", "aktiv");

@@ -8,7 +8,16 @@
     --akzentfarbe2: #5AA05A;
     --akzentfarbe1aktiv: #2A2A70;
     --akzentfarbe2aktiv: #2A702A;
-    --akzentfarbe3: #4444ff;
+    --akzentfarbe3: #4444FF;
+}
+
+::selection {
+    background-color: var(--akzentfarbe3);
+}
+
+.notselection{
+    background-color: var(--schriftfarbe);
+    color: var(--hintergrundfarbe);
 }
 
 .navigationsleiste{

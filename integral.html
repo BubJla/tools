@@ -12,8 +12,48 @@
     <ul class = "navigationsleiste" id="navigationsleiste">
     </ul>
     <div class = "divges">
-        <h1 class = "head">IQ-umrechner</h1>
+        <h1 class = "head">Analysis</h1>
         <hr>
+        <span>
+            <div class="inputDivBinaer">
+                <span><d>Term:</d></span>
+                <input type="text" id="termIntegral" onchange="integral()" placeholder="z.B. 3*x*x-5"class="inputUmrechnerBinaer" maxlength="8"> 
+            </div>
+            <div class="inputDivBinaer">
+                <span><d>unterer Grenzwert:</d></span>
+                <input type="number" id="grenzwert1" onchange="integral()" class="inputUmrechnerBinaer" maxlength="8" value="0"> 
+            </div>
+            <div class="inputDivBinaer">
+                <span><d>oberer Grenzwert:</d></span>
+                <input type="number" id="grenzwert2" onchange="integral()" class="inputUmrechnerBinaer" maxlength="28" value="0"> 
+            </div>
+        </span>
+        <br>
+        <span style="width: 100%">
+            <div class="inputDivBinaer" style="width: 70%">
+                <span><d style="font-size: 2rem!important">Flächeninhalt:</d></span>
+                <input type="text" id="ergebnisIntegral" class="inputUmrechnerBinaer" style="height: 50px; font-size: 2rem!important; width: 100%;" placeholder="Ergebnis" readonly> 
+            </div>
+        </span>
+        <hr>
+        <span>
+            <div class="inputDivBinaer">
+                <span><d>Term:</d></span>
+                <input type="text" id="termDifferential" onchange="ableitung()" placeholder="z.B. 3*x*x-5"class="inputUmrechnerBinaer" maxlength="8"> 
+            </div>
+            <div class="inputDivBinaer">
+                <span><d>Wert:</d></span>
+                <input type="number" id="wert" onchange="ableitung()" class="inputUmrechnerBinaer" maxlength="28" value="0"> 
+            </div>
+        </span>
+        <br>
+        <span style="width: 100%">
+            <div class="inputDivBinaer" style="width: 70%">
+                <span><d style="font-size: 2rem!important">Steigung:</d></span>
+                <input type="text" id="ergebnisDifferential" class="inputUmrechnerBinaer" style="height: 50px; font-size: 2rem!important; width: 100%;" placeholder="Ergebnis" readonly> 
+            </div>
+        </span>
+    </div>
     </body>
     <script src="start.js"></script>
 </html>
