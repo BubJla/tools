@@ -6,6 +6,7 @@ var zeit;
 function integral2(xWert0, xWert1, genauigkeit = 10000) {
     if(genauigkeit < 10) genauigkeit = 10;
     var term = funktionsterm.replace("X", "x").replace("0", 0).replace("1", 1).replace("2", 2).replace("3", 3).replace("4", 4).replace("5", 5).replace("6", 6).replace("7", 7).replace("8", 8).replace("9", 9).replace("π", "Math.PI").replace("e", "Math.E").replace("÷", "/").replace("×", "*");
+    for(let i = 0; i < term.length; i++) term = term.replace("X", "x").replace("0", 0).replace("1", 1).replace("2", 2).replace("3", 3).replace("4", 4).replace("5", 5).replace("6", 6).replace("7", 7).replace("8", 8).replace("9", 9).replace("π", "Math.PI").replace("e", "Math.E").replace("÷", "/").replace("×", "*");
     var ergebnis = 0;
     var abstand = 1/genauigkeit;//kleiner: genauer
     for(var x = xWert0+abstand; x <= xWert1-abstand; x += abstand){
@@ -23,6 +24,7 @@ function zeitschätzung() {
 
 function ableitung2(xWert, genauigkeit = 10000) {
     var term = funktionsterm.replace("X", "x").replace("0", 0).replace("1", 1).replace("2", 2).replace("3", 3).replace("4", 4).replace("5", 5).replace("6", 6).replace("7", 7).replace("8", 8).replace("9", 9).replace("π", "Math.PI").replace("e", "Math.E").replace("÷", "/").replace("×", "*");
+    for(let i = 0; i < term.length; i++) term = term.replace("X", "x").replace("0", 0).replace("1", 1).replace("2", 2).replace("3", 3).replace("4", 4).replace("5", 5).replace("6", 6).replace("7", 7).replace("8", 8).replace("9", 9).replace("π", "Math.PI").replace("e", "Math.E").replace("÷", "/").replace("×", "*");
     let x = xWert-1/genauigkeit;
     let wert1 = eval(term)
     x = xWert+1/genauigkeit;

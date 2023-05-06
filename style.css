@@ -460,3 +460,7 @@ h1{
     color: var(--schriftfarbe)!important;
     font-size: var(--groesseUeberschrift);
 }
+
+.clock .hand.millisecondin {
+    background-color: var(--akzentfarbe3);
+}

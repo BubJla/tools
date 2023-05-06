@@ -43,8 +43,34 @@ if(readCookie("automatikAktiv") == "true" && summe[1][0] <= 9 && summe[1][2] <= 
 else if(readCookie("automatikAktiv") == "true") document.querySelector(":root").style.setProperty("--schriftfarbe", "#000000");
 
 
-document.getElementById("navigationsleiste").innerHTML='<div style="height: 86%"><li>    <a href="index.html" id="start">Startseite</a></li><li>    <a id="zeit" href="zeit.html">Zeit</a></li><li>    <a id="spiele" href="spiele.html">Spiele</a></li><li>    <a id="mathe" href="rechner.html">Mathematik</a></li><li>    <a id="sicherheit" href="sicherheit.html">Sicherheit</a></li><li>    <a id="analysis" href="integral.html">Analysis</a></li><li>    <a id="impressum" href="impressum.html">Impressum</a></li></div>    <a id="settings" class="gear" href="settings.html">&#9881;</a>'
-//document.getElementById("navigationsleiste").innerHTML="<li><a href='settings.html'>12345</a></li>"
+document.getElementById("navigationsleiste").innerHTML=`
+<div style="height: 86%">
+    <li> 
+        <a href="index.html" id="start">Startseite</a>
+    </li>
+    <li>    
+        <a id="zeit" href="zeit.html">Zeit</a>
+    </li>
+    <li>    
+        <a id="spiele" href="spiele.html">Spiele</a>
+    </li>
+    <li>    
+        <a id="mathe" href="rechner.html">Mathematik</a>
+    </li>
+    <li>    
+        <a id="sicherheit" href="sicherheit.html">Sicherheit</a>
+    </li>
+    <li>    
+        <a id="analysis" href="integral.html">Analysis</a>
+    </li>
+    <li>    
+        <a id="gleichung" href="gleichung.html">Gleichung</a>
+    </li>
+    <li>    
+        <a id="impressum" href="impressum.html">Impressum</a>
+    </li>
+</div>    
+<a id="settings" class="gear" href="settings.html">&#9881;</a>`;
 
 let aktuelleSeite = document.URL;
 aktuelleSeite =  aktuelleSeite.split("/");

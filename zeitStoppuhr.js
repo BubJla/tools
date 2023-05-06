@@ -40,7 +40,7 @@ function stopStoppuhr(){
 function ZWERG(){
     document.getElementById("Zwischenergebnisse").innerHTML += `
     <br>
-    <li>
+    <li style="list-style-type: none;">
         <span>
             <d id="stundeZWERG">00</d>
             <d>:</d>

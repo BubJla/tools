@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="style.css" rel="stylesheet">
+    <title>IQ-umrechner</title>
+    <script src="gleichung.js"></script>
+</head>
+<body>
+    <ul class = "navigationsleiste" id="navigationsleiste">
+    </ul>
+    <div class = "divges">
+        <h1 class = "head">Gleichungen</h1>
+        <hr>
+        <span>
+            <div class="inputDivBinaer">
+                <input type="text" id="seiteL" placeholder="z.B. 3*x*x-5"class="inputUmrechnerBinaer" maxlength="18"> 
+            </div>
+            <div style="width: 50px">
+                <span><d>=</d></span>
+            </div>
+            <div class="inputDivBinaer">
+                <input type="text" id="seiteR" placeholder="z.B. x*x+3*x"class="inputUmrechnerBinaer" maxlength="18"> 
+            </div>
+            <div class="inputDivBinaer">
+                <input type="button" onclick="gleichung()" class="inputUmrechnerBinaer" value="LÖSEN" style="height: 30px"> 
+            </div>
+        </span>
+        <br>
+        <span style="width: 100%">
+            <div class="inputDivBinaer" style="width: 70%">
+                <span><d style="font-size: 2rem!important">Ergebnisse:</d></span>
+                <input type="text" id="ergebnisGleichung" class="inputUmrechnerBinaer" style="height: 50px; font-size: 2rem!important; width: 100%;" placeholder="Ergebnis" readonly> 
+            </div>
+        </span>
+    </div>
+    </body>
+    <script src="start.js"></script>
+</html>
