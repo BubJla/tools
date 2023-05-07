@@ -2,10 +2,10 @@ function gleichung() {
     var links = document.getElementById("seiteL").value;
     var rechts = document.getElementById("seiteR").value;
     var ergebnisse = [];
-    var termL = links.replace("X", "x").replace("0", 0).replace("1", 1).replace("2", 2).replace("3", 3).replace("4", 4).replace("5", 5).replace("6", 6).replace("7", 7).replace("8", 8).replace("9", 9).replace("π", "Math.PI").replace("e", "Math.E").replace("÷", "/").replace("×", "*");
-    for(let i = 0; i < termL.length; i++) termL = termL.replace("X", "x").replace("0", 0).replace("1", 1).replace("2", 2).replace("3", 3).replace("4", 4).replace("5", 5).replace("6", 6).replace("7", 7).replace("8", 8).replace("9", 9).replace("π", "Math.PI").replace("e", "Math.E").replace("÷", "/").replace("×", "*");
-    var termR = rechts.replace("X", "x").replace("0", 0).replace("1", 1).replace("2", 2).replace("3", 3).replace("4", 4).replace("5", 5).replace("6", 6).replace("7", 7).replace("8", 8).replace("9", 9).replace("π", "Math.PI").replace("e", "Math.E").replace("÷", "/").replace("×", "*");
-    for(let i = 0; i < termR.length; i++) termR = termR.replace("X", "x").replace("0", 0).replace("1", 1).replace("2", 2).replace("3", 3).replace("4", 4).replace("5", 5).replace("6", 6).replace("7", 7).replace("8", 8).replace("9", 9).replace("π", "Math.PI").replace("e", "Math.E").replace("÷", "/").replace("×", "*");
+    var termL = links.replace("X", "x").replace("0", 0).replace("1", 1).replace("2", 2).replace("3", 3).replace("4", 4).replace("5", 5).replace("6", 6).replace("7", 7).replace("8", 8).replace("9", 9).replace("π", "Math.PI").replace("e", "Math.E").replace("÷", "/").replace("×", "*").replace("²", "**2").replace("³", "**3").replace("^", "**");
+    for(let i = 0; i < termL.length; i++) termL = termL.replace("X", "x").replace("0", 0).replace("1", 1).replace("2", 2).replace("3", 3).replace("4", 4).replace("5", 5).replace("6", 6).replace("7", 7).replace("8", 8).replace("9", 9).replace("π", "Math.PI").replace("e", "Math.E").replace("÷", "/").replace("×", "*").replace("²", "**2").replace("³", "**3").replace("^", "**");
+    var termR = rechts.replace("X", "x").replace("0", 0).replace("1", 1).replace("2", 2).replace("3", 3).replace("4", 4).replace("5", 5).replace("6", 6).replace("7", 7).replace("8", 8).replace("9", 9).replace("π", "Math.PI").replace("e", "Math.E").replace("÷", "/").replace("×", "*").replace("²", "**2").replace("³", "**3").replace("^", "**");
+    for(let i = 0; i < termR.length; i++) termR = termR.replace("X", "x").replace("0", 0).replace("1", 1).replace("2", 2).replace("3", 3).replace("4", 4).replace("5", 5).replace("6", 6).replace("7", 7).replace("8", 8).replace("9", 9).replace("π", "Math.PI").replace("e", "Math.E").replace("÷", "/").replace("×", "*").replace("²", "**2").replace("³", "**3").replace("^", "**");
     var unterschied;
     var unterschiedLetzt = 999999999999;
     var werte = [];
@@ -17,8 +17,7 @@ function gleichung() {
         unendlich += eval(termL) == eval(termR);
     }
     if(unendlich == 100) {
-        werte[0] = "unendlich";
-        alert(werte);
+        document.getElementById("ergebnisGleichung").value = "unendlich viele Lösungen";
         return;
     }
 
@@ -40,19 +39,18 @@ function gleichung() {
     }
     for(let i = 0; i < werte.length; i++){
         unterschiedLetzt = 999999;
-        for(let x = werte[i]-1; x < werte[i]+1; x+=0.001) {
+        for(let x = werte[i]-1; x < werte[i]+1; x+=0.0001) {
             seiteL = eval(termL);
             seiteR = eval(termR);
             unterschied = Math.abs(seiteL-seiteR);
-            //console.log(unterschied);
-            if(unterschied > unterschiedLetzt) {
-                ergebnisse[ergebnisse.length] = x.toFixed(2);
+            if(unterschied > unterschiedLetzt && unterschied < 0.2) {
+                ergebnisse[ergebnisse.length] = (x-0.0001).toFixed(4);
                 break;
             }
             unterschiedLetzt = unterschied;
         }
     }
-    if(ergebnisse=="") ergebnisse = "kein Ergebnis";
+    if(ergebnisse=="") ergebnisse = "keine oder zu große Lösung";
     document.getElementById("ergebnisGleichung").value = ergebnisse;
     document.getElementById("ergebnisGleichung").value = document.getElementById("ergebnisGleichung").value.replace(",", " / ");
 }
