@@ -8,27 +8,40 @@ function ersetzen(text, zuErsetzen, ersetzwert) {
 
 
 function gleichungGenau(term, grenzwert1, grenzwert2) {
+    console.log("neuer Aufruf");
     console.log(term);
     console.log("grenz:    " + grenzwert1 + "      "+grenzwert2);
     var ergebnis;
     var i = 0;
+    var abwLetzt;
+    var evtl = [];
     while(1) {
         ergebnis = (grenzwert1+grenzwert2)/2;
+        console.log("erg:       "+ergebnis);
+        console.log("abw 1 2:       "+Math.abs(eval(ersetzen(term, "x", (3*grenzwert1+grenzwert2)/4))) + "      " + Math.abs(eval(ersetzen(term, "x", (grenzwert1+3*grenzwert2)/4))));
+        console.log("abw:       "+Math.abs(eval(ersetzen(term, "x", ergebnis))));
         i++;
         if(i > 500) {
             console.log("n:      "+i);
-            return "null";
+            if(evtl.length > 1) return evtl[evtl.length-1]
+            else return "null";
         }
         console.log("uftfhg:     "+(ersetzen(term, "x", ergebnis)));
-        if(Math.abs(eval(ersetzen(term, "x", ergebnis))) < 1/10000000000) {
+        if(Math.abs(eval(ersetzen(term, "x", ergebnis))) < 1/10**10) {
             console.log("abw:       "+Math.abs(eval(ersetzen(term, "x", ergebnis))));
             return ergebnis.toFixed(9);
         }
-        if(eval(ersetzen(term, "x", (grenzwert1+grenzwert2)/2)) == 0) return ((grenzwert1+grenzwert2)/2).toFixed(6);
+        else if(Math.abs(eval(ersetzen(term, "x", ergebnis))) < 1/10**4 || Math.abs(eval(ersetzen(term, "x", (3*grenzwert1+grenzwert2)/4))) == Math.abs(eval(ersetzen(term, "x", (grenzwert1+3*grenzwert2)/4)))) {
+            evtl[evtl.length] = ergebnis.toFixed(3);
+        }
+        if(Math.abs(eval(ersetzen(term, "x", ergebnis))) > abwLetzt) console.log("abw hoch:      " + ergebnis + "letzt Abw:     "+abwLetzt+"auswertung:     "+abwLetzt < 1/10000000000);
+        if(eval(ersetzen(term, "x", (grenzwert1+grenzwert2)/2)) == 0) return ((grenzwert1+grenzwert2)/2).toFixed(9);
         else if(eval(ersetzen(term, "x", (grenzwert1+grenzwert2)/2))*eval(ersetzen(term, "x", grenzwert1)) < 0) {
+            console.log("1");
             grenzwert2 = (grenzwert1+grenzwert2)/2;
         }
         else if(eval(ersetzen(term, "x", (grenzwert1+grenzwert2)/2))*eval(ersetzen(term, "x", grenzwert2)) < 0) {
+            console.log("2");
             grenzwert1 = (grenzwert1+grenzwert2)/2;
         }
         else {
@@ -39,6 +52,7 @@ function gleichungGenau(term, grenzwert1, grenzwert2) {
                 grenzwert1 = (grenzwert1+grenzwert2)/2;
             }
         }
+        abwLetzt = Math.abs(eval(ersetzen(term, "x", ergebnis)));
     }
 }
 
@@ -57,8 +71,8 @@ function gleichung() {
     var grenzeP = 0;
     var grenzeN = 0;
     var term = termL+"-("+termR+")";
-    //term = ersetzen(term, "x**x", "(x)**(x)")
-    //term = ersetzen(term, "x**", "(x)**")
+    term = ersetzen(term, "x**x", "(x)**(x)")
+    term = ersetzen(term, "x**", "(x)**")
     for(x = 0; x < 100; x++) {
         unendlich += eval(termL) == eval(termR);
     }
@@ -68,14 +82,14 @@ function gleichung() {
     }
     var n = 0;
     if(eval(ersetzen(termL, "x", 0)) == eval(ersetzen(termR, "x", 0))) ergebnisse[0] = 0;
-    for(var i = 0.00001; i < 999999999999999; i*=1.1) {
+    for(var i = 0.0001; i < 999999999999999; i*=1.01) {
         //console.log(i);
         n++;
         if((eval(ersetzen(term, "x", "i"))*(eval(ersetzen(term, "x", "grenzeP")))) < 0 || Math.abs(eval(ersetzen(term, "x", "i"))*(eval(ersetzen(term, "x", "grenzeP")))) < 0) {
             let ergebnis = gleichungGenau(term, grenzeP, i);
             if(ergebnis != "null") ergebnisse[ergebnisse.length] = ergebnis;
         }
-        if((eval(ersetzen(termL, "x", "-1*i")))*(eval(ersetzen(termL, "x", "grenzeN"))) < 0 || Math.abs(eval(ersetzen(term, "x", "-1*i"))*(eval(ersetzen(term, "x", "grenzeN")))) < 0) {
+        if((eval(ersetzen(term, "x", "-1*i")))*(eval(ersetzen(term, "x", "grenzeN"))) < 0 || Math.abs(eval(ersetzen(term, "x", "-1*i"))*(eval(ersetzen(term, "x", "grenzeN")))) < 0) {
             let ergebnis = gleichungGenau(term, grenzeN, -i);
             if(ergebnis != "null") ergebnisse[ergebnisse.length] = ergebnis;
         }
