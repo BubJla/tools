@@ -1,19 +1,29 @@
 function ersetzen(text, zuErsetzen, ersetzwert) {
     var ergebnis = text;
     for(let n = 0; n < text.length; n++){
-        ergebnis = ergebnis.replace(zuErsetzen, ersetzwert);
+        ergebnis = ergebnis.replace(zuErsetzen, ersetzwert).replace("--", "+");
     }
     return ergebnis;
 }
 
 
 function gleichungGenau(term, grenzwert1, grenzwert2) {
+    console.log(term);
+    console.log("grenz:    " + grenzwert1 + "      "+grenzwert2);
     var ergebnis;
     var i = 0;
     while(1) {
         ergebnis = (grenzwert1+grenzwert2)/2;
         i++;
-        if(Math.abs(eval(ersetzen(term, "x", ergebnis))) < 1/10000000000 || i > 100) return ergebnis.toFixed(9);
+        if(i > 500) {
+            console.log("n:      "+i);
+            return "null";
+        }
+        console.log("uftfhg:     "+(ersetzen(term, "x", ergebnis)));
+        if(Math.abs(eval(ersetzen(term, "x", ergebnis))) < 1/10000000000) {
+            console.log("abw:       "+Math.abs(eval(ersetzen(term, "x", ergebnis))));
+            return ergebnis.toFixed(9);
+        }
         if(eval(ersetzen(term, "x", (grenzwert1+grenzwert2)/2)) == 0) return ((grenzwert1+grenzwert2)/2).toFixed(6);
         else if(eval(ersetzen(term, "x", (grenzwert1+grenzwert2)/2))*eval(ersetzen(term, "x", grenzwert1)) < 0) {
             grenzwert2 = (grenzwert1+grenzwert2)/2;
@@ -21,7 +31,14 @@ function gleichungGenau(term, grenzwert1, grenzwert2) {
         else if(eval(ersetzen(term, "x", (grenzwert1+grenzwert2)/2))*eval(ersetzen(term, "x", grenzwert2)) < 0) {
             grenzwert1 = (grenzwert1+grenzwert2)/2;
         }
-        else return "null";
+        else {
+            if(Math.abs(eval(ersetzen(term, "x", (grenzwert1+grenzwert2)/2))*eval(ersetzen(term, "x", grenzwert1))) < Math.abs(eval(ersetzen(term, "x", (grenzwert1+grenzwert2)/2))*eval(ersetzen(term, "x", grenzwert2)))) {
+                grenzwert2 = (grenzwert1+grenzwert2)/2;
+            }
+            else {
+                grenzwert1 = (grenzwert1+grenzwert2)/2;
+            }
+        }
     }
 }
 
@@ -31,15 +48,17 @@ function gleichung() {
     var rechts = document.getElementById("seiteR").value;
     var ergebnisse = [];
     var termL = links;
-    for(let i = 0; i < termL.length; i++) termL = termL.replace("X", "x").replace("-", "(-1)*").replace("x²", "x*x").replace("x^2", "x*x").replace("x³", "x*x*x").replace("x^3", "x*x*x").replace("0", 0).replace("1", 1).replace("2", 2).replace("3", 3).replace("4", 4).replace("5", 5).replace("6", 6).replace("7", 7).replace("8", 8).replace("9", 9).replace("π", "Math.PI").replace("e", "Math.E").replace("÷", "/").replace("×", "*").replace("²", "**2").replace("³", "**3").replace("^", "**");
+    for (let i = 0; i < termL.length; i++) termL = termL.replace("X", "x").replace("π", "Math.PI").replace("e", "Math.E").replace("÷", "/").replace("×", "*").replace("²", "**2").replace("³", "**3").replace("^", "**");
     var termR = rechts;
-    for(let i = 0; i < termR.length; i++) termR = termR.replace("X", "x").replace("-", "-").replace("x²", "x*x").replace("x^2", "x*x").replace("x³", "x*x*x").replace("x^3", "x*x*x").replace("0", 0).replace("1", 1).replace("2", 2).replace("3", 3).replace("4", 4).replace("5", 5).replace("6", 6).replace("7", 7).replace("8", 8).replace("9", 9).replace("π", "Math.PI").replace("e", "Math.E").replace("÷", "/").replace("×", "*").replace("²", "**2").replace("³", "**3").replace("^", "**");
+    for (let i = 0; i < termR.length; i++) termR = termR.replace("X", "x").replace("π", "Math.PI").replace("e", "Math.E").replace("÷", "/").replace("×", "*").replace("²", "**2").replace("³", "**3").replace("^", "**");
     var x;
     var ergebnisse = [];
     var unendlich = 0;
     var grenzeP = 0;
     var grenzeN = 0;
-
+    var term = termL+"-("+termR+")";
+    //term = ersetzen(term, "x**x", "(x)**(x)")
+    //term = ersetzen(term, "x**", "(x)**")
     for(x = 0; x < 100; x++) {
         unendlich += eval(termL) == eval(termR);
     }
@@ -47,16 +66,16 @@ function gleichung() {
         document.getElementById("ergebnisGleichung").value = "unendlich viele Lösungen";
         return;
     }
+    var n = 0;
     if(eval(ersetzen(termL, "x", 0)) == eval(ersetzen(termR, "x", 0))) ergebnisse[0] = 0;
-    for(var i = 0.1; i < 999999999999999; i*=1.5) {
-        console.log(i);
-        if(((eval(ersetzen(termL, "x", "i"))-eval(ersetzen(termR, "x", "i")))*(eval(ersetzen(termL, "x", "grenzeP"))-eval(ersetzen(termR, "x", "grenzeP")) )) < 0) {
-            let term = termL+"-"+termR;
+    for(var i = 0.00001; i < 999999999999999; i*=1.1) {
+        //console.log(i);
+        n++;
+        if((eval(ersetzen(term, "x", "i"))*(eval(ersetzen(term, "x", "grenzeP")))) < 0 || Math.abs(eval(ersetzen(term, "x", "i"))*(eval(ersetzen(term, "x", "grenzeP")))) < 0) {
             let ergebnis = gleichungGenau(term, grenzeP, i);
             if(ergebnis != "null") ergebnisse[ergebnisse.length] = ergebnis;
         }
-        if(((eval(ersetzen(termL, "x", "-1*i"))-eval(ersetzen(termR, "x", "-1*i")))*(eval(ersetzen(termL, "x", "grenzeN"))-eval(ersetzen(termR, "x", "grenzeN")) )) < 0) {
-            let term = termL+"-"+termR;
+        if((eval(ersetzen(termL, "x", "-1*i")))*(eval(ersetzen(termL, "x", "grenzeN"))) < 0 || Math.abs(eval(ersetzen(term, "x", "-1*i"))*(eval(ersetzen(term, "x", "grenzeN")))) < 0) {
             let ergebnis = gleichungGenau(term, grenzeN, -i);
             if(ergebnis != "null") ergebnisse[ergebnisse.length] = ergebnis;
         }
@@ -66,6 +85,7 @@ function gleichung() {
     if(ergebnisse=="") ergebnisse = "keine oder zu große Lösung";
     document.getElementById("ergebnisGleichung").value = ergebnisse;
     document.getElementById("ergebnisGleichung").value = document.getElementById("ergebnisGleichung").value.replace(",", " / ");
+    console.log(n);
 }
 
 
@@ -74,10 +94,10 @@ function gleichung_alt() {
     var links = document.getElementById("seiteL").value;
     var rechts = document.getElementById("seiteR").value;
     var ergebnisse = [];
-    var termL = links.replace("X", "x").replace("-", "-1*").replace("0", 0).replace("1", 1).replace("2", 2).replace("3", 3).replace("4", 4).replace("5", 5).replace("6", 6).replace("7", 7).replace("8", 8).replace("9", 9).replace("Ï€", "Math.PI").replace("e", "Math.E").replace("Ã·", "/").replace("Ã—", "*").replace("Â²", "**2").replace("Â³", "**3").replace("^", "**");
-    for(let i = 0; i < termL.length; i++) termL = termL.replace("X", "x").replace("0", 0).replace("1", 1).replace("2", 2).replace("3", 3).replace("4", 4).replace("5", 5).replace("6", 6).replace("7", 7).replace("8", 8).replace("9", 9).replace("Ï€", "Math.PI").replace("e", "Math.E").replace("Ã·", "/").replace("Ã—", "*").replace("Â²", "**2").replace("Â³", "**3").replace("^", "**");
-    var termR = rechts.replace("X", "x").replace("0", 0).replace("1", 1).replace("2", 2).replace("3", 3).replace("4", 4).replace("5", 5).replace("6", 6).replace("7", 7).replace("8", 8).replace("9", 9).replace("Ï€", "Math.PI").replace("e", "Math.E").replace("Ã·", "/").replace("Ã—", "*").replace("Â²", "**2").replace("Â³", "**3").replace("^", "**");
-    for(let i = 0; i < termR.length; i++) termR = termR.replace("X", "x").replace("0", 0).replace("1", 1).replace("2", 2).replace("3", 3).replace("4", 4).replace("5", 5).replace("6", 6).replace("7", 7).replace("8", 8).replace("9", 9).replace("Ï€", "Math.PI").replace("e", "Math.E").replace("Ã·", "/").replace("Ã—", "*").replace("Â²", "**2").replace("Â³", "**3").replace("^", "**");
+    var termL = links.replace("X", "x").replace("-", "-1*").replace("0", 0).replace("1", 1).replace("2", 2).replace("3", 3).replace("4", 4).replace("5", 5).replace("6", 6).replace("7", 7).replace("8", 8).replace("9", 9).replace("Ãâ‚¬", "Math.PI").replace("e", "Math.E").replace("ÃƒÂ·", "/").replace("Ãƒâ€”", "*").replace("Ã‚Â²", "**2").replace("Ã‚Â³", "**3").replace("^", "**");
+    for(let i = 0; i < termL.length; i++) termL = termL.replace("X", "x").replace("0", 0).replace("1", 1).replace("2", 2).replace("3", 3).replace("4", 4).replace("5", 5).replace("6", 6).replace("7", 7).replace("8", 8).replace("9", 9).replace("Ãâ‚¬", "Math.PI").replace("e", "Math.E").replace("ÃƒÂ·", "/").replace("Ãƒâ€”", "*").replace("Ã‚Â²", "**2").replace("Ã‚Â³", "**3").replace("^", "**");
+    var termR = rechts.replace("X", "x").replace("0", 0).replace("1", 1).replace("2", 2).replace("3", 3).replace("4", 4).replace("5", 5).replace("6", 6).replace("7", 7).replace("8", 8).replace("9", 9).replace("Ãâ‚¬", "Math.PI").replace("e", "Math.E").replace("ÃƒÂ·", "/").replace("Ãƒâ€”", "*").replace("Ã‚Â²", "**2").replace("Ã‚Â³", "**3").replace("^", "**");
+    for(let i = 0; i < termR.length; i++) termR = termR.replace("X", "x").replace("0", 0).replace("1", 1).replace("2", 2).replace("3", 3).replace("4", 4).replace("5", 5).replace("6", 6).replace("7", 7).replace("8", 8).replace("9", 9).replace("Ãâ‚¬", "Math.PI").replace("e", "Math.E").replace("ÃƒÂ·", "/").replace("Ãƒâ€”", "*").replace("Ã‚Â²", "**2").replace("Ã‚Â³", "**3").replace("^", "**");
     var unterschied;
     var unterschiedLetzt = 999999999999;
     var werte = [];
@@ -89,7 +109,7 @@ function gleichung_alt() {
         unendlich += eval(termL) == eval(termR);
     }
     if(unendlich == 100) {
-        document.getElementById("ergebnisGleichung").value = "unendlich viele LÃ¶sungen";
+        document.getElementById("ergebnisGleichung").value = "unendlich viele LÃƒÂ¶sungen";
         return;
     }
 
@@ -122,7 +142,8 @@ function gleichung_alt() {
             unterschiedLetzt = unterschied;
         }
     }
-    if(ergebnisse=="") ergebnisse = "keine oder zu große Lösung";
+    if(ergebnisse=="") ergebnisse = "keine oder zu groÃŸe LÃ¶sung";
     document.getElementById("ergebnisGleichung").value = ergebnisse;
     document.getElementById("ergebnisGleichung").value = document.getElementById("ergebnisGleichung").value.replace(",", " / ");
 }
+
