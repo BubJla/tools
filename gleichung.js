@@ -19,6 +19,10 @@ function toNum(text) {
     text = ersetzen(text, "9", 9);
 }
 
+function runden(value, dezimal) {
+    return (Math.round(value*10**dezimal)/10**dezimal);
+}
+
 function gleichungGenau(term, grenzwert1, grenzwert2) {
     //console.log("neuer Aufruf");
     //console.log(term);
@@ -98,6 +102,7 @@ function gleichungGenau(term, grenzwert1, grenzwert2) {
 
 
 function gleichung() {
+    var t0 = new Date().getTime();
     var links = document.getElementById("seiteL").value;
     var rechts = document.getElementById("seiteR").value;
     var ergebnisse = [];
@@ -164,7 +169,10 @@ function gleichung() {
     var intervalle = [];
     var neg;
     var pos;
+    var jetzt;
     while(true) {
+        jetzt = new Date().getTime();
+        if(jetzt-3000>t0)break;
         neg = [];
         pos = [];
         intervalle = [];
@@ -181,10 +189,10 @@ function gleichung() {
         for(let i = 0; i < ergebnisse.length; i++) {
             intervalle[i] = ergebnisse[i];
         }
-        //intervalle[intervalle.length] = -999999;
+        intervalle[intervalle.length] = -999999;
         intervalle[intervalle.length] = -999;
         intervalle[intervalle.length] = 999;
-        //intervalle[intervalle.length] = 999999;
+        intervalle[intervalle.length] = 999999;
         //alert(intervalle);
         intervalle = intervalle.sort();
         for(let j = 0; j < intervalle.length; j++) {
@@ -207,6 +215,12 @@ function gleichung() {
             //console.log("intval: 1 2   "+(intervalle[i-1]+0.5)+"       "+(intervalle[i]-0.5));
             let ergebnis = gleichungGenau(term, (intervalle[i-1]+0.5), (intervalle[i]-0.5));
             //console.log("erg:    "+ergebnis);
+            console.log(ergebnis);
+            if(ergebnis > 0 || ergebnis <=0) {
+                for(let u = 0; u < ergebnisse.length; u++) {
+                    if(runden(ergebnis, 0) == runden(ergebnisse[u], 0)) ergebnis = 'null';
+                }
+            }
             if(ergebnis != 'null' && ergebnis != 0) {
                 ergebnisse[ergebnisse.length] = parseFloat(ergebnis).toFixed(3);
                 //console.log("ergeb:      "+parseFloat(ergebnis).toFixed(3));
