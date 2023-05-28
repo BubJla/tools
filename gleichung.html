@@ -6,7 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="style.css" rel="stylesheet">
     <title>Gleichungslöser</title>
-    <script src="gleichung.js"></script>
 </head>
 <body>
     <ul class = "navigationsleiste" id="navigationsleiste">
@@ -16,19 +15,19 @@
         <hr>
         <span>
             <div class="inputDivBinaer">
-                <input type="text" id="seiteL" placeholder="z.B. 3*x*x-5"class="inputUmrechnerBinaer" maxlength="28"> 
+                <input type="text" id="seiteL" placeholder="z.B. 3*x*x-5"class="inputUmrechnerBinaer" > 
             </div>
             <div style="width: 50px">
                 <span><d style="font-size: 1.5rem;">=</d></span>
             </div>
             <div class="inputDivBinaer">
-                <input type="text" id="seiteR" placeholder="z.B. x*x+3*x"class="inputUmrechnerBinaer" maxlength="28"> 
+                <input type="text" id="seiteR" placeholder="z.B. x*x+3*x"class="inputUmrechnerBinaer"> 
             </div>
             <div class="inputDivBinaer">
                 <input type="button" onclick="gleichung()" class="inputUmrechnerBinaer" value="LÖSEN" style="height: 30px"> 
             </div>
         </span>
-        <hr>
+        <hr style="margin-top: 10px; margin-bottom: 5px">
         <span style="width: 100%">
             <div class="inputDivBinaer" style="width: 90%">
                 <span><d style="font-size: 2rem!important">Ergebnisse:</d></span>
@@ -38,7 +37,16 @@
                 </span> 
             </div>
         </span>
-    </div>
+        <br>
+        <span>
+            <div id = "graph">
+                <svg id = "svgGraph" style="width: 100%; height: 100%">
+
+                </svg>
+            </div>
+        </span>
+        </div>
     </body>
+    <script src="gleichung.js"></script>
     <script src="start.js"></script>
 </html>
