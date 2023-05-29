@@ -14,23 +14,23 @@
         <h1 class = "head">Gleichungen</h1>
         <hr>
         <span>
-            <div class="inputDivBinaer">
+            <div class="inputDivBinaer" style="width: 40%">
                 <input type="text" id="seiteL" placeholder="z.B. 3*x*x-5"class="inputUmrechnerBinaer" > 
             </div>
-            <div style="width: 50px">
+            <div style="width: 50px" style="width: 5%">
                 <span><d style="font-size: 1.5rem;">=</d></span>
             </div>
-            <div class="inputDivBinaer">
+            <div class="inputDivBinaer" style="width: 40%">
                 <input type="text" id="seiteR" placeholder="z.B. x*x+3*x"class="inputUmrechnerBinaer"> 
             </div>
-            <div class="inputDivBinaer">
-                <input type="button" onclick="gleichung()" class="inputUmrechnerBinaer" value="LÖSEN" style="height: 30px"> 
+            <div class="inputDivBinaer" style="width: 15%">
+                <input type="button" onclick="gleichung()" class="inputUmrechnerBinaer" id="loeseButton" value="LÖSEN" style="height: 30px"> 
             </div>
         </span>
-        <hr style="margin-top: 10px; margin-bottom: 5px">
+        <hr style="margin-top: 20px; margin-bottom: 20px">
         <span style="width: 100%">
             <div class="inputDivBinaer" style="width: 90%">
-                <span><d style="font-size: 2rem!important">Ergebnisse:</d></span>
+                <!--<span><d style="font-size: 2rem!important">Ergebnisse:</d></span>-->
                 <span>
                     <d style="font-size: 3rem;">x=</d>
                     <input type="text" id="ergebnisGleichung" class="inputUmrechnerBinaer" style="height: 55px; font-size: 2rem!important; width: 100%;" placeholder="Ergebnis" readonly>
@@ -39,12 +39,26 @@
         </span>
         <br>
         <span>
+            <div id = "left">
+                <svg id = "svgL" style="width: 100%; height: 100%">
+
+                </svg>
+            </div>
             <div id = "graph">
                 <svg id = "svgGraph" style="width: 100%; height: 100%">
 
                 </svg>
             </div>
         </span>
+        <span>
+            <div id = "under">
+                <svg id = "svgU" style="width: 100%; height: 100%">
+
+                </svg>
+            </div>
+        </span>
+        <br>
+        <br>
         </div>
     </body>
     <script src="gleichung.js"></script>

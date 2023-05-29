@@ -141,19 +141,18 @@ function gleichung() {
         return;
     }
     var n = 0;
-    var ueberprueftLetzt = 0;
     if(eval(ersetzen(termL, "x", 0)) == eval(ersetzen(termR, "x", 0))) ergebnisse[0] = 0.000000;
     for(var i = 0.0001; i < 999999999999999; i*=1.01) {
         jetzt = new Date().getTime();
-        if(jetzt-1000>t0)break;
+        if(jetzt-2000>t0) break;
         //console.log(i);
         n++;
-        if((eval(ersetzen(term, "x", "i"))*(eval(ersetzen(term, "x", "grenzeP")))) < 0 || (Math.abs((eval(ersetzen(term, "x", "grenzeP")))) < 1 || Math.abs((eval(ersetzen(term, "x", "i")))) < 1) && Math.abs(i-ueberprueftLetzt) > 0.5) {
+        if((eval(ersetzen(term, "x", "i"))*(eval(ersetzen(term, "x", "grenzeP")))) < 0) {
             ueberprueftLetzt = i;
             let ergebnis = gleichungGenau(term, grenzeP, i);
             if(ergebnis != "null") ergebnisse[ergebnisse.length] = parseFloat(ergebnis);
         }
-        if((eval(ersetzen(term, "x", "-1*i")))*(eval(ersetzen(term, "x", "grenzeN"))) < 0 || (Math.abs((eval(ersetzen(term, "x", "grenzeN")))) < 1 || Math.abs((eval(ersetzen(term, "x", "-i")))) < 1) && Math.abs(i-ueberprueftLetzt) > 0.5) {
+        if((eval(ersetzen(term, "x", "-1*i")))*(eval(ersetzen(term, "x", "grenzeN"))) < 0) {
             ueberprueftLetzt = i;
             let ergebnis = gleichungGenau(term, grenzeN, -i);
             if(ergebnis != "null") ergebnisse[ergebnisse.length] = parseFloat(ergebnis);
@@ -166,7 +165,7 @@ function gleichung() {
     var intervalle = [];
     while(true) {
         jetzt = new Date().getTime();
-        if(jetzt-3000>t0)break;
+        if(jetzt-2000>t0)break;
         neg = [];
         pos = [];
         intervalle = [];
@@ -180,20 +179,8 @@ function gleichung() {
         intervalle[intervalle.length] = 999999;
         //alert(intervalle);
         intervalle = intervalle.sort(compareNumbers);
-        /*for(let j = 0; j < intervalle.length; j++) {
-            if(intervalle[j] >= 0) {
-                for(let h = 0; h < j; h++) neg[neg.length] = intervalle[h];
-                neg = neg.reverse();
-                for(let h = j; h < intervalle.length; h++) pos[pos.length] = intervalle[h];
-                for(let n = 0; n < intervalle.length; n++) {
-                    if(neg[n] < neg.length) intervalle[n] = neg[n];
-                    else intervalle[n] = pos[n-neg.length];
-                }
-                break;
-            }
-        }*/
         //console.log(term);
-        //console.log(intervalle);
+        console.log(intervalle);
         for(let s = 0; s < intervalle.length; s++) intervalle[s] = parseFloat(intervalle[s]);
         //console.log("ergebisssse:      "+ergebnisse.length);
         //console.log("length:     "+intervalle.length);
@@ -208,7 +195,7 @@ function gleichung() {
                     if(runden(ergebnis, 0) == runden(ergebnisse[u], 0)) ergebnis = 'null';
                 }
             }
-            if(ergebnis != 'null' && ergebnis != 0) {
+            if(ergebnis != 'null' && ergebnis != 0 && ergebnis != -999998.5 && ergebnis != 999998.5) {
                 ergebnisse[ergebnisse.length] = runden(parseFloat(ergebnis), 3);
                 //console.log("ergeb:      "+parseFloat(ergebnis).toFixed(3));
                 //console.log("erge:     "+ergebnisse);
@@ -235,7 +222,6 @@ function gleichung() {
 
     xFaktor = ((ergebnisse[ergebnisse.length-1]-ergebnisse[0])*1.7);
     if(xFaktor == 0) xFaktor = 1;
-    xVerschiebung = -(ergebnisse[ergebnisse.length-1]+ergebnisse[0])/2*1000/xFaktor+500;
     var ergWerte = [];
     for(let p = 0; p< ergebnisse.length; p++) {
         //alert(eval(ersetzen(termR, "x", ergebnisse[p])));
@@ -247,30 +233,44 @@ function gleichung() {
         var mittelErgebnisse = [];
         for(let q = 0; q < ergebnisse.length-1; q++) mittelErgebnisse[mittelErgebnisse.length] = Math.abs(rechnen(ersetzen(term, "x", (ergebnisse[q]+ergebnisse[q+1])/2)));
         mittelErgebnisse = mittelErgebnisse.sort(compareNumbers);
-        if(mittelErgebnisse[0] != 0) yFaktor = 2*mittelErgebnisse[0];
+        if(mittelErgebnisse[0] != 0) yFaktor = 2*mittelErgebnisse[0]+1;
         else {
             alert(mittelErgebnisse);
             yFaktor = 1;
         }
     }
+    var trm = termL;
+    if(ergebnisse.length == 1) {
+        xVerschiebung = -(ergebnisse[0])*1000/10+500;
+        yVerschiebung = -(rechnen(ersetzen(termL, "x", ergebnisse[0])))*400/5+200;
+        xFaktor = 10;//Abstand kleinster/ hoechster x Wert
+        yFaktor = 5;//Abstand kleinster/ hoechster y Wert
+    }
+    else if(ergebnisse.length == 26) {//kein ergebniss
+        xVerschiebung = 500;
+        yVerschiebung = 200;
+        xFaktor = 50;//Abstand kleinster/ hoechster x Wert
+        yFaktor = 25;//Abstand kleinster/ hoechster y Wert
+
+    }
+    else if(ergebnisse.length > 50) {
+        xVerschiebung = 500;
+        yVerschiebung = 200;
+        xFaktor = 100;//Abstand kleinster/ hoechster x Wert
+        yFaktor = 10;//Abstand kleinster/ hoechster y Wert
+
+    }
+    if(yFaktor == 2000) yFaktor = 10;
+    //alert(ergebnisse.length);
+    if(xFaktor < 3) xFaktor = 3;
+    if(yFaktor < 3) yFaktor = 3;
+    xVerschiebung = -(ergebnisse[ergebnisse.length-1]+ergebnisse[0])/2*1000/xFaktor+500;
     yVerschiebung = -(ergWerte[ergWerte.length-1]+ergWerte[0])/2*400/yFaktor+200;
     console.log("fak:");
     console.log("xV   "+xVerschiebung);
     console.log("yV    "+yVerschiebung);
     console.log("xF  "+xFaktor);
     console.log("yF    "+yFaktor);
-    var trm = termL;
-    /* xVerschiebung = 0;
-     yVerschiebung = 0;
-     xFaktor = 1000;//Abstand kleinster/ hoechster x Wert
-     yFaktor = 400;//Abstand kleinster/ hoechster y Wert*/
-    if(ergebnisse.length == 1) {
-        xVerschiebung = -ergebnisse[0]/2*200+500;
-        yVerschiebung = -rechnen(ergebnisse[0])/2*160+200;
-        xFaktor = 10;//Abstand kleinster/ hoechster x Wert
-        yFaktor = 5;//Abstand kleinster/ hoechster y Wert
-
-    }
     for(let i = 0; i < 1000; i++) {
         //console.log(i);
         //console.log(inner.length);
@@ -291,10 +291,86 @@ function gleichung() {
     
     inner += '<line x1="0" y1="'+(400-yVerschiebung)+'" x2="1000" y2="'+(400-yVerschiebung)+'" style="stroke:var(--schriftfarbe);stroke-width:1" />';
     inner += '<line x1="'+xVerschiebung+'" y1="0" x2="'+xVerschiebung+'" y2="400" style="stroke:var(--schriftfarbe);stroke-width:1" />';
-    for(let k = 0; k < ergebnisse.length; k++) {
-        inner += '<circle cx= "'+rechnen(ergebnisse[k]*1000/xFaktor+xVerschiebung)+'" cy= "'+(400-(rechnen(ersetzen(trm, "x", ergebnisse[k]*1000/xFaktor+xVerschiebung)))*400/yFaktor-yVerschiebung)+'" r= "5" style="fill: #F6D32D; stroke-width: 0px"/>';
+    if(ergebnisse.length != 26) {
+        for(let k = 0; k < ergebnisse.length; k++) {
+            inner += '<circle cx= "'+rechnen(ergebnisse[k]*1000/xFaktor+xVerschiebung)+'" cy= "'+(400-eval(ersetzen(termL, "x", ergebnisse[k]))*400/yFaktor-yVerschiebung)+'" r= "4" style="fill: #F6D32D; stroke-width: 0px"/>';
+        }
+        for(let k = 0; k < ergebnisse.length; k++) {
+            inner += '<circle cx= "'+rechnen(ergebnisse[k]*1000/xFaktor+xVerschiebung)+'" cy= "'+(400-eval(ersetzen(termL, "x", ergebnisse[k]))*400/yFaktor-yVerschiebung)+'" r= "2" style="fill: #000000; stroke-width: 0px"/>';
+        }
     }
+    var summe = 0;
+    for (let r = 0; r <ergebnisse.length; r++) summe += ergebnisse[r];
+
+
+    var innerU = '<g font-size="10" font-family="sans-serif" fill="white" stroke="white" text-anchor="middle">"';
+    //alert(Math.round(Math.log10(xFaktor/2)-0.5));
+    for(let a = -50; a < 1050; a++) {
+        console.log("vghgh");
+        console.log(Math.abs(10**Math.round(Math.log10(xFaktor/2)-0.5)-(Math.abs((a-xVerschiebung)*xFaktor/1000)%(10**Math.round(Math.log10(xFaktor/2)-0.5)))));
+        console.log(Math.round(Math.log10(xFaktor/2)-0.5));
+        console.log((a-xVerschiebung)*xFaktor/1000);
+        console.log(((a-xVerschiebung)*xFaktor/1000)%(10**Math.round(Math.log10(xFaktor/2)-0.5)));
+        if((Math.abs(10**Math.round(Math.log10(xFaktor/3)-0.5)-(Math.abs((a-xVerschiebung)*xFaktor/1000)%(10**Math.round(Math.log10(xFaktor/3)-0.5)))) < 0.5 || (Math.abs((a-xVerschiebung)*xFaktor/1000)%(10**Math.round(Math.log10(xFaktor/3)-0.5))) < 0.5) && !(Math.abs(10**Math.round(Math.log10(xFaktor/3)-0.5)-(Math.abs((a-xVerschiebung+1)*xFaktor/1000)%(10**Math.round(Math.log10(xFaktor/3)-0.5)))) < 0.5 || (Math.abs((a-xVerschiebung+1)*xFaktor/1000)%(10**Math.round(Math.log10(xFaktor/3)-0.5))) < 0.5)) {
+            innerU += '<text x="'+(10+a-(0.5/xFaktor*1000))+'" y="10">'+Math.round((a-xVerschiebung)*xFaktor/1000-0.5)+'</text>'
+            console.log("hhhhhhhh");
+        }
+    }
+    innerU += '</g>';
+    var innerL = '<g font-size="10" font-family="sans-serif" fill="white" stroke="white" text-anchor="middle">';
+    for(let a = -50; a < 450; a++) {
+        console.log("popopopo");
+        console.log(10**Math.round(Math.log10(yFaktor/2)-0.5));
+        console.log(Math.abs((400-a-yVerschiebung)/400*yFaktor));
+        if(((10**Math.round(Math.log10(yFaktor/2)-0.5))-(Math.abs((400-a-yVerschiebung)/400*yFaktor)) % (10**Math.round(Math.log10(yFaktor/2)-0.5)) < 0.5 || (Math.abs((400-a-yVerschiebung)/400*yFaktor)) % (10**Math.round(Math.log10(yFaktor/2)-0.5)) < 0.5) && !((10**Math.round(Math.log10(yFaktor/2)-0.5))-(Math.abs((400-a-yVerschiebung+1)/400*yFaktor)) % (10**Math.round(Math.log10(yFaktor/2)-0.5)) < 0.5 || (Math.abs((400-a-yVerschiebung+1)/400*yFaktor)) % (10**Math.round(Math.log10(yFaktor/2)-0.5)) < 0.5)) {
+            innerL += '<text x="20" y="'+(a+20-(0.5/yFaktor*400))+'">'+Math.round((400-a-yVerschiebung)/400*yFaktor-0.5)+'</text>'
+            console.log("aaaaaaa");
+        }
+    }
+    innerL += '</g>';
+    /*innerU += `<g font-size="10" font-family="sans-serif" fill="white" stroke="white"
+    text-anchor="middle">
+      <text x="10" y="10">0</text>
+      <text x="110" y="10">1</text>
+      <text x="210" y="10">2</text>
+      <text x="310" y="10">3</text>
+      <text x="410" y="10">4</text>
+      <text x="510" y="10">5</text>
+      <text x="610" y="10">6</text>
+      <text x="710" y="10">7</text>
+      <text x="810" y="10">8</text>
+      <text x="910" y="10">9</text>
+      <text x="1010" y="10">10</text>*/
+    /*var innerL;
+    innerL = `<g font-size="10" font-family="sans-serif" fill="white" stroke="white"
+    text-anchor="middle">
+      <text x="20" y="20">0</text>
+      <text x="20" y="60">1</text>
+      <text x="20" y="100">2</text>
+      <text x="20" y="140">3</text>
+      <text x="20" y="180">4</text>
+      <text x="20" y="220">5</text>
+      <text x="20" y="260">6</text>
+      <text x="20" y="300">7</text>
+      <text x="20" y="340">8</text>
+      <text x="20" y="380">9</text>
+      <text x="20" y="420">10</text>
+    </g>`*/
+
+    document.getElementById("svgU").innerHTML = innerU;
+    document.getElementById("svgL").innerHTML = innerL;
+
+
+
+    //alert(summe);
+    //alert(((summe/ergebnisse.length)/ergebnisse[0])%1);
     document.getElementById("svgGraph").innerHTML = inner;
+    if(((summe/ergebnisse.length)/ergebnisse[0])%1 < 1 && ergebnisse.length > 2) {
+        for(let g = 0; g < 10; g++) {
+            if(rechnen(ersetzen(term, "x", g*ergebnisse[1])) > 0.001) return;
+            if(g == 9) console.log("1");
+        }
     }
+}
 
 //console.log("ejhhdscghgs:     "+gleichungGenau("(x)*(x-1)**2", 0.5, 999));
