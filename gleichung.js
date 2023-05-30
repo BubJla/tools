@@ -1,3 +1,9 @@
+var xV;
+var xF;
+var yV;
+var yF;
+
+
 function ersetzen(text, zuErsetzen, ersetzwert) {
     var ergebnis = text;
     for(let n = 0; n < text.length; n++){
@@ -180,7 +186,7 @@ function gleichung() {
         //alert(intervalle);
         intervalle = intervalle.sort(compareNumbers);
         //console.log(term);
-        console.log(intervalle);
+        //console.log(intervalle);
         for(let s = 0; s < intervalle.length; s++) intervalle[s] = parseFloat(intervalle[s]);
         //console.log("ergebisssse:      "+ergebnisse.length);
         //console.log("length:     "+intervalle.length);
@@ -207,8 +213,6 @@ function gleichung() {
     }
     ergebnisse = ergebnisse.sort(compareNumbers);
     if(ergebnisse=="") ergebnisse = "keine oder zu große Lösung";
-    document.getElementById("ergebnisGleichung").value = ergebnisse;
-    document.getElementById("ergebnisGleichung").value = ersetzen(document.getElementById("ergebnisGleichung").value, ",", " / ");
 
 
 
@@ -242,51 +246,53 @@ function gleichung() {
     var trm = termL;
     xVerschiebung = -(ergebnisse[ergebnisse.length-1]+ergebnisse[0])/2*1000/xFaktor+500;
     yVerschiebung = -(ergWerte[ergWerte.length-1]+ergWerte[0])/2*400/yFaktor+200;
-    if(ergebnisse.length == 1) {
-        xVerschiebung = -(ergebnisse[0])*1000/10+500;
-        yVerschiebung = -(rechnen(ersetzen(termL, "x", ergebnisse[0])))*400/5+200;
-        xFaktor = 10;//Abstand kleinster/ hoechster x Wert
-        yFaktor = 5;//Abstand kleinster/ hoechster y Wert
-    }
-    else if(ergebnisse.length == 26) {//kein ergebniss
+    console.log(term);
+    console.log(ergebnisse[0]);
+    console.log(ergebnisse.length);
+    if(ergebnisse.length == 26 || term == "Math.cos(x)-(1)") {//kein ergebniss
         xVerschiebung = 500;
         yVerschiebung = 200;
         xFaktor = 50;//Abstand kleinster/ hoechster x Wert
         yFaktor = 25;//Abstand kleinster/ hoechster y Wert
 
     }
-    else if(ergebnisse.length > 50) {
+    else if(ergebnisse.length == 1) {
+        xVerschiebung = -(ergebnisse[0])/2*1000/10+500;
+        yVerschiebung = -(rechnen(ersetzen(termL, "x", ergebnisse[0])))/2*400/5+200;
+        xFaktor = 20;//Abstand kleinster/ hoechster x Wert
+        yFaktor = 10;//Abstand kleinster/ hoechster y Wert
+    }
+    else if(ergebnisse.length > 10) {
         xVerschiebung = 500;
         yVerschiebung = 200;
-        xFaktor = 100;//Abstand kleinster/ hoechster x Wert
-        yFaktor = 10;//Abstand kleinster/ hoechster y Wert
-
+        xFaktor = 50;//Abstand kleinster/ hoechster x Wert
+        yFaktor = 25;//Abstand kleinster/ hoechster y Wert
     }
     if(yFaktor == 2000) yFaktor = 10;
     //alert(ergebnisse.length);
     if(xFaktor < 3) xFaktor = 3;
     if(yFaktor < 3) yFaktor = 3;
-    console.log("fak:");
-    console.log("xV   "+xVerschiebung);
-    console.log("yV    "+yVerschiebung);
-    console.log("xF  "+xFaktor);
-    console.log("yF    "+yFaktor);
-    for(let i = 0; i < 1000; i++) {
+    //console.log("fak:");
+    //console.log("xV   "+xVerschiebung);
+    //console.log("yV    "+yVerschiebung);
+    //console.log("xF  "+xFaktor);
+    //console.log("yF    "+yFaktor);
+    for(let i = 0; i < 1000; i+=2) {
         //console.log(i);
         //console.log(inner.length);
         //console.log(inner);
         //console.log(rechnen(ersetzen(trm, "i", i)));
         //console.log(rechnen(ersetzen(trm, "i", i+1)));
-        inner += '<line x1="'+rechnen((i))+'" y1="'+(400-(rechnen(ersetzen(trm, "x", (i-xVerschiebung)*xFaktor/1000)))*400/yFaktor-yVerschiebung)+'" x2="'+rechnen((i+1))+'" y2="'+(400-(rechnen(ersetzen(trm, "x", (i-xVerschiebung+1)*xFaktor/1000)))*400/yFaktor-yVerschiebung)+'" style="stroke:var(--akzentfarbe1);stroke-width:3" />';
+        inner += '<line x1="'+rechnen((i))+'" y1="'+(400-(rechnen(ersetzen(trm, "x", (i-xVerschiebung)*xFaktor/1000)))*400/yFaktor-yVerschiebung)+'" x2="'+rechnen((i+3))+'" y2="'+(400-(rechnen(ersetzen(trm, "x", (i-xVerschiebung+3)*xFaktor/1000)))*400/yFaktor-yVerschiebung)+'" style="stroke:var(--akzentfarbe1);stroke-width:2" />';
     }
     var trm = termR;
-    for(let i = 0; i < 1000; i++) {
+    for(let i = 0; i < 1000; i+=2) {
         //console.log(i);
         //console.log(inner.length);
         //console.log(inner);
         //console.log(rechnen(ersetzen(trm, "i", i)));
         //console.log(rechnen(ersetzen(trm, "i", i+1)));
-        inner += '<line x1="'+rechnen((i))+'" y1="'+(400-(rechnen(ersetzen(trm, "x", (i-xVerschiebung)*xFaktor/1000)))*400/yFaktor-yVerschiebung)+'" x2="'+rechnen((i+1))+'" y2="'+(400-(rechnen(ersetzen(trm, "x", (i-xVerschiebung+1)*xFaktor/1000)))*400/yFaktor-yVerschiebung)+'" style="stroke:var(--akzentfarbe2);stroke-width:3" />';
+        inner += '<line x1="'+rechnen((i))+'" y1="'+(400-(rechnen(ersetzen(trm, "x", (i-xVerschiebung)*xFaktor/1000)))*400/yFaktor-yVerschiebung)+'" x2="'+rechnen((i+3))+'" y2="'+(400-(rechnen(ersetzen(trm, "x", (i-xVerschiebung+3)*xFaktor/1000)))*400/yFaktor-yVerschiebung)+'" style="stroke:var(--akzentfarbe2);stroke-width:2" />';
     }
     
     inner += '<line x1="0" y1="'+(400-yVerschiebung)+'" x2="1000" y2="'+(400-yVerschiebung)+'" style="stroke:var(--schriftfarbe);stroke-width:1" />';
@@ -303,26 +309,26 @@ function gleichung() {
     for (let r = 0; r <ergebnisse.length; r++) summe += ergebnisse[r];
 
 
-    var innerU = '<g font-size="10" font-family="sans-serif" fill="white" stroke="white" text-anchor="middle">"';
+    var innerU = '<g font-size="10" fill="white" stroke="var(--schriftfarbe)" text-anchor="middle">"';
     //alert(Math.round(Math.log10(xFaktor/2)-0.5));
     for(var a = -50; a < 1050; a++) {
-        console.log("vghgh");
-        console.log(Math.abs(10**Math.round(Math.log10(xFaktor/2)-0.5)-(Math.abs((a-xVerschiebung)*xFaktor/1000)%(10**Math.round(Math.log10(xFaktor/2)-0.5)))));
-        console.log(Math.round(Math.log10(xFaktor/2)-0.5));
-        console.log((a-xVerschiebung)*xFaktor/1000);
-        console.log(((a-xVerschiebung)*xFaktor/1000)%(10**Math.round(Math.log10(xFaktor/2)-0.5)));
+        //console.log("vghgh");
+        //console.log(Math.abs(10**Math.round(Math.log10(xFaktor/2)-0.5)-(Math.abs((a-xVerschiebung)*xFaktor/1000)%(10**Math.round(Math.log10(xFaktor/2)-0.5)))));
+        //console.log(Math.round(Math.log10(xFaktor/2)-0.5));
+        //console.log((a-xVerschiebung)*xFaktor/1000);
+        //console.log(((a-xVerschiebung)*xFaktor/1000)%(10**Math.round(Math.log10(xFaktor/2)-0.5)));
         if((Math.abs(10**Math.round(Math.log10(xFaktor/3)-0.5)-(Math.abs((a-xVerschiebung)*xFaktor/1000)%(10**Math.round(Math.log10(xFaktor/3)-0.5)))) < 0.1*(10**Math.round(Math.log10(xFaktor/3)-0.5)) || (Math.abs((a-xVerschiebung)*xFaktor/1000)%(10**Math.round(Math.log10(xFaktor/3)-0.5))) < 0.1*(10**Math.round(Math.log10(xFaktor/3)-0.5))) && !(Math.abs(10**Math.round(Math.log10(xFaktor/3)-0.5)-(Math.abs((a-xVerschiebung+1)*xFaktor/1000)%(10**Math.round(Math.log10(xFaktor/3)-0.5)))) < 0.1*(10**Math.round(Math.log10(xFaktor/3)-0.5)) || (Math.abs((a-xVerschiebung+1)*xFaktor/1000)%(10**Math.round(Math.log10(xFaktor/3)-0.5))) < 0.1*(10**Math.round(Math.log10(xFaktor/3)-0.5)))) {
             inner += '<line x1="'+(a-(0.1*(10**Math.round(Math.log10(xFaktor/3)-0.5))/xFaktor*1000))+'" y1="0" x2="'+(a-(0.1*(10**Math.round(Math.log10(xFaktor/3)-0.5))/xFaktor*1000))+'" y2="400" style="stroke:rgb(255, 255, 255, 0.2);stroke-width:1" />';
-            innerU += '<text x="'+(15+a-(0.1*(10**Math.round(Math.log10(xFaktor/3)-0.5))/xFaktor*1000))+'" y="10">'+(Math.round((a-xVerschiebung)*xFaktor/1000/(10**Math.round(Math.log10(xFaktor/3)-0.5)))*(10**Math.round(Math.log10(xFaktor/3)-0.5)))+'</text>'
-            console.log("hhhhhhhh");
+            innerU += '<text x="'+(17+a-(0.1*(10**Math.round(Math.log10(xFaktor/3)-0.5))/xFaktor*1000))+'" y="10">'+(Math.round((a-xVerschiebung)*xFaktor/1000/(10**Math.round(Math.log10(xFaktor/3)-0.5)))*(10**Math.round(Math.log10(xFaktor/3)-0.5)))+'</text>'
+            //console.log("hhhhhhhh");
         }
     }
     innerU += '</g>';
-    var innerL = '<g font-size="10" font-family="sans-serif" fill="white" stroke="white" text-anchor="left">';
+    var innerL = '<g font-size="10" fill="white" stroke="var(--schriftfarbe)" text-anchor="left">';
     for(a = -50; a < 450; a++) {
-        console.log("popopopo");
-        console.log(10**Math.round(Math.log10(yFaktor/2)-0.5));
-        console.log(Math.abs((400-a-yVerschiebung)/400*yFaktor));
+        //console.log("popopopo");
+        //console.log(10**Math.round(Math.log10(yFaktor/2)-0.5));
+        //console.log(Math.abs((400-a-yVerschiebung)/400*yFaktor));
         //if(((10**Math.round(Math.log10(yFaktor/2)-0.5))-(Math.abs((400-a-yVerschiebung)/400*yFaktor)) % (10**Math.round(Math.log10(yFaktor/2)-0.5)) < 0.5 || (Math.abs((400-a-yVerschiebung)/400*yFaktor)) % (10**Math.round(Math.log10(yFaktor/2)-0.5)) < 0.5) && !((10**Math.round(Math.log10(yFaktor/2)-0.5))-(Math.abs((400-a-yVerschiebung+1)/400*yFaktor)) % (10**Math.round(Math.log10(yFaktor/2)-0.5)) < 0.5 || (Math.abs((400-a-yVerschiebung+1)/400*yFaktor)) % (10**Math.round(Math.log10(yFaktor/2)-0.5)) < 0.5)) {
         //if((Math.abs(10**Math.round(Math.log10(xFaktor/3)-0.5)-(Math.abs((400-a-yVerschiebung)/400*yFaktor))%(10**Math.round(Math.log10(xFaktor/3)-0.5)))) < 0.1*(10**Math.round(Math.log10(xFaktor/3)-0.5)) || (Math.abs((400-a-yVerschiebung)/400*yFaktor))%(10**Math.round(Math.log10(xFaktor/3)-0.5)) < 0.1*(10**Math.round(Math.log10(xFaktor/3)-0.5)) && !(Math.abs(10**Math.round(Math.log10(xFaktor/3)-0.5))-(Math.abs((400-a-yVerschiebung)/400*yFaktor))%(10**Math.round(Math.log10(xFaktor/3)-0.5))) < 0.1*(10**Math.round(Math.log10(xFaktor/3)-0.5)) || (Math.abs((400-a-yVerschiebung)/400*yFaktor))%(10**Math.round(Math.log10(xFaktor/3)-0.5)) < 0.1*(10**Math.round(Math.log10(xFaktor/3)-0.5))) {
         if((Math.abs(10**Math.round(Math.log10(yFaktor/2)-0.5)-(Math.abs((400-a-yVerschiebung)/400*yFaktor)%(10**Math.round(Math.log10(yFaktor/2)-0.5)))) < 0.1*(10**Math.round(Math.log10(yFaktor/2)-0.5)) || (Math.abs((400-a-yVerschiebung)/400*yFaktor)%(10**Math.round(Math.log10(yFaktor/2)-0.5))) < 0.1*(10**Math.round(Math.log10(yFaktor/2)-0.5))) && !(Math.abs(10**Math.round(Math.log10(yFaktor/2)-0.5)-(Math.abs((400-a-yVerschiebung+1)/400*yFaktor)%(10**Math.round(Math.log10(yFaktor/2)-0.5)))) < 0.1*(10**Math.round(Math.log10(yFaktor/2)-0.5)) || (Math.abs((400-a-yVerschiebung+1)/400*yFaktor)%(10**Math.round(Math.log10(yFaktor/2)-0.5))) < 0.1*(10**Math.round(Math.log10(yFaktor/2)-0.5)))) {
@@ -333,7 +339,7 @@ function gleichung() {
             else {
                 innerL += '<text x="35" y="'+(a+9+(0.1*(10**Math.round(Math.log10(yFaktor/2)-0.5))/yFaktor*400))+'">'+(Math.round((400-a-yVerschiebung+1)/400*yFaktor/(10**Math.round(Math.log10(yFaktor/2)-0.5)))*(10**Math.round(Math.log10(yFaktor/2)-0.5)))+'</text>'
             }
-            console.log("aaaaaaa");
+            //console.log("aaaaaaa");
         }
     }
     innerL += '</g>';
@@ -374,12 +380,42 @@ function gleichung() {
     //alert(summe);
     //alert(((summe/ergebnisse.length)/ergebnisse[0])%1);
     document.getElementById("svgGraph").innerHTML = inner;
-    if(((summe/ergebnisse.length)/ergebnisse[0])%1 < 1 && ergebnisse.length > 2) {
+    /*if(((summe/ergebnisse.length)/ergebnisse[0])%1 < 1 && ergebnisse.length > 2) {
         for(let g = 0; g < 10; g++) {
             if(rechnen(ersetzen(term, "x", g*ergebnisse[1])) > 0.001) break;
             if(g == 9) console.log("1");
         }
+    }*/
+    for(let q = 0; q < 10; q++) {
+        if(Math.abs(rechnen(ersetzen(term, "x", 2*Math.PI*q-0.5*Math.PI))) > 0.001) break;
+        if(q == 9) ergebnisse = "2*PI*n-0.5*PI";
     }
+    for(let q = 0; q < 10; q++) {
+        if(Math.abs(rechnen(ersetzen(term, "x", 2*Math.PI*q+0.5*Math.PI))) > 0.001) break;
+        if(q == 9) ergebnisse = "2*PI*n+0.5*PI";
+    }
+    for(let q = 0; q < 10; q++) {
+        if(Math.abs(rechnen(ersetzen(term, "x", 2*Math.PI*q))) > 0.01) break;
+        if(q == 9) ergebnisse = "2*PI*n";
+    }
+    for(let q = 0; q < 10; q++) {
+        if(Math.abs(rechnen(ersetzen(term, "x", 2*Math.PI*q-Math.PI))) > 0.01) break;
+        if(q == 9) ergebnisse = "2*PI*n-PI";
+    }
+    for(let q = 0; q < 10; q++) {
+        if(Math.abs(rechnen(ersetzen(term, "x", Math.PI*q-0.5*Math.PI))) > 0.01) break;
+        if(q == 9) ergebnisse = "PI*n-0.5*PI";
+    }
+    for(let q = 0; q < 10; q++) {
+        if(Math.abs(rechnen(ersetzen(term, "x", Math.PI*q))) > 0.01) break;
+        if(q == 9) ergebnisse = "PI*n";
+    }
+    document.getElementById("ergebnisGleichung").value = ergebnisse;
+    document.getElementById("ergebnisGleichung").value = ersetzen(document.getElementById("ergebnisGleichung").value, ",", " / ");
+    xF = xFaktor;
+    yF = yFaktor;
+    xV = xVerschiebung;
+    yV = yVerschiebung;
 }
 
 //console.log("ejhhdscghgs:     "+gleichungGenau("(x)*(x-1)**2", 0.5, 999));
