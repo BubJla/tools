@@ -22,7 +22,7 @@ if(readCookie("groesse") == undefined) {
     setCookie("schriftfarbe", "#FFFFFF");
     setCookie("akzentfarbe1", "#5A5AA0");
     setCookie("akzentfarbe2", "#5AA05A");
-    setCookie("akzentfarbe3", "#4444FF");
+    setCookie("akzentfarbe3", "#F66151");
     setCookie("akzentfarbe1aktiv", "#2A2A70");
     setCookie("akzentfarbe2aktiv", "#2A702A");
     setCookie("groesse", 1);

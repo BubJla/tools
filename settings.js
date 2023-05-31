@@ -195,7 +195,7 @@ function loeschen() {
     setCookie("schriftfarbe", "#FFFFFF");
     setCookie("akzentfarbe1", "#5A5AA0");
     setCookie("akzentfarbe2", "#5AA05A");
-    setCookie("akzentfarbe3", "#4444FF");
+    setCookie("akzentfarbe3", "#F66151");
     setCookie("akzentfarbe1aktiv", "#1A1A60");
     setCookie("akzentfarbe2aktiv", "#1A601A");
     setCookie("groesse", 1);
@@ -215,7 +215,7 @@ if(readCookie("groesse") == undefined) {
     setCookie("schriftfarbe", "#FFFFFF");
     setCookie("akzentfarbe1", "#5A5AA0");
     setCookie("akzentfarbe2", "#5AA05A");
-    setCookie("akzentfarbe3", "#4444FF");
+    setCookie("akzentfarbe3", "#F66151");
     setCookie("akzentfarbe1aktiv", "#1A1A60");
     setCookie("akzentfarbe2aktiv", "#1A601A");
     setCookie("groesse", 1);

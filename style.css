@@ -8,7 +8,7 @@
     --akzentfarbe2: #5AA05A;
     --akzentfarbe1aktiv: #2A2A70;
     --akzentfarbe2aktiv: #2A702A;
-    --akzentfarbe3: #4444FF;
+    --akzentfarbe3: #F66151;
 }
 
 ::selection {
@@ -71,6 +71,14 @@
 }
 
 body{
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+
+
     font-family: Gotham Rounded, sans-serif;
     margin: 0;
     background-color: black;
@@ -499,6 +507,8 @@ h1{
     border: 3px solid;
     border-color: #F6D32D;
     accent-color: #F6D32D!important;
+    border-color: var(--akzentfarbe3);
+    accent-color: var(--akzentfarbe3)!important;
     background-color: var(--hintergrundfarbe);
     color: var(--schriftfarbe);
 }
@@ -531,3 +541,4 @@ input .not{
     border: 0px solid;
     border-color: var(--schriftfarbe);
 }
+
