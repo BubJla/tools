@@ -151,10 +151,10 @@ function gleichung() {
     term = ersetzen(term, "x**", "(x)**");
     gL = termL;
     gR = termR;
-    for(x = 0; x < 100; x++) {
-        unendlich += eval(termL) == eval(termR);
+    for(x = 10; x < 100; x++) {
+        unendlich += Math.abs(eval(termL) - eval(termR)) < 0.000001;
     }
-    if(unendlich == 100) {
+    if(unendlich == 90) {
         document.getElementById("ergebnisGleichung").value = "unendlich viele Lösungen";
         e = "unendlich viele Lösungen";
         xVerschiebung = 500;
@@ -293,7 +293,7 @@ function gleichung() {
         mittelErgebnisse = mittelErgebnisse.sort(compareNumbers);
         if(mittelErgebnisse[0] != 0) yFaktor = 2*mittelErgebnisse[0]+1;
         else {
-            alert(mittelErgebnisse);
+            //alert(mittelErgebnisse);
             yFaktor = 1;
         }
     }
@@ -322,7 +322,7 @@ function gleichung() {
     if(yFaktor == 2000) yFaktor = 10;
     if(xFaktor < 3) xFaktor = 3;
     if(yFaktor < 3) yFaktor = 3;
-    var trm = termL;
+    /*var trm = termL;
     for(let i = 0; i < 1000; i+=2) {
         inner += '<line x1="'+rechnen((i))+'" y1="'+(400-(rechnen(ersetzen(trm, "x", (i-xVerschiebung)*xFaktor/1000)))*400/yFaktor-yVerschiebung)+'" x2="'+rechnen((i+3))+'" y2="'+(400-(rechnen(ersetzen(trm, "x", (i-xVerschiebung+3)*xFaktor/1000)))*400/yFaktor-yVerschiebung)+'" style="stroke:var(--akzentfarbe1);stroke-width:3" />';
     }
@@ -333,11 +333,13 @@ function gleichung() {
     
     inner += '<line x1="0" y1="'+(400-yVerschiebung)+'" x2="1000" y2="'+(400-yVerschiebung)+'" style="stroke:var(--schriftfarbe);stroke-width:1" />';
     inner += '<line x1="'+xVerschiebung+'" y1="0" x2="'+xVerschiebung+'" y2="400" style="stroke:var(--schriftfarbe);stroke-width:1" />';
+
+    var k = 0;
     if(ergebnisse.length != 26) {
-        for(let k = 0; k < ergebnisse.length; k++) {
+        for(k = 0; k < ergebnisse.length; k++) {
             inner += '<circle cx= "'+rechnen(ergebnisse[k]*1000/xFaktor+xVerschiebung)+'" cy= "'+(400-eval(ersetzen(termL, "x", ergebnisse[k]))*400/yFaktor-yVerschiebung)+'" r= "4" style="fill: var(--akzentfarbe3); stroke-width: 0px"/>';
         }
-        for(let k = 0; k < ergebnisse.length; k++) {
+        for(k = 0; k < ergebnisse.length; k++) {
             inner += '<circle cx= "'+rechnen(ergebnisse[k]*1000/xFaktor+xVerschiebung)+'" cy= "'+(400-eval(ersetzen(termL, "x", ergebnisse[k]))*400/yFaktor-yVerschiebung)+'" r= "2" style="fill: var(--hintergrundfarbe); stroke-width: 0px"/>';
         }
     }
@@ -361,18 +363,24 @@ function gleichung() {
         if(potenz < 0) potenz = 0;
         if((Math.abs(10**Math.round(Math.log10(yFaktor/2)-0.5)-(Math.abs((400-a-yVerschiebung)/400*yFaktor)%(10**Math.round(Math.log10(yFaktor/2)-0.5)))) < 0.1*(10**Math.round(Math.log10(yFaktor/2)-0.5)) || (Math.abs((400-a-yVerschiebung)/400*yFaktor)%(10**Math.round(Math.log10(yFaktor/2)-0.5))) < 0.1*(10**Math.round(Math.log10(yFaktor/2)-0.5))) && !(Math.abs(10**Math.round(Math.log10(yFaktor/2)-0.5)-(Math.abs((400-a-yVerschiebung+1)/400*yFaktor)%(10**Math.round(Math.log10(yFaktor/2)-0.5)))) < 0.1*(10**Math.round(Math.log10(yFaktor/2)-0.5)) || (Math.abs((400-a-yVerschiebung+1)/400*yFaktor)%(10**Math.round(Math.log10(yFaktor/2)-0.5))) < 0.1*(10**Math.round(Math.log10(yFaktor/2)-0.5)))) {
             inner += '<line y1="'+((a+(0.1*(10**Math.round(Math.log10(yFaktor/2)-0.5))/yFaktor*400)))+'" x1="0" y2="'+((a+(0.1*(10**Math.round(Math.log10(yFaktor/2)-0.5))/yFaktor*400)))+'" x2="1000" style="stroke:rgb(255, 255, 255, 0.14);stroke-width:1" />';
-            innerL += '<text x="'+(35-6*(""+(10**potenz)).length)+'" y="'+(a+9+(0.1*(10**Math.round(Math.log10(yFaktor/2)-0.5))/yFaktor*400))+'">'+(((400-a-yVerschiebung+1)/400*yFaktor)).toFixed(potenz)+'</text>'
+            innerL += '<text x="'+(35-6*(Math.abs(Math.round(Math.log10(yFaktor/2)-0.5))))+'" y="'+(a+9+(0.1*(10**Math.round(Math.log10(yFaktor/2)-0.5))/yFaktor*400))+'">'+(((400-a-yVerschiebung)/400*yFaktor)).toFixed(potenz)+'</text>'
             //console.log("aaaaaaa");
         }
     }
     innerL += '</g>';
 
     document.getElementById("svgU").innerHTML = innerU;
-    document.getElementById("svgL").innerHTML = innerL;
+    document.getElementById("svgL").innerHTML = innerL;*/
+    e = ergebnisse;
+    xF = xFaktor;
+    yF = yFaktor;
+    xV = xVerschiebung;
+    yV = yVerschiebung;
+
+    refreshGraph();
 
 
-
-    document.getElementById("svgGraph").innerHTML = inner;
+    //document.getElementById("svgGraph").innerHTML = inner;
     for(let q = 0; q < 10; q++) {
         if(Math.abs(rechnen(ersetzen(term, "x", 2*Math.PI*q-0.5*Math.PI))) > 0.001) break;
         if(q == 9) ergebnisse = "2*PI*n-0.5*PI";
@@ -397,7 +405,7 @@ function gleichung() {
         if(Math.abs(rechnen(ersetzen(term, "x", Math.PI*q))) > 0.01) break;
         if(q == 9) ergebnisse = "PI*n";
     }
-    if(ergebnisse.length > 5) ergebnisse = ergebnisse.sort(compareNumbersA);
+    if(ergebnisse.length > 5 && ergebnisse[0] != "2" && ergebnisse[0] != "P") ergebnisse = ergebnisse.sort(compareNumbersA);
     document.getElementById("ergebnisGleichung").value = ergebnisse;
     document.getElementById("ergebnisGleichung").value = ersetzen(document.getElementById("ergebnisGleichung").value, ",", " / ");
     e = ergebnisse;
@@ -410,10 +418,10 @@ function gleichung() {
 //console.log("ejhhdscghgs:     "+gleichungGenau("(x)*(x-1)**2", 0.5, 999));
 
 function refreshGraph() {
-    console.log(xV);
-    console.log(xF);
-    console.log(yV);
-    console.log(yF);
+    console.log("xV:     "+xV);
+    console.log("xF:     "+xF);
+    console.log("yV:     "+yV);
+    console.log("yF:     "+yF);
     var ergebnisse = e;
     var xVerschiebung = xV;
     var yVerschiebung = yV;
@@ -455,7 +463,7 @@ function refreshGraph() {
         if(potenz < 0) potenz = 0;
         if((Math.abs(10**Math.round(Math.log10(xFaktor/3)-0.5)-(Math.abs((a-xVerschiebung)*xFaktor/1000)%(10**Math.round(Math.log10(xFaktor/3)-0.5)))) < 0.1*(10**Math.round(Math.log10(xFaktor/3)-0.5)) || (Math.abs((a-xVerschiebung)*xFaktor/1000)%(10**Math.round(Math.log10(xFaktor/3)-0.5))) < 0.1*(10**Math.round(Math.log10(xFaktor/3)-0.5))) && !(Math.abs(10**Math.round(Math.log10(xFaktor/3)-0.5)-(Math.abs((a-xVerschiebung+1)*xFaktor/1000)%(10**Math.round(Math.log10(xFaktor/3)-0.5)))) < 0.1*(10**Math.round(Math.log10(xFaktor/3)-0.5)) || (Math.abs((a-xVerschiebung+1)*xFaktor/1000)%(10**Math.round(Math.log10(xFaktor/3)-0.5))) < 0.1*(10**Math.round(Math.log10(xFaktor/3)-0.5)))) {
             inner += '<line x1="'+(a-(0.1*(10**Math.round(Math.log10(xFaktor/3)-0.5))/xFaktor*1000))+'" y1="0" x2="'+(a-(0.1*(10**Math.round(Math.log10(xFaktor/3)-0.5))/xFaktor*1000))+'" y2="400" style="stroke:rgb(255, 255, 255, 0.2);stroke-width:1" />';
-            innerU += '<text x="'+(17+a-(0.1*(10**Math.round(Math.log10(xFaktor/3)-0.5))/xFaktor*1000))+'" y="10">'+(((a-xVerschiebung)*xFaktor/1000)).toFixed(potenz)+'</text>'
+            innerU += '<text x="'+(17+a-(0.1*(10**Math.round(Math.log10(xFaktor/3)-0.5))/xFaktor*1000))+'" y="10">'+Math.round(((a-xVerschiebung)*xFaktor/1000)/10**Math.round(Math.log10(xFaktor/3)-0.5))*10**Math.round(Math.log10(xFaktor/3)-0.5).toFixed(potenz)+'</text>'
             //console.log("hhhhhhhh");
         }
     }
@@ -464,9 +472,14 @@ function refreshGraph() {
     for(a = -50; a < 450; a++) {
         let potenz = -Math.round(Math.log10(yFaktor/2)-0.5);
         if(potenz < 0) potenz = 0;
+        let pot2 = Math.abs(Math.round(Math.log10(yFaktor/2)-0.5));
+        if(pot2 == 0) {
+            pot2 = 5;
+        }
+        console.log("hffv       "+pot2);
         if((Math.abs(10**Math.round(Math.log10(yFaktor/2)-0.5)-(Math.abs((400-a-yVerschiebung)/400*yFaktor)%(10**Math.round(Math.log10(yFaktor/2)-0.5)))) < 0.1*(10**Math.round(Math.log10(yFaktor/2)-0.5)) || (Math.abs((400-a-yVerschiebung)/400*yFaktor)%(10**Math.round(Math.log10(yFaktor/2)-0.5))) < 0.1*(10**Math.round(Math.log10(yFaktor/2)-0.5))) && !(Math.abs(10**Math.round(Math.log10(yFaktor/2)-0.5)-(Math.abs((400-a-yVerschiebung+1)/400*yFaktor)%(10**Math.round(Math.log10(yFaktor/2)-0.5)))) < 0.1*(10**Math.round(Math.log10(yFaktor/2)-0.5)) || (Math.abs((400-a-yVerschiebung+1)/400*yFaktor)%(10**Math.round(Math.log10(yFaktor/2)-0.5))) < 0.1*(10**Math.round(Math.log10(yFaktor/2)-0.5)))) {
             inner += '<line y1="'+((a+(0.1*(10**Math.round(Math.log10(yFaktor/2)-0.5))/yFaktor*400)))+'" x1="0" y2="'+((a+(0.1*(10**Math.round(Math.log10(yFaktor/2)-0.5))/yFaktor*400)))+'" x2="1000" style="stroke:rgb(255, 255, 255, 0.14);stroke-width:1" />';
-            innerL += '<text x="'+(35-6*(""+(10**potenz)).length)+'" y="'+(a+9+(0.1*(10**Math.round(Math.log10(yFaktor/2)-0.5))/yFaktor*400))+'">'+(((400-a-yVerschiebung+1)/400*yFaktor)).toFixed(potenz)+'</text>'
+            innerL += '<text x="'+(35-6*(pot2))+'" y="'+(a+9+(0.1*(10**Math.round(Math.log10(yFaktor/2)-0.5))/yFaktor*400))+'">'+Math.round(((400-a-yVerschiebung+1)/400*yFaktor)/10**Math.round(Math.log10(yFaktor/2)-0.5))*10**Math.round(Math.log10(yFaktor/2)-0.5).toFixed(potenz)+'</text>'
             //console.log("aaaaaaa");
         }
     }
