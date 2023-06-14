@@ -458,18 +458,18 @@ function refreshGraph() {
 
     innerU = '<g font-size="10" fill="white" stroke="var(--schriftfarbe)" text-anchor="middle">"';
     //alert(Math.round(Math.log10(xFaktor/2)-0.5));
-    for(var a = -50; a < 1050; a++) {
+    for(var a = 0; a < 1000; a++) {
         let potenz = -Math.round(Math.log10((xFaktor)/3)-0.5);
         if(potenz < 0) potenz = 0;
         if((Math.abs(10**Math.round(Math.log10(xFaktor/3)-0.5)-(Math.abs((a-xVerschiebung)*xFaktor/1000)%(10**Math.round(Math.log10(xFaktor/3)-0.5)))) < 0.1*(10**Math.round(Math.log10(xFaktor/3)-0.5)) || (Math.abs((a-xVerschiebung)*xFaktor/1000)%(10**Math.round(Math.log10(xFaktor/3)-0.5))) < 0.1*(10**Math.round(Math.log10(xFaktor/3)-0.5))) && !(Math.abs(10**Math.round(Math.log10(xFaktor/3)-0.5)-(Math.abs((a-xVerschiebung+1)*xFaktor/1000)%(10**Math.round(Math.log10(xFaktor/3)-0.5)))) < 0.1*(10**Math.round(Math.log10(xFaktor/3)-0.5)) || (Math.abs((a-xVerschiebung+1)*xFaktor/1000)%(10**Math.round(Math.log10(xFaktor/3)-0.5))) < 0.1*(10**Math.round(Math.log10(xFaktor/3)-0.5)))) {
             inner += '<line x1="'+(a-(0.1*(10**Math.round(Math.log10(xFaktor/3)-0.5))/xFaktor*1000))+'" y1="0" x2="'+(a-(0.1*(10**Math.round(Math.log10(xFaktor/3)-0.5))/xFaktor*1000))+'" y2="400" style="stroke:rgb(255, 255, 255, 0.2);stroke-width:1" />';
-            innerU += '<text x="'+(17+a-(0.1*(10**Math.round(Math.log10(xFaktor/3)-0.5))/xFaktor*1000))+'" y="10">'+Math.round(((a-xVerschiebung)*xFaktor/1000)/10**Math.round(Math.log10(xFaktor/3)-0.5))*10**Math.round(Math.log10(xFaktor/3)-0.5).toFixed(potenz)+'</text>'
+            innerU += '<text x="'+(17+a-(0.1*(10**Math.round(Math.log10(xFaktor/3)-0.5))/xFaktor*1000))+'" y="10">'+(Math.round(((a-xVerschiebung)*xFaktor/1000)/10**Math.round(Math.log10(xFaktor/3)-0.5))*10**Math.round(Math.log10(xFaktor/3)-0.5).toFixed(potenz)).toFixed(potenz)+'</text>'
             //console.log("hhhhhhhh");
         }
     }
     innerU += '</g>';
     innerL = '<g font-size="10" fill="white" stroke="var(--schriftfarbe)" text-anchor="left">';
-    for(a = -50; a < 450; a++) {
+    for(a = 0; a < 400; a++) {
         let potenz = -Math.round(Math.log10(yFaktor/2)-0.5);
         if(potenz < 0) potenz = 0;
         let pot2 = Math.abs(Math.round(Math.log10(yFaktor/2)-0.5));
