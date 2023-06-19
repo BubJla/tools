@@ -1,5 +1,5 @@
-var auto_refresh = setInterval(function() { endfunction();}, 100);
-var auto_refreshscore = setInterval(function() { score();}, 500);
+var auto_refresh = setInterval(function() { endfunction();}, 10);
+var auto_refreshscore = setInterval(function() { score();}, 50);
 var punkte = 0;
 var robo = document.getElementById("RoboStart"); 
 var spetialcontainer;
