@@ -27,22 +27,20 @@
         </ul>
         <span>
             <input type="text" min="0" value="0" id="stunden">
-            &ensp;
+            <span style="width: 1%;"></span>
             <d>h</d>
-            &emsp;
+            <span style="width: 3%;"></span>
             <input type="text" min="0" max="59" value="0" id="minuten">
-            &ensp;
+            <span style="width: 1%;"></span>
             <d>min</d>
-            &emsp;
+            <span style="width: 3%;"></span>
             <input type="text" min="0" max="59" value="0" id="sekunden">
-            &ensp;
+            <span style="width: 1%;"></span>
             <d>s</d>
-            &emsp;
-            &emsp;
-            &emsp;
-            <input type="button" value="START" onclick="startTimer()" id="start">
-            <input type="button" value="PAUSE" onclick="stoppTimer()" id="stopp" disabled>
-            <input type="button" value="LÖSCHEN" onclick="resetTimer()" id="reset">
+            <span style="width: 10%;"></span>
+            <input type="button" value="START" onclick="startTimer()" id="start" style="width: 70px;">
+            <input type="button" value="PAUSE" onclick="stoppTimer()" id="stopp" disabled style="width: 70px;">
+            <input type="button" value="LÖSCHEN" onclick="resetTimer()" id="reset" style="width: 70px;">
         </span>
         <br>
         <br>
@@ -53,7 +51,7 @@
             <d>:</d>
             <d id="sekunde">00</d>
             <d>:</d>
-            <d id="millisekunde" style="width: 7%">000</d>
+            <d id="millisekunde" style="width: 50px">000</d>
         </span>
 
     </div>

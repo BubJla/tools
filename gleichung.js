@@ -342,12 +342,12 @@ function refreshGraph() {
 
 
     var trm = termL;
-    for(let i = 0; i <= breite; i+=1) {
-        inner += '<line x1="'+rechnen((i-0.55))+'" y1="'+(400-(rechnen(ersetzen(trm, "x", (i-xVerschiebung)*xFaktor/breite)))*400/yFaktor-yVerschiebung)+'" x2="'+rechnen((i+0.55))+'" y2="'+(400-(rechnen(ersetzen(trm, "x", (i-xVerschiebung+3)*xFaktor/breite)))*400/yFaktor-yVerschiebung)+'" style="stroke:var(--akzentfarbe1);stroke-width:3" />';
+    for(let i = 0; i < breite; i+=2) {
+        inner += '<line x1="'+rechnen((i))+'" y1="'+(400-(rechnen(ersetzen(trm, "x", (i-xVerschiebung)*xFaktor/breite)))*400/yFaktor-yVerschiebung)+'" x2="'+rechnen((i+3))+'" y2="'+(400-(rechnen(ersetzen(trm, "x", (i-xVerschiebung+3)*xFaktor/breite)))*400/yFaktor-yVerschiebung)+'" style="stroke:var(--akzentfarbe1);stroke-width:3" />';
     }
     trm = termR;
-    for(let i = 0; i <= breite; i+=1) {
-        inner += '<line x1="'+rechnen((i-0.55))+'" y1="'+(400-(rechnen(ersetzen(trm, "x", (i-xVerschiebung)*xFaktor/breite)))*400/yFaktor-yVerschiebung)+'" x2="'+rechnen((i+0.55))+'" y2="'+(400-(rechnen(ersetzen(trm, "x", (i-xVerschiebung+3)*xFaktor/breite)))*400/yFaktor-yVerschiebung)+'" style="stroke:var(--akzentfarbe2);stroke-width:3" />';
+    for(let i = 0; i < breite; i+=2) {
+        inner += '<line x1="'+rechnen((i))+'" y1="'+(400-(rechnen(ersetzen(trm, "x", (i-xVerschiebung)*xFaktor/breite)))*400/yFaktor-yVerschiebung)+'" x2="'+rechnen((i+3))+'" y2="'+(400-(rechnen(ersetzen(trm, "x", (i-xVerschiebung+3)*xFaktor/breite)))*400/yFaktor-yVerschiebung)+'" style="stroke:var(--akzentfarbe2);stroke-width:3" />';
     }
     
     inner += '<line x1="0" y1="'+(400-yVerschiebung)+'" x2="'+breite+'" y2="'+(400-yVerschiebung)+'" style="stroke:var(--schriftfarbe);stroke-width:1" />';

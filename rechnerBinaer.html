@@ -49,29 +49,45 @@
         <span class = "einheitentemp">
             <input type="text" id="gradcelsius" onkeyup="temperatur(1)" placeholder="z.B. 10" class="inputUmrechnerBinaer" maxlength="10"> 
             <span><d>°C</d></span>
+            <span style="width: 3%;"></span>
             <input type="text" id="kelvin" onkeyup="temperatur(2)" placeholder="z.B. 283" class="inputUmrechnerBinaer" maxlength="10"> 
             <span><d>K</d></span>
+            <span style="width: 3%;"></span>
             <input type="text" id="gradfahrenheit" onkeyup="temperatur(3)" placeholder="z.B. 50" class="inputUmrechnerBinaer" maxlength="10"> 
             <span><d>°F</d></span>
+            <span style="width: 3%;"></span>
         </span>
         <br>
         <br>
         <span class = "einheitenlaeng">
             <input type="text" id="meter" onkeyup="laenge(1)" placeholder="z.B. 225" class="inputUmrechnerBinaer" maxlength="10"> 
             <span><d>m</d></span>
+            <span style="width: 3%;"></span>
             <input type="text" id="zoll" onkeyup="laenge(2)" placeholder="z.B. 225" class="inputUmrechnerBinaer" maxlength="10"> 
-            <span><d>in</d></span><!--   ″   -->
+            <span><d>in</d></span>
+            <span style="width: 3%;"></span>
             <input type="text" id="fuss" onkeyup="laenge(3)" placeholder="z.B. 225" class="inputUmrechnerBinaer" maxlength="10"> 
             <span><d>ft</d></span>
+            <span style="width: 3%;"></span>
             <input type="text" id="meile" onkeyup="laenge(4)" placeholder="z.B. 18" class="inputUmrechnerBinaer" maxlength="10"> 
             <span><d>mi</d></span>
+            <span style="width: 3%;"></span>
             <input type="text" id="yard" onkeyup="laenge(5)" placeholder="z.B. 8%" class="inputUmrechnerBinaer" maxlength="10"> 
             <span><d>yd</d></span>
+            <span style="width: 3%;"></span>
         </span>
         <hr style="margin-top: 25px; margin-bottom: 25px">
-        <span style="font-size: 1.5rem;"><d>Farbwähler(RGB/ HSL/ HEX):</d> &emsp;<d id="rgb" style="width: 15%">34 34 170</d>&emsp;<d id="hsl" style="width: 20%">240 67% 40%</d>&emsp;<d id="hex" style="width: 15%">2222AA</d></span>
+        <span style="font-size: 1.5rem;">
+            <d style="width: 29%">Farbwähler(RGB/ HSL/ HEX):</d> 
+            <span style="width: 6%;"></span>
+            <d id="rgb" style="width: 18%">34 34 170</d>
+            <span style="width: 4%;"></span>
+            <d id="hsl" style="width: 23%">240 67% 40%</d>
+            <span style="width: 3%;"></span>
+            <d id="hex" style="width: 17%">2222AA</d>
+        </span>
         <span>
-            <input type="color" id="favcolor" style="height: 50px; width: 95%" value="#2222AA">
+            <input type="color" id="favcolor" style="height: 50px; width: 100%; border: 0px;" value="#2222AA">
         </span>
     </div>
 </body>
