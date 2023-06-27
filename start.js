@@ -49,22 +49,16 @@ document.getElementById("navigationsleiste").innerHTML=`
         <a href="index.html" id="start">Startseite</a>
     </li>
     <li>    
+        <a id="mathe" href="gleichung.html">Mathematik</a>
+    </li>
+    <li>    
         <a id="zeit" href="zeit.html">Zeit</a>
     </li>
     <li>    
-        <a id="spiele" href="spiele.html">Spiele</a>
-    </li>
-    <li>    
-        <a id="mathe" href="rechner.html">Mathematik</a>
+        <a id="spiele" href="kopfrechentraining.html">Spiele</a>
     </li>
     <li>    
         <a id="sicherheit" href="sicherheit.html">Sicherheit</a>
-    </li>
-    <li>    
-        <a id="analysis" href="integral.html">Analysis</a>
-    </li>
-    <li>    
-        <a id="gleichung" href="gleichung.html">Gleichung</a>
     </li>
     <li>    
         <a id="impressum" href="impressum.html">Impressum</a>
@@ -78,16 +72,15 @@ aktuelleSeite =  aktuelleSeite[aktuelleSeite.length-1];
 aktuelleSeite =  aktuelleSeite.split(".");
 aktuelleSeite =  aktuelleSeite[0];
 aktuelleSeite =  aktuelleSeite.replace("index", "start");
-aktuelleSeite =  aktuelleSeite.replace("kopfrechentraining", "mathe");
+aktuelleSeite =  aktuelleSeite.replace("kopfrechentraining", "spiele");
 aktuelleSeite =  aktuelleSeite.replace("rechnerBinaer", "mathe");
 aktuelleSeite =  aktuelleSeite.replace("rechner", "mathe");
 aktuelleSeite =  aktuelleSeite.replace("spieleClickgeschw", "spiele");
 aktuelleSeite =  aktuelleSeite.replace("TicTacToe", "spiele");
 aktuelleSeite =  aktuelleSeite.replace("zeitStoppuhr", "zeit");
 aktuelleSeite =  aktuelleSeite.replace("zeitTimer", "zeit");
-aktuelleSeite =  aktuelleSeite.replace("integral", "analysis");
-//aktuelleSeite =  aktuelleSeite.replace("settings", "se11ngs");
+aktuelleSeite =  aktuelleSeite.replace("gleichungSystem", "mathe");
+aktuelleSeite =  aktuelleSeite.replace("gleichung", "mathe");
+aktuelleSeite =  aktuelleSeite.replace("integral", "mathe");
 if(aktuelleSeite == '')aktuelleSeite = "start";
-//alert(aktuelleSeite);
-//alert(document.getElementById("bhwdves")==null);
 if(aktuelleSeite != 'settings') document.getElementById(aktuelleSeite).setAttribute("class", "aktiv");

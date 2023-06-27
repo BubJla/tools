@@ -5,26 +5,17 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="style.css" rel="stylesheet">
-    <title>Click pro sec</title>
+    <title>Clicks pro sec</title>
     <script src="spieleClickgeschw.js"></script>
 </head>
 <body onkeyup="clicks++">
     <ul class = "navigationsleiste" id="navigationsleiste">
     </ul>
-    <ul class = "navigationsleistespiele">
-        <li>
-            <a href = "spiele.html"><br>R<br>E<br>A<br>K<br>T<br>I<br>O<br>N</a>
-        </li>
-        <li>
-            <a href="TicTacToe.html"><br>T<br>I<br>C<br>T<br>A<br>C<br>T<br>O<br>E</a>
-        </li>
-        <li>
-            <a class = "aktiv"><br>C<br>L<br>I<br>C<br>K<br>/<br>S<br>E<br>C</a>
-        </li>
-    </ul>   
-    <div class = "divspiele">
+    <div class = "divges">
         <h1 class = "head">Clickgeschwindigkeit</h1>
         <hr>
+        <ul class="listeNebeneinander" id="listeNebeneinanderSpiele">
+        </ul>
         <span class="zeitauswahlClickgeschw">
             <div style="width: 14%">
                 <span><d>Zeit:</d></span>
@@ -61,4 +52,5 @@
     </div>
 </body>
 <script src="start.js"></script>
+<script src="startSpiele.js"></script>
 </html>

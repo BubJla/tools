@@ -1,4 +1,4 @@
-var breite = (screen.width)*0.84-50;
+var breite = (screen.width)*0.84-52;
 
 var xV = breite/2;
 var xF = 50;
@@ -26,7 +26,7 @@ function toNum(text) {
     text = ersetzen(text, "5", 5);
     text = ersetzen(text, "6", 6);
     text = ersetzen(text, "7", 7);
-    text = ersetzen(text, "8", 8);
+    text = ersetzen(text, "8", 8); 
     text = ersetzen(text, "9", 9);
 }
 
@@ -237,7 +237,7 @@ function gleichung() {
         //alert(eval(ersetzen(termR, "x", ergebnisse[p])));
         ergWerte[ergWerte.length] = eval(ersetzen(termR, "x", ergebnisse[p]));
     }
-    //ergWerte = ergWerte.sort(compareNumbers);
+    ergWerte = ergWerte.sort(compareNumbers);
     yFaktor = ((ergWerte[ergWerte.length-1]-ergWerte[0])*1.7);
     if(yFaktor == 0) {
         var mittelErgebnisse = [];
@@ -270,9 +270,9 @@ function gleichung() {
         xFaktor = 50;//Abstand kleinster/ hoechster x Wert
         yFaktor = 25;//Abstand kleinster/ hoechster y Wert
     }
-    if(yFaktor == 2000) yFaktor = 10;
-    if(xFaktor < 3) xFaktor = 3;
-    if(yFaktor < 3) yFaktor = 3;
+    //if(yFaktor == 2000) yFaktor = 10;
+    //if(xFaktor < 3) xFaktor = 3;
+    //if(yFaktor < 3) yFaktor = 3;
     e = ergebnisse;
     xF = xFaktor;
     yF = yFaktor;
@@ -324,10 +324,10 @@ function refreshGraph() {
         e = "keine oder zu große Lösung";
         //alert(e);
     }
-    console.log("xV:     "+xV);
+    /*console.log("xV:     "+xV);
     console.log("xF:     "+xF);
     console.log("yV:     "+yV);
-    console.log("yF:     "+yF);
+    console.log("yF:     "+yF);*/
     var ergebnisse = e;
     var xVerschiebung = xV;
     var yVerschiebung = yV;
@@ -342,12 +342,12 @@ function refreshGraph() {
 
 
     var trm = termL;
-    for(let i = 0; i < breite; i+=2) {
-        inner += '<line x1="'+rechnen((i))+'" y1="'+(400-(rechnen(ersetzen(trm, "x", (i-xVerschiebung)*xFaktor/breite)))*400/yFaktor-yVerschiebung)+'" x2="'+rechnen((i+3))+'" y2="'+(400-(rechnen(ersetzen(trm, "x", (i-xVerschiebung+3)*xFaktor/breite)))*400/yFaktor-yVerschiebung)+'" style="stroke:var(--akzentfarbe1);stroke-width:3" />';
+    for(let i = 0; i <= breite; i+=1) {
+        inner += '<line x1="'+rechnen((i-0.55))+'" y1="'+(400-(rechnen(ersetzen(trm, "x", (i-xVerschiebung)*xFaktor/breite)))*400/yFaktor-yVerschiebung)+'" x2="'+rechnen((i+0.55))+'" y2="'+(400-(rechnen(ersetzen(trm, "x", (i-xVerschiebung+3)*xFaktor/breite)))*400/yFaktor-yVerschiebung)+'" style="stroke:var(--akzentfarbe1);stroke-width:3" />';
     }
     trm = termR;
-    for(let i = 0; i < breite; i+=2) {
-        inner += '<line x1="'+rechnen((i))+'" y1="'+(400-(rechnen(ersetzen(trm, "x", (i-xVerschiebung)*xFaktor/breite)))*400/yFaktor-yVerschiebung)+'" x2="'+rechnen((i+3))+'" y2="'+(400-(rechnen(ersetzen(trm, "x", (i-xVerschiebung+3)*xFaktor/breite)))*400/yFaktor-yVerschiebung)+'" style="stroke:var(--akzentfarbe2);stroke-width:3" />';
+    for(let i = 0; i <= breite; i+=1) {
+        inner += '<line x1="'+rechnen((i-0.55))+'" y1="'+(400-(rechnen(ersetzen(trm, "x", (i-xVerschiebung)*xFaktor/breite)))*400/yFaktor-yVerschiebung)+'" x2="'+rechnen((i+0.55))+'" y2="'+(400-(rechnen(ersetzen(trm, "x", (i-xVerschiebung+3)*xFaktor/breite)))*400/yFaktor-yVerschiebung)+'" style="stroke:var(--akzentfarbe2);stroke-width:3" />';
     }
     
     inner += '<line x1="0" y1="'+(400-yVerschiebung)+'" x2="'+breite+'" y2="'+(400-yVerschiebung)+'" style="stroke:var(--schriftfarbe);stroke-width:1" />';
@@ -368,7 +368,7 @@ function refreshGraph() {
         let potenz = -Math.round(Math.log10((xFaktor)/3)-0.5);
         if(potenz < 0) potenz = 0;
         if((Math.abs(10**Math.round(Math.log10(xFaktor/3)-0.5)-(Math.abs((a-xVerschiebung)*xFaktor/breite)%(10**Math.round(Math.log10(xFaktor/3)-0.5)))) < 0.1*(10**Math.round(Math.log10(xFaktor/3)-0.5)) || (Math.abs((a-xVerschiebung)*xFaktor/breite)%(10**Math.round(Math.log10(xFaktor/3)-0.5))) < 0.1*(10**Math.round(Math.log10(xFaktor/3)-0.5))) && !(Math.abs(10**Math.round(Math.log10(xFaktor/3)-0.5)-(Math.abs((a-xVerschiebung+1)*xFaktor/breite)%(10**Math.round(Math.log10(xFaktor/3)-0.5)))) < 0.1*(10**Math.round(Math.log10(xFaktor/3)-0.5)) || (Math.abs((a-xVerschiebung+1)*xFaktor/breite)%(10**Math.round(Math.log10(xFaktor/3)-0.5))) < 0.1*(10**Math.round(Math.log10(xFaktor/3)-0.5)))) {
-            inner += '<line x1="'+(a-(0.1*(10**Math.round(Math.log10(xFaktor/3)-0.5))/xFaktor*breite))+'" y1="0" x2="'+(a-(0.1*(10**Math.round(Math.log10(xFaktor/3)-0.5))/xFaktor*breite))+'" y2="400" style="stroke:rgb(255, 255, 255, 0.2);stroke-width:1" />';
+            inner += '<line x1="'+(a-(0.1*(10**Math.round(Math.log10(xFaktor/3)-0.5))/xFaktor*breite))+'" y1="0" x2="'+(a-(0.1*(10**Math.round(Math.log10(xFaktor/3)-0.5))/xFaktor*breite))+'" y2="400" style="stroke:rgb(125, 125, 125, 0.6);stroke-width:1" />';
             innerU += '<text x="'+(11+a-(0.1*(10**Math.round(Math.log10(xFaktor/3)-0.5))/xFaktor*breite))+'" y="10">'+(Math.round(((a-xVerschiebung)*xFaktor/breite)/10**Math.round(Math.log10(xFaktor/3)-0.5))*10**Math.round(Math.log10(xFaktor/3)-0.5).toFixed(potenz)).toFixed(potenz)+'</text>'
             //console.log("hhhhhhhh");
         }
@@ -382,9 +382,9 @@ function refreshGraph() {
         if(pot2 == 0) {
             pot2 = 5;
         }
-        console.log("hffv       "+pot2);
+        //console.log("hffv       "+pot2);
         if((Math.abs(10**Math.round(Math.log10(yFaktor/2)-0.5)-(Math.abs((400-a-yVerschiebung)/400*yFaktor)%(10**Math.round(Math.log10(yFaktor/2)-0.5)))) < 0.1*(10**Math.round(Math.log10(yFaktor/2)-0.5)) || (Math.abs((400-a-yVerschiebung)/400*yFaktor)%(10**Math.round(Math.log10(yFaktor/2)-0.5))) < 0.1*(10**Math.round(Math.log10(yFaktor/2)-0.5))) && !(Math.abs(10**Math.round(Math.log10(yFaktor/2)-0.5)-(Math.abs((400-a-yVerschiebung+1)/400*yFaktor)%(10**Math.round(Math.log10(yFaktor/2)-0.5)))) < 0.1*(10**Math.round(Math.log10(yFaktor/2)-0.5)) || (Math.abs((400-a-yVerschiebung+1)/400*yFaktor)%(10**Math.round(Math.log10(yFaktor/2)-0.5))) < 0.1*(10**Math.round(Math.log10(yFaktor/2)-0.5)))) {
-            inner += '<line y1="'+((a+(0.1*(10**Math.round(Math.log10(yFaktor/2)-0.5))/yFaktor*400)))+'" x1="0" y2="'+((a+(0.1*(10**Math.round(Math.log10(yFaktor/2)-0.5))/yFaktor*400)))+'" x2="'+breite+'" style="stroke:rgb(255, 255, 255, 0.14);stroke-width:1" />';
+            inner += '<line y1="'+((a+(0.1*(10**Math.round(Math.log10(yFaktor/2)-0.5))/yFaktor*400)))+'" x1="0" y2="'+((a+(0.1*(10**Math.round(Math.log10(yFaktor/2)-0.5))/yFaktor*400)))+'" x2="'+breite+'" style="stroke:rgb(125, 125, 125, 0.4);stroke-width:1" />';
             innerL += '<text x="'+(35-6*(pot2))+'" y="'+(a+9+(0.1*(10**Math.round(Math.log10(yFaktor/2)-0.5))/yFaktor*400))+'">'+Math.round(((400-a-yVerschiebung+1)/400*yFaktor)/10**Math.round(Math.log10(yFaktor/2)-0.5))*10**Math.round(Math.log10(yFaktor/2)-0.5).toFixed(potenz)+'</text>'
             //console.log("aaaaaaa");
         }
@@ -398,3 +398,51 @@ function refreshGraph() {
 
     document.getElementById("svgGraph").innerHTML = inner;
 }
+
+function handleScroll() {
+    // Hier kannst du den Code platzieren, der bei einer Scroll-Bewegung ausgeführt werden soll
+    //console.log("Scroll-Bewegung erkannt!");
+  }
+  
+  // Das scroll-Ereignis abhören und die Funktion handleScroll aufrufen
+  window.addEventListener("click", handleScroll);
+
+/*
+// Funktion zur Berechnung der Lösung einer Gleichung durch das Newton-Raphson-Verfahren
+function solveEquationWithNewtonRaphson(guess, equation, derivative, epsilon, maxIterations) {
+  var x = guess;
+  var iteration = 0;
+  
+  while (Math.abs(equation(x)) > epsilon && iteration < maxIterations) {
+    var f = equation(x);
+    var fPrime = derivative(x);
+    
+    if (fPrime === 0) {
+      console.log("Das Verfahren konvergiert nicht.");
+      return null;
+    }
+    
+    x = x - f / fPrime;
+    iteration++;
+  }
+  
+  if (iteration === maxIterations) {
+    console.log("Maximale Anzahl an Iterationen erreicht.");
+    return null;
+  }
+  
+  return x;
+}
+
+// Beispielaufruf der Funktion
+var guess = -1009;
+var equation = function(x) {
+  return Math.E**x-10;
+};
+var derivative = function(x) {
+  return Math.E**x;
+};
+var epsilon = 0.0000001;
+var maxIterations = 10000;
+var solution = solveEquationWithNewtonRaphson(guess, equation, derivative, epsilon, maxIterations);
+console.log("Approximierte Lösung: " + solution);*/

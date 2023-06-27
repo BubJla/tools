@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="style.css" rel="stylesheet">
+    <title>Lineare Gleichungssysteme</title>
+</head>
+<body>
+    <ul class = "navigationsleiste" id="navigationsleiste">
+    </ul>
+    <div class = "divges">
+        <h1 class = "head">Lineare Gleichungssysteme</h1>
+        <hr>
+        <ul class="listeNebeneinander" id="listeNebeneinanderMathe">
+        </ul>
+        <span>
+            <d style="font-size: 1.6rem;">Zeilen</d>
+            &emsp;
+            <d style="font-size: 1.6rem;" onclick="zeilen++; zeile();">+</d>
+            &emsp;
+            <d style="font-size: 1.6rem;" onclick ="zeilen --; zeile();">-</d>
+        </span>
+        <hr>
+        <div id = "lgss">
+        </div>
+        </div>
+    </body>
+    <script src="gleichungSystem.js"></script>
+    <script src="start.js"></script>
+    <!--<script src="startMathematik.js"></script>-->
+</html>
