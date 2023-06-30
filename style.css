@@ -175,6 +175,7 @@ hr{
     justify-content: center;
     align-items: center;
     text-align: center;
+    background-color: #222222;
 }
 
 #clickfeld{
@@ -209,6 +210,14 @@ hr{
     background-color: rgb(150, 200, 150)!important;
 }
 
+.black{
+    background-color: rgb(0, 0, 0)!important;
+}
+
+.gray{
+    background-color: #222!important;
+}
+
 #reaktionsfeld d{
     color: black;
     font-size: 5em;
@@ -232,10 +241,16 @@ circle{
     fill: var(--hintergrundfarbe);
 }
 
+ellipse{
+    stroke-width: 2%; 
+    stroke: var(--schriftfarbe);
+    fill: var(--hintergrundfarbe);
+}
+
 .kaestchen{
     border: 2px solid;
     border-color: var(--schriftfarbe);
-    width: 150px;
+    width: 33.3%;
     height: 150px;
 }
 
@@ -249,7 +264,7 @@ circle{
 
 .feldGewonnen {
     border: 2px solid white;
-    width: 150px;
+    width: 33.3%;
     height: 150px;
     background-color: yellow;
 }

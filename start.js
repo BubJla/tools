@@ -58,7 +58,7 @@ document.getElementById("navigationsleiste").innerHTML=`
         <a id="spiele" href="kopfrechentraining.html">Spiele</a>
     </li>
     <li>    
-        <a id="sicherheit" href="sicherheit.html">Sicherheit</a>
+        <a id="sicherheit" href="sicherheit.html">Sonstiges</a>
     </li>
     <li>    
         <a id="impressum" href="impressum.html">Impressum</a>

@@ -1,5 +1,8 @@
 //document.cookie = "zahl=123; expires=27 Nov 2100 00:00:00 UTC; path=/";
 
+var breite = (screen.width)*0.84-230;
+
+
 function setCookie(name, value) {
     var date = new Date();
     date.setTime(date.getTime() + (60*24*60*60*1000));
@@ -209,6 +212,58 @@ function loeschen() {
     document.getElementById("automatisch").checked = readCookie("automatikAktiv");
     changeSetting();
 }
+//breite = 1;
+
+document.getElementById("vorschau01").innerHTML = `
+    <d>Vorschau*:</d>
+    <span>            
+        <div style="width: `+breite+`px; height: 360px; border: 5px solid white;">
+            <ul class = "navigationsleiste" style="height: 348px; width: `+(breite*0.16)+`px; position: absolute;">
+                <div style="height: 83%;">
+                <li>
+                    <a class="aktiv">generiert</a>
+                </li>
+                <li>
+                    <a>Akzent 1</a>
+                </li>
+                <li>
+                    <a>Akzent 1</a>
+                </li>
+                </div>
+                    <a class="gear" style="padding-left: 0px">&#9881;</a>
+            </ul>
+            <div class = "divges" style="width: `+(breite*0.83)+`px">
+                <h1 class = "head" >Überschrift</h1>
+                <hr>
+                <ul class="listeNebeneinander">
+                    <li class="nebeneinander">
+                        <a class="aktiv">generiert</a>
+                    </li>
+                    <li class="nebeneinander">
+                        <a>Akzent 2</a>
+                    </li>
+                    <li class="nebeneinander">
+                        <a>Akzent 2</a>
+                    </li>
+                </ul>
+                <d style="margin-left : 2%">Das ist ein Beispieltext!</d>
+                <d id="qwert" style="margin-left : 2%">Links können sie die Erscheinung der gesamten Website auf ihre Bedürfnisse anpassen.</d>
+                <br>
+                <span>
+                    <div>
+                        <d>Akzentfarbe 3:</d>
+                        <input type="radio" checked>
+                        <input type="checkbox" checked>
+                        <input type="range" style="width: 200px">
+                        </div>
+                </span>
+                </div>
+        
+        </div>
+    </span>
+    <d style="font-size: 0.7rem!important;">*nicht Maßstabsgetreu</d>
+`;
+
 
 if(readCookie("groesse") == undefined) {
     setCookie("hintergrundfarbe", "#000000");

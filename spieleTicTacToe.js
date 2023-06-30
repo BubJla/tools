@@ -5,6 +5,8 @@ var gestartet = 0;
 var gewinnBeteiligte = [0, 0, 0];
 var zug_letzt = 0;
 var gZug1; // 1. Zug des gegners wenn computer beginnt
+var breite = ((screen.width)*0.84-220)/3-15;
+if(breite>141) breite = 141;
 
 
 function resetRandom(){//den Zufall zufälliger machen
@@ -12,158 +14,26 @@ function resetRandom(){//den Zufall zufälliger machen
     for(let i = 0; i < date; i++) Math.random();
 }
 
-function setFeld1(){
-    if(felder[1] > 0 || gestartet == 0) return;
+function setFeld(feld){
+    if(felder[feld] > 0 || gestartet == 0) return;
     if(zug%2 == 1) {
-        document.getElementById("feld1").innerHTML= '<svg> <polygon points= "5, 5, 145, 145"/><polygon points= "5, 145, 145, 5"/></svg>'
-        felder[1] = 1;
+        document.getElementById("feld"+feld).innerHTML= '<svg> <polygon points= "5, 5, '+breite+', 145"/><polygon points= "5, 145, '+breite+', 5"/></svg>'
+        felder[feld] = 1;
     }
     else  {
-        document.getElementById("feld1").innerHTML= '<svg><circle cx= "75" cy= "75" r= "70"/></svg>'
-        felder[1] = 2;
+        document.getElementById("feld"+feld).innerHTML= '<svg><ellipse cx="'+((breite)/2)+'" cy="75" rx="'+((breite-5)/2)+'" ry="70"/></svg>'
+        felder[feld] = 2;
     }
     zug ++;
 }
 
-function setFeld2(){
-    if(felder[2] > 0 || gestartet == 0) return;
-    if(zug%2 == 1) {
-        document.getElementById("feld2").innerHTML= '<svg> <polygon points= "5, 5, 145, 145"/><polygon points= "5, 145, 145, 5"/></svg>'
-        felder[2] = 1;
-    }
-    else {
-        document.getElementById("feld2").innerHTML= '<svg><circle cx= "75" cy= "75" r= "70"/></svg>'
-        felder[2] = 2;
-    }
-    zug ++;
-}
-
-function setFeld3(){
-    if(felder[3] > 0 || gestartet == 0) return;
-    if(zug%2 == 1) {
-        document.getElementById("feld3").innerHTML= '<svg> <polygon points= "5, 5, 145, 145"/><polygon points= "5, 145, 145, 5"/></svg>'
-        felder[3] = 1;
-    }
-    else  {
-        document.getElementById("feld3").innerHTML= '<svg><circle cx= "75" cy= "75" r= "70"/></svg>'
-        felder[3] = 2;
-    }
-    zug ++;
-}
-
-function setFeld4(){
-    if(felder[4] > 0 || gestartet == 0) return;
-    if(zug%2 == 1) {
-        document.getElementById("feld4").innerHTML= '<svg> <polygon points= "5, 5, 145, 145"/><polygon points= "5, 145, 145, 5"/></svg>'
-        felder[4] = 1;
-    }
-    else  {
-        document.getElementById("feld4").innerHTML= '<svg><circle cx= "75" cy= "75" r= "70"/></svg>'
-        felder[4] = 2;
-    }
-    zug ++;
-}
-
-function setFeld5(){
-    if(felder[5] > 0 || gestartet == 0) return;
-    if(zug%2 == 1) {
-        document.getElementById("feld5").innerHTML= '<svg> <polygon points= "5, 5, 145, 145"/><polygon points= "5, 145, 145, 5"/></svg>'
-        felder[5] = 1;
-    }
-    else  {
-        document.getElementById("feld5").innerHTML= '<svg><circle cx= "75" cy= "75" r= "70"/></svg>'
-        felder[5] = 2;
-    }
-    zug ++;
-}
-
-function setFeld6(){
-    if(felder[6] > 0 || gestartet == 0) return;
-    if(zug%2 == 1) {
-        document.getElementById("feld6").innerHTML= '<svg> <polygon points= "5, 5, 145, 145"/><polygon points= "5, 145, 145, 5"/></svg>'
-        felder[6] = 1;
-    }
-    else  {
-        document.getElementById("feld6").innerHTML= '<svg><circle cx= "75" cy= "75" r= "70"/></svg>' 
-        felder[6] = 2;
-    }
-    zug ++;
-}
-
-function setFeld7(){
-    if(felder[7] > 0 || gestartet == 0) return;
-    if(zug%2 == 1) {
-        document.getElementById("feld7").innerHTML= '<svg> <polygon points= "5, 5, 145, 145"/><polygon points= "5, 145, 145, 5"/></svg>'
-        felder[7] = 1;
-    }
-    else  {
-        document.getElementById("feld7").innerHTML= '<svg><circle cx= "75" cy= "75" r= "70"/></svg>'  
-        felder[7] = 2;
-    }
-    zug ++;
-}
-
-function setFeld8(){
-    if(felder[8] > 0 || gestartet == 0) return;
-    if(zug%2 == 1) {
-        document.getElementById("feld8").innerHTML= '<svg> <polygon points= "5, 5, 145, 145"/><polygon points= "5, 145, 145, 5"/></svg>'
-        felder[8] = 1;
-    }
-    else  {
-        document.getElementById("feld8").innerHTML= '<svg><circle cx= "75" cy= "75" r= "70"/></svg>' 
-        felder[8] = 2;
-    }
-    zug ++;
-}
-
-function setFeld9(){
-    if(felder[9] > 0 || gestartet == 0) return;
-    if(zug%2 == 1) {
-        document.getElementById("feld9").innerHTML= '<svg> <polygon points= "5, 5, 145, 145"/><polygon points= "5, 145, 145, 5"/></svg>'
-        felder[9] = 1;
-    }
-    else  {
-        document.getElementById("feld9").innerHTML= '<svg><circle cx= "75" cy= "75" r= "70"/></svg>'
-        felder[9] = 2;
-    }
-    zug ++;
-    //window.alert(felder);
-}
 
 function printFeld(sollFeld){
     if(felder[0] > 2) {
         if(zug == 1) gZug1 = sollFeld;
         zug_letzt = sollFeld;
     }
-    switch(sollFeld){
-        case 1:
-            setFeld1();
-            break;
-        case 2:
-            setFeld2();
-            break;
-        case 3:
-            setFeld3();
-            break;
-        case 4:
-            setFeld4();
-            break;
-        case 5:
-            setFeld5();
-            break;
-        case 6:
-            setFeld6();
-            break;
-        case 7:
-            setFeld7();
-            break;
-        case 8:
-            setFeld8();
-            break;
-        case 9:
-            setFeld9();
-            break;
-    }
+    setFeld(sollFeld);
 }
 
 function Computerzug(){
@@ -568,4 +438,8 @@ function start() {
     else if(document.getElementById("gegnerComputer").checked == true && document.getElementById("schwierigkeitUnbesiegbar").checked == true && document.getElementById("beginnerGegner").checked == true) felder[0] = 4;
     if(document.getElementById("beginnerGegner").checked == true) zug--;
     interval = setInterval(function() {gewinnerkennung();Computerzug();}, 1);
+}
+
+function breite() {
+    return 20000;
 }

@@ -131,6 +131,10 @@ function gleichung() {
     termL = ersetzen(termL, "x(", "x*(");
     termL = ersetzen(termL, ")(", ")*(");
     termL = ersetzen(termL, "x**", "(x)**");
+    termL = ersetzen(termL, "cos(", "Math.COS(");//gegen unendlich Math.Math.Math....
+    termL = ersetzen(termL, "sin(", "Math.SIN(");
+    termL = ersetzen(termL, "Math.COS(", "Math.cos(");
+    termL = ersetzen(termL, "Math.SIN(", "Math.sin(");
     termR = ersetzen(termR, "0x", "0*x");
     termR = ersetzen(termR, "1x", "1*x");
     termR = ersetzen(termR, "2x", "2*x");
@@ -144,7 +148,13 @@ function gleichung() {
     termR = ersetzen(termR, "x(", "x*(");
     termR = ersetzen(termR, ")(", ")*(");
     termR = ersetzen(termR, "x**", "(x)**");
+    termR = ersetzen(termR, ",", ".");
+    termR = ersetzen(termR, "cos(", "Math.COS(");
+    termR = ersetzen(termR, "sin(", "Math.SIN(");
+    termR = ersetzen(termR, "Math.COS(", "Math.cos(");
+    termR = ersetzen(termR, "Math.SIN(", "Math.sin(");
     var term = termL+"-("+termR+")";
+    console.log(term);
     term = ersetzen(term, "x**x", "(x)**(x)");
     term = ersetzen(term, "x**", "(x)**");
     gL = termL;
@@ -166,7 +176,7 @@ function gleichung() {
     if(eval(ersetzen(termL, "x", 0)) == eval(ersetzen(termR, "x", 0))) ergebnisse[0] = 0.000000;
     for(var i = 0.0001; i < 999999999999999; i*=1.01) {
         jetzt = new Date().getTime();
-        if(jetzt-2000>t0) break;
+        if(jetzt-700>t0) break;
         //console.log(i);
         if((eval(ersetzen(term, "x", "i"))*(eval(ersetzen(term, "x", "grenzeP")))) < 0) {
             ueberprueftLetzt = i;
@@ -181,12 +191,11 @@ function gleichung() {
         grenzeP = i;
         grenzeN = -i;
     }
-    document.getElementById("ergebnisGleichung").value = ergebnisse;
     var gefunden;
     var intervalle = [];
     while(true) {
         jetzt = new Date().getTime();
-        if(jetzt-2000>t0)break;
+        if(jetzt-1000>t0)break;
         neg = [];
         pos = [];
         intervalle = [];
@@ -206,9 +215,11 @@ function gleichung() {
         //console.log("ergebisssse:      "+ergebnisse.length);
         //console.log("length:     "+intervalle.length);
         for(let i = 1; i < intervalle.length; i++) {
+            jetzt = new Date().getTime();
             //console.log("intval: 1 2   "+(intervalle[i-1]+0.5)+"       "+(intervalle[i]-0.5));
             //console.log("ergebnis");
             let ergebnis = gleichungGenau(term, (intervalle[i-1]+0.5), (intervalle[i]-0.5));
+            if(jetzt-1200>t0)break;
             //console.log("erg:    "+ergebnis);
             //console.log(ergebnis);
             if(ergebnis > 0 || ergebnis <=0) {
@@ -226,14 +237,15 @@ function gleichung() {
         }
         if(gefunden == false) break;
     }
+    console.log(jetzt-t0);
     ergebnisse = ergebnisse.sort(compareNumbers);
-    if(ergebnisse=="") ergebnisse = "keine oder zu große Lösung";
+    //if(ergebnisse=="") ergebnisse = "keine oder zu große Lösung";
 
 
     xFaktor = ((ergebnisse[ergebnisse.length-1]-ergebnisse[0])*1.7);
     if(xFaktor == 0) xFaktor = 1;
     var ergWerte = [];
-    for(let p = 0; p< ergebnisse.length; p++) {
+    for(let p = 0; p < ergebnisse.length; p++) {
         //alert(eval(ersetzen(termR, "x", ergebnisse[p])));
         ergWerte[ergWerte.length] = eval(ersetzen(termR, "x", ergebnisse[p]));
     }
@@ -251,12 +263,11 @@ function gleichung() {
     }
     xVerschiebung = -(ergebnisse[ergebnisse.length-1]+ergebnisse[0])/2*breite/xFaktor+breite/2;
     yVerschiebung = -(ergWerte[ergWerte.length-1]+ergWerte[0])/2*400/yFaktor+200;
-    if(ergebnisse.length == 26 || term == "Math.cos(x)-(1)") {//kein ergebniss
+    if(ergebnisse.length == 0  || ergebnisse.length == 26 || term == "Math.cos(x)-(1)") {//kein ergebniss
         xVerschiebung = breite/2;
         yVerschiebung = 200;
         xFaktor = 50;//Abstand kleinster/ hoechster x Wert
         yFaktor = 25;//Abstand kleinster/ hoechster y Wert
-
     }
     else if(ergebnisse.length == 1) {
         xVerschiebung = -(ergebnisse[0])/2*breite/10+breite/2;
@@ -285,19 +296,19 @@ function gleichung() {
     //document.getElementById("svgGraph").innerHTML = inner;
     for(let q = 0; q < 10; q++) {
         if(Math.abs(rechnen(ersetzen(term, "x", 2*Math.PI*q-0.5*Math.PI))) > 0.001) break;
-        if(q == 9) ergebnisse = "2*PI*n-0.5*PI";
+        if(q == 9) ergebnisse = "PI*n*2-0.5*PI";
     }
     for(let q = 0; q < 10; q++) {
         if(Math.abs(rechnen(ersetzen(term, "x", 2*Math.PI*q+0.5*Math.PI))) > 0.001) break;
-        if(q == 9) ergebnisse = "2*PI*n+0.5*PI";
+        if(q == 9) ergebnisse = "PI*n*2+0.5*PI";
     }
     for(let q = 0; q < 10; q++) {
         if(Math.abs(rechnen(ersetzen(term, "x", 2*Math.PI*q))) > 0.01) break;
-        if(q == 9) ergebnisse = "2*PI*n";
+        if(q == 9) ergebnisse = "PI*n*2";
     }
     for(let q = 0; q < 10; q++) {
         if(Math.abs(rechnen(ersetzen(term, "x", 2*Math.PI*q-Math.PI))) > 0.01) break;
-        if(q == 9) ergebnisse = "2*PI*n-PI";
+        if(q == 9) ergebnisse = "PI*n*2-PI";
     }
     for(let q = 0; q < 10; q++) {
         if(Math.abs(rechnen(ersetzen(term, "x", Math.PI*q-0.5*Math.PI))) > 0.01) break;
@@ -307,7 +318,31 @@ function gleichung() {
         if(Math.abs(rechnen(ersetzen(term, "x", Math.PI*q))) > 0.01) break;
         if(q == 9) ergebnisse = "PI*n";
     }
-    if(ergebnisse.length > 5 && ergebnisse[0] != "2" && ergebnisse[0] != "P") ergebnisse = ergebnisse.sort(compareNumbersA);
+    /*gefunden = false;
+    for(let l = 0.01; l < 10; l+=0.01) {
+        console.log(gefunden);
+        if(gefunden == true) break;
+        for(let q = 0; q < 10; q++) {
+            if(Math.abs(rechnen(ersetzen(term, "x", Math.PI*q*l))) > 0.01) {
+                break;
+            }
+            if(q == 9) {
+                gefunden = true;
+                ergebnisse = "PI*n*"+l.toFixed(2);
+            }
+        }      
+    }*/
+    /*for(let q = 0; q < 10; q++) {
+        console.log(Math.abs(rechnen(ersetzen(term, "x", Math.PI*q))));
+        if(Math.abs(rechnen(ersetzen(term, "x", Math.PI*q))) > 0.01) {
+            break;
+        }
+        if(q == 9) ergebnisse = "0.5*PI*n";
+    }*/
+    console.log(ergebnisse);
+    if(ergebnisse=="") ergebnisse = "keine oder zu große Lösung";
+
+    if(ergebnisse.length > 5 && ergebnisse[0] != "2" && ergebnisse[0] != "P" && ergebnisse[0] != "k") ergebnisse = ergebnisse.sort(compareNumbersA);
     document.getElementById("ergebnisGleichung").value = ergebnisse;
     document.getElementById("ergebnisGleichung").value = ersetzen(document.getElementById("ergebnisGleichung").value, ",", " / ");
     e = ergebnisse;
@@ -320,7 +355,7 @@ function gleichung() {
 //console.log("ejhhdscghgs:     "+gleichungGenau("(x)*(x-1)**2", 0.5, 999));
 
 function refreshGraph() {
-    if(e == undefined || e == "2*PI*n-0.5*PI" || e == "2*PI*n-0.5*PI" || e == "2*PI*n" || e == "2*PI*n-PI" || e == "PI*n-0.5*PI" || e == "PI*n") {
+    if(e == undefined || e[0] == "P") {
         e = "keine oder zu große Lösung";
         //alert(e);
     }
@@ -339,20 +374,27 @@ function refreshGraph() {
     var innerU;
     var innerL;
 
-
+    //console.log("yV  "+yV+"  xV  "+xV+"  yF  "+yF+"  xF  "+xF);
 
     var trm = termL;
-    for(let i = 0; i < breite; i+=2) {
-        inner += '<line x1="'+rechnen((i))+'" y1="'+(400-(rechnen(ersetzen(trm, "x", (i-xVerschiebung)*xFaktor/breite)))*400/yFaktor-yVerschiebung)+'" x2="'+rechnen((i+3))+'" y2="'+(400-(rechnen(ersetzen(trm, "x", (i-xVerschiebung+3)*xFaktor/breite)))*400/yFaktor-yVerschiebung)+'" style="stroke:var(--akzentfarbe1);stroke-width:3" />';
+    if(e == "unendlich viele Lösungen") {
+        for(let i = 0; i < breite; i+=2) {
+            inner += '<line x1="'+rechnen((i))+'" y1="'+(400-(rechnen(ersetzen(trm, "x", (i-xVerschiebung)*xFaktor/breite)))*400/yFaktor-yVerschiebung)+'" x2="'+rechnen((i+3))+'" y2="'+(400-(rechnen(ersetzen(trm, "x", (i-xVerschiebung+3)*xFaktor/breite)))*400/yFaktor-yVerschiebung)+'" style="stroke:var(--akzentfarbe3);stroke-width:3" />';
+        }
     }
-    trm = termR;
-    for(let i = 0; i < breite; i+=2) {
-        inner += '<line x1="'+rechnen((i))+'" y1="'+(400-(rechnen(ersetzen(trm, "x", (i-xVerschiebung)*xFaktor/breite)))*400/yFaktor-yVerschiebung)+'" x2="'+rechnen((i+3))+'" y2="'+(400-(rechnen(ersetzen(trm, "x", (i-xVerschiebung+3)*xFaktor/breite)))*400/yFaktor-yVerschiebung)+'" style="stroke:var(--akzentfarbe2);stroke-width:3" />';
+    else {
+        for(let i = 0; i < breite; i+=2) {
+            inner += '<line x1="'+rechnen((i))+'" y1="'+(400-(rechnen(ersetzen(trm, "x", (i-xVerschiebung)*xFaktor/breite)))*400/yFaktor-yVerschiebung)+'" x2="'+rechnen((i+3))+'" y2="'+(400-(rechnen(ersetzen(trm, "x", (i-xVerschiebung+3)*xFaktor/breite)))*400/yFaktor-yVerschiebung)+'" style="stroke:var(--akzentfarbe1);stroke-width:3" />';
+        }
+        trm = termR;
+        for(let i = 0; i < breite; i+=2) {
+            inner += '<line x1="'+rechnen((i))+'" y1="'+(400-(rechnen(ersetzen(trm, "x", (i-xVerschiebung)*xFaktor/breite)))*400/yFaktor-yVerschiebung)+'" x2="'+rechnen((i+3))+'" y2="'+(400-(rechnen(ersetzen(trm, "x", (i-xVerschiebung+3)*xFaktor/breite)))*400/yFaktor-yVerschiebung)+'" style="stroke:var(--akzentfarbe2);stroke-width:3" />';
+        }
     }
     
     inner += '<line x1="0" y1="'+(400-yVerschiebung)+'" x2="'+breite+'" y2="'+(400-yVerschiebung)+'" style="stroke:var(--schriftfarbe);stroke-width:1" />';
     inner += '<line x1="'+xVerschiebung+'" y1="0" x2="'+xVerschiebung+'" y2="400" style="stroke:var(--schriftfarbe);stroke-width:1" />';
-    if(ergebnisse.length != 26) {
+    if(ergebnisse.length != 26 && ergebnisse.length != 24) {
         for(let k = 0; k < ergebnisse.length; k++) {
             inner += '<circle cx= "'+rechnen(ergebnisse[k]*breite/xFaktor+xVerschiebung)+'" cy= "'+(400-eval(ersetzen(termL, "x", ergebnisse[k]))*400/yFaktor-yVerschiebung)+'" r= "4" style="fill: var(--akzentfarbe3); stroke-width: 0px"/>';
         }
@@ -395,54 +437,6 @@ function refreshGraph() {
     document.getElementById("svgL").innerHTML = innerL;
 
 
-
     document.getElementById("svgGraph").innerHTML = inner;
 }
 
-function handleScroll() {
-    // Hier kannst du den Code platzieren, der bei einer Scroll-Bewegung ausgeführt werden soll
-    //console.log("Scroll-Bewegung erkannt!");
-  }
-  
-  // Das scroll-Ereignis abhören und die Funktion handleScroll aufrufen
-  window.addEventListener("click", handleScroll);
-
-/*
-// Funktion zur Berechnung der Lösung einer Gleichung durch das Newton-Raphson-Verfahren
-function solveEquationWithNewtonRaphson(guess, equation, derivative, epsilon, maxIterations) {
-  var x = guess;
-  var iteration = 0;
-  
-  while (Math.abs(equation(x)) > epsilon && iteration < maxIterations) {
-    var f = equation(x);
-    var fPrime = derivative(x);
-    
-    if (fPrime === 0) {
-      console.log("Das Verfahren konvergiert nicht.");
-      return null;
-    }
-    
-    x = x - f / fPrime;
-    iteration++;
-  }
-  
-  if (iteration === maxIterations) {
-    console.log("Maximale Anzahl an Iterationen erreicht.");
-    return null;
-  }
-  
-  return x;
-}
-
-// Beispielaufruf der Funktion
-var guess = -1009;
-var equation = function(x) {
-  return Math.E**x-10;
-};
-var derivative = function(x) {
-  return Math.E**x;
-};
-var epsilon = 0.0000001;
-var maxIterations = 10000;
-var solution = solveEquationWithNewtonRaphson(guess, equation, derivative, epsilon, maxIterations);
-console.log("Approximierte Lösung: " + solution);*/

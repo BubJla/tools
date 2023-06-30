@@ -2,15 +2,6 @@ var starttime = 1;
 var interval;
 var jetzt = 0;
 
-function sleep(millisekunden) {
-    var date = new Date().getTime;
-    var soll = date + millisekunden;
-    do {
-        date = new Date().getTime(); 
-    }
-    while(date < soll);
-}
-
 function start(){
     document.getElementById("zeitReaktion").innerHTML = ""
     document.getElementById("reaktionsfeld").setAttribute("class", "");
@@ -18,6 +9,7 @@ function start(){
     starttime = new Date().getTime() + Math.random()*7000 + 2000;// 2sekunden + 0 - 7 sekunden
     document.getElementById("startbutton").setAttribute("disabled", "");
     interval = setInterval(function() {ausgabe();ueberpruefen();}, 1);
+    document.getElementById("reaktionsfeld").setAttribute("class", "black");
 }
 
 function ausgabe(){
