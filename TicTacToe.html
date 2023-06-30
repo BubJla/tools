@@ -6,7 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="style.css" rel="stylesheet">
     <title>TicTacToe</title>
-    <script src="spieleTicTacToe.js"></script>
 </head>
 <body>
     <ul class = "navigationsleiste" id="navigationsleiste">
@@ -74,31 +73,7 @@
                     <input type="button" value="LÖSCHEN" onclick="location.reload(true)" style="height: 25px; width: 50%">
                 </span>
             </div>
-            <div id="spielfeld" style="width: 450px">
-                <span>
-                    <div class="kaestchen" id="feld1" onclick="printFeld(1)">
-                    </div>
-                    <div class="kaestchen" id="feld2" onclick="printFeld(2)">
-                    </div>
-                    <div class="kaestchen" id="feld3" onclick="printFeld(3)">
-                    </div>
-                </span>
-                <span>
-                    <div class="kaestchen" id="feld4" onclick="printFeld(4)">
-                    </div>
-                    <div class="kaestchen" id="feld5" onclick="printFeld(5)">
-                    </div>
-                    <div class="kaestchen" id="feld6" onclick="printFeld(6)">
-                    </div>
-                </span>
-                <span>
-                    <div class="kaestchen" id="feld7" onclick="printFeld(7)">
-                    </div>
-                    <div class="kaestchen" id="feld8" onclick="printFeld(8)">
-                    </div>
-                    <div class="kaestchen" id="feld9" onclick="printFeld(9)">
-                    </div>
-                </span>
+            <div id = "spielfeldtic">
             </div>
             <d class="spanGesamtTicTacToeEnd"></d>
         </span>
@@ -106,4 +81,5 @@
 </body>
 <script src="start.js"></script>
 <script src="startSpiele.js"></script>
+<script src="spieleTicTacToe.js"></script>
 </html>

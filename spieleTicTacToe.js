@@ -5,8 +5,9 @@ var gestartet = 0;
 var gewinnBeteiligte = [0, 0, 0];
 var zug_letzt = 0;
 var gZug1; // 1. Zug des gegners wenn computer beginnt
-var breite = ((screen.width)*0.84-220)/3-15;
+var breite = ((screen.width)*0.84-230)/3-12;
 if(breite>141) breite = 141;
+//alert(breite);
 
 
 function resetRandom(){//den Zufall zufälliger machen
@@ -21,7 +22,7 @@ function setFeld(feld){
         felder[feld] = 1;
     }
     else  {
-        document.getElementById("feld"+feld).innerHTML= '<svg><ellipse cx="'+((breite)/2)+'" cy="75" rx="'+((breite-5)/2)+'" ry="70"/></svg>'
+        document.getElementById("feld"+feld).innerHTML= '<svg><ellipse cx="'+((breite)/2+4)+'" cy="75" rx="'+((breite-5)/2)+'" ry="70"/></svg>'
         felder[feld] = 2;
     }
     zug ++;
@@ -443,3 +444,36 @@ function start() {
 function breite() {
     return 20000;
 }
+
+var breiteGes = ((screen.width)*0.84-230);
+if(breiteGes > 450) breiteGes = 450;
+
+document.getElementById("spielfeldtic").innerHTML = `
+    <div id="spielfeld" style="width: `+breiteGes+`px; margin-right: 10px">
+        <span>
+            <div class="kaestchen" id="feld1" onclick="printFeld(1)">
+            </div>
+            <div class="kaestchen" id="feld2" onclick="printFeld(2)">
+            </div>
+            <div class="kaestchen" id="feld3" onclick="printFeld(3)">
+            </div>
+        </span>
+        <span>
+            <div class="kaestchen" id="feld4" onclick="printFeld(4)">
+            </div>
+            <div class="kaestchen" id="feld5" onclick="printFeld(5)">
+            </div>
+            <div class="kaestchen" id="feld6" onclick="printFeld(6)">
+            </div>
+        </span>
+        <span>
+            <div class="kaestchen" id="feld7" onclick="printFeld(7)">
+            </div>
+            <div class="kaestchen" id="feld8" onclick="printFeld(8)">
+            </div>
+            <div class="kaestchen" id="feld9" onclick="printFeld(9)">
+            </div>
+        </span>
+    </div>
+`
+
