@@ -269,7 +269,7 @@ ellipse{
     background-color: yellow;
 }
 
-.feldGewonnen circle{
+.feldGewonnen ellipse{
     stroke: black;
     fill: yellow;
 }
@@ -402,6 +402,11 @@ ellipse{
     color: var(--schriftfarbe);
     border: 1px solid;
     border-color: var(--schriftfarbe);
+}
+
+.krT div:not(.nichtA){
+    border-right: 1px solid var(--schriftfarbe); 
+    border-left: 1px solid var(--schriftfarbe);
 }
 
 .passwortgeneratorlaengenauswahl div input{

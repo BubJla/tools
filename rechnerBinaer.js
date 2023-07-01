@@ -480,9 +480,9 @@ function colors() {
     var s = Math.round(rgbToHsl(r, g, b)[1]*1000)/10;
     var l = Math.round(rgbToHsl(r, g, b)[2]*1000)/10;
     var hsl = h + " " + s + "%" + " " + l + "%";
-    document.getElementById("rgb").innerHTML = rgb;
-    document.getElementById("hsl").innerHTML = hsl;
-    document.getElementById("hex").innerHTML = hex;
+    document.getElementById("rgb").value = rgb;
+    document.getElementById("hsl").value = hsl;
+    document.getElementById("hex").value = hex;
 }
 
 function rgbToHsl(r, g, b) {

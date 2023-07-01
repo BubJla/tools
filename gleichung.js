@@ -36,7 +36,7 @@ function runden(value, dezimal) {
 
 function rechnen(term) {
     var ergebnis = eval(term);
-    if(ergebnis == Infinity) ergebnis = 1000;
+    if(ergebnis == Infinity) ergebnis = 999999999;
     return ergebnis;
 }
 

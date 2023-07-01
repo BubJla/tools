@@ -215,3 +215,191 @@ function reset() {
 for(let i = 0; i< new Date().getMilliseconds(); i++) {
     Math.random();
 }
+
+
+if(screen.width > 800) {
+    document.getElementById("auswahlLevel").innerHTML = `
+            <div style="width: 11%" class="nichtA">
+                <span>
+                    <d>Level:</d>
+                </span>
+            </div>
+            <div style="width: 11%;">
+                <d>0</d>
+                <span>
+                    <input type="radio" name = "clickzeit" value = "0" id="level0checked" onclick="level = 0; reset();" style="width: 14px; height: 14px">
+                </span>
+                <br>
+                <d>besondere Zahlen wie PI</d>
+            </div>
+            <div style="width: 11%">
+                <d>2+</d>
+                <span>
+                    <input type="radio" name = "clickzeit" value = "2+" id="level2+checked" onclick="level = 22; reset();" style="width: 14px; height: 14px">
+                </span>
+                <br>
+                <d>kleines Einmaleins</d>
+            </div>
+            <div style="width: 11%">
+                <span>
+                    <d>1</d>
+                </span>
+                <span>
+                    <input type="radio" name = "clickzeit"  value = "1" id="level1checked" onclick="level = 1; reset();" style="width: 14px; height: 14px">
+                </span>
+                <br>
+                <d>+/-: 0 - 100</d>
+            </div>
+            <div style="width: 11%">
+                <span>
+                    <d>2</d>
+                </span>
+                <span>
+                    <input type="radio" name = "clickzeit" value = "2" id="level2checked" onclick="level = 2; reset();" style="width: 14px; height: 14px" checked>
+                </span>
+                <br>
+                <d>+/-: -400 - 400
+                    <br>
+                    ×/÷: 0 - 100
+                </d>
+            </div>
+            <div style="width: 11%">
+                <span>
+                    <d>3</d>
+                </span>
+                <span>
+                    <input type="radio" name = "clickzeit" value = "3" id="level3checked" onclick="level = 3; reset();" style="width: 14px; height: 14px">
+                </span>
+                <br>
+                <d>+/-: -1000 - 1000
+                    <br>
+                    ×/÷: 400 - 400
+                </d>
+            </div>
+            <div style="width: 11%">
+                <span><d>4</d></span>
+                <span>
+                    <input type="radio" name = "clickzeit" value = "4" id="level4checked" onclick="level = 4; reset();" style="width: 14px; height: 14px">
+                </span>
+                <br>
+                <d>+/-: -5000 - 5000
+                    <br>
+                    ×/÷: 625 - 625
+                </d>
+            </div>
+            <div style="width: 12%" class="nichtA">
+                <span><d>automatischer</d></span><span><d>Levelaufstieg</d></span>
+                <br>
+                <span><input type="checkbox" id="autoPerformance" style="width: 1rem; height: 1rem;" checked></span>
+            </div>
+            <div style="width: 11%" class="nichtA">
+                <input type="button" value = "NÄCHSTE" onclick="fehler++;neueaufgabe = true;" id="nextbutton" style="height: 90px; width: 100%; font-weight: 900;">
+            </div>
+            <div style="width: 11%" class="nichtA">
+                <input type="button" value = "ABGEBEN" onclick="ueberpruefen()" id="startbutton" style="height: 90px; width: 100%; font-weight: 900;">
+            </div>        
+    `
+    document.getElementById("ergebnisfeld01").innerHTML = `
+    <div class="kopfrechenfeld nichtA">
+        <d style="font-size: 5rem!important" id="aufgabenfeld">Aufgabe</d>
+        <d style="font-size: 5rem!important">=</d>
+    </div>
+    <input type="text" class="inputergebniskopfrechnen" placeholder="Ergebnis" maxlength="8" id="ergebnisfeld" onkeyup="if(event.keyCode === 13) ueberpruefen();">
+    `
+}
+else {
+    document.getElementById("auswahlLevel").innerHTML = `
+            <div style="width: 14%" class="nichtA">
+                <span>
+                    <d>Level:</d>
+                </span>
+            </div>
+            <div style="width: 14%;">
+                <d>0</d>
+                <span>
+                    <input type="radio" name = "clickzeit" value = "0" id="level0checked" onclick="level = 0; reset();" style="width: 14px; height: 14px">
+                </span>
+                <br>
+                <d>besondere Zahlen wie PI</d>
+            </div>
+            <div style="width: 14%">
+                <d>2+</d>
+                <span>
+                    <input type="radio" name = "clickzeit" value = "2+" id="level2+checked" onclick="level = 22; reset();" style="width: 14px; height: 14px">
+                </span>
+                <br>
+                <d>kleines Einmaleins</d>
+            </div>
+            <div style="width: 14%">
+                <span>
+                    <d>1</d>
+                </span>
+                <span>
+                    <input type="radio" name = "clickzeit"  value = "1" id="level1checked" onclick="level = 1; reset();" style="width: 14px; height: 14px">
+                </span>
+                <br>
+                <d>+/-: 0 - 100</d>
+            </div>
+            <div style="width: 14%">
+                <span>
+                    <d>2</d>
+                </span>
+                <span>
+                    <input type="radio" name = "clickzeit" value = "2" id="level2checked" onclick="level = 2; reset();" style="width: 14px; height: 14px" checked>
+                </span>
+                <br>
+                <d>+/-: -400 - 400
+                    <br>
+                    ×/÷: 0 - 100
+                </d>
+            </div>
+            <div style="width: 15%">
+                <span>
+                    <d>3</d>
+                </span>
+                <span>
+                    <input type="radio" name = "clickzeit" value = "3" id="level3checked" onclick="level = 3; reset();" style="width: 14px; height: 14px">
+                </span>
+                <br>
+                <d>+/-: -1000 - 1000
+                    <br>
+                    ×/÷: 400 - 400
+                </d>
+            </div>
+            <div style="width: 15%" class="nichtA">
+                <span><d>4</d></span>
+                <span>
+                    <input type="radio" name = "clickzeit" value = "4" id="level4checked" onclick="level = 4; reset();" style="width: 14px; height: 14px">
+                </span>
+                <br>
+                <d>+/-: -5000 - 5000
+                    <br>
+                    ×/÷: 625 - 625
+                </d>
+            </div>
+    `
+    document.getElementById("auswahlLevel02").innerHTML = `
+            <div style="width: 33.3%" class="nichtA">
+                <span><d>automatischer</d></span><span><d>Levelaufstieg</d></span>
+                <br>
+                <span><input type="checkbox" id="autoPerformance" style="width: 1rem; height: 1rem;" checked></span>
+            </div>
+            <div style="width: 33.3%" class="nichtA">
+                <input type="button" value = "NÄCHSTE" onclick="fehler++;neueaufgabe = true;" id="nextbutton" style="height: 90px; width: 100%; font-weight: 900;">
+            </div>
+            <div style="width: 33.3%" class="nichtA">
+                <input type="button" value = "ABGEBEN" onclick="ueberpruefen()" id="startbutton" style="height: 90px; width: 100%; font-weight: 900;">
+            </div>        
+    `
+    document.getElementById("ergebnisfeld01").innerHTML = `
+    <div class="nichtA" style="width: 100%; border-top: 1px solid white">
+        <d style="font-size: 5rem!important; width: 100%" id="aufgabenfeld">Aufgabe</d>
+    </div>
+    `
+    document.getElementById("ergebnisfeld02").innerHTML = `
+    <div class="nichtA">
+        <d style="font-size: 5rem!important; width: 25%">=</d>
+    </div>
+    <input type="text" style="width: 75%" class="inputergebniskopfrechnen" placeholder="Ergebnis" maxlength="8" id="ergebnisfeld" onkeyup="if(event.keyCode === 13) ueberpruefen();">
+    `
+}
