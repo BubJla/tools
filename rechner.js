@@ -81,9 +81,12 @@ function ersetzen(text) {
 }
 
 function result() {
+    for(let i = 0; i < 100; i++) eingabe = eingabe.replace("asin", "Math.ASIN").replace("acos", "Math.ACOS").replace("atan", "Math.ATAN").replace("sin", "Math.SIN").replace("cos", "Math.COS").replace("tan", "Math.TAN").replace("PI", "Math.pi");
+    for(let i = 0; i < 100; i++) eingabe = eingabe.replace("Math.SIN", "Math.sin").replace("Math.COS", "Math.cos").replace("Math.TAN", "Math.tan").replace("Math.ASIN", "Math.asin").replace("Math.ACOS", "Math.acos").replace("Math.ATAN", "Math.atan").replace("Math.pi", "Math.PI");
     for(let i = 0; i < 100; i++) eingabe = ersetzen(eingabe);
     var formel = eingabe.replace("×", "*").replace("÷", "/").replace(",", ".").replace("π", "Math.PI").replace("%", "*(1/100)").replace("ANS", ergebnisletzt).replace("²", "**2").replace("^", "**");
     for(let i = 0; i < 100; i++) formel = formel.replace("×", "*").replace("÷", "/").replace(",", ".").replace("π", "Math.PI").replace("%", "*(1/100)").replace("ANS", ergebnisletzt).replace("²", "**2").replace("^", "**");
+    //alert(formel);
     let ergebnis = eval(formel).toString().replace(".", ",");
     document.getElementById("ausgabefeld").value = ergebnis;
     ergebnisletzt = ergebnis;

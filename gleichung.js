@@ -61,7 +61,7 @@ function gleichungGenau(term, grenzwert1, grenzwert2) {
             else return "null";
         }
         //console.log("uftfhg:     "+(ersetzen(term, "x", ergebnis)));
-        if(Math.abs(eval(ersetzen(term, "x", ergebnis))) < 1/10**10) {
+        if(Math.abs(eval(ersetzen(term, "x", ergebnis))) < 1/10**11) {
             //console.log("abw:       "+Math.abs(eval(ersetzen(term, "x", ergebnis))));
             return ergebnis.toFixed(9);
         }
@@ -129,12 +129,16 @@ function gleichung() {
     termL = ersetzen(termL, "8x", "8*x");
     termL = ersetzen(termL, "9x", "9*x");
     termL = ersetzen(termL, "x(", "x*(");
+    termL = ersetzen(termL, "PI", "Math.pi");
+    termL = ersetzen(termL, "Math.pi", "Math.PI");
     termL = ersetzen(termL, ")(", ")*(");
     termL = ersetzen(termL, "x**", "(x)**");
     termL = ersetzen(termL, "cos(", "Math.COS(");//gegen unendlich Math.Math.Math....
     termL = ersetzen(termL, "sin(", "Math.SIN(");
+    termL = ersetzen(termL, "tan(", "Math.TAN(");
     termL = ersetzen(termL, "Math.COS(", "Math.cos(");
     termL = ersetzen(termL, "Math.SIN(", "Math.sin(");
+    termL = ersetzen(termL, "Math.TAN(", "Math.tan(");
     termR = ersetzen(termR, "0x", "0*x");
     termR = ersetzen(termR, "1x", "1*x");
     termR = ersetzen(termR, "2x", "2*x");
@@ -147,14 +151,18 @@ function gleichung() {
     termR = ersetzen(termR, "9x", "9*x");
     termR = ersetzen(termR, "x(", "x*(");
     termR = ersetzen(termR, ")(", ")*(");
+    termR = ersetzen(termR, "PI", "Math.pi");
+    termR = ersetzen(termR, "Math.pi", "Math.PI");
     termR = ersetzen(termR, "x**", "(x)**");
     termR = ersetzen(termR, ",", ".");
     termR = ersetzen(termR, "cos(", "Math.COS(");
     termR = ersetzen(termR, "sin(", "Math.SIN(");
+    termR = ersetzen(termR, "tan(", "Math.TAN(");
     termR = ersetzen(termR, "Math.COS(", "Math.cos(");
     termR = ersetzen(termR, "Math.SIN(", "Math.sin(");
+    termR = ersetzen(termR, "Math.TAN(", "Math.tan(");
     var term = termL+"-("+termR+")";
-    console.log(term);
+    //console.log(term);
     term = ersetzen(term, "x**x", "(x)**(x)");
     term = ersetzen(term, "x**", "(x)**");
     gL = termL;
@@ -237,7 +245,7 @@ function gleichung() {
         }
         if(gefunden == false) break;
     }
-    console.log(jetzt-t0);
+    //console.log(jetzt-t0);
     ergebnisse = ergebnisse.sort(compareNumbers);
     //if(ergebnisse=="") ergebnisse = "keine oder zu große Lösung";
 
@@ -290,7 +298,6 @@ function gleichung() {
     xV = xVerschiebung;
     yV = yVerschiebung;
 
-    refreshGraph();
 
 
     //document.getElementById("svgGraph").innerHTML = inner;
@@ -339,7 +346,7 @@ function gleichung() {
         }
         if(q == 9) ergebnisse = "0.5*PI*n";
     }*/
-    console.log(ergebnisse);
+    //console.log(ergebnisse);
     if(ergebnisse=="") ergebnisse = "keine oder zu große Lösung";
 
     if(ergebnisse.length > 5 && ergebnisse[0] != "2" && ergebnisse[0] != "P" && ergebnisse[0] != "k") ergebnisse = ergebnisse.sort(compareNumbersA);
@@ -350,14 +357,25 @@ function gleichung() {
     yF = yFaktor;
     xV = xVerschiebung;
     yV = yVerschiebung;
+    refreshGraph();
 }
 
 //console.log("ejhhdscghgs:     "+gleichungGenau("(x)*(x-1)**2", 0.5, 999));
 
 function refreshGraph() {
-    if(e == undefined || e[0] == "P") {
+    if(e == undefined) {
         e = "keine oder zu große Lösung";
         //alert(e);
+    }
+    if(e[0] == "P") {
+        e = ersetzen(e, "PI", "Math.pi");
+        e = ersetzen(e, "Math.pi", "Math.PI");
+        var eNew = [];
+        for(let i = 0; i < 25; i++) {
+            eNew[eNew.length] = rechnen(ersetzen(e, "n", i));
+            eNew[eNew.length] = rechnen(ersetzen(e, "n", -i));
+        }
+        e = eNew;
     }
     /*console.log("xV:     "+xV);
     console.log("xF:     "+xF);

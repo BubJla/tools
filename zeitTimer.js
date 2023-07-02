@@ -58,7 +58,6 @@ function resetTimer(){
     document.getElementById("minute").innerHTML = "00";
     document.getElementById("sekunde").innerHTML = "00";
     document.getElementById("millisekunde").innerHTML = "000";
-    document.getElementById("Zwischenergebnisse").innerHTML = ``;
 }
 
 function abgelaufen(){
