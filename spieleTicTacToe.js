@@ -8,6 +8,8 @@ var gZug1; // 1. Zug des gegners wenn computer beginnt
 var breite = ((screen.width)*0.84-230)/3-12;
 if(breite>141) breite = 141;
 //alert(breite);
+var breiteGes = ((screen.width)*0.84-230);
+if(breiteGes > 450) breiteGes = 450;
 
 
 function resetRandom(){//den Zufall zufälliger machen
@@ -18,11 +20,11 @@ function resetRandom(){//den Zufall zufälliger machen
 function setFeld(feld){
     if(felder[feld] > 0 || gestartet == 0) return;
     if(zug%2 == 1) {
-        document.getElementById("feld"+feld).innerHTML= '<svg> <polygon points= "5, 5, '+breite+', 145"/><polygon points= "5, 145, '+breite+', 5"/></svg>'
+        document.getElementById("feld"+feld).innerHTML= '<svg style="width: '+(breiteGes/3-4)+'px"> <polygon points= "5, 5, '+breite+', 145"/><polygon points= "5, 145, '+breite+', 5"/></svg>'
         felder[feld] = 1;
     }
     else  {
-        document.getElementById("feld"+feld).innerHTML= '<svg><ellipse cx="'+((breite)/2+4)+'" cy="75" rx="'+((breite-5)/2)+'" ry="70"/></svg>'
+        document.getElementById("feld"+feld).innerHTML= '<svg style="width: '+(breiteGes/3-4)+'px"><ellipse cx="'+((breite)/2+4)+'" cy="75" rx="'+((breite-5)/2)+'" ry="70"/></svg>'
         felder[feld] = 2;
     }
     zug ++;
@@ -445,11 +447,9 @@ function breite() {
     return 20000;
 }
 
-var breiteGes = ((screen.width)*0.84-230);
-if(breiteGes > 450) breiteGes = 450;
 
 document.getElementById("spielfeldtic").innerHTML = `
-    <div id="spielfeld" style="width: `+breiteGes+`px; margin-right: 10px">
+    <div id="spielfeld" style="width: `+breiteGes+`px">
         <span>
             <div class="kaestchen" id="feld1" onclick="printFeld(1)">
             </div>

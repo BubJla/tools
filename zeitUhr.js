@@ -93,6 +93,14 @@ function groeseplus(){
 
 }
 
+var groesseUhr = "200px";
+if(screen.width>2000) groesseUhr = "600px";
+else if(screen.width>1500) groesseUhr = "500px";
+else if(screen.width>1000) groesseUhr = "400px";
+else if(screen.width>400) groesseUhr = "300px";
+
+document.querySelector(":root").style.setProperty("--groesseTime", groesseUhr);
+
 millisekundenzeiger();
 sekundenPunkte();
 zahlen();

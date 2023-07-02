@@ -421,7 +421,7 @@ ellipse{
 }
 
 .gear {
-    padding-left: 30px!important;
+    padding-left: 10%!important;
     font-size: 3rem;
     justify-content: left;
 }
