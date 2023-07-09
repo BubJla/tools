@@ -2,7 +2,7 @@ var i = 0;
 var zeilen = 2;
 
 function zeile() {
-  console.log(zeilen);
+  //console.log(zeilen);
   var inner = "";
 
   for(let w = 0; w < zeilen; w++) {
@@ -41,28 +41,42 @@ function lgs() {
       array[b][c] = document.getElementById("syst"+b+c).value;
     }
   }
+  //console.log("eerr   "+(-array[array.length - 1][array.length] / array[array.length - 1][array.length - 1]));
 
   var ergebnisArray = [];
 
   var original = copyArray(array);
 
-  array = array.sort((a, b) => dif(a, b)); // Verwende die Vergleichsfunktion in der Sortierung
+  //array = array.sort((a, b) => dif(a[i], b[i])); // Verwende die Vergleichsfunktion in der Sortierung
 
 
   for (var k = 0; k < array.length; k++) {
-    console.log("arr    " + array);
+    //console.log("ar1   "+array);
+    array = copyArray(original);
+    console.log("ar1   "+array[0]);
+    console.log("ar1   "+original[0]);
+    for(let r = 0; r < array.length; r++) {
+      array[r][array.length-1] = original[r][k];
+      array[r][k] = original[r][array.length-1];
+    }
+    console.log("ar2   "+array[0]);
+
     for (var i = 0; i < array.length; i++) {
+      console.log("arr1    " + array);
       if (array[i][i] == 0) alert();
-      for (var n = i + 1; n < array.length; n++) {
+      for (var n = i+1; n < array.length; n++) {
         for (var p = i + 1; p < array.length + 1; p++) {
           array[n][p] += array[i][p] * array[n][i] / (-array[i][i]);
+          console.log("arr1    " + array);
+          array[n][p] = eval(array[n][p]);
         }
       }
     }
+    console.log("arr11    " + array);
 
 
     ergebnisArray[ergebnisArray.length] = -array[array.length - 1][array.length] / array[array.length - 1][array.length - 1];
-    console.log(-array[array.length - 1][array.length] / array[array.length - 1][array.length - 1]);
+    console.log("eerr   "+(-array[array.length - 1][array.length] / array[array.length - 1][array.length - 1]));
     /*array = copyArray(original);
     console.log("arr1    " + array);
     var arrayNew = [];
@@ -80,15 +94,24 @@ function lgs() {
     console.log("arNew     "+arrayNew);
     array = arrayNew;
     console.log("arr2    " + array);*/
-    for(let f = 0; f < ; f++) {
+    /*for(let f = 0; f < ; f++) {
       
-    }
+    }*/
   }
-
+  var innerErg = "";
+  for(let l = 1; l <= array.length; l++) {
+    innerErg += `
+    <br>
+    <d>x`+l+`= `+ergebnisArray[l-1]+`</d>
+    `;
+  }
+  document.getElementById("ergebnisLGS").innerHTML = innerErg;
   console.log("erg    " + ergebnisArray);
 }
 zeile();
 
-lgs();
-
-
+/*var arr01 = [[0, 1, 2], [3, 4, 5]];
+var zwerg = arr01[0][2];
+arr01[0][2] = arr01[0][1];
+arr01[0][1] = zwerg;
+alert(arr01);*/

@@ -457,4 +457,3 @@ function refreshGraph() {
 
     document.getElementById("svgGraph").innerHTML = inner;
 }
-

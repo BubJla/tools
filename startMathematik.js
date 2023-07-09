@@ -5,7 +5,7 @@ document.getElementById("listeNebeneinanderMathe").innerHTML=`
     <a id="gleichung2" href="gleichung.html" class = "">Gleichung</a>
     </li>
     <li class="nebeneinander" style="width: 25%">
-    <a id="rechner" href="rechner.html">Rechner</a>
+    <a id="rechner" href="rechner.html">Taschenrechner</a>
     </li>
     <li class="nebeneinander" style="width: 25%">
     <a id="rechnerBinaer" href="rechnerBinaer.html">Umrechner</a>
