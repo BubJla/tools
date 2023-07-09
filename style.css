@@ -15,6 +15,28 @@
     background-color: var(--akzentfarbe3);
 }
 
+@keyframes transition1 {
+    from{
+        margin-left: 100%;
+        opacity: 0;
+    }
+    to{
+        margin-left: 0%;
+        opacity: 1;
+    }
+}
+
+@keyframes transition2 {
+    from{
+        margin-right: 100%;
+        opacity: 0;
+    }
+    to{
+        margin-right: 0%;
+        opacity: 1;
+    }
+}
+
 html{/*firefox*/
     scrollbar-width: normal;
     scrollbar-color: var(--akzentfarbe3) rgb(0, 0, 0, 0);
@@ -57,6 +79,10 @@ html::-webkit-scrollbar-track {
     margin-left: 16%;
 }
 
+.animate{
+    animation: transition1 500ms;
+}
+
 body{
     -webkit-touch-callout: none;
     -webkit-user-select: none;
@@ -96,7 +122,7 @@ li a{
     padding-top: 2%;
     display: flex;
     justify-content: center;
-
+    animation: transition2 500ms;
 }
 
 span{
