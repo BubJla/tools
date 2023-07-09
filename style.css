@@ -21,7 +21,7 @@ html{/*firefox*/
 }
 
 html::-webkit-scrollbar {
-    width: 2vw;
+    width: 0.5vw;
 }
 
 html::-webkit-scrollbar-thumb {
