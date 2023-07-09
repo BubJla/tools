@@ -15,29 +15,21 @@
     background-color: var(--akzentfarbe3);
 }
 
-::-webkit-scrollbar {
-width: 10px!important; /* Breite der Scrollbar */
+html{/*firefox*/
+    scrollbar-width: normal;
+    scrollbar-color: var(--akzentfarbe3) rgb(0, 0, 0, 0);
 }
 
-::-webkit-scrollbar-thumb {
-background-color: #ff0000!important; /* Farbe des Scrollbalkens */
+html::-webkit-scrollbar {
+    width: 2vw;
 }
 
-::-webkit-scrollbar-track {
-background-color: #f0f0f0!important; /* Hintergrundfarbe des Scrollbalkens */
+html::-webkit-scrollbar-thumb {
+    background-color: var(--akzentfarbe3);
 }
 
-/* Für Firefox */
-::-moz-scrollbar {
-width: 10px!important; /* Breite der Scrollbar */
-}
-
-::-moz-scrollbar-thumb {
-background-color: #ff0000!important; /* Farbe des Scrollbalkens */
-}
-
-::-moz-scrollbar-track {
-background-color: #f0f0f0!important; /* Hintergrundfarbe des Scrollbalkens */
+html::-webkit-scrollbar-track {
+    background-color: rgb(0, 0, 0, 0);
 }
 
 .notselection{
