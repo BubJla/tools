@@ -4,7 +4,6 @@
 
 *, *::after, *::before {
   box-sizing: border-box;
-  font-family: Gotham Rounded, sans-serif;
 }
 
 #divclock {
@@ -19,10 +18,9 @@
 .clock {
   width: var(--groesseTime);
   height: var(--groesseTime);
-  background-color: rgba(80, 80, 80);
   border-radius: 50%;
-  border: 2px solid white;
   position: relative;
+  background: #8888;
 }
 
 .clock .number {
@@ -33,7 +31,6 @@
   text-align: center;
   transform: rotate(var(--rotation));
   font-size: 1.5rem;
-  color: white;
 }
 
 .punkteuhr{
@@ -202,7 +199,7 @@
 .clock::after {
   content: '';
   position: absolute;
-  background-color: rgb(50, 50, 50);
+  background: #888;
   z-index: 11;
   width: 15px;
   height: 15px;
@@ -231,6 +228,7 @@
   height: 3%;
   z-index: 20;
   border-radius: 0;
+  border-radius: 30%;
 }
 
 .clock .hand.minute {

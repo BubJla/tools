@@ -7,6 +7,7 @@ var yF = 25;
 var gL;
 var gR;
 var e = [];
+var count = 0;
 
 //alert(breite);
 function ersetzen(text, zuErsetzen, ersetzwert) {
@@ -99,6 +100,7 @@ function compareNumbersA(a, b) {
   
 
 function gleichung() {
+    document.getElementById("graph").setAttribute("style", "animation: none;");
     var xVerschiebung;
     var yVerschiebung;
     var xFaktor;//Abstand kleinster/ hoechster x Wert
@@ -358,9 +360,20 @@ function gleichung() {
     xV = xVerschiebung;
     yV = yVerschiebung;
     refreshGraph();
+    if(count %2 == 0) {
+        document.getElementById("left").setAttribute("style", "animation: transition5 1500ms;");
+        document.getElementById("under").setAttribute("style", "animation: transition5 1500ms;");
+        document.getElementById("graph").setAttribute("style", "animation: transition5 1500ms ;");
+    }
+    else{
+        document.getElementById("left").setAttribute("style", "animation: transition6 1500ms;");
+        document.getElementById("under").setAttribute("style", "animation: transition6 1500ms;");
+        document.getElementById("graph").setAttribute("style", "animation: transition6 1500ms ;");
+    }
+    count ++;//für mehrmalige animation
+    scroll(0, 300);
 }
 
-//console.log("ejhhdscghgs:     "+gleichungGenau("(x)*(x-1)**2", 0.5, 999));
 
 function refreshGraph() {
     if(e == undefined) {
@@ -453,7 +466,6 @@ function refreshGraph() {
 
     document.getElementById("svgU").innerHTML = innerU;
     document.getElementById("svgL").innerHTML = innerL;
-
 
     document.getElementById("svgGraph").innerHTML = inner;
 }

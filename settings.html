@@ -4,10 +4,13 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="keywords" content="Julian, Brumbi, Einstellungen, Farben">
+    <meta name="description" content="Einstellungen der Website">
+    <meta name="author" content="Julian Brumbi">
     <link href="style.css" rel="stylesheet">             
     <title>Werkzeuge</title>
 </head>
-<body>
+<body style="transition: all 0.5s ease" class="sett">
     <ul class = "navigationsleiste" id="navigationsleiste">
     </ul>
     <div class = "divges">
@@ -16,37 +19,64 @@
         <div class="animate">
             <span>
         <div style="width: 230px;">  
-            <d>Hintergrundfarbe:</d>
+            <d>Hintergrundfarbe</d>
             <span>
                 <input type="color" id="hintergrundfarbe" style="height: 40px; width: 95%" value="#000000" onchange="changeSetting()">
             </span>
-            <d>Akzentfarbe 1:</d>
+            <d>Akzentfarbe 1</d>
             <span>
                 <input type="color" id="akzentfarbe1" style="height: 40px; width: 95%" value="#5A5AA0" onchange="changeSetting()">
             </span>
-            <d>Akzentfarbe 2:</d>
+            <d>Akzentfarbe 2</d>
             <span>
                 <input type="color" id="akzentfarbe2" style="height: 40px; width: 95%" value="#5AA05A" onchange="changeSetting()">
             </span>
-            <d>Akzentfarbe 3:</d>
+            <d>Akzentfarbe 3</d>
             <span>
-                <input type="color" id="akzentfarbe3" style="height: 40px; width: 95%" value="#4444FF" onchange="changeSetting()">
+                <input type="color" id="akzentfarbe3" style="height: 40px; width: 95%" value="#F66151" onchange="changeSetting()">
             </span>
             <span style="width: 100%;">
                 <div style="width: 70%;">  
-                    <d>Schriftfarbe:</d>              
+                    <d>Schriftfarbe</d>              
                     <span>
                         <input type="color" id="schriftfarbe" style="height: 40px; width: 92%" value="#FFFFFF" onchange="changeSetting()">
                     </span>
                 </div>
                 <div>    
-                    <d>automatisch</d>            
+                    <d>auto</d>            
                     <input type="checkbox" id="automatisch" value="#FFFFFF" style="width: 20px" checked onclick="changeSetting()">
                 </div>
             </span>
-            <d>Schriftgröße:</d>
+            <d>Schriftgröße</d>
             <span>
-                <input type="range" id="groesseSchrift" min="0.5" max ="2.0" step="0.01" value="1" style="height: 20px; width: 95%" onchange="changeSetting()">
+                <input type="range" id="groesseSchrift" min="0.5" max ="1.9" step="0.1" value="1" style="height: 20px; width: 95%" onchange="changeSetting()">
+            </span>
+            <d>Schriftart</d>
+            <span>
+                <div style="width: 33.3%;">
+                    <span>
+                        <d style="font-family: sans-serif!important;">X Y Z</d>
+                    </span>
+                    <span>
+                        <input type="radio" name="family" style="width: 15px; height: 15px;" id="sans" onclick="changeSetting()">
+                    </span>
+                </div>
+                <div style="width: 33.3%;">
+                    <span>
+                        <d style="font-family: serif!important;">X Y Z</d>
+                    </span>
+                    <span>
+                        <input type="radio" name="family" style="width: 15px; height: 15px;"  id="serif" onclick="changeSetting()">
+                    </span>
+                </div>
+                <div style="width: 33.3%;">
+                    <span>
+                        <d style="font-family: cursive!important;">X Y Z</d>
+                    </span>
+                    <span>
+                        <input type="radio" name="family" style="width: 15px; height: 15px;"  id="cursive" onclick="changeSetting()">
+                    </span>
+                </div>
             </span>
             <br>
             <span>
