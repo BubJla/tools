@@ -9,6 +9,10 @@ function readCookie(name) {
     }
 }
 
+function removepopup() {
+    document.getElementById("aufford").classList.add("durchsichtig");
+}
+
 function setCookie(name, value) {
     var date = new Date();
     date.setTime(date.getTime() + (60*24*60*60*1000));
@@ -59,7 +63,7 @@ else {
 }
 
 document.getElementById("navigationsleiste").innerHTML=`
-<div style="height: 86vh">
+<div style="height: 84vh">
     <li> 
         <a href="index.html" id="start">Startseite</a>
     </li>
@@ -73,13 +77,15 @@ document.getElementById("navigationsleiste").innerHTML=`
         <a id="spiele" href="kopfrechentraining.html">Spiele</a>
     </li>
     <li>    
-        <a id="sicherheit" href="sicherheit.html">Sonstiges</a>
+        <a id="sicherheit" href="eigenschaften.html">Sonstiges</a>
     </li>
     <li>    
         <a id="impressum" href="impressum.html">Impressum</a>
     </li>
-</div>    
-<a id="settings" class="gear" href="settings.html">&#9881;</a>`;
+</div> 
+<div style="height: 10vh">    
+    <a id="settings" class="gear" href="settings.html">&#9881;</a>
+</div>`;
 
 
 let aktuelleSeite = document.URL;
@@ -98,6 +104,7 @@ aktuelleSeite =  aktuelleSeite.replace("zeitTimer", "zeit");
 aktuelleSeite =  aktuelleSeite.replace("gleichungSystem", "mathe");
 aktuelleSeite =  aktuelleSeite.replace("gleichung", "mathe");
 aktuelleSeite =  aktuelleSeite.replace("integral", "mathe");
+aktuelleSeite =  aktuelleSeite.replace("eigenschaften", "sicherheit");
 if(aktuelleSeite == '')aktuelleSeite = "start";
 if(aktuelleSeite != 'settings') document.getElementById(aktuelleSeite).setAttribute("class", "aktiv");
 

@@ -17,6 +17,18 @@
     <div class = "divges">
         <h1 class = "head">Passwortgenerator</h1>
         <hr>
+        <ul class="listeNebeneinander">
+            <li class="nebeneinander">
+                <a href="eigenschaften.html">Eigenschaften</a>
+            </li>
+            <li class="nebeneinander">
+                <a class="aktiv" href="sicherheit.html">Passwort</a>
+            </li>
+            <li class="nebeneinander">
+                <a href="xyz.html">......</a>
+            </li>
+        </ul>
+        <hr>
         <div class="animate">
         <span class="passwortgeneratorlaengenauswahl">
             <div><d>Länge:</d></div>
@@ -36,8 +48,8 @@
                 <d>18</d>
                 <input type="radio" name="laenge" onclick="laenge = 18">
             </div>
-            <div style="width: 40px;">
-                <input type="text" id="variabelLaenge" placeholder="Wert" style="width: 50px" min="1">
+            <div style="width: 40px; overflow: visible;">
+                <input type="text" id="variabelLaenge" placeholder="Wert" style="width: 100%" min="1">
                 <input type="radio" name="laenge" onclick="laenge = 99">
             </div>
             <div>

@@ -1,6 +1,6 @@
 //document.cookie = "zahl=123; expires=27 Nov 2100 00:00:00 UTC; path=/";
 
-var cookie = false;
+var antwort = false;
 
 /*var result = confirm("Erlaubst du das Speichern von Cookies");
 if (result) {
@@ -37,14 +37,34 @@ function readCookie(name) {
     }
 }
 
-function changeSetting(){
-    if(cookie == false) {
-        var result = confirm("Erlaubst du das Speichern von Cookies");
-        if (result) {
-            cookie = true; 
-        }
 
-        if(cookie == false) return;
+
+function changeSetting(){
+    if(antwort == false) {
+        document.getElementById("divpopUp").innerHTML= `
+        <div id="aufford">
+            <section>
+                <d>Erlaubst du das Speichern von Cookies ?</d>
+                <br>
+                <d>Sie werden verwendet, um das Design der Website zu speichern</d>
+            </section>
+            <section>
+                <span id="JANEIN">
+                    <div style="width: 50%; background: radial-gradient(circle, var(--hintergrundfarbe) 0%, #f00 100%);" onclick="antwort=false; removepopup();">
+                        <d>
+                            NEIN
+                        </d>
+                    </div>
+                    <div style="width: 50%; background: radial-gradient(circle, var(--hintergrundfarbe) 0%, #0f0 100%);" onclick="antwort=true; removepopup(); changeSetting();">
+                        <d>
+                            Ja
+                        </d>
+                    </div>
+                </span>
+            </section>
+        </div>
+        `;
+        if(antwort == false) return;
     }
     let groesse = document.getElementById("groesseSchrift").value;
     let schriftfarbe = document.getElementById("schriftfarbe").value;

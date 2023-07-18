@@ -38,14 +38,13 @@
         rotate: 120deg;
         margin-top: -25%;
         margin-right: 100%;
-        opacity: 0.4;
-        scale: 0.1;
+        opacity: 0.5;
+        scale: 0.2;
         filter: blur(4px);
         background: #2222;
     }
     50%{
         filter: blur(1px);
-        transform: skewX(-5deg);
         rotate: 0deg;
         margin-top: 0%;
         margin-right: 0%;
@@ -189,16 +188,16 @@ html::-webkit-scrollbar-track {
 }
 
 .navigationsleiste{
+    overflow: hidden;
     list-style-type: none;
     margin: 0;
     padding: 0;
-    padding-top: 1%;
+    padding-top: 1vh;
     width: 16%;
-    height: 100%;
+    height: 100vh;
     position: fixed;
     overflow: auto;
-
-    background: rgba(118, 118, 118, 0.25);
+    background: linear-gradient(to right, rgba(118,118,118,0.45) 0%, rgba(118,118,118,0.25) 85%);
 
 
 }
@@ -214,7 +213,7 @@ html::-webkit-scrollbar-track {
 }
 
 .listeNebeneinander a{
-    transition: all 0s ease;
+    overflow: hidden;
 }
 
 body{
@@ -240,12 +239,14 @@ body{
 a{
     color: white;
     text-decoration: none;
+
 }
 
 li a{
     padding: 10px 10px 10px 10px;
     display: block;
     transition: all 0.5s ease;
+    overflow: hidden;
 }
 
 .navigationsleiste li a.aktiv{
@@ -286,7 +287,7 @@ input{
     border: 1px solid;
     font-size: var(--groesse);
     font-family: var(--schriftart);
-    transition: all 0.5s ease;
+    transition: all 0.3s ease;
     border-color: var(--schriftfarbe);
 }
 
@@ -297,22 +298,26 @@ d{
     transition: all 0.5s ease;
 }
 
+
+
 hr{
     margin-bottom: 3%;
     margin-top: 3%;
+    border-top: 1px solid var(--schriftfarbe);
 }
 
 .listeNebeneinander{
     list-style-type: none;
     width: 100%;
     overflow: auto;
-    background: rgba(118, 118, 118, 0.5) !important;
+
     display: flex;
     justify-content: space-around;
     margin: 0;
     padding: 0;
     margin-bottom: 2%;
-    }
+    background: linear-gradient(-90deg, rgba(118,118,118,0.6) 0%, rgba(118,118,118,0.25) 100%);
+ }
 
 .nebeneinander{
     float: left;
@@ -320,6 +325,10 @@ hr{
     width: 33.3%;
 }
     
+.nebeneinander a{
+    transition: all 0s!important;
+}
+
 .listeNebeneinander a.aktiv{
     background: var(--akzentfarbe2aktiv);
     animation: transition3 1500ms;
@@ -483,6 +492,10 @@ ellipse{
     width: 33.33%;
 }
 
+.bigger{
+    font-size: 1.5rem;
+}
+
 .zahlenfelder{
     margin-right: 5%;
     width: 30%;
@@ -572,6 +585,77 @@ ellipse{
     width: 3.5%;
 }
 
+@keyframes trans11{
+    0%{
+        scale: 1;
+        rotate: 0;
+    }
+    50%{
+        scale: 1.5;
+        filter: blur(1px);
+    }
+    100%{
+        scale: 1;
+        rotate: 360deg;
+    }
+}
+
+@keyframes trans12{
+    0%{
+        scale: 1;
+        rotate: 0;
+    }
+    50%{
+        scale: 1.5;
+        filter: blur(1px);
+    }
+    100%{
+        scale: 1;
+        rotate: -360deg;
+    }
+}
+
+@keyframes trans31{
+    0%{
+        scale: 1;
+    }
+    50%{
+        scale: 1.5;
+        filter: blur(1px);
+    }
+    100%{
+        scale: 1;
+    }
+}
+
+input[type="checkbox"] {
+    transition: all 0.1s;
+}
+
+input[type="checkbox"]:checked {
+    animation: trans11 0.5s;
+}
+
+input[type="checkbox"]:not(:checked) {
+    animation: trans12 0.5s;
+}
+
+input[type="checkbox"]:not(:checked):hover {
+    rotate: 15deg;
+}
+
+input[type="checkbox"]:checked:hover {
+    rotate: -15deg;
+}
+
+input[type="radio"]:checked {
+    animation: trans31 0.5s;
+}
+
+input:hover{
+    scale: 0.9;
+}
+
 .einheitenlaeng input{
     width: 13.5%;
 }
@@ -618,6 +702,10 @@ ellipse{
     transition: all 0.5s ease;
 }
 
+div:not(.divges):not(#spielfeldtic){
+    overflow: hidden;
+}
+
 d{
     font-size: var(--groesse);
     color: var(--schriftfarbe);
@@ -637,6 +725,8 @@ h1{
     text-align: center;
     color: var(--schriftfarbe)!important;
     font-size: var(--groesseUeberschrift);
+    overflow: hidden;
+
 }
 
 .sett h1 {
@@ -644,8 +734,8 @@ h1{
 }
 
 .durchsichtig {
-    background: #0000;
-    color: #0000;
+    opacity: 0;
+    transform: scale(0);
 }
 
 .clock .hand.millisecondin {
@@ -737,4 +827,67 @@ iframe {
     width: 84%;
     margin-left: 16%;
     height: 640px;
+}
+
+@keyframes transitionpopup {
+    0% {
+        filter: blur(5px);
+        transform: scale(0);
+    }
+    100% {
+        filter: blur(0px);
+        transform: scale(1);
+    }
+}
+
+#aufford{
+    display: grid;
+    place-content: top;
+    position: absolute;
+    top: 30vh;
+    left: 33%;
+    width: 50%;
+    padding-top: 1%;
+    aspect-ratio: 2/1;
+    background: var(--hintergrundfarbe);
+    z-index: 100;
+    border: 3px solid var(--akzentfarbe3);
+    color: var(--schriftfarbe);
+    box-shadow: 0px 0px 15px 5px var(--akzentfarbe3);
+    animation: transitionpopup 300ms linear;
+    transition: all 200ms;
+}
+
+.sett section:nth-child(1) {
+    width: 100%;
+    aspect-ratio: 3/1;
+}
+.sett section:nth-child(2) {
+    width: 100%;
+    aspect-ratio: 6/1;
+}
+
+#JANEIN{
+    height:100%
+}
+
+#JANEIN div{
+    display: grid;
+    place-content: center;
+    border: 1px solid var(--schriftfarbe);
+}
+
+#JANEIN d{
+    font-size: 2rem!important;
+}
+
+section{
+    display: grid;
+    place-content: top;
+}
+
+.BodyMass-Index-Input input{
+    width: 35%;
+    margin-left: 5%;
+    margin-right: 1%;
 }

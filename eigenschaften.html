@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="keywords" content="Julian, Brumbi, IQ, intelligenz, intelligenzquote, Body-Mass, Body Mass, Body-Mass Index, Übergewichtig, Untergewichtig">
+    <meta name="description" content="Rechner für Body-Mass Index und Iq Punkte">
+    <meta name="author" content="Julian Brumbi">
+    <link href="style.css" rel="stylesheet">             
+    <title>persönliche Eigenschaften</title>
+</head>
+<body>
+    <ul class = "navigationsleiste" id="navigationsleiste">
+    </ul>
+    <div class = "divges">
+        <div id="divpopUp"></div>
+        <h1 class = "head">persönliche Eigenschaften</h1>
+        <hr>
+        <ul class="listeNebeneinander">
+            <li class="nebeneinander">
+                <a class="aktiv" href="eigenschaften.html">Eigenschaften</a>
+            </li>
+            <li class="nebeneinander">
+                <a href="sicherheit.html">Passwort</a>
+            </li>
+            <li class="nebeneinander">
+                <a href="xyz.html">......</a>
+            </li>
+        </ul>
+        <hr>
+        <div class="animate">
+            <section>
+                <span class="BodyMass-Index-Input">
+                    <input type="text" id="mass" class="inputUmrechnerBinaer" placeholder="Masse: z.B. 75" onchange="evalBodyMassIndex();">
+                    <d class="bigger">kg</d>
+                    <input type="text" id="height" class="inputUmrechnerBinaer" placeholder="Größe: z.B. 1.8" onchange="evalBodyMassIndex();">
+                    <d class="bigger">m</d>
+                </span>
+            </section>
+            <hr>
+            <section>
+                <span class="BodyMass-Index-Input">
+                    <d style="font-size: 2rem;width: 30%;">BMI:</d>
+                    <input type="text" id="IndexValue" class="inputUmrechnerBinaer" readonly style="height: 2.5rem; font-size: 2rem;" placeholder="Ergebnis">
+                    <input type="text" id="IndexValue2" class="inputUmrechnerBinaer" readonly style="height: 2.5rem; font-size: 2rem; border: 0px;">
+                </span>
+            </section>
+            <br>
+            <hr>
+            <br>
+            <section>
+                <span class="BodyMass-Index-Input">
+                    <input type="text" id="percentage" class="inputUmrechnerBinaer" placeholder="Prozentsatz" onchange="integral();">
+                    <d class="bigger" style="width: 8%;">%</d>
+                    <span style="width: 14%;"></span>
+                    <d style="font-size: 2rem;width: 8%;">IQ:</d>
+                    <input type="text" id="IQRes" class="inputUmrechnerBinaer" readonly style="height: 2.5rem; font-size: 2rem;" placeholder="Ergebnis">
+                </span>
+            </section>
+        </div>
+    </div>
+</body>
+<script src="start.js"></script>
+<script src="properties.js"></script>
+</html>
