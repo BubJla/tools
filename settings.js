@@ -79,9 +79,7 @@ function changeSetting(){
     else if(document.getElementById("serif").checked == true) schriftart = "serif";
     else schriftart = "cursive";
     if(schriftart == "cursive") groesse *= 1.3;
-    document.querySelector(":root").style.setProperty("--groesse", groesse+"rem");
-    document.querySelector(":root").style.setProperty("--groesseUeberschrift", 2*groesse+"rem");
-    document.querySelector(":root").style.setProperty("--groesseUnterUeberschrift", 0.65*groesse+"rem");
+    document.querySelector(":root").style.setProperty("--groesse", groesse);
     document.querySelector(":root").style.setProperty("--schriftfarbe", schriftfarbe);
     document.querySelector(":root").style.setProperty("--hintergrundfarbe", hintergrundfarbe);
     document.querySelector(":root").style.setProperty("--akzentfarbe3", akzentfarbe3);
@@ -249,9 +247,7 @@ function changeSetting(){
 }
 
 function loeschen() {
-    document.querySelector(":root").style.setProperty("--groesse", "1rem");
-    document.querySelector(":root").style.setProperty("--groesseUeberschrift", "2rem");
-    document.querySelector(":root").style.setProperty("--groesseUnterUeberschrift", "0.65rem");
+    document.querySelector(":root").style.setProperty("--groesse", "1");
     document.querySelector(":root").style.setProperty("--schriftfarbe", "#FFF");
     document.querySelector(":root").style.setProperty("--hintergrundfarbe", "#000");
     document.querySelector(":root").style.setProperty("--akzentfarbe3", "#F66151");
@@ -399,9 +395,7 @@ else {
 
 
 if(readCookie("groesse") == undefined) {
-    document.querySelector(":root").style.setProperty("--groesse", "1rem");
-    document.querySelector(":root").style.setProperty("--groesseUeberschrift", "2rem");
-    document.querySelector(":root").style.setProperty("--groesseUnterUeberschrift", "0.65rem");
+    document.querySelector(":root").style.setProperty("--groesse", "1");
     document.querySelector(":root").style.setProperty("--schriftfarbe", "#FFF");
     document.querySelector(":root").style.setProperty("--hintergrundfarbe", "#000");
     document.querySelector(":root").style.setProperty("--akzentfarbe3", "#F66151");
@@ -412,9 +406,7 @@ if(readCookie("groesse") == undefined) {
     document.querySelector(":root").style.setProperty("--schriftart", "sans-serif");
 }
 else {
-    document.querySelector(":root").style.setProperty("--groesse", readCookie("groesse")+"rem");
-    document.querySelector(":root").style.setProperty("--groesseUeberschrift", 2*readCookie("groesse")+"rem");
-    document.querySelector(":root").style.setProperty("--groesseUnterUeberschrift", 0.65*readCookie("groesse")+"rem");
+    document.querySelector(":root").style.setProperty("--groesse", readCookie("groesse"));
     document.querySelector(":root").style.setProperty("--schriftfarbe", readCookie("schriftfarbe"));
     document.querySelector(":root").style.setProperty("--hintergrundfarbe", readCookie("hintergrundfarbe"));
     document.querySelector(":root").style.setProperty("--akzentfarbe3", readCookie("akzentfarbe3"));
@@ -431,8 +423,8 @@ if(document.querySelector(":root").style.getPropertyValue("--schriftart")=="") d
 if(document.querySelector(":root").style.getPropertyValue("--schriftart")=="sans-serif") document.getElementById("sans").checked = true;
 else if(document.querySelector(":root").style.getPropertyValue("--schriftart")=="serif") document.getElementById("serif").checked = true;
 else document.getElementById("cursive").checked = true;
-if(document.querySelector(":root").style.getPropertyValue("--schriftart")=="cursive") document.getElementById("groesseSchrift").value = (document.querySelector(":root").style.getPropertyValue("--groesse").split("rem")[0]/1.3);
-else document.getElementById("groesseSchrift").value = (document.querySelector(":root").style.getPropertyValue("--groesse").split("rem")[0]);
+if(document.querySelector(":root").style.getPropertyValue("--schriftart")=="cursive") document.getElementById("groesseSchrift").value = document.querySelector(":root").style.getPropertyValue("--groesse")/1.3;
+else document.getElementById("groesseSchrift").value = document.querySelector(":root").style.getPropertyValue("--groesse");
 document.getElementById("schriftfarbe").value = document.querySelector(":root").style.getPropertyValue("--schriftfarbe");
 document.getElementById("hintergrundfarbe").value = document.querySelector(":root").style.getPropertyValue("--hintergrundfarbe");
 document.getElementById("akzentfarbe3").value = document.querySelector(":root").style.getPropertyValue("--akzentfarbe3");

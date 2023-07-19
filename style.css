@@ -1,8 +1,8 @@
 :root {
     --schriftart: sans-serif;
-    --groesse: 1rem;
-    --groesseUeberschrift: 2rem;
-    --groesseUnterUeberschrift: 0.65rem;
+    --groesse: 1;
+    --groesseUeberschrift: 2;
+    --groesseUnterUeberschrift: 0.65;
     --schriftfarbe: #FFF;
     --hintergrundfarbe: #000;
     --akzentfarbe1: #5A5AA0;
@@ -10,6 +10,7 @@
     --akzentfarbe1aktiv: #2A2A70;
     --akzentfarbe2aktiv: #2A702A;
     --akzentfarbe3: #F66151;
+    --rotation01: 0deg;
 }
 
 ::selection {
@@ -113,7 +114,11 @@
 
 @keyframes transition4 {
     0%{
+        font-size: calc(var(--groesse)*0.85rem);
         background: var(--akzentfarbe1);
+    }
+    35%{
+        font-size: calc(var(--groesse)*1rem);
     }
     100%{
         background: var(--akzentfarbe1aktiv);
@@ -141,7 +146,6 @@
     .animate01 {
         animation: none!important;
     }
-    
     .animate{
         animation: none!important;
     }
@@ -198,8 +202,6 @@ html::-webkit-scrollbar-track {
     position: fixed;
     overflow: auto;
     background: linear-gradient(to right, rgba(118,118,118,0.45) 0%, rgba(118,118,118,0.25) 85%);
-
-
 }
 
 .zeitauswahlClickgeschw{
@@ -252,11 +254,15 @@ li a{
 .navigationsleiste li a.aktiv{
     background: var(--akzentfarbe1aktiv);
     animation: transition4 1500ms;
+}
 
+.navigationsleiste li a{
+    height: calc(var(--groesse)*1.3rem);
 }
 
 .navigationsleiste li a:hover:not(.aktiv){
     background: var(--akzentfarbe1);
+    font-size: calc(var(--groesse)*0.85rem);
 }
 
 .head{
@@ -279,13 +285,17 @@ span{
     justify-content: space-around;
 }
 
+#settings:hover{
+    font-size: calc(var(--groesse)*2.8rem);
+}
+
 input{
     width: 7%;
     accent-color: var(--akzentfarbe3)!important;
     background: var(--hintergrundfarbe)!important;
     color: var(--schriftfarbe);
     border: 1px solid;
-    font-size: var(--groesse);
+    font-size: calc(var(--groesse)*1rem);
     font-family: var(--schriftart);
     transition: all 0.3s ease;
     border-color: var(--schriftfarbe);
@@ -310,7 +320,6 @@ hr{
     list-style-type: none;
     width: 100%;
     overflow: auto;
-
     display: flex;
     justify-content: space-around;
     margin: 0;
@@ -326,7 +335,7 @@ hr{
 }
     
 .nebeneinander a{
-    transition: all 0s!important;
+    transition: all 0.3s!important;
 }
 
 .listeNebeneinander a.aktiv{
@@ -596,7 +605,7 @@ ellipse{
     }
     100%{
         scale: 1;
-        rotate: 360deg;
+        rotate: 353deg;
     }
 }
 
@@ -611,7 +620,7 @@ ellipse{
     }
     100%{
         scale: 1;
-        rotate: -360deg;
+        rotate: -353deg;
     }
 }
 
@@ -629,7 +638,7 @@ ellipse{
 }
 
 input[type="checkbox"] {
-    transition: all 0.1s;
+    transition: all 0s;
 }
 
 input[type="checkbox"]:checked {
@@ -638,6 +647,7 @@ input[type="checkbox"]:checked {
 
 input[type="checkbox"]:not(:checked) {
     animation: trans12 0.5s;
+    rotate: 0;
 }
 
 input[type="checkbox"]:not(:checked):hover {
@@ -652,8 +662,8 @@ input[type="radio"]:checked {
     animation: trans31 0.5s;
 }
 
-input:hover{
-    scale: 0.9;
+input:not([type="range"]):hover{
+    transform: scale(0.95, 0.9);
 }
 
 .einheitenlaeng input{
@@ -697,7 +707,7 @@ input:hover{
 
 .gear {
     padding-left: 10%!important;
-    font-size: var(--groesseUeberschrift);
+    font-size: calc(var(--groesse)*2rem);
     justify-content: left;
     transition: all 0.5s ease;
 }
@@ -707,24 +717,24 @@ div:not(.divges):not(#spielfeldtic){
 }
 
 d{
-    font-size: var(--groesse);
+    font-size: calc(var(--groesse)*1rem);
     color: var(--schriftfarbe);
 }
 a{
-    font-size: var(--groesse);
+    font-size: calc(var(--groesse)*1rem);
     color: var(--schriftfarbe);
 }
 
 h6{
     text-align: center;
     color: var(--schriftfarbe)!important;
-    font-size: var(--groesseUnterUeberschrift);
+    font-size: calc(var(--groesse)*0.65rem);
 }
 
 h1{
     text-align: center;
     color: var(--schriftfarbe)!important;
-    font-size: var(--groesseUeberschrift);
+    font-size: calc(var(--groesse)*2rem);
     overflow: hidden;
 
 }
@@ -890,4 +900,16 @@ section{
     width: 35%;
     margin-left: 5%;
     margin-right: 1%;
+}
+
+#arrow1{
+    position: absolute;
+    font-size: 10rem;
+    rotate: var(--rotation01);
+    margin-left:0%;
+    top: 0%;
+    transform: translate(-50%, -50%);
+    margin-top: 300px;
+    margin-left: 500px;
+    transform-origin: center;
 }

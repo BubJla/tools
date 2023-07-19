@@ -23,9 +23,7 @@ function setCookie(name, value) {
 
 
 if(readCookie("groesse") == undefined) {
-    document.querySelector(":root").style.setProperty("--groesse", "1rem");
-    document.querySelector(":root").style.setProperty("--groesseUeberschrift", "2rem");
-    document.querySelector(":root").style.setProperty("--groesseUnterUeberschrift", "0.65rem");
+    document.querySelector(":root").style.setProperty("--groesse", "1");
     document.querySelector(":root").style.setProperty("--schriftfarbe", "#FFF");
     document.querySelector(":root").style.setProperty("--hintergrundfarbe", "#000");
     document.querySelector(":root").style.setProperty("--akzentfarbe3", "#F66151");
@@ -46,9 +44,7 @@ if(readCookie("groesse") == undefined) {
     setCookie("automatikAktiv", "true");*/
 }
 else {
-    document.querySelector(":root").style.setProperty("--groesse", readCookie("groesse")+"rem");
-    document.querySelector(":root").style.setProperty("--groesseUeberschrift", 2*readCookie("groesse")+"rem");
-    document.querySelector(":root").style.setProperty("--groesseUnterUeberschrift", 0.65*readCookie("groesse")+"rem");
+    document.querySelector(":root").style.setProperty("--groesse", readCookie("groesse"));
     document.querySelector(":root").style.setProperty("--schriftfarbe", readCookie("schriftfarbe"));
     document.querySelector(":root").style.setProperty("--hintergrundfarbe", readCookie("hintergrundfarbe"));
     document.querySelector(":root").style.setProperty("--akzentfarbe3", readCookie("akzentfarbe3"));

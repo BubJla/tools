@@ -2,9 +2,6 @@
   --groesseTime: 300px;
 }
 
-*, *::after, *::before {
-  box-sizing: border-box;
-}
 
 #divclock {
   padding-top: 2%;
