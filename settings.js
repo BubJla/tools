@@ -74,6 +74,7 @@ function changeSetting(){
     let akzentfarbe1 = document.getElementById("akzentfarbe1").value;
     let automatikAktiv = document.getElementById("automatisch").checked;
     var schriftart;
+    var animationType;
     if(!navigator.cookieEnabled) alert("Cookies müssen aktiviert sein um diese Funktion zu nutzen");
     if(document.getElementById("sans").checked == true) schriftart = "sans-serif"
     else if(document.getElementById("serif").checked == true) schriftart = "serif";
@@ -234,6 +235,12 @@ function changeSetting(){
     document.querySelector(":root").style.setProperty("--akzentfarbe1aktiv", akzentfarbe1aktiv);
     document.querySelector(":root").style.setProperty("--akzentfarbe2aktiv", akzentfarbe2aktiv);
 
+    if(document.getElementById("animationT0").checked == true) animationType = 0;    
+    else if(document.getElementById("animationT1").checked == true) animationType = 1;  
+    else  animationType = 2;    
+
+    if(animationType != readCookie("animation")) location.reload();
+
     setCookie("hintergrundfarbe", hintergrundfarbe);
     setCookie("schriftfarbe", schriftfarbe);
     setCookie("akzentfarbe1", akzentfarbe1);
@@ -244,6 +251,7 @@ function changeSetting(){
     setCookie("groesse", groesse);
     setCookie("automatikAktiv", automatikAktiv);
     setCookie("schriftart", schriftart);
+    setCookie("animation", animationType);
 }
 
 function loeschen() {
@@ -265,6 +273,7 @@ function loeschen() {
     deleteCookie("groesse");
     deleteCookie("automatikAktiv");
     deleteCookie("schriftart");
+    deleteCookie("animation");
 
     location.reload();
 
@@ -404,6 +413,7 @@ if(readCookie("groesse") == undefined) {
     document.querySelector(":root").style.setProperty("--akzentfarbe1aktiv", "#2A2A70");
     document.querySelector(":root").style.setProperty("--akzentfarbe2aktiv", "#2A702A");
     document.querySelector(":root").style.setProperty("--schriftart", "sans-serif");
+    document.getElementById("animationT2").checked = true;
 }
 else {
     document.querySelector(":root").style.setProperty("--groesse", readCookie("groesse"));
@@ -418,6 +428,9 @@ else {
     let summe = readCookie("hintergrundfarbe").split("#");
     if(readCookie("automatikAktiv") == "true" && summe[1][0] <= 9 && summe[1][2] <= 9 && summe[1][4] <= 9 && summe[1][0] >= 0 && summe[1][2] >= 0 && summe[1][4] >= 0) document.querySelector(":root").style.setProperty("--schriftfarbe", "#FFFFFF");
     else if(readCookie("automatikAktiv") == "true") document.querySelector(":root").style.setProperty("--schriftfarbe", "#000000");
+    if(readCookie("animation") == 0) document.getElementById("animationT0").checked = true;
+    else if(readCookie("animation") == 1) document.getElementById("animationT1").checked = true;
+    else document.getElementById("animationT2").checked = true;
 }
 if(document.querySelector(":root").style.getPropertyValue("--schriftart")=="") document.querySelector(":root").style.setProperty("--schriftart", "sans-serif");
 if(document.querySelector(":root").style.getPropertyValue("--schriftart")=="sans-serif") document.getElementById("sans").checked = true;

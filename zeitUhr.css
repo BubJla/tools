@@ -182,7 +182,7 @@
 }
 
 
-.clock .hand {
+.clock .hand:not(#millisecondsHand){
   --rotation: 0;
   position: absolute;
   bottom: 50%;
@@ -214,18 +214,17 @@
 }
 
 .clock .hand.millisecond {
-  height: 100%;
-  background-color: rgb(255, 200, 0, 0);
+  height: 55%;
   display: flex;
   justify-content: right;
 }
 
 .clock .hand.millisecondin {
   width: 20px;
-  height: 3%;
+  height: 10px;
   z-index: 20;
-  border-radius: 0;
-  border-radius: 30%;
+  border-radius: 0%;
+  border-top: 10px solid var(--hintergrundfarbe);
 }
 
 .clock .hand.minute {

@@ -21,6 +21,17 @@ function setCookie(name, value) {
     document.cookie = name + "=" + value + ";" + clear + ";SameSite=Lax";
 }
 
+function help(text) {
+    document.getElementById("textInformate").innerHTML = text;
+}
+
+var elements = document.querySelectorAll(".animate");//animations
+const elementsHead = document.querySelectorAll("h1");
+for(i = 0; i < elementsHead.length; i++) elementsHead[i].classList.add("animate2");
+
+elements[0].classList.add("animationDiv");
+
+elements = document.querySelectorAll(".animationDiv");
 
 if(readCookie("groesse") == undefined) {
     document.querySelector(":root").style.setProperty("--groesse", "1");
@@ -56,7 +67,15 @@ else {
     let summe = readCookie("hintergrundfarbe").split("#");
     if(readCookie("automatikAktiv") == "true" && summe[1][0] <= 9 && summe[1][2] <= 9 && summe[1][4] <= 9 && summe[1][0] >= 0 && summe[1][2] >= 0 && summe[1][4] >= 0) document.querySelector(":root").style.setProperty("--schriftfarbe", "#FFFFFF");
     else if(readCookie("automatikAktiv") == "true") document.querySelector(":root").style.setProperty("--schriftfarbe", "#000000");
-}
+
+    const animationType = readCookie("animation");
+
+    if(animationType == 1) elements[0].classList.add("animate12");
+    else if(animationType != 2) elements[0].classList.remove("animate");
+    
+    if(animationType == 1) for(i = 0; i < elementsHead.length; i++) elementsHead[i].classList.add("animate22");
+    else if(animationType != 2) for(i = 0; i < elementsHead.length; i++) elementsHead[i].classList.remove("animate2");
+  }
 
 document.getElementById("navigationsleiste").innerHTML=`
 <div style="height: 84vh">
@@ -118,3 +137,5 @@ if(aktuelleSeite != 'settings') document.getElementById(aktuelleSeite).setAttrib
     // ...
     // Stelle sicher, dass die Animation innerhalb eines bestimmten Zeitraums abgeschlossen ist, da die Seite sonst sofort geschlossen wird
   }*/
+
+

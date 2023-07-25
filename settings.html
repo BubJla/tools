@@ -72,10 +72,37 @@
                 </div>
                 <div style="width: 33.3%;">
                     <span>
-                        <d style="font-family: cursive!important;">X Y Z</d>
+                        <d style="font-family: cursive!important; font-size: calc(var(--groesse)*1.3rem);">X Y Z</d>
                     </span>
                     <span>
                         <input type="radio" name="family" style="width: 15px; height: 15px;"  id="cursive" onclick="changeSetting()">
+                    </span>
+                </div>
+            </span>
+            <d>Animationsart</d>
+            <span>
+                <div style="width: 33.3%;">
+                    <span>
+                        <d>keine</d>
+                    </span>
+                    <span>
+                        <input type="radio" name="anima" style="width: 15px; height: 15px;" id="animationT0" onclick="changeSetting()">
+                    </span>
+                </div>
+                <div style="width: 33.3%;">
+                    <span>
+                        <d>reduziert</d>
+                    </span>
+                    <span>
+                        <input type="radio" name="anima" style="width: 15px; height: 15px;"  id="animationT1" onclick="changeSetting()">
+                    </span>
+                </div>
+                <div style="width: 33.3%;">
+                    <span>
+                        <d>normal</d>
+                    </span>
+                    <span>
+                        <input type="radio" name="anima" style="width: 15px; height: 15px;"  id="animationT2" onclick="changeSetting()" checked>
                     </span>
                 </div>
             </span>
@@ -92,6 +119,21 @@
 
     </div>
     </div>
+    <span class="information" id="textInformate">
+        <div>
+            ?
+        </div>
+        <div>
+            Man kann das Aussehen durch Klicken auf die einzelnen Objekte verändern. 
+            <br> 
+            <br> 
+            Die Akzentfarben passen sich automatisch an den Hintergrund an. 
+            <br> 
+            Automatik bei der Schriftfarbe passt die Schriftfarbe automatisch an den Hintergrund an.
+            <br> 
+            Schriftart: kursiv kann zu Problemen der Leslichkeit führen.
+        </div>
+    </span>
 </body>
 <script src="settings.js"></script>
 <script src="start.js"></script>

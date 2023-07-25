@@ -17,20 +17,6 @@
     background: var(--akzentfarbe3);
 }
 
-/*@keyframes transition1 {
-    0%{
-        margin-left: 100%;
-        opacity: 0;
-    }
-    50%{
-        opacity: 0.2;
-    }
-    100%{
-        margin-left: 0%;
-        opacity: 1;
-    }
-}*/
-
 @keyframes transition1 {
     0%{
         overflow: hidden;
@@ -68,19 +54,6 @@
     }
 }
 
-/*@keyframes transition2 {
-    0%{
-        margin-right: 100%;
-        opacity: 0;
-    }
-    13%{
-        opacity: 0;
-    }
-    100%{
-        margin-right: 0%;
-        opacity: 1;
-    }
-}*/
 
 @keyframes transition2 {
     0%{
@@ -103,9 +76,43 @@
     }
 }
 
+@keyframes transition12 {
+    0%{
+        filter: blur(2px);
+        transform: translateX(100%);
+        opacity: 0;
+    }
+    50%{
+        opacity: 0.5;
+        filter: blur(1px);
+    }
+    100%{
+        transform: translateX(0%);
+    }
+}
+
+@keyframes transition22 {
+    0%{
+        opacity: 0;
+        transform: translateX(-100%);
+    }
+    25%{
+        opacity: 0;
+        filter: blur(2px);
+    }
+    100%{
+        transform: translateX(0%);
+    }
+}
+
 @keyframes transition3 {
     0%{
+        font-size: calc(var(--groesse)*0.8rem);
+        transform: scaleY(1.2);
         background: var(--akzentfarbe2);
+    }
+    35%{
+        font-size: calc(var(--groesse)*1.0rem);    
     }
     100%{
         background: var(--akzentfarbe2aktiv);
@@ -118,7 +125,7 @@
         background: var(--akzentfarbe1);
     }
     35%{
-        font-size: calc(var(--groesse)*1rem);
+        font-size: calc(var(--groesse)*1.0rem);
     }
     100%{
         background: var(--akzentfarbe1aktiv);
@@ -162,13 +169,20 @@
 }
 
 .animate{
-    animation: transition1 600ms;
+    animation: transition1 700ms;
 }
 .animate2{
-    animation: transition2 500ms;
+    animation: transition2 700ms;
 }
 
-html{/*firefox*/
+.animate12{
+    animation: transition12 500ms;
+}
+.animate22{
+    animation: transition22 500ms;
+}
+
+html{
     scrollbar-width: auto;
     scrollbar-color: var(--akzentfarbe3) rgb(0, 0, 0, 0);
     overflow-x: hidden;
@@ -225,23 +239,19 @@ body{
     -moz-user-select: none;
     -ms-user-select: none;
     user-select: none;
-
     font-family: var(--schriftart);
-    /*
-    serif
-    cursive
-    sans-serif
-    */
     margin: 0;
     background: var(--hintergrundfarbe);
-    /*background: linear-gradient(to right, #FFFFFF 0%, #000000 84%);*/
-
 }
 
 a{
     color: white;
     text-decoration: none;
 
+}
+
+li{
+    overflow: hidden;
 }
 
 li a{
@@ -272,7 +282,7 @@ li a{
     padding-top: 2%;
     display: flex;
     justify-content: center;
-    animation: transition2 700ms;
+    /*animation: transition2 700ms;*/
 }
 
 span{
@@ -285,8 +295,8 @@ span{
     justify-content: space-around;
 }
 
-#settings:hover{
-    font-size: calc(var(--groesse)*2.8rem);
+.gear:hover{
+    font-size: calc(var(--groesse)*2.6rem);
 }
 
 input{
@@ -317,6 +327,7 @@ hr{
 }
 
 .listeNebeneinander{
+    height: calc((var(--groesse)+1)*1.8rem)!important;
     list-style-type: none;
     width: 100%;
     overflow: auto;
@@ -689,11 +700,6 @@ input:not([type="range"]):hover{
     border-color: var(--schriftfarbe);
 }
 
-.krT div:not(.nichtA){
-    border-right: 1px solid var(--schriftfarbe); 
-    border-left: 1px solid var(--schriftfarbe);
-}
-
 .passwortgeneratorlaengenauswahl div input{
     width: 20px;
     height: 20px;
@@ -746,6 +752,11 @@ h1{
 .durchsichtig {
     opacity: 0;
     transform: scale(0);
+}
+
+.nebeneinander:hover a:not(.aktiv){
+    font-size: calc(var(--groesse)*0.8rem);
+    transform: scaleY(1.2);
 }
 
 .clock .hand.millisecondin {
@@ -851,9 +862,11 @@ iframe {
 }
 
 #aufford{
+    overflow: visible!important;
     display: grid;
     place-content: top;
     position: absolute;
+    border-radius: 15px;
     top: 30vh;
     left: 33%;
     width: 50%;
@@ -863,7 +876,7 @@ iframe {
     z-index: 100;
     border: 3px solid var(--akzentfarbe3);
     color: var(--schriftfarbe);
-    box-shadow: 0px 0px 15px 5px var(--akzentfarbe3);
+    box-shadow: 0px 0px 50px 5px var(--akzentfarbe3);
     animation: transitionpopup 300ms linear;
     transition: all 200ms;
 }
@@ -878,13 +891,26 @@ iframe {
 }
 
 #JANEIN{
-    height:100%
+    height:100%;
 }
 
 #JANEIN div{
     display: grid;
     place-content: center;
     border: 1px solid var(--schriftfarbe);
+    transition: all 250ms;
+}
+
+#JANEIN div:hover d{
+    font-size: 1.5rem!important;
+}
+
+#JANEIN div:nth-child(1){
+    border-radius: 0px 0px 0px 13px;
+}
+
+#JANEIN div:nth-child(2){
+    border-radius: 0px 0px 13px 0px;
 }
 
 #JANEIN d{
@@ -912,4 +938,50 @@ section{
     margin-top: 300px;
     margin-left: 500px;
     transform-origin: center;
+}
+
+.information{
+    width: calc(var(--groesse)*20px);
+    height: calc(var(--groesse)*35px);
+    position: absolute;
+    background: var(--schriftfarbe);
+    color: var(--hintergrundfarbe);
+    top: 10px;
+    right: 15px;
+    font-size: calc(var(--groesse)*2rem);
+    border-radius: 100%;
+    box-shadow: 0px 0px 5px 5px var(--schriftfarbe);
+    transition: width 0s, height 0s;
+}
+
+.information:hover{
+    font-size: calc(var(--groesse)*1rem);
+    border-radius: 2%;
+    width: 40%;
+    height: 40%;
+    transition: width 0.5s, height 0.5s;
+}
+
+.information:hover > div:nth-child(1){
+    opacity: 0;
+    scale: 0;
+}
+
+.information:hover > div:nth-child(2){
+    opacity: 1;
+    scale: 1;
+}
+
+.information:not(:hover) > div:nth-child(1){
+    opacity: 1;
+    scale: 1;
+}
+
+.information:not(:hover) > div:nth-child(2){
+    opacity: 0;
+    scale: 0;
+}
+
+.information div{
+    position: absolute;
 }
