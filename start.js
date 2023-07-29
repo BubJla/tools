@@ -139,3 +139,8 @@ if(aktuelleSeite != 'settings') document.getElementById(aktuelleSeite).setAttrib
   }*/
 
 
+// Daten im LocalStorage speichern
+
+// Daten aus dem LocalStorage abrufen
+const username = localStorage.getItem('username');
+alert(username); // Output: JohnDoe

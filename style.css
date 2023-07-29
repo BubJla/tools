@@ -742,7 +742,6 @@ h1{
     color: var(--schriftfarbe)!important;
     font-size: calc(var(--groesse)*2rem);
     overflow: hidden;
-
 }
 
 .sett h1 {
@@ -756,7 +755,7 @@ h1{
 
 .nebeneinander:hover a:not(.aktiv){
     font-size: calc(var(--groesse)*0.8rem);
-    transform: scaleY(1.2);
+    transform: scaleY(1.22);
 }
 
 .clock .hand.millisecondin {
