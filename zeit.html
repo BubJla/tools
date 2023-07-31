@@ -9,7 +9,6 @@
     <meta name="author" content="Julian Brumbi">
     <link href="style.css" rel="stylesheet">
     <title>Uhr</title>
-    <link href="zeitUhr.css" rel="stylesheet">
     <script defer src="zeitUhr.js"></script>
   </head>
 <body>
@@ -29,18 +28,21 @@
                 <a href="zeitTimer.html">Timer</a>
             </li>
         </ul>
+
+        <div id="animateUnload"></div>
+
         <div class="animate">
         <div id="Uhrzeit">
             <span>
                 <d id="datum">datum</d>
                 &emsp;
-                <d id="stunde">hour</d>
+                <d id="stundeUhr">hour</d>
                 <d>:</d>
-                <d id="minute">minute</d>
+                <d id="minuteUhr">minute</d>
                 <d>:</d>
-                <d id="sekunde">second</d>
+                <d id="sekundeUhr">second</d>
                 <d>:</d>
-                <d id="millisekunde" style="width: 50px">millisecond</d>
+                <d id="millisekundeUhr" style="width: 50px">millisecond</d>
             </span>
         </div>
 

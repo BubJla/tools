@@ -12,145 +12,136 @@
     <script src="rechner.js"></script>
 </head>
 <body>
-    <ul class = "navigationsleiste" id="navigationsleiste">
+    <ul class="navigationsleiste" id="navigationsleiste">
     </ul>
-    <div class = "divges">
-        <h1 class = "head">Taschenrechner</h1>
+    <div class="divges">
+        <h1 class="head">Taschenrechner</h1>
         <hr>
         <ul class="listeNebeneinander" id="listeNebeneinanderMathe">
         </ul>
+
+        <div id="animateUnload"></div>
+
         <div class="animate">
-    <span>
-       <div class="ausgabefeld">
-            <input type="text" id = "ausgabefeld" onkeyup="eingabeTastatur()">
-       </div>
+            <span>
+                <div class="ausgabefeld">
+                    <input type="text" id="ausgabefeld" onkeyup="eingabeTastatur()">
+                </div>
+            </span>
+            <hr style="margin-top: 0.5%; margin-bottom: 0.5%">
+            <span>
+                <div class="zahlenfelder">
+                    <span>
+                        <div onclick='eingabe+="1"; refreshEingabe()'>
+                            <d>1</d>
+                        </div>
+                        <div onclick='eingabe+="2"; refreshEingabe()'>
+                            <d>2</d>
+                        </div>
+                        <div onclick='eingabe+="3"; refreshEingabe()'>
+                            <d>3</d>
+                        </div>
+                    </span>
+                    <span>
+                        <div onclick='eingabe+="4"; refreshEingabe()'>
+                            <d>4</d>
+                        </div>
+                        <div onclick='eingabe+="5"; refreshEingabe()'>
+                            <d>5</d>
+                        </div>
+                        <div onclick='eingabe+="6"; refreshEingabe()'>
+                            <d>6</d>
+                        </div>
+                    </span>
+                    <span>
+                        <div onclick='eingabe+="7"; refreshEingabe()'>
+                            <d>7</d>
+                        </div>
+                        <div onclick='eingabe+="8"; refreshEingabe()'>
+                            <d>8</d>
+                        </div>
+                        <div onclick='eingabe+="9"; refreshEingabe()'>
+                            <d>9</d>
+                        </div>
+                    </span>
+                    <span>
+                        <div onclick='eingabe+=","; refreshEingabe()'>
+                            <d>,</d>
+                        </div>
+                        <div onclick='eingabe+="0"; refreshEingabe()'>
+                            <d>0</d>
+                        </div>
+                        <div onclick="result()">
+                            <d>=</d>
+                        </div>
+                    </span>
+                </div>
+                <div class="operatorenfelder">
+                    <span>
+                        <div onclick='eingabe+="+"; refreshEingabe()'>
+                            <d>+</d>
+                        </div>
+                        <div onclick="loeschen()">
+                            <d>⇐</d>
+                        </div>
+                        <div style="width: 140px" onclick="reset()">
+                            <d>CE</d>
+                        </div>
+                    </span>
+                    <span>
+                        <div onclick='eingabe+="-"; refreshEingabe()'>
+                            <d>-</d>
+                        </div>
+                        <div onclick='eingabe+="("; refreshEingabe()'>
+                            <d>(</d>
+                        </div>
+                        <div onclick='eingabe+=")"; refreshEingabe()'>
+                            <d>)</d>
+                        </div>
+                        <div onclick='eingabe+="%"; refreshEingabe()'>
+                            <d>%</d>
+                        </div>
+                    </span>
+                    <span>
+                        <div onclick='eingabe+="×"; refreshEingabe()'>
+                            <d>×</d>
+                        </div>
+                        <div onclick='eingabe+="!"; refreshEingabe()'>
+                            <d>!</d>
+                        </div>
+                        <div onclick='eingabe+="²"; refreshEingabe()'>
+                            <d>²</d>
+                        </div>
+                        <div onclick='eingabe+="^"; refreshEingabe()'>
+                            <d>^</d>
+                        </div>
+                    </span>
+                    <span>
+                        <div onclick='eingabe+="÷"; refreshEingabe()'>
+                            <d>÷</d>
+                        </div>
+                        <div onclick='eingabe+="π"; refreshEingabe()'>
+                            <d>π</d>
+                        </div>
+                        <div style="width: 140px" onclick='eingabe+="ANS"; refreshEingabe()'>
+                            <d>ANS</d>
+                        </div>
+                    </span>
+                </div>
+            </span>
+        </div>
+    </div>
+    <span class="information" id="textInformate">
+        <div>
+            ?
+        </div>
+        <div>
+            Taschenrechner mit allen Funktionen.
+            <br> 
+            <br> 
+            Funktionen: mit Tastatur in Eingabefeld eingeben (z.B. Math.sqrt(x), Math.sin(x), ...).
+        </div>
     </span>
-    <hr style="margin-top: 0.5%; margin-bottom: 0.5%">
-    <span>
-    <div class="zahlenfelder">
-            <span>
-                <div onclick='eingabe+="1"; refreshEingabe()'>
-                    <d>1</d>
-                </div>
-                <div onclick='eingabe+="2"; refreshEingabe()'>
-                    <d>2</d>
-
-                </div>
-                <div onclick='eingabe+="3"; refreshEingabe()'>
-                    <d>3</d>
-
-                </div>
-            </span>
-            <span>
-                <div onclick='eingabe+="4"; refreshEingabe()'>
-                    <d>4</d>
-
-                </div>
-                <div onclick='eingabe+="5"; refreshEingabe()'>
-                    <d>5</d>
-
-                </div>
-                <div onclick='eingabe+="6"; refreshEingabe()'>
-                    <d>6</d>
-
-                </div>
-            </span>
-            <span>
-                <div onclick='eingabe+="7"; refreshEingabe()'>
-                    <d>7</d>
-
-                </div>
-                <div onclick='eingabe+="8"; refreshEingabe()'>
-                    <d>8</d>
-
-                </div>
-                <div onclick='eingabe+="9"; refreshEingabe()'>
-                    <d>9</d>
-                </div>
-            </span>
-            <span>
-                <div onclick='eingabe+=","; refreshEingabe()'>
-                    <d>,</d>
-                </div>
-                <div onclick='eingabe+="0"; refreshEingabe()'>
-                    <d>0</d>
-
-                </div>
-                <div onclick = "result()">
-                    <d>=</d>
-                </div>
-            </span>
-       </div>
-    <div class="operatorenfelder">
-        <span>
-            <div onclick='eingabe+="+"; refreshEingabe()'>
-                <d>+</d>
-            </div>
-            <div onclick="loeschen()">
-                <d>⇐</d>
-            </div>
-            <div style="width: 140px" onclick="reset()">
-                <d>CE</d>
-            </div>
-        </span>
-        <span>
-            <div onclick='eingabe+="-"; refreshEingabe()'>
-                <d>-</d>
-            </div>
-            <div onclick='eingabe+="("; refreshEingabe()'>
-                <d>(</d>
-            </div>
-            <div onclick='eingabe+=")"; refreshEingabe()'>
-                <d>)</d>
-            </div>
-            <div onclick='eingabe+="%"; refreshEingabe()'>
-                <d>%</d>
-            </div>
-        </span>
-        <span>
-            <div onclick='eingabe+="×"; refreshEingabe()'>
-                <d>×</d>
-
-            </div>
-            <div onclick='eingabe+="!"; refreshEingabe()'>
-                <d>!</d>
-
-            </div>
-            <div onclick='eingabe+="²"; refreshEingabe()'>
-                <d>²</d>
-            </div>
-            <div onclick='eingabe+="^"; refreshEingabe()'>
-                <d>^</d>
-
-            </div>
-        </span>
-        <span>
-            <div onclick='eingabe+="÷"; refreshEingabe()'>
-                <d>÷</d>
-            </div>
-            <div  onclick='eingabe+="π"; refreshEingabe()'>
-                <d>π</d>
-
-            </div>
-            <div style="width: 140px"  onclick='eingabe+="ANS"; refreshEingabe()'>
-                <d>ANS</d>
-            </div>
-        </span>
-    </div>
-    </span>
-    </div>
-</div>
-<span class="information" id="textInformate">
-    <div>
-        ?
-    </div>
-    <div>
-        Taschenrechner mit allen Funktionen.
-        <br> 
-        <br> 
-        Funktionen: mit Tastatur in Eingabefeld eingeben (z.B. Math.sqrt(x), Math.sin(x), ...).
-    </div>
-</span>
 </body>
 <script src="start.js"></script>
 <script src="startMathematik.js"></script>

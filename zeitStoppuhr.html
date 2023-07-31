@@ -12,10 +12,10 @@
     <script src="zeitStoppuhr.js"></script>
 </head>
 <body>
-    <ul class = "navigationsleiste" id="navigationsleiste">
+    <ul class="navigationsleiste" id="navigationsleiste">
     </ul>
-    <div class = "divges">
-        <h1 class = "head">Stoppuhr</h1>
+    <div class="divges">
+        <h1 class="head">Stoppuhr</h1>
         <hr>
         <ul class="listeNebeneinander">
             <li class="nebeneinander">
@@ -28,31 +28,34 @@
                 <a href="zeitTimer.html">Timer</a>
             </li>
         </ul>
+
+        <div id="animateUnload"></div>
+
         <br>
         <div class="animate">
-        <span id="stoppuhr">
-            <d id="stunde">00</d>
-            <d>:</d>
-            <d id="minute">00</d>
-            <d>:</d>
-            <d id="sekunde">00</d>
-            <d>:</d>
-            <d id="millisekunde" style="width: 50px">000</d>
-        </span>
-        <br>
-        <span>
-        <input type="button" onclick="startStoppuhr()" value="START" id="start" style="width: 100px;">
-        <input type="button" onclick="stopStoppuhr()" value="STOPP" id="stopp" disabled style="width: 100px;">
-        <input type="button" onclick="resetStoppuhr()" value="LÖSCHEN" style="width: 100px;">
-        </span>
-        <br>
-        <span>
-        <input type="button" onclick="ZWERG()" value="ZWISCHENERGEBNIS" style="width: 200px;">
-        </span>
-        <ul id="Zwischenergebnisse">
+            <span id="stoppuhr">
+                <d id="stunde">00</d>
+                <d>:</d>
+                <d id="minute">00</d>
+                <d>:</d>
+                <d id="sekunde">00</d>
+                <d>:</d>
+                <d id="millisekunde" style="width: 50px">000</d>
+            </span>
+            <br>
+            <span>
+                <input type="button" onclick="startStoppuhr()" value="START" id="start" style="width: 100px;">
+                <input type="button" onclick="stopStoppuhr()" value="STOPP" id="stopp" disabled style="width: 100px;">
+                <input type="button" onclick="resetStoppuhr()" value="LÖSCHEN" style="width: 100px;">
+            </span>
+            <br>
+            <span>
+                <input type="button" onclick="ZWERG()" value="ZWISCHENERGEBNIS" style="width: 200px;">
+            </span>
+            <ul id="Zwischenergebnisse">
 
-        </ul>
-    </div>
+            </ul>
+        </div>
     </div>
     <span class="information" id="textInformate">
         <div>

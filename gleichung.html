@@ -11,116 +11,122 @@
     <title>Gleichungslöser</title>
 </head>
 <body>
-    <ul class = "navigationsleiste" id="navigationsleiste">
+    <ul class="navigationsleiste" id="navigationsleiste">
     </ul>
-    <div class = "divges">
-        <h1 class = "head">Gleichungen</h1>
+    <div class="divges">
+        <h1 class="head">Gleichungen</h1>
         <hr>
         <ul class="listeNebeneinander" id="listeNebeneinanderMathe">
         </ul>
+
+        <div id="animateUnload"></div>
+        
         <div class="animate">
-        <span onkeyup="if(event.keyCode === 13) gleichung();">
-            <div class="inputDivBinaer" style="width: 40%">
-                <input type="text" id="seiteL" placeholder="z.B. 3*x*x-5"class="inputUmrechnerBinaer" > 
-            </div>
-            <div style="width: 50px" style="width: 5%">
-                <span><d style="font-size: 1.5rem;">=</d></span>
-            </div>
-            <div class="inputDivBinaer" style="width: 40%">
-                <input type="text" id="seiteR" placeholder="z.B. x*x+3*x"class="inputUmrechnerBinaer"> 
-            </div>
-            <div class="inputDivBinaer" style="width: 15%">
-                <input type="button" onclick="gleichung()" class="inputUmrechnerBinaer" id="loeseButton" value="LÖSEN" style="height: 30px"> 
-            </div>
-        </span>
-        <hr style="margin-top: 20px; margin-bottom: 20px">
-        <span style="width: 100%">
-            <div class="inputDivBinaer" style="width: 100%">
-                <!--<span><d style="font-size: 2rem!important">Ergebnisse:</d></span>-->
-                <span>
-                    <d style="font-size: 3rem; width: 7%;margin-left: 1%;">x=</d>
-                    <input type="text" id="ergebnisGleichung" class="inputUmrechnerBinaer" style="height: 55px; font-size: 2rem!important; width: 65%;" placeholder="Ergebnis" readonly>
-                    <span style="width: 11%; margin-right: 1%;border-left: 1px solid var(--schriftfarbe);">
-                        <div style="width: 100%; height: 100%;" onclick="refreshGraph()">
-                            <span style="width: 100%; height: 50%;">
-                                <div style="width: 33.3%;" onclick="yV-=(yF*0+70)">
-                                    <span>
-                                        <d>▵</d>
-                                    </span>
-                                </div>
-                                <div style="width: 33.3%;" onclick="yV+=(yF*0+70)">
-                                    <span>
-                                        <d>▿</d>
-                                    </span>
-                                </div>
-                                <div style="width: 33.3%;" onclick="xF*=1.5; yF*=1.5; xV=(xV-breite/2)/1.5+breite/2; yV=(yV-200)/1.5+200;">
-                                    <span>
-                                        <d>-</d>
-                                    </span>
-                                </div>
-                            </span>
-                            <span style="width: 100%;height: 50%;">
-                                <div style="width: 33.3%;" onclick="xV+=(xF*0+140)">
-                                    <span>
-                                        <d>◃</d>
-                                    </span>
-                                </div>
-                                <div style="width: 33.3%;" onclick="xV-=(xF*0+140)">
-                                    <span>
-                                        <d>▹</d>
-                                    </span>
-                                </div>
-                                <div style="width: 33.3%;" onclick="xF/=1.5; yF/=1.5; xV=(xV-breite/2)*1.5+breite/2; yV=(yV-200)*1.5+200;">
-                                    <span>
-                                        <d>+</d>
-                                    </span>
-                                </div>
-                            </span>
-                        </div>
+            <span onkeyup="if(event.keyCode === 13) gleichung();">
+                <div class="inputDivBinaer" style="width: 40%">
+                    <input type="text" id="seiteL" placeholder="z.B. 3*x*x-5" class="inputUmrechnerBinaer">
+                </div>
+                <div style="width: 50px" style="width: 5%">
+                    <span><d style="font-size: 1.5rem;">=</d></span>
+                </div>
+                <div class="inputDivBinaer" style="width: 40%">
+                    <input type="text" id="seiteR" placeholder="z.B. x*x+3*x" class="inputUmrechnerBinaer"> 
+                </div>
+                <div class="inputDivBinaer" style="width: 15%">
+                    <input type="button" onclick="gleichung()" class="inputUmrechnerBinaer" id="loeseButton" value="LÖSEN" style="height: 30px"> 
+                </div>
+            </span>
+            <hr style="margin-top: 20px; margin-bottom: 20px">
+            <span style="width: 100%">
+                <div class="inputDivBinaer" style="width: 100%">
+                    <!--<span><d style="font-size: 2rem!important">Ergebnisse:</d></span>-->
+                    <span>
+                        <d style="font-size: 3rem; width: 7%; margin-left: 1%;">x=</d>
+                        <input type="text" id="ergebnisGleichung" class="inputUmrechnerBinaer" style="height: 55px; font-size: 2rem!important; width: 65%;" placeholder="Ergebnis" readonly>
+                        <span style="width: 11%; margin-right: 1%; border-left: 1px solid var(--schriftfarbe);">
+                            <div style="width: 100%; height: 100%;" onclick="refreshGraph()">
+                                <span style="width: 100%; height: 50%;">
+                                    <div style="width: 33.3%;" onclick="yV-=(yF*0+70)">
+                                        <span>
+                                            <d>▵</d>
+                                        </span>
+                                    </div>
+                                    <div style="width: 33.3%;" onclick="yV+=(yF*0+70)">
+                                        <span>
+                                            <d>▿</d>
+                                        </span>
+                                    </div>
+                                    <div style="width: 33.3%;" onclick="xF*=1.5; yF*=1.5; xV=(xV-breite/2)/1.5+breite/2; yV=(yV-200)/1.5+200;">
+                                        <span>
+                                            <d>-</d>
+                                        </span>
+                                    </div>
+                                </span>
+                                <span style="width: 100%; height: 50%;">
+                                    <div style="width: 33.3%;" onclick="xV+=(xF*0+140)">
+                                        <span>
+                                            <d>◃</d>
+                                        </span>
+                                    </div>
+                                    <div style="width: 33.3%;" onclick="xV-=(xF*0+140)">
+                                        <span>
+                                            <d>▹</d>
+                                        </span>
+                                    </div>
+                                    <div style="width: 33.3%;" onclick="xF/=1.5; yF/=1.5; xV=(xV-breite/2)*1.5+breite/2; yV=(yV-200)*1.5+200;">
+                                        <span>
+                                            <d>+</d>
+                                        </span>
+                                    </div>
+                                </span>
+                            </div>
+                        </span>
                     </span>
-                </span>
-            </div>
-        </span>
-        <br>
-        <span>
-            <div id = "left">
-                <svg id = "svgL" style="width: 100%; height: 100%">
-
-                </svg>
-            </div>
-            <div id = "graph">
-                <svg id = "svgGraph" style="width: 100%; height: 100%">
-
-                </svg>
-            </div>
-        </span>
-        <span>
-            <div id = "under">
-                <svg id = "svgU" style="width: 100%; height: 100%">
-                </svg>
-            </div>
-        </span>
+                </div>
+            </span>
+            <br>
+            <span>
+                <div id="left">
+                    <svg id="svgL" style="width: 100%; height: 100%"></svg>
+                </div>
+                <div id="graph">
+                    <svg id="svgGraph" style="width: 100%; height: 100%"></svg>
+                </div>
+            </span>
+            <span>
+                <div id="under">
+                    <svg id="svgU" style="width: 100%; height: 100%"></svg>
+                </div>
+            </span>
         </div>
+    </div>
+    <span class="information" id="textInformate">
+        <div>
+            ?
         </div>
-        <span class="information" id="textInformate">
-            <div>
-                ?
-            </div>
-            <div>
-                Es können die Lösungen einer beliebigen Gleichung nähreungsweise bestimmt werden.
-                <br> 
-                <br> 
-                Wurzel: sqrt(x).
-                <br>
-                Potenz: x^n/ x**n.
-                <br>
-                Es können Lösungen fehlen.
-                <br>
-                Es muss ein Term abhängig von x gegeben sein.
-            </div>
-        </span>
+        <div>
+            Es können die Lösungen einer beliebigen Gleichung näherungsweise bestimmt werden.
+            <br>
+            <br>
+            1.: Gleichung eingeben(Feld 1 + Feld 2)
+            <br>
+            2.: Lösen drücken
+            <br>
+            3.: Ergebnis: Graph mit beiden Funktionen / Navigation mit Tasten neben Ergebnisfeld
+            <br>
+            Es muss ein Term abhängig von x gegeben sein.
+            <br>
+            <br>
+            Wurzel: sqrt(x).
+            <br>
+            Potenz: x^n/ x**n.
+            <br>
+            Es können Lösungen fehlen.
+            <br>
+        </div>
+    </span>
+    <script src="gleichung.js"></script>
+    <script src="start.js"></script>
+    <script src="startMathematik.js"></script>
 </body>
-<script src="gleichung.js"></script>
-<script src="start.js"></script>
-<script src="startMathematik.js"></script>
 </html>

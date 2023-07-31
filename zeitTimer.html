@@ -12,10 +12,10 @@
     <script src="zeitTimer.js"></script>
 </head>
 <body>
-    <ul class = "navigationsleiste" id="navigationsleiste">
+    <ul class="navigationsleiste" id="navigationsleiste">
     </ul>
-    <div class = "divges">
-        <h1 class = "head">Timer</h1>
+    <div class="divges">
+        <h1 class="head">Timer</h1>
         <hr>
         <ul class="listeNebeneinander">
             <li class="nebeneinander">
@@ -28,35 +28,38 @@
                 <a class="aktiv" href="zeitTimer.html">Timer</a>
             </li>
         </ul>
+
+        <div id="animateUnload"></div>
+
         <div class="animate">
-        <span>
-            <input type="text" min="0" value="0" id="stunden">
-            <span style="width: 1%;"></span>
-            <d>h</d>
-            <span style="width: 3%;"></span>
-            <input type="text" min="0" max="59" value="0" id="minuten">
-            <span style="width: 1%;"></span>
-            <d>min</d>
-            <span style="width: 3%;"></span>
-            <input type="text" min="0" max="59" value="0" id="sekunden">
-            <span style="width: 1%;"></span>
-            <d>s</d>
-            <span style="width: 10%;"></span>
-            <input type="button" value="START" onclick="startTimer()" id="start" style="width: 70px;">
-            <input type="button" value="PAUSE" onclick="stoppTimer()" id="stopp" disabled style="width: 70px;">
-            <input type="button" value="LÖSCHEN" onclick="resetTimer()" id="reset" style="width: 70px;">
-        </span>
-        <br>
-        <br>
-        <span id="timer">
-            <d id="stunde">00</d>
-            <d>:</d>
-            <d id="minute">00</d>
-            <d>:</d>
-            <d id="sekunde">00</d>
-            <d>:</d>
-            <d id="millisekunde" style="width: 50px">000</d>
-        </span>
+            <span>
+                <input type="text" min="0" value="0" id="stunden">
+                <span style="width: 1%;"></span>
+                <d>h</d>
+                <span style="width: 3%;"></span>
+                <input type="text" min="0" max="59" value="0" id="minuten">
+                <span style="width: 1%;"></span>
+                <d>min</d>
+                <span style="width: 3%;"></span>
+                <input type="text" min="0" max="59" value="0" id="sekunden">
+                <span style="width: 1%;"></span>
+                <d>s</d>
+                <span style="width: 10%;"></span>
+                <input type="button" value="START" onclick="startTimer()" id="start" style="width: 70px;">
+                <input type="button" value="PAUSE" onclick="stoppTimer()" id="stoppTimer" disabled style="width: 70px;">
+                <input type="button" value="LÖSCHEN" onclick="resetTimer()" id="reset" style="width: 70px;">
+            </span>
+            <br>
+            <br>
+            <span id="timer">
+                <d id="stundeTimer">00</d>
+                <d>:</d>
+                <d id="minuteTimer">00</d>
+                <d>:</d>
+                <d id="sekundeTimer">00</d>
+                <d>:</d>
+                <d id="millisekundeTimer" style="width: 50px">000</d>
+            </span>
         </div>
     </div>
     <span class="information" id="textInformate">
@@ -67,7 +70,7 @@
             Timer. 
             <br> 
             <br> 
-            Läuft nur, wenn die Website geöffnet ist.
+            Funktioniert nur, wenn die Website geöffnet ist.
         </div>
     </span>
 </body>

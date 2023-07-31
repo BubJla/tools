@@ -13,7 +13,7 @@ var milliseconds = "000";
 
 function startTimer() {
     document.getElementById("start").setAttribute("disabled", "");
-    document.getElementById("stopp").removeAttribute("disabled");
+    document.getElementById("stoppTimer").removeAttribute("disabled");
 
     document.getElementById("stunden").setAttribute("disabled", "");
     document.getElementById("minuten").setAttribute("disabled", "");
@@ -28,7 +28,7 @@ function startTimer() {
 }
 
 function stoppTimer() {
-    document.getElementById("stopp").setAttribute("disabled", "");
+    document.getElementById("stoppTimer").setAttribute("disabled", "");
     document.getElementById("start").removeAttribute("disabled");
 
     timePause = soll
@@ -40,7 +40,7 @@ function stoppTimer() {
 }
 
 function resetTimer(){
-    document.getElementById("stopp").setAttribute("disabled", "");
+    document.getElementById("stoppTimer").setAttribute("disabled", "");
     document.getElementById("start").removeAttribute("disabled");
     
     document.getElementById("stunden").removeAttribute("disabled");
@@ -54,10 +54,10 @@ function resetTimer(){
     document.getElementById("minuten").value = 0;
     document.getElementById("sekunden").value = 0;
 
-    document.getElementById("stunde").innerHTML = "00";
-    document.getElementById("minute").innerHTML = "00";
-    document.getElementById("sekunde").innerHTML = "00";
-    document.getElementById("millisekunde").innerHTML = "000";
+    document.getElementById("stundeTimer").innerHTML = "00";
+    document.getElementById("minuteTimer").innerHTML = "00";
+    document.getElementById("sekundeTimer").innerHTML = "00";
+    document.getElementById("millisekundeTimer").innerHTML = "000";
 }
 
 function abgelaufen(){
@@ -88,10 +88,10 @@ function abgelaufen(){
     if(seconds < 10) seconds="0"+seconds;
     if(minutes < 10) minutes="0"+minutes;
     if(hours < 10) hours="0"+hours;
-    document.getElementById("stunde").innerHTML = negativ+hours;
-    document.getElementById("minute").innerHTML = minutes;
-    document.getElementById("sekunde").innerHTML = seconds;
-    document.getElementById("millisekunde").innerHTML = milliseconds;
+    document.getElementById("stundeTimer").innerHTML = negativ+hours;
+    document.getElementById("minuteTimer").innerHTML = minutes;
+    document.getElementById("sekundeTimer").innerHTML = seconds;
+    document.getElementById("millisekundeTimer").innerHTML = milliseconds;
 }
 
  

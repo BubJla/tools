@@ -12,87 +12,90 @@
     <script src="rechnerBinaer.js"></script>
 </head>
 <body>
-    <ul class = "navigationsleiste" id="navigationsleiste">
+    <ul class="navigationsleiste" id="navigationsleiste">
     </ul>
-    <div class = "divges">
-        <h1 class = "head">Umrechner</h1>
+    <div class="divges">
+        <h1 class="head">Umrechner</h1>
         <hr>
         <ul class="listeNebeneinander" id="listeNebeneinanderMathe">
         </ul>
+
+        <div id="animateUnload"></div>
+
         <div class="animate">
-        <span>
-            <div class="inputDivBinaer">
-                <span><d>Dezimalzahl:</d></span>
-                <input type="text" id="dezimalzahl" onkeyup="dezimalzahleingabe()" placeholder="z.B. 1438" class="inputUmrechnerBinaer"> 
-            </div>
-            <div class="inputDivBinaer">
-                <span><d>Binärcode:</d></span>
-                <input type="text" id="binaercode" onkeyup="binaercodeeingabe()" placeholder="z.B. 10010" class="inputUmrechnerBinaer"> 
-            </div>
-            <div class="inputDivBinaer">
-                <span><d>Hexadezimalcode:</d></span>
-                <input type="text" id="hexadezimalcode" onkeyup="hexadezimalcodeeingabe()" placeholder="z.B. 5FE0" class="inputUmrechnerBinaer"> 
-            </div>
-       </span>
-       <hr style="margin-top: 25px; margin-bottom: 25px">
-       <span>
-            <div class="inputDivBinaer">
-                <span><d>Grundwert:</d></span>
-                <input type="text" id="groundvalue" onkeyup="grundwert()" placeholder="z.B. 225" class="inputUmrechnerBinaer" maxlength="13"> 
-            </div>
-            <div class="inputDivBinaer">
-                <span><d>Prozentwert:</d></span>
-                <input type="text" id="percentvalue" onkeyup="prozentwert()" placeholder="z.B. 18" class="inputUmrechnerBinaer" maxlength="13"> 
-            </div>
-            <div class="inputDivBinaer">
-                <span><d>Prozentsatz:</d></span>
-                <input type="text" id="percentage" onkeyup="prozentsatz()" placeholder="z.B. 8%" class="inputUmrechnerBinaer" maxlength="13"> 
-            </div>
-        </span>
-        <hr style="margin-top: 25px; margin-bottom: 25px">
-        <span class = "einheitentemp">
-            <input type="text" id="gradcelsius" onkeyup="temperatur(1)" placeholder="z.B. 10" class="inputUmrechnerBinaer" maxlength="10"> 
-            <span><d>°C</d></span>
-            <span style="width: 3%;"></span>
-            <input type="text" id="kelvin" onkeyup="temperatur(2)" placeholder="z.B. 283" class="inputUmrechnerBinaer" maxlength="10"> 
-            <span><d>K</d></span>
-            <span style="width: 3%;"></span>
-            <input type="text" id="gradfahrenheit" onkeyup="temperatur(3)" placeholder="z.B. 50" class="inputUmrechnerBinaer" maxlength="10"> 
-            <span><d>°F</d></span>
-            <span style="width: 3%;"></span>
-        </span>
-        <br>
-        <br>
-        <span class = "einheitenlaeng">
-            <input type="text" id="meter" onkeyup="laenge(1)" placeholder="z.B. 225" class="inputUmrechnerBinaer" maxlength="10"> 
-            <span><d>m</d></span>
-            <span style="width: 3%;"></span>
-            <input type="text" id="zoll" onkeyup="laenge(2)" placeholder="z.B. 225" class="inputUmrechnerBinaer" maxlength="10"> 
-            <span><d>in</d></span>
-            <span style="width: 3%;"></span>
-            <input type="text" id="fuss" onkeyup="laenge(3)" placeholder="z.B. 225" class="inputUmrechnerBinaer" maxlength="10"> 
-            <span><d>ft</d></span>
-            <span style="width: 3%;"></span>
-            <input type="text" id="meile" onkeyup="laenge(4)" placeholder="z.B. 18" class="inputUmrechnerBinaer" maxlength="10"> 
-            <span><d>mi</d></span>
-            <span style="width: 3%;"></span>
-            <input type="text" id="yard" onkeyup="laenge(5)" placeholder="z.B. 8%" class="inputUmrechnerBinaer" maxlength="10"> 
-            <span><d>yd</d></span>
-            <span style="width: 3%;"></span>
-        </span>
-        <hr style="margin-top: 25px; margin-bottom: 25px">
-        <span style="font-size: 1.5rem;">
-            <d style="width: 29%">Farbwähler(RGB/ HSL/ HEX):</d> 
-            <span style="width: 6%;"></span>
-            <input type text id="rgb" style="width: 18%; border: 0px; font-size: var(--groesse);" value = "34 34 170" readonly/>
-            <span style="width: 4%;"></span>
-            <input type="text" id="hsl" style="width: 23%; border: 0px; font-size: var(--groesse);" value = "240 67% 40%" readonly/>
-            <span style="width: 3%;"></span>
-            <input type="text" id="hex" style="width: 17%; border: 0px; font-size: var(--groesse);" value = "2222AA" readonly/>
-        </span>
-        <span>
-            <input type="color" id="favcolor" style="height: 50px; width: 100%; border: 0px;" value="#2222AA">
-        </span>
+            <span>
+                <div class="inputDivBinaer">
+                    <span><d>Dezimalzahl:</d></span>
+                    <input type="text" id="dezimalzahl" onkeyup="dezimalzahleingabe()" placeholder="z.B. 1438" class="inputUmrechnerBinaer"> 
+                </div>
+                <div class="inputDivBinaer">
+                    <span><d>Binärcode:</d></span>
+                    <input type="text" id="binaercode" onkeyup="binaercodeeingabe()" placeholder="z.B. 10010" class="inputUmrechnerBinaer"> 
+                </div>
+                <div class="inputDivBinaer">
+                    <span><d>Hexadezimalcode:</d></span>
+                    <input type="text" id="hexadezimalcode" onkeyup="hexadezimalcodeeingabe()" placeholder="z.B. 5FE0" class="inputUmrechnerBinaer"> 
+                </div>
+            </span>
+            <hr style="margin-top: 25px; margin-bottom: 25px">
+            <span>
+                <div class="inputDivBinaer">
+                    <span><d>Grundwert:</d></span>
+                    <input type="text" id="groundvalue" onkeyup="grundwert()" placeholder="z.B. 225" class="inputUmrechnerBinaer" maxlength="13"> 
+                </div>
+                <div class="inputDivBinaer">
+                    <span><d>Prozentwert:</d></span>
+                    <input type="text" id="percentvalue" onkeyup="prozentwert()" placeholder="z.B. 18" class="inputUmrechnerBinaer" maxlength="13"> 
+                </div>
+                <div class="inputDivBinaer">
+                    <span><d>Prozentsatz:</d></span>
+                    <input type="text" id="percentage" onkeyup="prozentsatz()" placeholder="z.B. 8%" class="inputUmrechnerBinaer" maxlength="13"> 
+                </div>
+            </span>
+            <hr style="margin-top: 25px; margin-bottom: 25px">
+            <span class="einheitentemp">
+                <input type="text" id="gradcelsius" onkeyup="temperatur(1)" placeholder="z.B. 10" class="inputUmrechnerBinaer" maxlength="10"> 
+                <span><d>°C</d></span>
+                <span style="width: 3%;"></span>
+                <input type="text" id="kelvin" onkeyup="temperatur(2)" placeholder="z.B. 283" class="inputUmrechnerBinaer" maxlength="10"> 
+                <span><d>K</d></span>
+                <span style="width: 3%;"></span>
+                <input type="text" id="gradfahrenheit" onkeyup="temperatur(3)" placeholder="z.B. 50" class="inputUmrechnerBinaer" maxlength="10"> 
+                <span><d>°F</d></span>
+                <span style="width: 3%;"></span>
+            </span>
+            <br>
+            <br>
+            <span class="einheitenlaeng">
+                <input type="text" id="meter" onkeyup="laenge(1)" placeholder="z.B. 225" class="inputUmrechnerBinaer" maxlength="10"> 
+                <span><d>m</d></span>
+                <span style="width: 3%;"></span>
+                <input type="text" id="zoll" onkeyup="laenge(2)" placeholder="z.B. 225" class="inputUmrechnerBinaer" maxlength="10"> 
+                <span><d>in</d></span>
+                <span style="width: 3%;"></span>
+                <input type="text" id="fuss" onkeyup="laenge(3)" placeholder="z.B. 225" class="inputUmrechnerBinaer" maxlength="10"> 
+                <span><d>ft</d></span>
+                <span style="width: 3%;"></span>
+                <input type="text" id="meile" onkeyup="laenge(4)" placeholder="z.B. 18" class="inputUmrechnerBinaer" maxlength="10"> 
+                <span><d>mi</d></span>
+                <span style="width: 3%;"></span>
+                <input type="text" id="yard" onkeyup="laenge(5)" placeholder="z.B. 8%" class="inputUmrechnerBinaer" maxlength="10"> 
+                <span><d>yd</d></span>
+                <span style="width: 3%;"></span>
+            </span>
+            <hr style="margin-top: 25px; margin-bottom: 25px">
+            <span style="font-size: 1.5rem;">
+                <d style="width: 29%">Farbwähler(RGB/ HSL/ HEX):</d> 
+                <span style="width: 6%;"></span>
+                <input type="text" id="rgb" style="width: 18%; border: 0px; font-size: var(--groesse);" value="34 34 170" readonly/>
+                <span style="width: 4%;"></span>
+                <input type="text" id="hsl" style="width: 23%; border: 0px; font-size: var(--groesse);" value="240 67% 40%" readonly/>
+                <span style="width: 3%;"></span>
+                <input type="text" id="hex" style="width: 17%; border: 0px; font-size: var(--groesse);" value="2222AA" readonly/>
+            </span>
+            <span>
+                <input type="color" id="favcolor" style="height: 50px; width: 100%; border: 0px;" value="#2222AA">
+            </span>
         </div>
     </div>
     <span class="information" id="textInformate">

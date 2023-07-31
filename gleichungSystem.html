@@ -11,31 +11,33 @@
     <title>Lineare Gleichungssysteme</title>
 </head>
 <body>
-    <ul class = "navigationsleiste" id="navigationsleiste">
+    <ul class="navigationsleiste" id="navigationsleiste">
     </ul>
-    <div class = "divges">
-        <h1 class = "head">Lineare Gleichungssysteme</h1>
+    <div class="divges">
+        <h1 class="head">Lineare Gleichungssysteme</h1>
         <h6>nicht optimiert</h2>
         <hr>
         <ul class="listeNebeneinander" id="listeNebeneinanderMathe">
         </ul>
-        <div class="animate">
-        <span>
-            <d style="font-size: 1.6rem;">Zeilen</d>
-            <span style="width: 5%;"></span>
-            <d style="font-size: 1.6rem;" onclick="zeilen++; zeile();">+</d>
-            <span style="width: 5%;"></span>
-            <d style="font-size: 1.6rem;" onclick ="zeilen --; zeile();">-</d>
-            <span style="width: 15%;"></span>
-            <d style="font-size: 1.6rem;" onclick ="lgs();">LÖSEN</d>
-        </span>
-        <hr>
-        <div id = "lgss">
-        </div>
-        <hr>
-        <div id="ergebnisLGS">
 
-        </div>
+        <div id="animateUnload"></div>
+
+        <div class="animate">
+            <span>
+                <d style="font-size: 1.6rem;">Zeilen</d>
+                <span style="width: 5%;"></span>
+                <d style="font-size: 1.6rem;" onclick="zeilen++; zeile();">+</d>
+                <span style="width: 5%;"></span>
+                <d style="font-size: 1.6rem;" onclick="zeilen--; zeile();">-</d>
+                <span style="width: 15%;"></span>
+                <d style="font-size: 1.6rem;" onclick="lgs();">LÖSEN</d>
+            </span>
+            <hr>
+            <div id="lgss">
+            </div>
+            <hr>
+            <div id="ergebnisLGS">
+            </div>
         </div>
     </div>
     <span class="information" id="textInformate">
@@ -43,14 +45,14 @@
             ?
         </div>
         <div>
-            Es können die Lösungen eines beliebigen Gleichungssytem nähreungsweise bestimmt werden.
+            Es können die Lösungen eines beliebigen Gleichungssytems näherungsweise bestimmt werden.
             <br> 
             <br> 
             Nicht funktionierend für negative Koeffizienten.
         </div>
     </span>
+    <script src="gleichungSystem.js"></script>
+    <script src="start.js"></script>
+    <script src="startMathematik.js"></script>
 </body>
-<script src="gleichungSystem.js"></script>
-<script src="start.js"></script>
-<script src="startMathematik.js"></script>
 </html>

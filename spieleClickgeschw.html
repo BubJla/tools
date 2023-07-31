@@ -12,48 +12,51 @@
     <script src="spieleClickgeschw.js"></script>
 </head>
 <body onkeyup="clicks++">
-    <ul class = "navigationsleiste" id="navigationsleiste">
+    <ul class="navigationsleiste" id="navigationsleiste">
     </ul>
-    <div class = "divges">
-        <h1 class = "head">Clickgeschwindigkeit</h1>
+    <div class="divges">
+        <h1 class="head">Clickgeschwindigkeit</h1>
         <hr>
         <ul class="listeNebeneinander" id="listeNebeneinanderSpiele">
         </ul>
+
+        <div id="animateUnload"></div>
+
         <div class="animate">
-        <span class="zeitauswahlClickgeschw">
-            <div style="width: 14%">
-                <span><d>Zeit:</d></span>
-            </div>
-            <div style="width: 14%">
-                <d>5s</d>
-                <span><input type="radio" name = "clickzeit" value = "5s" id="zeit5s" onclick="zeitS = 5" style="width: 14px; height: 14px"></span>
-            </div>
-            <div style="width: 14%">
-                <span><d>10s</d></span>
-                <span><input type="radio" name = "clickzeit"  value = "10s" id="zeit10s" checked onclick="zeitS = 10" style="width: 14px; height: 14px"></span>
-            </div>
-            <div style="width: 14%">
-                <span><d>30s</d></span>
-                <span><input type="radio" name = "clickzeit" value = "30s" id="zeit30s" onclick="zeitS = 30" style="width: 14px; height: 14px"></span>
-            </div>
-            <div style="width: 14%">
-                <span><d>60s</d></span>
-                <span><input type="radio" name = "clickzeit" value = "60s" id="zeit60s" onclick="zeitS = 60" style="width: 14px; height: 14px"></span>
-            </div>
-            <div style="width: 15%">
-                <input type="button" value = "START" onclick="starting()" id="startbutton" style="height: 30px; width: 100%">
-            </div>
-            <div style="width: 15%">
-                <input type="button" value="LÖSCHEN" onclick="location.reload(true)" style="height: 30px; width: 100%">
-            </div>
-        </span>
-        <br>
-        <span onclick="clicks++">
-            <div id="clickfeld">
-                <d id = "werte"></d>
-            </div>
-        </span>
-    </div>
+            <span class="zeitauswahlClickgeschw">
+                <div style="width: 14%">
+                    <span><d>Zeit:</d></span>
+                </div>
+                <div style="width: 14%">
+                    <d>5s</d>
+                    <span><input type="radio" name="clickzeit" value="5s" id="zeit5s" onclick="zeitS = 5" style="width: 14px; height: 14px"></span>
+                </div>
+                <div style="width: 14%">
+                    <span><d>10s</d></span>
+                    <span><input type="radio" name="clickzeit" value="10s" id="zeit10s" checked onclick="zeitS = 10" style="width: 14px; height: 14px"></span>
+                </div>
+                <div style="width: 14%">
+                    <span><d>30s</d></span>
+                    <span><input type="radio" name="clickzeit" value="30s" id="zeit30s" onclick="zeitS = 30" style="width: 14px; height: 14px"></span>
+                </div>
+                <div style="width: 14%">
+                    <span><d>60s</d></span>
+                    <span><input type="radio" name="clickzeit" value="60s" id="zeit60s" onclick="zeitS = 60" style="width: 14px; height: 14px"></span>
+                </div>
+                <div style="width: 15%">
+                    <input type="button" value="START" onclick="starting()" id="startbutton" style="height: 30px; width: 100%">
+                </div>
+                <div style="width: 15%">
+                    <input type="button" value="LÖSCHEN" onclick="location.reload(true)" style="height: 30px; width: 100%">
+                </div>
+            </span>
+            <br>
+            <span onclick="clicks++">
+                <div id="clickfeld">
+                    <d id="werte"></d>
+                </div>
+            </span>
+        </div>
     </div>
     <span class="information" id="textInformate">
         <div>
@@ -65,7 +68,7 @@
             <br> 
             1.: Auswahl Dauer des Tests.
             <br>
-            2.: Drücke Start ->  nach 1s wird das Feld grau.
+            2.: Drücke Start -> nach 1s wird das Feld grau.
             <br>
             3.: So oft wie möglich das Feld anklicken.
             <br>

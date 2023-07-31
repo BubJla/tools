@@ -40,7 +40,7 @@ function readCookie(name) {
 
 
 function changeSetting(){
-    if(antwort == false) {
+    if(antwort == false && readCookie("cookieAccepted") != "true") {
         document.getElementById("divpopUp").innerHTML= `
         <div id="aufford">
             <section>
@@ -66,6 +66,7 @@ function changeSetting(){
         `;
         if(antwort == false) return;
     }
+    if(antwort == true) setCookie("cookieAccepted", "true");
     let groesse = document.getElementById("groesseSchrift").value;
     let schriftfarbe = document.getElementById("schriftfarbe").value;
     let hintergrundfarbe = document.getElementById("hintergrundfarbe").value;
@@ -274,6 +275,7 @@ function loeschen() {
     deleteCookie("automatikAktiv");
     deleteCookie("schriftart");
     deleteCookie("animation");
+    deleteCookie("cookieAccepted");
 
     location.reload();
 

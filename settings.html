@@ -7,130 +7,132 @@
     <meta name="keywords" content="Julian, Brumbi, Einstellungen, Farben">
     <meta name="description" content="Einstellungen der Website">
     <meta name="author" content="Julian Brumbi">
-    <link href="style.css" rel="stylesheet">             
+    <link href="style.css" rel="stylesheet">
     <title>Werkzeuge</title>
 </head>
 <body style="transition: all 0.5s ease" class="sett">
-    <ul class = "navigationsleiste" id="navigationsleiste">
+    <ul class="navigationsleiste" id="navigationsleiste">
     </ul>
-    <div class = "divges">
+    <div class="divges">
         <div id="divpopUp"></div>
-        <h1 class = "head">Einstellungen</h1>
+        <h1 class="head">Einstellungen</h1>
         <hr>
+
+        <div id="animateUnload"></div>
+
         <div class="animate">
             <span>
-        <div style="width: 230px;">  
-            <d>Hintergrundfarbe</d>
-            <span>
-                <input type="color" id="hintergrundfarbe" style="height: 40px; width: 95%" value="#000000" onchange="changeSetting()">
-            </span>
-            <d>Akzentfarbe 1</d>
-            <span>
-                <input type="color" id="akzentfarbe1" style="height: 40px; width: 95%" value="#5A5AA0" onchange="changeSetting()">
-            </span>
-            <d>Akzentfarbe 2</d>
-            <span>
-                <input type="color" id="akzentfarbe2" style="height: 40px; width: 95%" value="#5AA05A" onchange="changeSetting()">
-            </span>
-            <d>Akzentfarbe 3</d>
-            <span>
-                <input type="color" id="akzentfarbe3" style="height: 40px; width: 95%" value="#F66151" onchange="changeSetting()">
-            </span>
-            <span style="width: 100%;">
-                <div style="width: 70%;">  
-                    <d>Schriftfarbe</d>              
+                <div style="width: 230px;">
+                    <d>Hintergrundfarbe</d>
                     <span>
-                        <input type="color" id="schriftfarbe" style="height: 40px; width: 92%" value="#FFFFFF" onchange="changeSetting()">
+                        <input type="color" id="hintergrundfarbe" style="height: 40px; width: 95%" value="#000000" onchange="changeSetting()">
+                    </span>
+                    <d>Akzentfarbe 1</d>
+                    <span>
+                        <input type="color" id="akzentfarbe1" style="height: 40px; width: 95%" value="#5A5AA0" onchange="changeSetting()">
+                    </span>
+                    <d>Akzentfarbe 2</d>
+                    <span>
+                        <input type="color" id="akzentfarbe2" style="height: 40px; width: 95%" value="#5AA05A" onchange="changeSetting()">
+                    </span>
+                    <d>Akzentfarbe 3</d>
+                    <span>
+                        <input type="color" id="akzentfarbe3" style="height: 40px; width: 95%" value="#F66151" onchange="changeSetting()">
+                    </span>
+                    <span style="width: 100%;">
+                        <div style="width: 70%;">
+                            <d>Schriftfarbe</d>
+                            <span>
+                                <input type="color" id="schriftfarbe" style="height: 40px; width: 92%" value="#FFFFFF" onchange="changeSetting()">
+                            </span>
+                        </div>
+                        <div>
+                            <d>auto</d>
+                            <input type="checkbox" id="automatisch" value="#FFFFFF" style="width: 20px" checked onclick="changeSetting()">
+                        </div>
+                    </span>
+                    <d>Schriftgröße</d>
+                    <span>
+                        <input type="range" id="groesseSchrift" min="0.5" max="1.9" step="0.1" value="1" style="height: 20px; width: 95%" onchange="changeSetting()">
+                    </span>
+                    <d>Schriftart</d>
+                    <span>
+                        <div style="width: 33.3%;">
+                            <span>
+                                <d style="font-family: sans-serif!important;">X Y Z</d>
+                            </span>
+                            <span>
+                                <input type="radio" name="family" style="width: 15px; height: 15px;" id="sans" onclick="changeSetting()">
+                            </span>
+                        </div>
+                        <div style="width: 33.3%;">
+                            <span>
+                                <d style="font-family: serif!important;">X Y Z</d>
+                            </span>
+                            <span>
+                                <input type="radio" name="family" style="width: 15px; height: 15px;" id="serif" onclick="changeSetting()">
+                            </span>
+                        </div>
+                        <div style="width: 33.3%;">
+                            <span>
+                                <d style="font-family: cursive!important; font-size: calc(var(--groesse)*1.3rem);">X Y Z</d>
+                            </span>
+                            <span>
+                                <input type="radio" name="family" style="width: 15px; height: 15px;" id="cursive" onclick="changeSetting()">
+                            </span>
+                        </div>
+                    </span>
+                    <d>Animationsart</d>
+                    <span>
+                        <div style="width: 33.3%;">
+                            <span>
+                                <d>keine</d>
+                            </span>
+                            <span>
+                                <input type="radio" name="anima" style="width: 15px; height: 15px;" id="animationT0" onclick="changeSetting()">
+                            </span>
+                        </div>
+                        <div style="width: 33.3%;">
+                            <span>
+                                <d>reduziert</d>
+                            </span>
+                            <span>
+                                <input type="radio" name="anima" style="width: 15px; height: 15px;" id="animationT1" onclick="changeSetting()">
+                            </span>
+                        </div>
+                        <div style="width: 33.3%;">
+                            <span>
+                                <d>normal</d>
+                            </span>
+                            <span>
+                                <input type="radio" name="anima" style="width: 15px; height: 15px;" id="animationT2" onclick="changeSetting()" checked>
+                            </span>
+                        </div>
+                    </span>
+                    <br>
+                    <span>
+                        <input type="button" value="ZURÜCKSETZEN" style="height: 30px; width: 80%" onclick="loeschen()">
                     </span>
                 </div>
-                <div>    
-                    <d>auto</d>            
-                    <input type="checkbox" id="automatisch" value="#FFFFFF" style="width: 20px" checked onclick="changeSetting()">
+                <div id="vorschau01">
                 </div>
             </span>
-            <d>Schriftgröße</d>
-            <span>
-                <input type="range" id="groesseSchrift" min="0.5" max ="1.9" step="0.1" value="1" style="height: 20px; width: 95%" onchange="changeSetting()">
-            </span>
-            <d>Schriftart</d>
-            <span>
-                <div style="width: 33.3%;">
-                    <span>
-                        <d style="font-family: sans-serif!important;">X Y Z</d>
-                    </span>
-                    <span>
-                        <input type="radio" name="family" style="width: 15px; height: 15px;" id="sans" onclick="changeSetting()">
-                    </span>
-                </div>
-                <div style="width: 33.3%;">
-                    <span>
-                        <d style="font-family: serif!important;">X Y Z</d>
-                    </span>
-                    <span>
-                        <input type="radio" name="family" style="width: 15px; height: 15px;"  id="serif" onclick="changeSetting()">
-                    </span>
-                </div>
-                <div style="width: 33.3%;">
-                    <span>
-                        <d style="font-family: cursive!important; font-size: calc(var(--groesse)*1.3rem);">X Y Z</d>
-                    </span>
-                    <span>
-                        <input type="radio" name="family" style="width: 15px; height: 15px;"  id="cursive" onclick="changeSetting()">
-                    </span>
-                </div>
-            </span>
-            <d>Animationsart</d>
-            <span>
-                <div style="width: 33.3%;">
-                    <span>
-                        <d>keine</d>
-                    </span>
-                    <span>
-                        <input type="radio" name="anima" style="width: 15px; height: 15px;" id="animationT0" onclick="changeSetting()">
-                    </span>
-                </div>
-                <div style="width: 33.3%;">
-                    <span>
-                        <d>reduziert</d>
-                    </span>
-                    <span>
-                        <input type="radio" name="anima" style="width: 15px; height: 15px;"  id="animationT1" onclick="changeSetting()">
-                    </span>
-                </div>
-                <div style="width: 33.3%;">
-                    <span>
-                        <d>normal</d>
-                    </span>
-                    <span>
-                        <input type="radio" name="anima" style="width: 15px; height: 15px;"  id="animationT2" onclick="changeSetting()" checked>
-                    </span>
-                </div>
-            </span>
-            <br>
-            <span>
-                <input type="button" value="ZURÜCKSETZEN" style="height: 30px; width: 80%"   onclick="loeschen()" >
-            </span>
+            <div id="vorschau02">
+            </div>
         </div>
-        <div id = "vorschau01">        
-        </div>
-    </span>
-    <div id = "vorschau02">        
-    </div>
-
-    </div>
     </div>
     <span class="information" id="textInformate">
         <div>
             ?
         </div>
         <div>
-            Man kann das Aussehen durch Klicken auf die einzelnen Objekte verändern. 
-            <br> 
-            <br> 
-            Die Akzentfarben passen sich automatisch an den Hintergrund an. 
-            <br> 
+            Man kann das Aussehen durch Klicken auf die einzelnen Objekte verändern.
+            <br>
+            <br>
+            Die Akzentfarben passen sich automatisch an den Hintergrund an.
+            <br>
             Automatik bei der Schriftfarbe passt die Schriftfarbe automatisch an den Hintergrund an.
-            <br> 
+            <br>
             Schriftart: kursiv kann zu Problemen der Leslichkeit führen.
         </div>
     </span>

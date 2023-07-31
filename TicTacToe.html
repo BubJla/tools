@@ -4,84 +4,85 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="keywords" content="Julian, Brumbi, TicTacToe, Tic Tac Toe, Spiel, Intelligenz, unbesiegbar, Freung, gegeneinander">
+    <meta name="keywords" content="Julian, Brumbi, TicTacToe, Tic Tac Toe, Spiel, Intelligenz, unbesiegbar, Freund, gegeneinander">
     <meta name="description" content="TicTacToe">
     <meta name="author" content="Julian Brumbi">
     <link href="style.css" rel="stylesheet">
     <title>TicTacToe</title>
 </head>
 <body>
-    <ul class = "navigationsleiste" id="navigationsleiste">
+    <ul class="navigationsleiste" id="navigationsleiste">
     </ul>
-    <div class = "divges">
-        <h1 class = "head">TicTacToe</h1>
+    <div class="divges">
+        <h1 class="head">TicTacToe</h1>
         <!--<span><d style="font-size: 0.5rem;">*auf schmaleren Formaten als 3:2 schwer spielbar</d></span>-->
         <hr>
         <ul class="listeNebeneinander" id="listeNebeneinanderSpiele">
         </ul>
-        <div class="animate">
-        <span>
-            <div style="display: grid; width: 220px">
-                <d class="spanGesamtTicTacToeStart">Gegner:</d>
-                <span>
-                    <d>Computer</d>
-                    &emsp;&emsp;
-                    <d> Freund</d>
-                    &emsp;
-                </span>
-                <span>
-                    <input type="radio" name="gegner" id="gegnerComputer" value="Computer" checked="true" onclick='document.getElementById("gegner").innerHTML = "Computer"'>
-                    &emsp;&emsp;&emsp;&emsp;
-                    <input type="radio" name="gegner" id="gegnerFreund" value="Freund" onclick='document.getElementById("gegner").innerHTML = "&ensp;&nbsp;Freund&ensp;"'>
-                </span>
-                <br>
-                <d class="spanGesamtTicTacToeStart">Beginner:</d>
-                <span>
-                    &emsp;&emsp;&ensp;
-                    <d>Ich</d>
-                    &emsp;&emsp;&emsp;&ensp;
-                    <d id="gegner">Computer</d>
-                    &emsp;
-                </span>
-                <span>
-                    <input type="radio" name="beginner" id="beginnerIch" value="Computer" checked="true">
-                    &emsp;&emsp;&emsp;&emsp;&ensp;
-                    <input type="radio" name="beginner" id="beginnerGegner" value="Freund">
-                </span>
-                <br>
-                <d class="spanGesamtTicTacToeStart">Schwierigkeitsgrad:</d>
-                <span>
-                    <div style="width: 33.3%">
-                        <span><d>leicht</d></span>
-                        <br>
-                        <span><input type="radio" name="schwierigkeitsgrad" id="schwierigkeitLeicht" value="leicht" style="width: 20px; height: 20px"></span>
-                    </div>
-                    <div style="width: 33.3%">
-                        <span><d>mittel</d></span>
-                        <br>
-                        <span><input type="radio" name="schwierigkeitsgrad" id="schwierigkeitMittel" value="mittel" checked="true" style="width: 20px; height: 20px" ></span>
-     
-                    </div>
-                    <div style="width: 33.3%">
-                        <span><d>schwer</d></span>
-                        <br>
-                        <span><input type="radio" name="schwierigkeitsgrad" id="schwierigkeitUnbesiegbar" value="unbesiegbar" style="width: 20px; height: 20px"></span>
 
-                    </div>
-                </span>
-                <br>
-                <span>
-                    <input type="button" value="START" onclick="start()" style="height: 25px; width: 70%" id="startfeld">
-                </span>
-                <span>
-                    <input type="button" value="LÖSCHEN" onclick="location.reload(true)" style="height: 25px; width: 50%">
-                </span>
-            </div>
-            <div id="spielfeldtic">
-            </div>
-            <d class="spanGesamtTicTacToeEnd"></d>
-        </span>
-    </div>
+        <div id="animateUnload"></div>
+
+        <div class="animate">
+            <span>
+                <div style="display: grid; width: 220px">
+                    <d class="spanGesamtTicTacToeStart">Gegner:</d>
+                    <span>
+                        <d>Computer</d>
+                        &emsp;&emsp;
+                        <d>Freund</d>
+                        &emsp;
+                    </span>
+                    <span>
+                        <input type="radio" name="gegner" id="gegnerComputer" value="Computer" checked="true" onclick='document.getElementById("gegner").innerHTML = "Computer"'>
+                        &emsp;&emsp;&emsp;&emsp;
+                        <input type="radio" name="gegner" id="gegnerFreund" value="Freund" onclick='document.getElementById("gegner").innerHTML = "&ensp;&nbsp;Freund&ensp;"'>
+                    </span>
+                    <br>
+                    <d class="spanGesamtTicTacToeStart">Beginner:</d>
+                    <span>
+                        &emsp;&emsp;&ensp;
+                        <d>Ich</d>
+                        &emsp;&emsp;&emsp;&ensp;
+                        <d id="gegner">Computer</d>
+                        &emsp;
+                    </span>
+                    <span>
+                        <input type="radio" name="beginner" id="beginnerIch" value="Computer" checked="true">
+                        &emsp;&emsp;&emsp;&emsp;&ensp;
+                        <input type="radio" name="beginner" id="beginnerGegner" value="Freund">
+                    </span>
+                    <br>
+                    <d class="spanGesamtTicTacToeStart">Schwierigkeitsgrad:</d>
+                    <span>
+                        <div style="width: 33.3%">
+                            <span><d>leicht</d></span>
+                            <br>
+                            <span><input type="radio" name="schwierigkeitsgrad" id="schwierigkeitLeicht" value="leicht" style="width: 20px; height: 20px"></span>
+                        </div>
+                        <div style="width: 33.3%">
+                            <span><d>mittel</d></span>
+                            <br>
+                            <span><input type="radio" name="schwierigkeitsgrad" id="schwierigkeitMittel" value="mittel" checked="true" style="width: 20px; height: 20px" ></span>
+                        </div>
+                        <div style="width: 33.3%">
+                            <span><d>schwer</d></span>
+                            <br>
+                            <span><input type="radio" name="schwierigkeitsgrad" id="schwierigkeitUnbesiegbar" value="unbesiegbar" style="width: 20px; height: 20px"></span>
+                        </div>
+                    </span>
+                    <br>
+                    <span>
+                        <input type="button" value="START" onclick="start()" style="height: 25px; width: 70%" id="startfeld">
+                    </span>
+                    <span>
+                        <input type="button" value="LÖSCHEN" onclick="location.reload(true)" style="height: 25px; width: 50%">
+                    </span>
+                </div>
+                <div id="spielfeldtic">
+                </div>
+                <d class="spanGesamtTicTacToeEnd"></d>
+            </span>
+        </div>
     </div>
     <span class="information" id="textInformate">
         <div>

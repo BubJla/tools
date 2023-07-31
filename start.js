@@ -25,9 +25,20 @@ function help(text) {
     document.getElementById("textInformate").innerHTML = text;
 }
 
+function declineCookie() {
+    const doc = document.getElementById("cookieAllow");
+    doc.classList.add("cookieAllowHide");
+}
+
+function acceptCookie() {
+    const doc = document.getElementById("cookieAllow");
+    doc.classList.add("cookieAllowHide");  
+    setCookie("cookieAccepted", "true");
+}
+
 var elements = document.querySelectorAll(".animate");//animations
 const elementsHead = document.querySelectorAll("h1");
-for(i = 0; i < elementsHead.length; i++) elementsHead[i].classList.add("animate2");
+for(i = 0; i < elements.length; i++) elementsHead[i].classList.add("animate2");
 
 elements[0].classList.add("animationDiv");
 
@@ -80,22 +91,46 @@ else {
 document.getElementById("navigationsleiste").innerHTML=`
 <div style="height: 84vh">
     <li> 
-        <a href="index.html" id="start">Startseite</a>
+        <a href="index.html" id="start">
+            <div>
+                Startseite
+            </div>
+        </a>
     </li>
     <li>    
-        <a id="mathe" href="gleichung.html">Mathematik</a>
+        <a id="mathe" href="gleichung.html">
+            <div>
+                Mathematik
+            </div>
+        </a>
     </li>
     <li>    
-        <a id="zeit" href="zeit.html">Zeit</a>
+        <a id="zeit" href="zeit.html">
+            <div>
+                Zeit
+            </div>
+        </a>
     </li>
     <li>    
-        <a id="spiele" href="kopfrechentraining.html">Spiele</a>
+        <a id="spiele" href="kopfrechentraining.html">
+            <div>
+                Spiele
+            </div>
+        </a>
     </li>
     <li>    
-        <a id="sicherheit" href="eigenschaften.html">Sonstiges</a>
+        <a id="sicherheit" href="eigenschaften.html">
+            <div>
+                Sonstiges
+            </div>
+        </a>
     </li>
     <li>    
-        <a id="impressum" href="impressum.html">Impressum</a>
+        <a id="impressum" href="impressum.html">
+            <div>
+                Impressum
+            </div>
+        </a>
     </li>
 </div> 
 <div style="height: 10vh">    
@@ -123,24 +158,19 @@ aktuelleSeite =  aktuelleSeite.replace("eigenschaften", "sicherheit");
 if(aktuelleSeite == '')aktuelleSeite = "start";
 if(aktuelleSeite != 'settings') document.getElementById(aktuelleSeite).setAttribute("class", "aktiv");
 
-/*window.addEventListener("beforeunload", function(event) {
-    //event.preventDefault();
-    animateBeforeUnload();
-  });
-  
-  function animateBeforeUnload() {
-    var elements = document.querySelectorAll('.animate');
-    elements.setAttribute("class", "animate2");
-    // Hier kannst du deine gewünschte Animation implementieren
-    // Zum Beispiel die Änderung von CSS-Eigenschaften, die Verwendung von CSS-Transitions/Animationen oder die Nutzung von JavaScript-basierten Animationen wie GSAP oder jQuery
-    // ...
-    // ...
-    // Stelle sicher, dass die Animation innerhalb eines bestimmten Zeitraums abgeschlossen ist, da die Seite sonst sofort geschlossen wird
-  }*/
+var sideNow = document.querySelector(".animate");
+if(sideNow.baseURI != sessionStorage.getItem("lastUrl")) document.getElementById("animateUnload").innerHTML = sessionStorage.getItem("lastSide");
+sessionStorage.setItem('lastSide', sideNow.innerHTML);
+sessionStorage.setItem('lastUrl', sideNow.baseURI);
 
 
-// Daten im LocalStorage speichern
+window.addEventListener('beforeunload', function() {
+    sideNow = document.querySelector(".animate");
+    sessionStorage.setItem('lastSide', sideNow.innerHTML);
+});
 
-// Daten aus dem LocalStorage abrufen
-const username = localStorage.getItem('username');
-alert(username); // Output: JohnDoe
+document.querySelector(":root").style.setProperty("--screenWidth", screen.width);
+
+document.body.innerHTML +=         `<div style="scale: calc(0*var(--groesse));" class="mein_counter">
+<script language="JavaScript" src="https://www.besucherzaehler-kostenlos.de/js/counter.js.php?count=1&id=www.brumbi.dejulian&start=0&design=3d"></script>
+</div>`//counter für alle seiten

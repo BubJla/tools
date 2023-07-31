@@ -11,18 +11,33 @@
     <title>Startseite</title>
 </head>
 <body>
-    <ul class = "navigationsleiste" id="navigationsleiste">
+    <ul class="navigationsleiste" id="navigationsleiste">
     </ul>
-    <div class = "divges">
-            <h1 class = "head">Startseite</h1>
-            <hr>
-            <div class="animate">
-                <!--<d>Hilfreiche Werkzeuge</d>
+    <div class="divges">
+        <h1 class="head">Startseite</h1>
+        <hr>
+
+        <div id="animateUnload"></div>
+
+        <div class="animate" style="height: 40vh;">
+            <!--<d>Hilfreiche Werkzeuge</d>
             <br>-->
             <d>Bitte wählen Sie unter den Menüoptionen links</d>
+            <br>
+            <br>
+            <br>
+            <br>
+            <span>
+                <div style="scale: calc(2.0*var(--groesse));" class="mein_counter">
+                    <script language="JavaScript" src="https://www.besucherzaehler-kostenlos.de/js/counter.js.php?count=1&id=www.brumbi.dejulian&start=0&design=3d"></script>
+                </div>
+            </span>
+    
             <!--<br>
             <d>Für 16:9 Vollbild optimiert: Bei anderen Formaten können Fehler auftreten</d>-->
         </div>
+        <br>
+        <br>
     </div>
     <span class="information" id="textInformate">
         <div>
@@ -32,11 +47,22 @@
             Durch Klicken auf die Menüpunkte wird Ausgewählt.
             <br> 
             <br> 
-            Empfehlung: 
+            Empfehlung:
             <br>
             Gleichungslöser (Mathe), Kopfrechentrainer (Spiele), Tic Tac Toe (Spiele -> TicTacToe), Einstellungen (Zahnrad(unten links)).
+            <br>
+            <br>
+            Webcounter: 
+            <a href="impressum.html" style="color: var(--hintergrundfarbe);">
+                Impressum
+            </a>
         </div>
     </span>
+    <script src="start.js"></script>
+    <!--<div id="cookieAllow">
+        <a href="impressum.html">Es werden Cookies verwendet</a>
+        <div id="ablehnen" onclick="declineCookie();">ablehnen</div>
+        <div id="annehmen" onclick="acceptCookie();">erlauben</div>
+    </div>-->
 </body>
-<script src="start.js"></script>
 </html>

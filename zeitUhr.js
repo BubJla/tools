@@ -21,10 +21,10 @@ function zeit(){
 
     document.getElementById("datum").innerHTML = date;
 
-    document.getElementById("stunde").innerHTML = hour;
-    document.getElementById("minute").innerHTML = minute;
-    document.getElementById("sekunde").innerHTML = second;
-    document.getElementById("millisekunde").innerHTML = millisecond;
+    document.getElementById("stundeUhr").innerHTML = hour;
+    document.getElementById("minuteUhr").innerHTML = minute;
+    document.getElementById("sekundeUhr").innerHTML = second;
+    document.getElementById("millisekundeUhr").innerHTML = millisecond;
 }
 
 function setClock() {

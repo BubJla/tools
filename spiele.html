@@ -12,27 +12,30 @@
     <script src="spieleReaktion.js"></script>
 </head>
 <body>
-    <ul class = "navigationsleiste" id="navigationsleiste">
+    <ul class="navigationsleiste" id="navigationsleiste">
     </ul>
-    <div class = "divges">
-        <h1 class = "head">Reaktionstest</h1>
+    <div class="divges">
+        <h1 class="head">Reaktionstest</h1>
         <hr>
         <ul class="listeNebeneinander" id="listeNebeneinanderSpiele">
         </ul>
+
+        <div id="animateUnload"></div>
+
         <div class="animate">
-        <span>
-        <input type="button" value = "START" onclick="start()" id="startbutton" style="width: 100px;">
-        </span>
-        <span onclick="fertig()">
-            <div id="reaktionsfeld">
-                <d id = "zeitReaktion"></d>
-                <span id="timer">
-                    <d id="sekunde"></d>
-                    <d id="millisekunde" style="width: 7%; margin-left: 2%"></d>
-                </span>        
-            </div>
-        </span>
-    </div>
+            <span>
+                <input type="button" value="START" onclick="start()" id="startbutton" style="width: 100px;">
+            </span>
+            <span onclick="fertig()">
+                <div id="reaktionsfeld">
+                    <d id="zeitReaktion"></d>
+                    <span id="timer">
+                        <d id="sekunde"></d>
+                        <d id="millisekunde" style="width: 7%; margin-left: 2%"></d>
+                    </span>        
+                </div>
+            </span>
+        </div>
     </div>
     <span class="information" id="textInformate">
         <div>
@@ -42,9 +45,9 @@
             Test der Reaktion durch Klicken. 
             <br> 
             <br> 
-            1.: Drücke Start ->  das Feld sollte die Hintergrundfarbe annehmen.
+            1.: Drücke Start -> das Feld sollte die Hintergrundfarbe annehmen.
             <br>
-            2.: sobald das Feld hellgrau wird: Leertaste / Klick auf Feld.
+            2.: Sobald das Feld hellgrau wird: Leertaste / Klick auf Feld.
             <br>
             3.: Ergebnis: Richtig: grün + Reaktionszeit / zu früh: rot.
         </div>

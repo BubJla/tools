@@ -12,10 +12,10 @@
     <script src="sicherheit.js"></script>
 </head>
 <body>
-    <ul class = "navigationsleiste" id="navigationsleiste">
+    <ul class="navigationsleiste" id="navigationsleiste">
     </ul>
-    <div class = "divges">
-        <h1 class = "head">Passwortgenerator</h1>
+    <div class="divges">
+        <h1 class="head">Passwortgenerator</h1>
         <hr>
         <ul class="listeNebeneinander">
             <li class="nebeneinander">
@@ -28,52 +28,55 @@
                 <a href="xyz.html">......</a>
             </li>
         </ul>
+
+        <div id="animateUnload"></div>
+
         <hr>
         <div class="animate">
-        <span class="passwortgeneratorlaengenauswahl">
-            <div><d>Länge:</d></div>
-            <div>
-                <d>6</d>
-                <input type="radio" name="laenge" onclick="laenge = 6">
-            </div>
-            <div>
-                <d>8</d>
-                <input type="radio" name="laenge" onclick="laenge = 8" checked>
-            </div>
-            <div>
-                <d>12</d>
-                <input type="radio" name="laenge" onclick="laenge = 12">
-            </div>
-            <div>
-                <d>18</d>
-                <input type="radio" name="laenge" onclick="laenge = 18">
-            </div>
-            <div style="width: 40px; overflow: visible;">
-                <input type="text" id="variabelLaenge" placeholder="Wert" style="width: 100%" min="1">
-                <input type="radio" name="laenge" onclick="laenge = 99">
-            </div>
-            <div>
-                <input type="submit" value="GENERIEREN" style="width: 100px; height: 40px;" onclick="generatePassword()">
-            </div>
-        </span>
-        <span class="passwortgeneratorlaengenauswahl">
-            <div style="margin-left: 20%;">
-                <d>Buchstaben</d>
-                <input type="checkbox" id= "buchstaben" checked>
-            </div>
-            <div>
-                <d>Zahlen</d>
-                <input type="checkbox" id= "zahlen" checked>
-            </div>
-            <div style="margin-right: 20%;">
-                <d>Zeichen</d>
-                <input type="checkbox" id= "zeichen" checked>
-            </div>
-        </span>
-        <br>
-        <br>
-        <br>
-        <span id = "passwortfeld" style="height: 400px; width:100%; font-size: 3rem; color: var(--schriftfarbe)"></span>
+            <span class="passwortgeneratorlaengenauswahl">
+                <div><d>Länge:</d></div>
+                <div>
+                    <d>6</d>
+                    <input type="radio" name="laenge" onclick="laenge = 6">
+                </div>
+                <div>
+                    <d>8</d>
+                    <input type="radio" name="laenge" onclick="laenge = 8" checked>
+                </div>
+                <div>
+                    <d>12</d>
+                    <input type="radio" name="laenge" onclick="laenge = 12">
+                </div>
+                <div>
+                    <d>18</d>
+                    <input type="radio" name="laenge" onclick="laenge = 18">
+                </div>
+                <div style="width: 40px; overflow: visible;">
+                    <input type="text" id="variabelLaenge" placeholder="Wert" style="width: 100%" min="1">
+                    <input type="radio" name="laenge" onclick="laenge = 99">
+                </div>
+                <div>
+                    <input type="submit" value="GENERIEREN" style="width: 100px; height: 40px;" onclick="generatePassword()">
+                </div>
+            </span>
+            <span class="passwortgeneratorlaengenauswahl">
+                <div style="margin-left: 20%;">
+                    <d>Buchstaben</d>
+                    <input type="checkbox" id="buchstaben" checked>
+                </div>
+                <div>
+                    <d>Zahlen</d>
+                    <input type="checkbox" id="zahlen" checked>
+                </div>
+                <div style="margin-right: 20%;">
+                    <d>Zeichen</d>
+                    <input type="checkbox" id="zeichen" checked>
+                </div>
+            </span>
+            <br>
+            <br>
+            <br>
+            <span id="passwortfeld" style="height: 400px; width: 100%; font-size: 3rem; color: var(--schriftfarbe)"></span>
         </div>
     </div>
     <span class="information" id="textInformate">
@@ -87,6 +90,6 @@
             Ein sicheres Passwort sollte mindestens 12 Zeichen lang sein. 
         </div>
     </span>
+    <script src="start.js"></script>
 </body>
-<script src="start.js"></script>
 </html>
