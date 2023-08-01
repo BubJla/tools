@@ -54,11 +54,11 @@
             <br>
             <section>
                 <span class="BodyMass-Index-Input">
-                    <input type="text" id="percentage" class="inputUmrechnerBinaer" placeholder="Prozentsatz" onchange="integral();">
+                    <input type="text" id="percentage" class="inputUmrechnerBinaer" placeholder="Prozentsatz" onchange="integralToIQ();" maxlength="16">
                     <d class="bigger" style="width: 8%;">%</d>
                     <span style="width: 14%;"></span>
                     <d style="font-size: 2rem; width: 8%;">IQ:</d>
-                    <input type="text" id="IQRes" class="inputUmrechnerBinaer" readonly style="height: 2.5rem; font-size: 2rem;" placeholder="Ergebnis">
+                    <input type="text" id="IQRes" class="inputUmrechnerBinaer" style="height: 2.5rem; font-size: 2rem;" placeholder="IQ" onchange="integralToPerc();">
                 </span>
             </section>
         </div>

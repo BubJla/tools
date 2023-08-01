@@ -269,22 +269,16 @@ li a{
 
 @keyframes transitionNavi1 {
     0%, 100%{
-        transform: translateX(calc(var(--screenWidth)*-0.5px));
-    }
-}
-
-@keyframes transitionNavi2 {
-    0%, 100%{
-        transform: translateX(calc(var(--screenWidth)*0.5px));
+        background: #0000;
     }
 }
 
 .navigationsleiste li a:not(.aktiv) {
-    animation: transitionNavi1 200ms;
+    animation: transitionNavi1 100ms;
 }
 
 .navigationsleiste li a:not(.aktiv) div{
-    animation: transitionNavi2 200ms;
+    animation: transitionNavi2 100ms;
 }
 
 .navigationsleiste li a.aktiv{
@@ -760,6 +754,8 @@ input:not([type="range"]):hover{
     justify-content: left;
     transition: all 0.5s ease;
 }
+
+
 
 div:not(.divges):not(#spielfeldtic){
     overflow: hidden;

@@ -171,8 +171,9 @@ window.addEventListener('beforeunload', function() {
 
 document.querySelector(":root").style.setProperty("--screenWidth", screen.width);
 
-if(aktuelleSeite != 'settings') {
-    document.body.innerHTML +=         `<div style="scale: calc(0*var(--groesse));" class="mein_counter">
-    <script language="JavaScript" src="https://www.besucherzaehler-kostenlos.de/js/counter.js.php?count=1&id=www.brumbi.dejulian&start=0&design=3d"></script>
-    </div>`//counter für alle seiten
-}
+document.head.innerHTML += `
+<link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+<link rel="manifest" href="/site.webmanifest">
+`;
