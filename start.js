@@ -171,6 +171,8 @@ window.addEventListener('beforeunload', function() {
 
 document.querySelector(":root").style.setProperty("--screenWidth", screen.width);
 
-document.body.innerHTML +=         `<div style="scale: calc(0*var(--groesse));" class="mein_counter">
-<script language="JavaScript" src="https://www.besucherzaehler-kostenlos.de/js/counter.js.php?count=1&id=www.brumbi.dejulian&start=0&design=3d"></script>
-</div>`//counter für alle seiten
+if(aktuelleSeite != 'settings') {
+    document.body.innerHTML +=         `<div style="scale: calc(0*var(--groesse));" class="mein_counter">
+    <script language="JavaScript" src="https://www.besucherzaehler-kostenlos.de/js/counter.js.php?count=1&id=www.brumbi.dejulian&start=0&design=3d"></script>
+    </div>`//counter für alle seiten
+}

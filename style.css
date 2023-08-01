@@ -267,6 +267,26 @@ li a{
     overflow: visible;
 }
 
+@keyframes transitionNavi1 {
+    0%, 100%{
+        transform: translateX(calc(var(--screenWidth)*-0.5px));
+    }
+}
+
+@keyframes transitionNavi2 {
+    0%, 100%{
+        transform: translateX(calc(var(--screenWidth)*0.5px));
+    }
+}
+
+.navigationsleiste li a:not(.aktiv) {
+    animation: transitionNavi1 200ms;
+}
+
+.navigationsleiste li a:not(.aktiv) div{
+    animation: transitionNavi2 200ms;
+}
+
 .navigationsleiste li a.aktiv{
     background: var(--akzentfarbe1aktiv);
     animation: transition4 1500ms;
@@ -279,7 +299,7 @@ li a{
 }
 
 .navigationsleiste li a{
-    background: var(--akzentfarbe1);
+    background: linear-gradient(90deg, var(--akzentfarbe1aktiv)0%, var(--akzentfarbe1)30%, var(--akzentfarbe1)100%);
     height: calc(var(--groesse)*1.3rem);
     transform: translateX(calc(var(--screenWidth)*-0.16px));
 }
@@ -291,7 +311,6 @@ li a{
 }
 
 .navigationsleiste li:hover a:not(.aktiv){
-    background: var(--akzentfarbe1);
     transform: translateX(0);
 }
 

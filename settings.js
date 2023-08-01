@@ -306,17 +306,25 @@ if(screen.width > 800) {
             <div style="width: `+breite+`px; height: 360px; border: 5px solid var(--schriftfarbe);">
                 <ul class = "navigationsleiste" style="height: 348px; width: `+(breite*0.16)+`px; position: absolute;">
                     <div style="height: 83%;">
-                    <li>
-                        <a class="aktiv">generiert</a>
-                    </li>
-                    <li>
-                        <a>Akzent 1</a>
-                    </li>
-                    <li>
-                        <a>Akzent 1</a>
-                    </li>
+                        <li>
+                            <a class="aktiv">generiert</a>
+                        </li>
+                        <li>
+                            <a>
+                                <div>
+                                    Akzent 1
+                                </div>
+                            </a>
+                        </li>
+                        <li>
+                            <a>
+                                <div>
+                                    Akzent 1
+                                </div>
+                            </a>
+                        </li>
                     </div>
-                        <a class="gear" style="padding-left: 0px">&#9881;</a>
+                    <a class="gear" style="padding-left: 0px">&#9881;</a>
                 </ul>
                 <div class = "divges" style="width: `+(breite*0.83)+`px; background: #0000">
                     <h1 class = "head" >Überschrift</h1>
@@ -357,21 +365,29 @@ else {
     <d>Vorschau*:</d>
     <span>            
         <div style="width: `+breite+`px; height: 360px; border: 5px solid var(--schriftfarbe);">
-            <ul class = "navigationsleiste" style="height: 348px; width: `+(breite*0.16)+`px; position: absolute;">
-                <div style="height: 83%;">
+        <ul class = "navigationsleiste" style="height: 348px; width: `+(breite*0.16)+`px; position: absolute;">
+            <div style="height: 83%;">
                 <li>
                     <a class="aktiv">generiert</a>
                 </li>
                 <li>
-                    <a>Akzent 1</a>
+                    <a>
+                        <div>
+                            Akzent 1
+                        </div>
+                    </a>
                 </li>
                 <li>
-                    <a>Akzent 1</a>
+                    <a>
+                        <div>
+                            Akzent 1
+                        </div>
+                    </a>
                 </li>
-                </div>
-                    <a class="gear" style="padding-left: 0px">&#9881;</a>
-            </ul>
-            <div class = "divges" style="width: `+(breite*0.83)+`px; background: #0000">
+            </div>
+            <a class="gear" style="padding-left: 0px">&#9881;</a>
+        </ul>
+        <div class = "divges" style="width: `+(breite*0.83)+`px; background: #0000">
                 <h1 class = "head" >Überschrift</h1>
                 <hr>
                 <ul class="listeNebeneinander">

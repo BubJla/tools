@@ -21,13 +21,16 @@ function dif(a, b) {
 
 function copyArray(arr) {
   var copiedArray = [];
+  console.log("copy: "+arr);
   for (var i = 0; i < arr.length; i++) {
-    if (Array.isArray(arr[i])) {
-      copiedArray[i] = copyArray(arr[i]);
-    } else {
-      copiedArray[i] = arr[i];
+    copiedArray[i] = [];
+    for (var u = 0; u < arr[0].length; u++) {
+      console.log("copyArray: "+arr[i][u]);
+      copiedArray[i][u] = eval(arr[i][u]);
+      console.log("copyArray2: "+copiedArray[i][u]);
     }
   }
+  console.log(copiedArray);
   return copiedArray;
 }
 
@@ -40,22 +43,34 @@ function lgs() {
       array[b][c] = document.getElementById("syst" + b + c).value;
     }
   }
+  
+  array = array.sort(function(a, b) {
+    return (b[0]-a[0]);
+  });
+
 
   var ergebnisArray = [];
   var original = copyArray(array);
+  console.log(array);
 
   for (var k = 0; k < array.length; k++) {
+    console.log(original);
     array = copyArray(original);
+    console.log(array);
 
     for (let r = 0; r < array.length; r++) {
       array[r][array.length - 1] = original[r][k];
       array[r][k] = original[r][array.length - 1];
     }
 
+    console.log("fddfdgv:   "+array);
+    
     for (var i = 0; i < array.length; i++) {
-      if (array[i][i] == 0) alert();
+      if (array[i][i] == 0) console.log("fehler");
       for (var n = i + 1; n < array.length; n++) {
         for (var p = i + 1; p < array.length + 1; p++) {
+          console.log(array);
+          console.log("np: "+array[n][p]+"  ip: "+array[i][p]+"  ni: "+array[n][i]+"  ii: "+array[i][i]);
           array[n][p] += array[i][p] * array[n][i] / (-array[i][i]);
           array[n][p] = eval(array[n][p]);
         }
@@ -70,6 +85,11 @@ function lgs() {
     <br>
     <d>x` + l + `= ` + ergebnisArray[l - 1] + `</d>
     `;
+  }
+  var counterNaN = 0;
+  for(i = 0; i< array.length; i++){
+    if(innerErg.split("NaN").length > 1) counterNaN++;
+    innerErg = innerErg.replace("NaN", "Fehler");
   }
   document.getElementById("ergebnisLGS").innerHTML = innerErg;
 }
