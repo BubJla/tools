@@ -5,7 +5,6 @@ document.head.innerHTML += `
 <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
 <link rel="manifest" href="/site.webmanifest">
 `;
-document.querySelector(":root").style.setProperty("--screenWidth", screen.width+"px");
 
 function readCookie(name) {
     let cookieNew = document.cookie.split(";");
@@ -167,6 +166,7 @@ aktuelleSeite =  aktuelleSeite.replace("eigenschaften", "sicherheit");
 if(aktuelleSeite == '')aktuelleSeite = "start";
 if(aktuelleSeite != 'settings') document.getElementById(aktuelleSeite).setAttribute("class", "aktiv");
 
+document.querySelector(":root").style.setProperty("--screenWidth", screen.width+"px");
 var sideNow = document.querySelector(".animate");
 if(sideNow.baseURI != sessionStorage.getItem("lastUrl")) document.getElementById("animateUnload").innerHTML = sessionStorage.getItem("lastSide");
 sessionStorage.setItem('lastSide', sideNow.innerHTML);
