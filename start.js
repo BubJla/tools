@@ -1,3 +1,12 @@
+document.head.innerHTML += `
+<link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="64x64" href="favicon-64x64.png">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+<link rel="manifest" href="/site.webmanifest">
+`;
+document.querySelector(":root").style.setProperty("--screenWidth", screen.width+"px");
+
 function readCookie(name) {
     let cookieNew = document.cookie.split(";");
     for(let i = 0; i< cookieNew.length; i++) {
@@ -169,11 +178,3 @@ window.addEventListener('beforeunload', function() {
     sessionStorage.setItem('lastSide', sideNow.innerHTML);
 });
 
-document.querySelector(":root").style.setProperty("--screenWidth", screen.width);
-
-document.head.innerHTML += `
-<link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
-<link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
-<link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
-<link rel="manifest" href="/site.webmanifest">
-`;
