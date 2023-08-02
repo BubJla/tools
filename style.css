@@ -1109,7 +1109,6 @@ p{
     --groesseTime: 400px;
   }
   
-  
   #divclock {
     padding-top: 2%;
     padding-bottom: 2%;
@@ -1324,6 +1323,7 @@ p{
     height: 55%;
     display: flex;
     justify-content: right;
+    z-index: 20;
   }
   
   .clock .hand.millisecondin {
