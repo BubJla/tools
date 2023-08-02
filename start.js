@@ -1,9 +1,9 @@
+document.querySelector(":root").style.setProperty("--screenWidth", screen.width+"px");
+
 document.head.innerHTML += `
-<link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
-<link rel="icon" type="image/png" sizes="64x64" href="favicon-64x64.png">
-<link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
-<link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
-<link rel="manifest" href="/site.webmanifest">
+<link rel="icon" type="image/png" sizes="64x64" href="favicon64.png">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="favicon16.png">
 `;
 
 function readCookie(name) {
@@ -166,15 +166,16 @@ aktuelleSeite =  aktuelleSeite.replace("eigenschaften", "sicherheit");
 if(aktuelleSeite == '')aktuelleSeite = "start";
 if(aktuelleSeite != 'settings') document.getElementById(aktuelleSeite).setAttribute("class", "aktiv");
 
-document.querySelector(":root").style.setProperty("--screenWidth", screen.width+"px");
-var sideNow = document.querySelector(".animate");
-if(sideNow.baseURI != sessionStorage.getItem("lastUrl")) document.getElementById("animateUnload").innerHTML = sessionStorage.getItem("lastSide");
-sessionStorage.setItem('lastSide', sideNow.innerHTML);
-sessionStorage.setItem('lastUrl', sideNow.baseURI);
 
-
-window.addEventListener('beforeunload', function() {
-    sideNow = document.querySelector(".animate");
+if(readCookie("animation") != 0) {
+    var sideNow = document.querySelector(".animate");
+    if(sideNow.baseURI != sessionStorage.getItem("lastUrl")) document.getElementById("animateUnload").innerHTML = sessionStorage.getItem("lastSide");
     sessionStorage.setItem('lastSide', sideNow.innerHTML);
-});
+    sessionStorage.setItem('lastUrl', sideNow.baseURI);
 
+
+    window.addEventListener('beforeunload', function() {
+        sideNow = document.querySelector(".animate");
+        sessionStorage.setItem('lastSide', sideNow.innerHTML);
+    });
+}
