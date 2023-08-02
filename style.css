@@ -5,13 +5,13 @@
     --groesseUnterUeberschrift: 0.65;
     --schriftfarbe: #FFF;
     --hintergrundfarbe: #000;
-    --akzentfarbe1: #5A5AA0;
-    --akzentfarbe2: #5AA05A;
-    --akzentfarbe1aktiv: #2A2A70;
-    --akzentfarbe2aktiv: #2A702A;
+    --akzentfarbe1: #0000;
+    --akzentfarbe2: #0000;
+    --akzentfarbe1aktiv: #0000;
+    --akzentfarbe2aktiv: #0000;
     --akzentfarbe3: #F66151;
     --rotation01: 0deg;
-    --screenWidth: 1920;
+    --screenWidth: 100%;
 }
 
 ::selection {
@@ -217,7 +217,7 @@ html::-webkit-scrollbar-track {
     margin: 0;
     padding: 0;
     padding-top: 1vh;
-    width: calc(0.16px * var(--screenWidth));
+    width: calc(0.16 * var(--screenWidth));
     animation: none;
     height: 100vh;
     position: fixed;
@@ -268,20 +268,6 @@ li a{
     overflow: visible;
 }
 
-@keyframes transitionNavi1 {
-    0%, 100%{
-        background: #0000;
-    }
-}
-
-.navigationsleiste li a:not(.aktiv) {
-    animation: transitionNavi1 100ms;
-}
-
-.navigationsleiste li a:not(.aktiv) div{
-    animation: transitionNavi2 100ms;
-}
-
 .navigationsleiste li a.aktiv{
     background: var(--akzentfarbe1aktiv);
     animation: transition4 1500ms;
@@ -296,12 +282,12 @@ li a{
 .navigationsleiste li a{
     background: linear-gradient(90deg, var(--akzentfarbe1aktiv)0%, var(--akzentfarbe1)30%, var(--akzentfarbe1)100%);
     height: calc(var(--groesse)*1.3rem);
-    transform: translateX(calc(var(--screenWidth)*-0.16px));
+    transform: translateX(calc(var(--screenWidth)*-0.16));
 }
 
 .navigationsleiste li a div{
     transition: all 0.5s ease;
-    transform: translateX(calc(var(--screenWidth)*0.16px));
+    transform: translateX(calc(var(--screenWidth)*0.16));
     overflow: visible!important;
 }
 
