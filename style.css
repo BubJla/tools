@@ -233,6 +233,7 @@ html::-webkit-scrollbar-track {
     margin-left: 16%;
     height: 100vh;
     background: var(--hintergrundfarbe);
+    overflow: hidden;
 }
 
 .listeNebeneinander a{
@@ -506,7 +507,7 @@ ellipse{
 }
 
 .feldGewonnen {
-    border: 2px solid white;
+    border: 2px solid var(--schriftfarbe);
     width: 33.3%;
     height: 150px;
     background: yellow;
@@ -533,6 +534,10 @@ ellipse{
 .inputDivBinaer{
     font-size: 1.5rem;
     width: 33.33%;
+}
+
+div{
+    overflow: visible;
 }
 
 .bigger{
@@ -579,10 +584,12 @@ ellipse{
 
 .zahlenfelder div:hover{
     background: #6F6F6F;
+    scale: 1.15;
 }
 
 .operatorenfelder div:hover{
     background: #6F6F6F;
+    scale: 1.1;
 }
 
 .ausgabefeld{
@@ -739,10 +746,6 @@ input:not([type="range"]):hover{
     font-size: calc(var(--groesse)*2rem);
     justify-content: left;
     transition: all 0.5s ease;
-}
-
-div:not(.divges):not(#spielfeldtic){
-    overflow: visible;
 }
 
 d{
@@ -980,8 +983,8 @@ section{
 .information:hover{
     font-size: calc(var(--groesse)*1rem);
     border-radius: 2%;
-    width: 35%;
-    height: 55%;
+    width: 40%;
+    height: 60%;
     transition: width 0.5s, height 0.5s;
 }
 
@@ -1323,13 +1326,13 @@ p{
     height: 55%;
     display: flex;
     justify-content: right;
-    z-index: 20;
+    z-index: 200;
   }
   
   .clock .hand.millisecondin {
     width: 20px;
     height: 10px;
-    z-index: 20;
+    z-index: 200;
     border-radius: 0%;
     border-top: 10px solid var(--hintergrundfarbe);
   }
@@ -1348,8 +1351,4 @@ p{
     z-index: 10;
   }
   
-  polygon{
-    stroke: white;
-  }
-
 /*Z.1000*/

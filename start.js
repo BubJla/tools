@@ -1,12 +1,89 @@
 document.querySelector(":root").style.setProperty("--screenWidth", screen.width+"px");
 
 document.head.innerHTML += `
-<link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
-<link rel="icon" type="image/png" sizes="64x64" href="favicon-64x64.png">
-<link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
-<link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+<link rel="apple-touch-icon" sizes="180x180" href="favicon/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="64x64" href="favicon/favicon-64x64.png">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="favicon/favicon-16x16.png">
 <link rel="manifest" href="/site.webmanifest">
 `;
+
+
+/*const date = new Date().getTime();
+switch(date%8) {
+    case 0:
+        document.head.innerHTML += `
+        <link rel="apple-touch-icon" sizes="180x180" href="faviconRed/apple-touch-icon.png">
+        <link rel="icon" type="image/png" sizes="64x64" href="faviconRed/favicon-64x64.png">
+        <link rel="icon" type="image/png" sizes="32x32" href="faviconRed/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="faviconRed/favicon-16x16.png">
+        <link rel="manifest" href="/site.webmanifest">
+        `;
+        break;
+    case 1:
+        document.head.innerHTML += `
+        <link rel="apple-touch-icon" sizes="180x180" href="faviconGreen/apple-touch-icon.png">
+        <link rel="icon" type="image/png" sizes="64x64" href="faviconGreen/favicon-64x64.png">
+        <link rel="icon" type="image/png" sizes="32x32" href="faviconGreen/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="faviconGreen/favicon-16x16.png">
+        <link rel="manifest" href="/site.webmanifest">
+        `;
+        break;
+    case 2:
+        document.head.innerHTML += `
+        <link rel="apple-touch-icon" sizes="180x180" href="faviconBlue/apple-touch-icon.png">
+        <link rel="icon" type="image/png" sizes="64x64" href="faviconBlue/favicon-64x64.png">
+        <link rel="icon" type="image/png" sizes="32x32" href="faviconBlue/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="faviconBlue/favicon-16x16.png">
+        <link rel="manifest" href="/site.webmanifest">
+        `;
+        break;
+    case 3:
+        document.head.innerHTML += `
+        <link rel="apple-touch-icon" sizes="180x180" href="faviconWhite/apple-touch-icon.png">
+        <link rel="icon" type="image/png" sizes="64x64" href="faviconWhite/favicon-64x64.png">
+        <link rel="icon" type="image/png" sizes="32x32" href="faviconWhite/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="faviconWhite/favicon-16x16.png">
+        <link rel="manifest" href="/site.webmanifest">
+        `;
+        break;
+    case 4:
+        document.head.innerHTML += `
+        <link rel="apple-touch-icon" sizes="180x180" href="faviconRedBright/apple-touch-icon.png">
+        <link rel="icon" type="image/png" sizes="64x64" href="faviconRedBright/favicon-64x64.png">
+        <link rel="icon" type="image/png" sizes="32x32" href="faviconRedBright/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="faviconRedBright/favicon-16x16.png">
+        <link rel="manifest" href="/site.webmanifest">
+        `;
+        break;
+    case 5:
+        document.head.innerHTML += `
+        <link rel="apple-touch-icon" sizes="180x180" href="faviconGreenBright/apple-touch-icon.png">
+        <link rel="icon" type="image/png" sizes="64x64" href="faviconGreenBright/favicon-64x64.png">
+        <link rel="icon" type="image/png" sizes="32x32" href="faviconGreenBright/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="faviconGreenBright/favicon-16x16.png">
+        <link rel="manifest" href="/site.webmanifest">
+        `;
+        break;
+    case 6:
+        document.head.innerHTML += `
+        <link rel="apple-touch-icon" sizes="180x180" href="faviconBlueBright/apple-touch-icon.png">
+        <link rel="icon" type="image/png" sizes="64x64" href="faviconBlueBright/favicon-64x64.png">
+        <link rel="icon" type="image/png" sizes="32x32" href="faviconBlueBright/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="faviconBlueBright/favicon-16x16.png">
+        <link rel="manifest" href="/site.webmanifest">
+        `;
+        break;
+    case 7:
+        document.head.innerHTML += `
+        <link rel="apple-touch-icon" sizes="180x180" href="faviconBlack/apple-touch-icon.png">
+        <link rel="icon" type="image/png" sizes="64x64" href="faviconBlack/favicon-64x64.png">
+        <link rel="icon" type="image/png" sizes="32x32" href="faviconBlack/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="faviconBlack/favicon-16x16.png">
+        <link rel="manifest" href="/site.webmanifest">
+        `;
+        break;
+}*/
 
 function readCookie(name) {
     let cookieNew = document.cookie.split(";");
