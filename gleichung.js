@@ -399,7 +399,7 @@ function refreshGraph() {
         var y = -mark[1]*400/yF-yV+400;
     
         xV += (breite/2-x)-offsetx;
-        yV -= (200-y)-offsety;    
+        yV -= (200-y)-offsety;   
     }
     /*console.log("xV:     "+xV);
     console.log("xF:     "+xF);
@@ -483,8 +483,15 @@ function refreshGraph() {
     graph_before = document.getElementById("svgGraph").innerHTML;
 
     const objSvg = document.getElementById("svgGraph");
-    objSvg.innerHTML += '<line x1="'+(breite/2-10-offsetx)+'" y1="'+(200-offsety)+'" x2="'+(breite/2+10-offsetx)+'" y2="'+(200-offsety)+'" style="stroke:var(--schriftfarbe);stroke-width:2" />';
-    objSvg.innerHTML += '<line x1="'+(breite/2-offsetx)+'" y1="'+(200-10-offsety)+'" x2="'+(breite/2-offsetx)+'" y2="'+(200+10-offsety)+'" style="stroke:var(--schriftfarbe);stroke-width:2" />';
+
+    if(offsetx == (breite/2-(mark[0]*breite/xF+xV)) && offsety == (200-(-mark[1]*400/yF-yV+400))) {
+        objSvg.innerHTML += '<line x1="'+(breite/2-10)+'" y1="'+(200)+'" x2="'+(breite/2+10)+'" y2="'+(200)+'" style="stroke:var(--schriftfarbe);stroke-width:2" />';
+        objSvg.innerHTML += '<line x1="'+(breite/2)+'" y1="'+(200-10)+'" x2="'+(breite/2)+'" y2="'+(200+10)+'" style="stroke:var(--schriftfarbe);stroke-width:2" />';
+    }
+    else {
+        objSvg.innerHTML += '<line x1="'+(breite/2-10-offsetx)+'" y1="'+(200-offsety)+'" x2="'+(breite/2+10-offsetx)+'" y2="'+(200-offsety)+'" style="stroke:var(--schriftfarbe);stroke-width:2" />';
+        objSvg.innerHTML += '<line x1="'+(breite/2-offsetx)+'" y1="'+(200-10-offsety)+'" x2="'+(breite/2-offsetx)+'" y2="'+(200+10-offsety)+'" style="stroke:var(--schriftfarbe);stroke-width:2" />';
+    }
 }
 
 var graph_before = "";
@@ -541,6 +548,50 @@ function coordinates(event) {
     }
 }
 
-document.getElementById("graph").addEventListener('click', coordinates);
+var x0 = 0;
+var y0 = 0;
+var intval;
+const obj = document.getElementById("graph");
+const objSvg = document.getElementById("svgGraph");
+var moving = false;
+var graph0 = objSvg.innerHTML;
+
+function start(event) {
+    x0 = event.clientX-obj.offsetLeft;
+    y0 = event.clientY-obj.offsetTop;
+    moving = true;
+    graph0 = objSvg.innerHTML;
+}
+
+function end(event) {
+    moving = false;
+    var x = event.clientX-obj.offsetLeft;
+    var y = event.clientY-obj.offsetTop;
+    if(Math.abs(x0 - x) < 50 && Math.abs(y0 - y) < 50) {
+        coordinates(event);
+        return;
+    }
+    xV -= x0 -x;
+    yV += y0 -y;
+    offsetx = (breite/2-(mark[0]*breite/xF+xV));
+    offsety = (200-(-mark[1]*400/yF-yV+400));
+    refreshGraph();
+}
+
+function print(event) {
+    if(moving == false) return;
+    objSvg.innerHTML = graph0;
+    let x = event.clientX-obj.offsetLeft;
+    let y = event.clientY-obj.offsetTop;
+    objSvg.innerHTML += '<line x1="'+(breite/2)+'" y1="'+(200)+'" x2="'+(breite/2-x+x0)+'" y2="'+(200-y+y0)+'" style="stroke:var(--schriftfarbe);stroke-width:3" />';
+    objSvg.innerHTML += '<line x1="'+((breite/2-x+x0)-10)+'" y1="'+((200-y+y0))+'" x2="'+((breite/2-x+x0)+10)+'" y2="'+((200-y+y0))+'" style="stroke:var(--schriftfarbe);stroke-width:1" />';
+    objSvg.innerHTML += '<line x1="'+(breite/2-x+x0)+'" y1="'+(((200-y+y0))-10)+'" x2="'+(breite/2-x+x0)+'" y2="'+(((200-y+y0))+10)+'" style="stroke:var(--schriftfarbe);stroke-width:1" />';
+}
+
+//document.getElementById("graph").addEventListener('click', coordinates);
+document.getElementById("graph").addEventListener('mousedown', start);
+document.getElementById("graph").addEventListener('mouseup', end);
+document.getElementById("graph").addEventListener('mousemove', print);
+
 
 setInterval(function () {document.getElementById("graph").addEventListener('DOMMouseScroll', coordinates);}, 100);
