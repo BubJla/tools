@@ -112,9 +112,9 @@ function gleichung() {
     var rechts = document.getElementById("seiteR").value;
     var ergebnisse = [];
     var termL = links;
-    for (let i = 0; i < termL.length; i++) termL = termL.replace("X", "x").replace("π", "Math.PI").replace("e", "Math.E").replace("÷", "/").replace("×", "*").replace("²", "**2").replace("³", "**3").replace("^", "**");
+    for (let i = 0; i < termL.length; i++) termL = termL.replace("X", "x").replace("π", "Math.PI").replace("e", "Math.E").replace("÷", "/").replace("×", "*").replace("²", "**2").replace("³", "**3").replace("^", "**").replace("-x**", "-1*x**");
     var termR = rechts;
-    for (let i = 0; i < termR.length; i++) termR = termR.replace("X", "x").replace("π", "Math.PI").replace("e", "Math.E").replace("÷", "/").replace("×", "*").replace("²", "**2").replace("³", "**3").replace("^", "**");
+    for (let i = 0; i < termR.length; i++) termR = termR.replace("X", "x").replace("π", "Math.PI").replace("e", "Math.E").replace("÷", "/").replace("×", "*").replace("²", "**2").replace("³", "**3").replace("^", "**").replace("**", "-1*x**");
     var x;
     var ergebnisse = [];
     var unendlich = 0;
@@ -468,4 +468,7 @@ function refreshGraph() {
     document.getElementById("svgL").innerHTML = innerL;
 
     document.getElementById("svgGraph").innerHTML = inner;
+}
+function coordinates() {
+    console.log("x:   "+e.clientX+"       y:     "+e.clientY);
 }

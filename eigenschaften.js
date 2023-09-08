@@ -1,6 +1,8 @@
 function evalBodyMassIndex() {
     const mass = document.getElementById("mass").value.replace(",", ".");
     const height = document.getElementById("height").value.replace(",", ".");
+    document.getElementById("IndexValue2").value = "";
+    document.getElementById("IndexValue").value = "";
     if(mass=="") return;
     if(height=="") return;
     const BMI = mass / (height * height);
@@ -13,7 +15,10 @@ function evalBodyMassIndex() {
 
 
 function integralToIQ() {
-    if(document.getElementById("percentage").value == "") return;
+    if(document.getElementById("percentage").value == "") {
+        document.getElementById("IQRes").value = "";
+        return;
+    }
     var percentage = eval(eval(document.getElementById("percentage").value.replace(",", "."))/100);
     if(percentage>0.5) percentage = 1-percentage;
     if(percentage < 1e-16) {
@@ -88,6 +93,14 @@ function integralToIQ() {
 
 function integralToPerc() {
     var iq = document.getElementById("IQRes").value.replace(",", ".");
+    if(iq == 100) {
+        document.getElementById("percentage").value = "50.000";
+        return;
+    }
+    else if(iq == "") {
+        document.getElementById("percentage").value = "";
+        return;
+    }
     if(iq > 145) document.getElementById("percentage").value = eval((1500/(Math.sqrt(2*Math.PI)*(iq-100)))*Math.E**(-((iq-100)*(iq-100)/450)));
     else if(iq < 55) document.getElementById("percentage").value = "100 - "+eval((1500/(Math.sqrt(2*Math.PI)*(100-iq)))*Math.E**(-((100-iq)*(100-iq)/450)));
     else{
@@ -106,4 +119,3 @@ function integralToPerc() {
     }
 
 }
-
