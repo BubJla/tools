@@ -567,7 +567,7 @@ function end(event) {
     moving = false;
     var x = event.clientX-obj.offsetLeft;
     var y = event.clientY-obj.offsetTop;
-    if(Math.abs(x0 - x) < 50 && Math.abs(y0 - y) < 50) {
+    if(Math.abs(x0 - x) < 25 && Math.abs(y0 - y) < 25) {
         coordinates(event);
         return;
     }
