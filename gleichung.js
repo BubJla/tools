@@ -8,6 +8,9 @@ var gL;
 var gR;
 var e = [];
 var count = 0;
+var mark = [];
+var offsetx = 0;
+var offsety = 0;
 
 //alert(breite);
 function ersetzen(text, zuErsetzen, ersetzwert) {
@@ -359,6 +362,7 @@ function gleichung() {
     yF = yFaktor;
     xV = xVerschiebung;
     yV = yVerschiebung;
+    mark = [];
     refreshGraph();
     if(count %2 == 0) {
         document.getElementById("left").setAttribute("style", "animation: transition5 1500ms;");
@@ -390,6 +394,13 @@ function refreshGraph() {
         }
         e = eNew;
     }
+    if(mark.length > 1) {
+        var x = mark[0]*breite/xF+xV;
+        var y = -mark[1]*400/yF-yV+400;
+    
+        xV += (breite/2-x)-offsetx;
+        yV -= (200-y)-offsety;    
+    }
     /*console.log("xV:     "+xV);
     console.log("xF:     "+xF);
     console.log("yV:     "+yV);
@@ -406,6 +417,7 @@ function refreshGraph() {
     var innerL;
 
     //console.log("yV  "+yV+"  xV  "+xV+"  yF  "+yF+"  xF  "+xF);
+
 
     var trm = termL;
     if(e == "unendlich viele Lösungen") {
@@ -468,13 +480,63 @@ function refreshGraph() {
     document.getElementById("svgL").innerHTML = innerL;
 
     document.getElementById("svgGraph").innerHTML = inner;
+    graph_before = document.getElementById("svgGraph").innerHTML;
+
+    if(mark.length < 2) return;
+    const objSvg = document.getElementById("svgGraph");
+    objSvg.innerHTML += '<line x1="'+(breite/2-10)+'" y1="'+200+'" x2="'+(breite/2+10)+'" y2="'+200+'" style="stroke:var(--schriftfarbe);stroke-width:2" />';
+    objSvg.innerHTML += '<line x1="'+(breite/2)+'" y1="'+(200-10)+'" x2="'+(breite/2)+'" y2="'+(200+10)+'" style="stroke:var(--schriftfarbe);stroke-width:2" />';
 }
 
+var graph_before = "";
+
 function coordinates(event) {
-    var x = event.clientX-document.getElementById("graph").offsetLeft;
-    var y = event.clientY-document.getElementById("graph").offsetTop;
-    console.log("x   "+x);
-    console.log("y   "+y);
+    console.log("xV:     "+xV+"    yV:     "+yV);
+    const obj = document.getElementById("graph");
+    const objSvg = document.getElementById("svgGraph");
+    var x = (event.clientX-obj.offsetLeft-xV)*xF/breite;
+    var y = -(event.clientY-obj.offsetTop-400+yV)*yF/400;
+    var dif;
+    for(let i = -1; i < e.length; i++) {
+        if(i == -1) {
+            dif = ((event.clientX-obj.offsetLeft) - (xV))**2 + ((event.clientY-obj.offsetTop) - (400-yV))**2;
+            console.log("d+   "+dif);
+            if(dif < 100) {
+                x = 0;
+                y = 0;
+            }    
+            continue;
+        }
+        dif = ((event.clientX-obj.offsetLeft) - (e[i]*breite/xF+xV))**2 + ((event.clientY-obj.offsetTop) - (-eval(ersetzen(gL, "x", e[i]))*400/yF+400-yV))**2;
+        console.log(dif);
+        if(dif < 100) {
+            x = e[i];
+            y = eval(ersetzen(gL, "x", e[i]));
+        }
+    }
+    mark[0] = x;
+    mark[1] = y;
+    x = x*breite/xF+xV;
+    y = -y*400/yF-yV+400;
+    console.log("e:    "+(e[0]*breite/xF+xV));
+    console.log("x:   "+x+"   y:    "+y);
+    objSvg.innerHTML = graph_before;
+    objSvg.innerHTML += '<line x1="'+(x-10)+'" y1="'+y+'" x2="'+(x+10)+'" y2="'+y+'" style="stroke:var(--schriftfarbe);stroke-width:2" />';
+    objSvg.innerHTML += '<line x1="'+x+'" y1="'+(y-10)+'" x2="'+x+'" y2="'+(y+10)+'" style="stroke:var(--schriftfarbe);stroke-width:2" />';
+    const scroll = event.detail;
+    if(scroll < -2) {
+        xF/=1.5; yF/=1.5; xV=(xV-breite/2)*1.5+breite/2; yV=(yV-200)*1.5+200;
+        offsetx = breite/2-event.clientX+obj.offsetLeft;
+    }
+    else if(scroll > 2) {
+        xF*=1.5; yF*=1.5; xV=(xV-breite/2)/1.5+breite/2; yV=(yV-200)/1.5+200;
+    }
+    if(scroll < -2 || scroll > 2) {
+        refreshGraph();
+        document.getElementById("graph").removeEventListener('DOMMouseScroll', coordinates);
+    }
 }
 
 document.getElementById("graph").addEventListener('click', coordinates);
+
+setInterval(function () {document.getElementById("graph").addEventListener('DOMMouseScroll', coordinates);}, 100);
