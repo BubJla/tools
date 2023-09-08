@@ -482,16 +482,15 @@ function refreshGraph() {
     document.getElementById("svgGraph").innerHTML = inner;
     graph_before = document.getElementById("svgGraph").innerHTML;
 
-    if(mark.length < 2) return;
     const objSvg = document.getElementById("svgGraph");
-    objSvg.innerHTML += '<line x1="'+(breite/2-10)+'" y1="'+200+'" x2="'+(breite/2+10)+'" y2="'+200+'" style="stroke:var(--schriftfarbe);stroke-width:2" />';
-    objSvg.innerHTML += '<line x1="'+(breite/2)+'" y1="'+(200-10)+'" x2="'+(breite/2)+'" y2="'+(200+10)+'" style="stroke:var(--schriftfarbe);stroke-width:2" />';
+    objSvg.innerHTML += '<line x1="'+(breite/2-10-offsetx)+'" y1="'+(200-offsety)+'" x2="'+(breite/2+10-offsetx)+'" y2="'+(200-offsety)+'" style="stroke:var(--schriftfarbe);stroke-width:2" />';
+    objSvg.innerHTML += '<line x1="'+(breite/2-offsetx)+'" y1="'+(200-10-offsety)+'" x2="'+(breite/2-offsetx)+'" y2="'+(200+10-offsety)+'" style="stroke:var(--schriftfarbe);stroke-width:2" />';
 }
 
 var graph_before = "";
 
 function coordinates(event) {
-    console.log("xV:     "+xV+"    yV:     "+yV);
+    //console.log("xV:     "+xV+"    yV:     "+yV);
     const obj = document.getElementById("graph");
     const objSvg = document.getElementById("svgGraph");
     var x = (event.clientX-obj.offsetLeft-xV)*xF/breite;
@@ -500,7 +499,7 @@ function coordinates(event) {
     for(let i = -1; i < e.length; i++) {
         if(i == -1) {
             dif = ((event.clientX-obj.offsetLeft) - (xV))**2 + ((event.clientY-obj.offsetTop) - (400-yV))**2;
-            console.log("d+   "+dif);
+            //console.log("d+   "+dif);
             if(dif < 100) {
                 x = 0;
                 y = 0;
@@ -508,7 +507,7 @@ function coordinates(event) {
             continue;
         }
         dif = ((event.clientX-obj.offsetLeft) - (e[i]*breite/xF+xV))**2 + ((event.clientY-obj.offsetTop) - (-eval(ersetzen(gL, "x", e[i]))*400/yF+400-yV))**2;
-        console.log(dif);
+        //console.log(dif);
         if(dif < 100) {
             x = e[i];
             y = eval(ersetzen(gL, "x", e[i]));
@@ -518,22 +517,27 @@ function coordinates(event) {
     mark[1] = y;
     x = x*breite/xF+xV;
     y = -y*400/yF-yV+400;
-    console.log("e:    "+(e[0]*breite/xF+xV));
-    console.log("x:   "+x+"   y:    "+y);
+    //console.log("e:    "+(e[0]*breite/xF+xV));
+    //console.log("x:   "+x+"   y:    "+y);
     objSvg.innerHTML = graph_before;
     objSvg.innerHTML += '<line x1="'+(x-10)+'" y1="'+y+'" x2="'+(x+10)+'" y2="'+y+'" style="stroke:var(--schriftfarbe);stroke-width:2" />';
     objSvg.innerHTML += '<line x1="'+x+'" y1="'+(y-10)+'" x2="'+x+'" y2="'+(y+10)+'" style="stroke:var(--schriftfarbe);stroke-width:2" />';
     const scroll = event.detail;
     if(scroll < -2) {
         xF/=1.5; yF/=1.5; xV=(xV-breite/2)*1.5+breite/2; yV=(yV-200)*1.5+200;
-        offsetx = breite/2-event.clientX+obj.offsetLeft;
     }
     else if(scroll > 2) {
         xF*=1.5; yF*=1.5; xV=(xV-breite/2)/1.5+breite/2; yV=(yV-200)/1.5+200;
     }
     if(scroll < -2 || scroll > 2) {
+        offsetx = breite/2-event.clientX+obj.offsetLeft;
+        offsety = 200-(event.clientY-obj.offsetTop);
         refreshGraph();
         document.getElementById("graph").removeEventListener('DOMMouseScroll', coordinates);
+    }
+    else{
+        offsetx = 0;
+        offsety = 0;
     }
 }
 
