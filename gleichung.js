@@ -469,6 +469,12 @@ function refreshGraph() {
 
     document.getElementById("svgGraph").innerHTML = inner;
 }
-function coordinates() {
-    console.log("x:   "+e.clientX+"       y:     "+e.clientY);
+
+function coordinates(event) {
+    var x = event.clientX-document.getElementById("graph").offsetLeft;
+    var y = event.clientY-document.getElementById("graph").offsetTop;
+    console.log("x   "+x);
+    console.log("y   "+y);
 }
+
+document.getElementById("graph").addEventListener('click', coordinates);
