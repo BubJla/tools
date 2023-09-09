@@ -298,7 +298,7 @@ function gleichung() {
     //if(xFaktor < 3) xFaktor = 3;
     //if(yFaktor < 3) yFaktor = 3;
     if(ergebnisse.length > 100) {
-        alert("Fehler: Zu viele oder keine Lösung("+ergebnisse.length+" Lösungen");
+        alert("Fehler: viele oder keine Lösung( "+ergebnisse.length+" Lösungen)");
     }
     e = ergebnisse;
     xF = xFaktor;
@@ -637,3 +637,9 @@ document.getElementById("graph").addEventListener('touch', coordinates);
 
 
 setInterval(function () {document.getElementById("graph").addEventListener('DOMMouseScroll', coordinates);}, 100);
+
+var t0 = new Date().getTime();
+for(let i = 0; i < 100000000; i++) {}
+var t1 = new Date().getTime();
+alert("Durchläufe pro s:  "+(100000000/((t1-t0)/1000)).toFixed(0));
+alert("Zeit:  "+((t1-t0)/1000)+"s")
