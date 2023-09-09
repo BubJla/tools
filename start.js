@@ -173,6 +173,7 @@ else {
     
     if(animationType == 1) for(i = 0; i < elementsHead.length; i++) elementsHead[i].classList.add("animate22");
     else if(animationType != 2) for(i = 0; i < elementsHead.length; i++) elementsHead[i].classList.remove("animate2");
+    if(animationType==0) document.body.classList.add("noAnimation");
   }
 
 document.getElementById("navigationsleiste").innerHTML=`
@@ -242,6 +243,7 @@ aktuelleSeite =  aktuelleSeite.replace("gleichungSystem", "mathe");
 aktuelleSeite =  aktuelleSeite.replace("gleichung", "mathe");
 aktuelleSeite =  aktuelleSeite.replace("integral", "mathe");
 aktuelleSeite =  aktuelleSeite.replace("eigenschaften", "sicherheit");
+aktuelleSeite =  aktuelleSeite.replace("zeichnen", "sicherheit");
 if(aktuelleSeite == '')aktuelleSeite = "start";
 if(aktuelleSeite != 'settings') document.getElementById(aktuelleSeite).setAttribute("class", "aktiv");
 

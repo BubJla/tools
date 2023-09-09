@@ -364,6 +364,8 @@ function gleichung() {
     yV = yVerschiebung;
     mark = [];
     refreshGraph();
+    scroll(0, 300);
+    if(readCookie("animation") == 0) return;
     if(count %2 == 0) {
         document.getElementById("left").setAttribute("style", "animation: transition5 1500ms;");
         document.getElementById("under").setAttribute("style", "animation: transition5 1500ms;");
@@ -375,7 +377,6 @@ function gleichung() {
         document.getElementById("graph").setAttribute("style", "animation: transition6 1500ms ;");
     }
     count ++;//für mehrmalige animation
-    scroll(0, 300);
 }
 
 
@@ -538,7 +539,8 @@ function coordinates(event) {
     objSvg.innerHTML = graph_before;
     objSvg.innerHTML += '<line x1="'+(x-10)+'" y1="'+y+'" x2="'+(x+10)+'" y2="'+y+'" style="stroke:var(--schriftfarbe);stroke-width:2" />';
     objSvg.innerHTML += '<line x1="'+x+'" y1="'+(y-10)+'" x2="'+x+'" y2="'+(y+10)+'" style="stroke:var(--schriftfarbe);stroke-width:2" />';
-    const scroll = event.detail;
+    var scroll = event.detail;
+    if(scroll == 2) scroll = -3;
     if(scroll < -2) {
         xF/=1.5; yF/=1.5; xV=(xV-breite/2)*1.5+breite/2; yV=(yV-200)*1.5+200;
     }
