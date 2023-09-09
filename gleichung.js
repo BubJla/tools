@@ -591,6 +591,8 @@ function print(event) {
 //document.getElementById("graph").addEventListener('click', coordinates);
 document.getElementById("graph").addEventListener('mousedown', start);
 document.getElementById("graph").addEventListener('mouseup', end);
+document.getElementById("graph").addEventListener('touchstart', start);
+document.getElementById("graph").addEventListener('touchend', end);
 document.getElementById("graph").addEventListener('mousemove', print);
 
 
