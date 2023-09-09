@@ -500,12 +500,21 @@ function coordinates(event) {
     //console.log("xV:     "+xV+"    yV:     "+yV);
     const obj = document.getElementById("graph");
     const objSvg = document.getElementById("svgGraph");
-    var x = (event.clientX-obj.offsetLeft-xV)*xF/breite;
-    var y = -(event.clientY-obj.offsetTop-400+yV)*yF/400;
+    var x0, y0;
+    if(touch) {
+        x0 = event.getX-obj.offsetLeft;
+        y0 = event.getY-obj.offsetTop;
+    }
+    else {
+        x0 = event.clientX-obj.offsetLeft;
+        y0 = event.clientY-obj.offsetTop;
+    }
+    var x = (x0-xV)*xF/breite;
+    var y = -(y0-400+yV)*yF/400;
     var dif;
     for(let i = -1; i < e.length; i++) {
         if(i == -1) {
-            dif = ((event.clientX-obj.offsetLeft) - (xV))**2 + ((event.clientY-obj.offsetTop) - (400-yV))**2;
+            dif = ((x0) - (xV))**2 + ((y0) - (400-yV))**2;
             //console.log("d+   "+dif);
             if(dif < 100) {
                 x = 0;
@@ -513,7 +522,7 @@ function coordinates(event) {
             }    
             continue;
         }
-        dif = ((event.clientX-obj.offsetLeft) - (e[i]*breite/xF+xV))**2 + ((event.clientY-obj.offsetTop) - (-eval(ersetzen(gL, "x", e[i]))*400/yF+400-yV))**2;
+        dif = ((x0) - (e[i]*breite/xF+xV))**2 + ((y0) - (-eval(ersetzen(gL, "x", e[i]))*400/yF+400-yV))**2;
         //console.log(dif);
         if(dif < 100) {
             x = e[i];
@@ -537,8 +546,8 @@ function coordinates(event) {
         xF*=1.5; yF*=1.5; xV=(xV-breite/2)/1.5+breite/2; yV=(yV-200)/1.5+200;
     }
     if(scroll < -2 || scroll > 2) {
-        offsetx = breite/2-event.clientX+obj.offsetLeft;
-        offsety = 200-(event.clientY-obj.offsetTop);
+        offsetx = breite/2-x0;
+        offsety = 200-y0;
         refreshGraph();
         document.getElementById("graph").removeEventListener('DOMMouseScroll', coordinates);
     }
@@ -555,18 +564,32 @@ const obj = document.getElementById("graph");
 const objSvg = document.getElementById("svgGraph");
 var moving = false;
 var graph0 = objSvg.innerHTML;
+var touch = false;
 
 function start(event) {
-    x0 = event.clientX-obj.offsetLeft;
-    y0 = event.clientY-obj.offsetTop;
+    if(touch) {
+        x0 = event.getX-obj.offsetLeft;
+        y0 = event.getY-obj.offsetTop;
+    }
+    else {
+        x0 = event.clientX-obj.offsetLeft;
+        y0 = event.clientY-obj.offsetTop;
+    }
     moving = true;
     graph0 = objSvg.innerHTML;
 }
 
 function end(event) {
     moving = false;
-    var x = event.clientX-obj.offsetLeft;
-    var y = event.clientY-obj.offsetTop;
+    var x, y;
+    if(touch) {
+        x = event.getX-obj.offsetLeft;
+        y = event.getY-obj.offsetTop;
+    }
+    else {
+        x = event.clientX-obj.offsetLeft;
+        y = event.clientY-obj.offsetTop;
+    }
     if(Math.abs(x0 - x) < 10 && Math.abs(y0 - y) < 10) {
         coordinates(event);
         return;
@@ -577,16 +600,29 @@ function end(event) {
     offsety = (200-(-mark[1]*400/yF-yV+400));
     mark = [];
     refreshGraph();
+    touch = false;
 }
 
 function print(event) {
     if(moving == false) return;
     objSvg.innerHTML = graph0;
-    let x = event.clientX-obj.offsetLeft;
-    let y = event.clientY-obj.offsetTop;
+    var x, y;
+    if(touch) {
+        x = event.getX-obj.offsetLeft;
+        y = event.getY-obj.offsetTop;
+    }
+    else {
+        x = event.clientX-obj.offsetLeft;
+        y = event.clientY-obj.offsetTop;
+    }
     objSvg.innerHTML += '<line x1="'+(breite/2)+'" y1="'+(200)+'" x2="'+(breite/2-x+x0)+'" y2="'+(200-y+y0)+'" style="stroke:var(--schriftfarbe);stroke-width:3" />';
     objSvg.innerHTML += '<line x1="'+((breite/2-x+x0)-10)+'" y1="'+((200-y+y0))+'" x2="'+((breite/2-x+x0)+10)+'" y2="'+((200-y+y0))+'" style="stroke:var(--schriftfarbe);stroke-width:1" />';
     objSvg.innerHTML += '<line x1="'+(breite/2-x+x0)+'" y1="'+(((200-y+y0))-10)+'" x2="'+(breite/2-x+x0)+'" y2="'+(((200-y+y0))+10)+'" style="stroke:var(--schriftfarbe);stroke-width:1" />';
+}
+
+function starttouch(event) {
+    touch = true;
+    start(event);
 }
 
 //document.getElementById("graph").addEventListener('click', coordinates);
@@ -594,7 +630,7 @@ document.getElementById("graph").addEventListener('mousedown', start);
 document.getElementById("graph").addEventListener('mouseup', end);
 document.getElementById("graph").addEventListener('mousemove', print);
 
-document.getElementById("graph").addEventListener('touchstart', start);
+document.getElementById("graph").addEventListener('touchstart', starttouch);
 document.getElementById("graph").addEventListener('touchend', end);
 document.getElementById("graph").addEventListener('touchmove', print);
 
