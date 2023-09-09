@@ -297,6 +297,9 @@ function gleichung() {
     //if(yFaktor == 2000) yFaktor = 10;
     //if(xFaktor < 3) xFaktor = 3;
     //if(yFaktor < 3) yFaktor = 3;
+    if(ergebnisse.length > 100) {
+        alert("Fehler: Zu viele oder keine Lösung("+ergebnisse.length+" Lösungen");
+    }
     e = ergebnisse;
     xF = xFaktor;
     yF = yFaktor;
@@ -594,7 +597,7 @@ function end(event) {
         x = event.clientX-obj.offsetLeft;
         y = event.clientY-obj.offsetTop;
     }
-    if(Math.abs(x0 - x) < 10 && Math.abs(y0 - y) < 10) {
+    if(Math.abs(x0 - x) < 15 && Math.abs(y0 - y) < 15) {
         coordinates(event);
         return;
     }
