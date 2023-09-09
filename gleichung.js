@@ -567,6 +567,8 @@ var graph0 = objSvg.innerHTML;
 var touch = false;
 
 function start(event) {
+    if(event.clientY) touch = false;
+    else if(event.getY) touch = true;
     if(touch) {
         x0 = event.getX-obj.offsetLeft;
         y0 = event.getY-obj.offsetTop;
@@ -620,19 +622,13 @@ function print(event) {
     objSvg.innerHTML += '<line x1="'+(breite/2-x+x0)+'" y1="'+(((200-y+y0))-10)+'" x2="'+(breite/2-x+x0)+'" y2="'+(((200-y+y0))+10)+'" style="stroke:var(--schriftfarbe);stroke-width:1" />';
 }
 
-function starttouch(event) {
-    touch = true;
-    start(event);
-}
 
 //document.getElementById("graph").addEventListener('click', coordinates);
 document.getElementById("graph").addEventListener('mousedown', start);
 document.getElementById("graph").addEventListener('mouseup', end);
 document.getElementById("graph").addEventListener('mousemove', print);
 
-document.getElementById("graph").addEventListener('touchstart', starttouch);
-document.getElementById("graph").addEventListener('touchend', end);
-document.getElementById("graph").addEventListener('touchmove', print);
+document.getElementById("graph").addEventListener('touch', coordinates);
 
 
 setInterval(function () {document.getElementById("graph").addEventListener('DOMMouseScroll', coordinates);}, 100);
