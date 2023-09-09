@@ -484,7 +484,7 @@ function refreshGraph() {
 
     const objSvg = document.getElementById("svgGraph");
 
-    if(offsetx == (breite/2-(mark[0]*breite/xF+xV)) && offsety == (200-(-mark[1]*400/yF-yV+400))) {
+    if(offsetx == (breite/2-(mark[0]*breite/xF+xV)) && offsety == (200-(-mark[1]*400/yF-yV+400)) || mark[1] == undefined) {
         objSvg.innerHTML += '<line x1="'+(breite/2-10)+'" y1="'+(200)+'" x2="'+(breite/2+10)+'" y2="'+(200)+'" style="stroke:var(--schriftfarbe);stroke-width:2" />';
         objSvg.innerHTML += '<line x1="'+(breite/2)+'" y1="'+(200-10)+'" x2="'+(breite/2)+'" y2="'+(200+10)+'" style="stroke:var(--schriftfarbe);stroke-width:2" />';
     }
@@ -567,7 +567,7 @@ function end(event) {
     moving = false;
     var x = event.clientX-obj.offsetLeft;
     var y = event.clientY-obj.offsetTop;
-    if(Math.abs(x0 - x) < 25 && Math.abs(y0 - y) < 25) {
+    if(Math.abs(x0 - x) < 10 && Math.abs(y0 - y) < 10) {
         coordinates(event);
         return;
     }
@@ -575,6 +575,7 @@ function end(event) {
     yV += y0 -y;
     offsetx = (breite/2-(mark[0]*breite/xF+xV));
     offsety = (200-(-mark[1]*400/yF-yV+400));
+    mark = [];
     refreshGraph();
 }
 
@@ -591,9 +592,11 @@ function print(event) {
 //document.getElementById("graph").addEventListener('click', coordinates);
 document.getElementById("graph").addEventListener('mousedown', start);
 document.getElementById("graph").addEventListener('mouseup', end);
+document.getElementById("graph").addEventListener('mousemove', print);
+
 document.getElementById("graph").addEventListener('touchstart', start);
 document.getElementById("graph").addEventListener('touchend', end);
-document.getElementById("graph").addEventListener('mousemove', print);
+document.getElementById("graph").addEventListener('touchmove', print);
 
 
 setInterval(function () {document.getElementById("graph").addEventListener('DOMMouseScroll', coordinates);}, 100);
