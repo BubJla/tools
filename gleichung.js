@@ -130,6 +130,7 @@ function gleichung() {
     var unendlich = 0;
     var grenzeP = 0;
     var grenzeN = 0;
+    var ergebnisseAd = "";
     termL = ersetzen(termL, "0x", "0*x");
     termL = ersetzen(termL, "1x", "1*x");
     termL = ersetzen(termL, "2x", "2*x");
@@ -317,27 +318,27 @@ function gleichung() {
     //document.getElementById("svgGraph").innerHTML = inner;
     for(let q = 0; q < 10; q++) {
         if(Math.abs(rechnen(ersetzen(term, "x", 2*Math.PI*q-0.5*Math.PI))) > 0.001) break;
-        if(q == 9) ergebnisse = "PI*n*2-0.5*PI";
+        if(q == 9) ergebnisseAd = "PI*n*2-0.5*PI: ";
     }
     for(let q = 0; q < 10; q++) {
         if(Math.abs(rechnen(ersetzen(term, "x", 2*Math.PI*q+0.5*Math.PI))) > 0.001) break;
-        if(q == 9) ergebnisse = "PI*n*2+0.5*PI";
+        if(q == 9) ergebnisseAd = "PI*n*2+0.5*PI: ";
     }
     for(let q = 0; q < 10; q++) {
         if(Math.abs(rechnen(ersetzen(term, "x", 2*Math.PI*q))) > 0.01) break;
-        if(q == 9) ergebnisse = "PI*n*2";
+        if(q == 9) ergebnisseAd = "PI*n*2: ";
     }
     for(let q = 0; q < 10; q++) {
         if(Math.abs(rechnen(ersetzen(term, "x", 2*Math.PI*q-Math.PI))) > 0.01) break;
-        if(q == 9) ergebnisse = "PI*n*2-PI";
+        if(q == 9) ergebnisseAd = "PI*n*2-PI: ";
     }
     for(let q = 0; q < 10; q++) {
         if(Math.abs(rechnen(ersetzen(term, "x", Math.PI*q-0.5*Math.PI))) > 0.01) break;
-        if(q == 9) ergebnisse = "PI*n-0.5*PI";
+        if(q == 9) ergebnisseAd = "PI*n-0.5*PI: ";
     }
     for(let q = 0; q < 10; q++) {
         if(Math.abs(rechnen(ersetzen(term, "x", Math.PI*q))) > 0.01) break;
-        if(q == 9) ergebnisse = "PI*n";
+        if(q == 9) ergebnisseAd = "PI*n: ";
     }
 
     /*gefunden = false;
@@ -374,10 +375,10 @@ function gleichung() {
             ergebnisse[ergebnisse.length] = u.toFixed(1);
         }
     }
-    if(ergebnisse=="") ergebnisse = "keine oder zu große Lösung";
+    if(ergebnisse=="" && !ergebnisseAd) ergebnisse = "keine oder zu große Lösung";
 
     if(ergebnisse.length > 5 && ergebnisse[0] != "2" && ergebnisse[0] != "P" && ergebnisse[0] != "k") ergebnisse = ergebnisse.sort(compareNumbersA);
-    document.getElementById("ergebnisGleichung").value = ergebnisse;
+    document.getElementById("ergebnisGleichung").value = ""+ergebnisseAd + ergebnisse;
     document.getElementById("ergebnisGleichung").value = ersetzen(document.getElementById("ergebnisGleichung").value, ",", " / ");
     e = ergebnisse;
     xF = xFaktor;
@@ -534,7 +535,20 @@ function coordinates(event) {
     }
     var x = (x0-xV)*xF/breite;
     var y = -(y0-400+yV)*yF/400;
-    var dif;
+
+    let k = 0;//??????Fehlerbehebung
+    let n = 0;
+    let o = 0;
+    let d = 0;
+    let r = 0;
+    let z = 0;
+    let u = 0;
+    let g = 0;
+    let ß = 0;
+    let L = 0;
+    let ö = 0;
+    let s = 0;
+
     for(let i = -1; i < e.length; i++) {
         if(i == -1) {
             dif = ((x0) - (xV))**2 + ((y0) - (400-yV))**2;
@@ -546,7 +560,6 @@ function coordinates(event) {
             continue;
         }
         dif = ((x0) - (e[i]*breite/xF+xV))**2 + ((y0) - (-eval(ersetzen(gL, "x", e[i]))*400/yF+400-yV))**2;
-        //console.log(dif);
         if(dif < 100) {
             x = e[i];
             y = eval(ersetzen(gL, "x", e[i]));

@@ -1,8 +1,10 @@
 touch = false;
 var breite = (screen.width)*0.84-52;
 var cod0 = [];
+var pressed = false;
 
 function add(event) {
+    if(!pressed) return;
     const obj = document.getElementById("zeichenfeld");
     const objSvg = document.getElementById("svg");
     if(touch) {
@@ -22,5 +24,28 @@ function add(event) {
     cod0[1] = y;
 }
 
+function start(event) {
+    pressed = true;
+    if(touch) {
+        x = event.getX-obj.offsetLeft;
+        y = event.getY-obj.offsetTop;
+    }
+    else {
+        x = event.clientX-obj.offsetLeft;
+        y = event.clientY-obj.offsetTop;
+    }
+
+    cod0[0] = x;
+    cod0[1] = y;
+}
+
+function end() {
+    pressed = false;
+    cod0 = [];
+}
+
+
 document.getElementById("zeichenfeld").addEventListener('mousemove', add);
+document.getElementById("zeichenfeld").addEventListener('mousedown', start);
+document.getElementById("zeichenfeld").addEventListener('mouseup', end);
 
