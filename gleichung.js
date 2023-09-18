@@ -639,7 +639,7 @@ document.getElementById("graph").addEventListener('touch', coordinates);
 setInterval(function () {document.getElementById("graph").addEventListener('DOMMouseScroll', coordinates);}, 100);
 
 var t0 = new Date().getTime();
-for(let i = 0; i < 100000000; i++) {}
+for(let i = 0; i < 10000000; i++) {}
 var t1 = new Date().getTime();
-alert("Durchläufe pro s:  "+(100000000/((t1-t0)/1000)).toFixed(0));
-alert("Zeit:  "+((t1-t0)/1000)+"s")
+var score = (t1-t0);
+alert("Durchläufe pro s:  "+score);
