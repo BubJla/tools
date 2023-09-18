@@ -59,7 +59,7 @@ function lgs() {
     }
 
     for (var i = 0; i < array.length; i++) {
-      if (array[i][i] == 0) alert();
+      if (array[i][i] == 0) ;//alert();
       for (var n = i + 1; n < array.length; n++) {
         for (var p = i + 1; p < array.length + 1; p++) {
           console.log(array);
@@ -72,11 +72,14 @@ function lgs() {
 
     ergebnisArray[ergebnisArray.length] = -array[array.length - 1][array.length] / array[array.length - 1][array.length - 1];
   }
+  for(let p = 0; p < ergebnisArray.length; p++) {
+    if(!(ergebnisArray[p] < 0 || ergebnisArray[p] > 0)) ergebnisArray[p] = "Fehler";
+  }
   var innerErg = "";
   for (let l = 1; l <= array.length; l++) {
     innerErg += `
     <br>
-    <d>x` + l + `= ` + ergebnisArray[l - 1] + `</d>
+    <d>x` + l + `= <input type = "text" value = "` + ergebnisArray[l - 1] + `" style="border: 0px;" ></d>
     `;
   }
   document.getElementById("ergebnisLGS").innerHTML = innerErg;

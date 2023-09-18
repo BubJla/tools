@@ -1,3 +1,10 @@
+var t0 = new Date().getTime();
+for(let i = 0; i < 10000000; i++) {}
+var t1 = new Date().getTime();
+var score = (t1-t0);
+
+
+
 var breite = (screen.width)*0.84-52;
 
 var xV = breite/2;
@@ -307,7 +314,6 @@ function gleichung() {
     yV = yVerschiebung;
 
 
-
     //document.getElementById("svgGraph").innerHTML = inner;
     for(let q = 0; q < 10; q++) {
         if(Math.abs(rechnen(ersetzen(term, "x", 2*Math.PI*q-0.5*Math.PI))) > 0.001) break;
@@ -333,6 +339,7 @@ function gleichung() {
         if(Math.abs(rechnen(ersetzen(term, "x", Math.PI*q))) > 0.01) break;
         if(q == 9) ergebnisse = "PI*n";
     }
+
     /*gefunden = false;
     for(let l = 0.01; l < 10; l+=0.01) {
         console.log(gefunden);
@@ -355,6 +362,18 @@ function gleichung() {
         if(q == 9) ergebnisse = "0.5*PI*n";
     }*/
     //console.log(ergebnisse);
+    var range = 10;
+    if(score < 10) range = 10000;
+    else if(score < 100) range = 400;
+    else if(score < 1000) range = 50;
+    for(var u = -100; u < 100; u += 0.1) {
+        if(Math.abs(rechnen(ersetzen(term, "x", 1*u))) == 0) {
+            for(let f = 0; f < ergebnisse.length; f++) {
+                if(ergebnisse[f] == u) break;
+            }
+            ergebnisse[ergebnisse.length] = u.toFixed(1);
+        }
+    }
     if(ergebnisse=="") ergebnisse = "keine oder zu große Lösung";
 
     if(ergebnisse.length > 5 && ergebnisse[0] != "2" && ergebnisse[0] != "P" && ergebnisse[0] != "k") ergebnisse = ergebnisse.sort(compareNumbersA);
@@ -638,8 +657,3 @@ document.getElementById("graph").addEventListener('touch', coordinates);
 
 setInterval(function () {document.getElementById("graph").addEventListener('DOMMouseScroll', coordinates);}, 100);
 
-var t0 = new Date().getTime();
-for(let i = 0; i < 10000000; i++) {}
-var t1 = new Date().getTime();
-var score = (t1-t0);
-alert("Durchläufe pro s:  "+score);

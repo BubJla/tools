@@ -1015,8 +1015,8 @@ body:not(.noAnimation) .information{
 .information:hover{
     font-size: calc(var(--groesse)*1rem);
     border-radius: 2%;
-    width: 40%;
-    height: 60%;
+    width: 45%;
+    height: 75%;
 }
 
 body:not(.noAnimation) .information:hover{
@@ -1145,7 +1145,7 @@ body:not(.noAnimation) #cookieAllow div{
 }
 
 p{
-    color: #fff;
+    color: var(--schriftfarbe);
 }
 
 #zeichenfeld{
