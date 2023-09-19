@@ -306,7 +306,7 @@ function gleichung() {
     //if(xFaktor < 3) xFaktor = 3;
     //if(yFaktor < 3) yFaktor = 3;
     if(ergebnisse.length > 100) {
-        alert("Fehler: viele oder keine Lösung( "+ergebnisse.length+" Lösungen)");
+        ergebnisseAd = "Fehler: viele oder keine Lösung( "+ergebnisse.length+" Lösungen): ";
     }
     e = ergebnisse;
     xF = xFaktor;
@@ -575,6 +575,8 @@ function coordinates(event) {
     objSvg.innerHTML += '<line x1="'+(x-10)+'" y1="'+y+'" x2="'+(x+10)+'" y2="'+y+'" style="stroke:var(--schriftfarbe);stroke-width:2" />';
     objSvg.innerHTML += '<line x1="'+x+'" y1="'+(y-10)+'" x2="'+x+'" y2="'+(y+10)+'" style="stroke:var(--schriftfarbe);stroke-width:2" />';
     var scroll = event.detail;
+    if(scroll == 0) scroll = -event.wheelDelta/40;
+    console.log(scroll);
     if(scroll == 2) scroll = -3;
     if(scroll < -2) {
         xF/=1.5; yF/=1.5; xV=(xV-breite/2)*1.5+breite/2; yV=(yV-200)*1.5+200;
@@ -587,6 +589,7 @@ function coordinates(event) {
         offsety = 200-y0;
         refreshGraph();
         document.getElementById("graph").removeEventListener('DOMMouseScroll', coordinates);
+        document.getElementById("graph").removeEventListener('mousewheel', coordinates);
     }
     else{
         offsetx = 0;
@@ -666,7 +669,6 @@ document.getElementById("graph").addEventListener('mouseup', end);
 document.getElementById("graph").addEventListener('mousemove', print);
 
 document.getElementById("graph").addEventListener('touch', coordinates);
-
-
-setInterval(function () {document.getElementById("graph").addEventListener('DOMMouseScroll', coordinates);}, 100);
+setInterval(function () {document.getElementById("graph").addEventListener('DOMMouseScroll', coordinates);}, 200);
+setInterval(function () {document.getElementById("graph").addEventListener('mousewheel', coordinates);}, 100);
 
