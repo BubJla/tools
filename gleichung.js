@@ -387,7 +387,7 @@ function gleichung() {
     yV = yVerschiebung;
     mark = [];
     refreshGraph();
-    scroll(0, 300);
+    scroll(0, 1000);
     if(readCookie("animation") == 0) return;
     if(count %2 == 0) {
         document.getElementById("left").setAttribute("style", "animation: transition5 1500ms;");

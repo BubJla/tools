@@ -601,6 +601,10 @@ div{
     justify-content: center;
 }
 
+body:not(.noAnimation) .zahlenfelder div{
+    transition: all 300ms;
+}
+
 .zahlenfelder div:hover{
     background: #6F6F6F;
     scale: 1.15;
@@ -628,6 +632,10 @@ div{
     display: flex;
     align-items: center;
     justify-content: center;
+}
+
+body:not(.noAnimation) .operatorenfelder div{
+    transition: all 300ms;
 }
 
 .ausgabefeld input{
