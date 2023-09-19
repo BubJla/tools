@@ -1,4 +1,4 @@
-document.querySelector(":root").style.setProperty("--screenWidth", screen.width+"px");
+document.querySelector(":root").style.setProperty("--screenWidth", window.innerWidth+"px");
 
 document.head.innerHTML += `
 <link rel="apple-touch-icon" sizes="180x180" href="favicon/apple-touch-icon.png">
@@ -260,3 +260,7 @@ if(readCookie("animation") != 0) {
         sessionStorage.setItem('lastSide', sideNow.innerHTML);
     });
 }
+
+window.addEventListener("resize", function(event){
+    document.querySelector(":root").style.setProperty("--screenWidth", window.innerWidth+"px");
+});

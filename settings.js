@@ -8,7 +8,7 @@ if (result) {
 }*/
 
 
-var breite = (screen.width)*0.84-230;
+var breite = (window.innerWidth)*0.84-230;
 
 
 function setCookie(name, value) {
@@ -461,3 +461,7 @@ document.getElementById("hintergrundfarbe").value = document.querySelector(":roo
 document.getElementById("akzentfarbe3").value = document.querySelector(":root").style.getPropertyValue("--akzentfarbe3");
 document.getElementById("akzentfarbe2").value = document.querySelector(":root").style.getPropertyValue("--akzentfarbe2");
 document.getElementById("akzentfarbe1").value = document.querySelector(":root").style.getPropertyValue("--akzentfarbe1");
+
+window.addEventListener("resize", function(event){
+    location.reload();
+});

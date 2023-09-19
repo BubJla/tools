@@ -4,8 +4,7 @@ var t1 = new Date().getTime();
 var score = (t1-t0);
 
 
-
-var breite = (screen.width)*0.84-52;
+var breite = (window.innerWidth)*0.84-52;
 
 var xV = breite/2;
 var xF = 50;
@@ -675,3 +674,7 @@ document.getElementById("graph").addEventListener('touch', coordinates);
 setInterval(function () {document.getElementById("graph").addEventListener('DOMMouseScroll', coordinates);}, 200);
 setInterval(function () {document.getElementById("graph").addEventListener('mousewheel', coordinates);}, 100);
 
+window.addEventListener("resize", function(event){
+    breite = (window.innerWidth)*0.84-52;
+    refreshGraph();
+});
