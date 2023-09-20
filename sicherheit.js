@@ -20,7 +20,16 @@ function generatePassword() {
         var index = Math.floor(Math.random() * erlaubt.length);
         password += erlaubt[index];
     }
-    document.getElementById("passwortfeld").innerHTML = password;
-    if(document.getElementById("passwortfeld").innerHTML.length != laenge) generatePassword();
+    document.getElementById("passwortfeld").value = password;
+    if(document.getElementById("passwortfeld").value.length != laenge) generatePassword();
+}
+
+function copy() {
+    var text = document.getElementById("passwortfeld");
+  
+    text.select();
+    text.setSelectionRange(0, 99999); // For mobile devices
+  
+    navigator.clipboard.writeText(text.value);
 }
 

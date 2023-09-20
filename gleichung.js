@@ -49,7 +49,9 @@ function runden(value, dezimal) {
 
 function rechnen(term) {
     var ergebnis = eval(term);
-    if(ergebnis == Infinity) ergebnis = 999999999;
+    if(ergebnis == Infinity) ergebnis = 9999999;
+    else if(ergebnis == NaN) ergebnis = 0;
+    //else if(!(ergebnis < 0 || ergebnis >= 0)) ergebnis = 9999999;
     return ergebnis;
 }
 
@@ -131,7 +133,6 @@ function gleichung() {
     var grenzeP = 0;
     var grenzeN = 0;
     var ergebnisseAd = "";
-    console.log("LR2");
     e2 = [];
 
     termL = ersetzen(termL, "X", "x");
@@ -154,6 +155,16 @@ function gleichung() {
     termL = ersetzen(termL, "7x", "7*x");
     termL = ersetzen(termL, "8x", "8*x");
     termL = ersetzen(termL, "9x", "9*x");
+    termL = ersetzen(termL, "0(", "0*(");
+    termL = ersetzen(termL, "1(", "1*(");
+    termL = ersetzen(termL, "2(", "2*(");
+    termL = ersetzen(termL, "3(", "3*(");
+    termL = ersetzen(termL, "4(", "4*(");
+    termL = ersetzen(termL, "5(", "5*(");
+    termL = ersetzen(termL, "6(", "6*(");
+    termL = ersetzen(termL, "7(", "7*(");
+    termL = ersetzen(termL, "8(", "8*(");
+    termL = ersetzen(termL, "9(", "9*(");
     termL = ersetzen(termL, "x(", "x*(");
     termL = ersetzen(termL, "PI", "Math.pi");
     termL = ersetzen(termL, "Math.pi", "Math.PI");
@@ -186,6 +197,16 @@ function gleichung() {
     termR = ersetzen(termR, "7x", "7*x");
     termR = ersetzen(termR, "8x", "8*x");
     termR = ersetzen(termR, "9x", "9*x");
+    termR = ersetzen(termR, "0(", "0*(");
+    termR = ersetzen(termR, "1(", "1*(");
+    termR = ersetzen(termR, "2(", "2*(");
+    termR = ersetzen(termR, "3(", "3*(");
+    termR = ersetzen(termR, "4(", "4*(");
+    termR = ersetzen(termR, "5(", "5*(");
+    termR = ersetzen(termR, "6(", "6*(");
+    termR = ersetzen(termR, "7(", "7*(");
+    termR = ersetzen(termR, "8(", "8*(");
+    termR = ersetzen(termR, "9(", "9*(");
     termR = ersetzen(termR, "x(", "x*(");
     termR = ersetzen(termR, ")(", ")*(");
     termR = ersetzen(termR, "PI", "Math.pi");
@@ -198,16 +219,12 @@ function gleichung() {
     termR = ersetzen(termR, "Math.COS(", "Math.cos(");
     termR = ersetzen(termR, "Math.SIN(", "Math.sin(");
     termR = ersetzen(termR, "Math.TAN(", "Math.tan(");
-    console.log("LR");
-    console.log(termL);
-    console.log(termR);
     term = termL+"-("+termR+")";
     //console.log(term);
     term = ersetzen(term, "x**x", "(x)**(x)");
     term = ersetzen(term, "x**", "(x)**");
     gL = termL;
     gR = termR;
-    console.log(term);
     for(x = 10; x < 100; x++) {
         unendlich += Math.abs(eval(termL) - eval(termR)) < 0.000001;
     }
@@ -417,11 +434,12 @@ function gleichung() {
         document.getElementById("graph").setAttribute("style", "animation: transition6 1500ms ;");
     }
     count ++;//für mehrmalige animation
-    counter99++;
+    counter99=1;
 }
 
 function additional() {
     var ergebnisse = e;
+    if(!(ergebnisse[0] < 0 || ergebnisse[0] >= 0)) ergebnisse = [];
     console.log("123");
     console.log(ergebnisse);
     var mogErg = [];
@@ -430,9 +448,9 @@ function additional() {
     else if(score < 100) range = 999;
     else if(score < 1000) range = 99;
     for(var u = -range; u < range; u += 1) {
-        if(Math.abs(rechnen(ersetzen(term, "x", 1*u))) <= Math.abs(rechnen(ersetzen(term, "x", 1*u-0.5))) && Math.abs(rechnen(ersetzen(term, "x", 1*u))) <= Math.abs(rechnen(ersetzen(term, "x", 1*u+0.5)))) {
+        if(Math.abs(rechnen(ersetzen(term, "x", 1*u))) < Math.abs(rechnen(ersetzen(term, "x", 1*u-0.5))) && Math.abs(rechnen(ersetzen(term, "x", 1*u))) < Math.abs(rechnen(ersetzen(term, "x", 1*u+0.5)))) {
             for(let f = 0; f < ergebnisse.length; f++) {
-                if(ergebnisse[f] == u) break;
+                if(Math.abs(ergebnisse[f] - u) < 1) break;
                 if(f == ergebnisse.length-1) {
                     mogErg[mogErg.length] = u;
                 }
@@ -444,7 +462,6 @@ function additional() {
     document.getElementById("ergebnisGleichung").value += " ( "+(mogErg)+" ) ";
     document.getElementById("ergebnisGleichung").value = ersetzen(document.getElementById("ergebnisGleichung").value, ",", " / ");
     e2 = mogErg;
-    clearInterval(intval);
     refreshGraph();
 }
 
@@ -556,7 +573,6 @@ function refreshGraph() {
         }
     }
     innerL += '</g>';
-
     document.getElementById("svgU").innerHTML = innerU;
     document.getElementById("svgL").innerHTML = innerL;
 
@@ -564,7 +580,6 @@ function refreshGraph() {
     graph_before = document.getElementById("svgGraph").innerHTML;
 
     const objSvg = document.getElementById("svgGraph");
-
     if(offsetx == (breite/2-(mark[0]*breite/xF+xV)) && offsety == (200-(-mark[1]*400/yF-yV+400)) || mark[1] == undefined) {
         objSvg.innerHTML += '<line x1="'+(breite/2-10)+'" y1="'+(200)+'" x2="'+(breite/2+10)+'" y2="'+(200)+'" style="stroke:var(--schriftfarbe);stroke-width:2" />';
         objSvg.innerHTML += '<line x1="'+(breite/2)+'" y1="'+(200-10)+'" x2="'+(breite/2)+'" y2="'+(200+10)+'" style="stroke:var(--schriftfarbe);stroke-width:2" />';
@@ -739,6 +754,7 @@ window.addEventListener("resize", function(event){
 
 intval = setInterval(function() {
     if(counter99 == 1) {
+        console.log("123456789");
         additional();
         counter99 = 0;
     }

@@ -1020,6 +1020,7 @@ section{
     font-size: calc(var(--groesse)*2rem);
     border-radius: 100%;
     box-shadow: 0px 0px 5px 5px var(--schriftfarbe);
+    z-index: 99999;
 }
 
 body:not(.noAnimation) .information{
@@ -1027,6 +1028,9 @@ body:not(.noAnimation) .information{
 }
 
 .information:hover{
+    padding-top: 10px;
+    padding-left: 10px;
+    padding-right: 10px;
     font-size: calc(var(--groesse)*1rem);
     border-radius: 2%;
     width: 45%;

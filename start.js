@@ -181,7 +181,7 @@ document.getElementById("navigationsleiste").innerHTML=`
     <li> 
         <a href="index.html" id="start">
             <div>
-                Startseite
+                Home
             </div>
         </a>
     </li>
