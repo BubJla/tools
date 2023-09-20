@@ -421,10 +421,12 @@ body:not(.noAnimation) .listeNebeneinander a.aktiv{
 
 .Impressum  a{
     text-decoration: none;
-    color: rgb(140, 160, 250)!important;
+    /*color: rgb(140, 160, 250)!important;*/
+    color: var(--akzentfarbe2)!important;
 }
 .Impressum  a:hover{
-    color: blue!important;
+    /*color: blue!important;*/
+    color: var(--akzentfarbe2aktiv)!important;
 }
 
 #reaktionsfeld{
@@ -613,6 +615,10 @@ body:not(.noAnimation) .zahlenfelder div{
 .operatorenfelder div:hover{
     background: #6F6F6F;
     scale: 1.1;
+}
+
+body:not(.noAnimation) a{
+    transition: all 400ms;
 }
 
 .ausgabefeld{
@@ -1017,7 +1023,7 @@ section{
 }
 
 body:not(.noAnimation) .information{
-    transition: width 0s, height 0s;
+    transition: all 0s;
 }
 
 .information:hover{

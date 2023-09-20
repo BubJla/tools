@@ -2,9 +2,11 @@ var t0 = new Date().getTime();
 for(let i = 0; i < 10000000; i++) {}
 var t1 = new Date().getTime();
 var score = (t1-t0);
+var intval;
 
-
+var counter99 = 0;
 var breite = (window.innerWidth)*0.84-52;
+var term;
 
 var xV = breite/2;
 var xF = 50;
@@ -13,6 +15,7 @@ var yF = 25;
 var gL;
 var gR;
 var e = [];
+var e2 = [];
 var count = 0;
 var mark = [];
 var offsetx = 0;
@@ -121,15 +124,26 @@ function gleichung() {
     var rechts = document.getElementById("seiteR").value;
     var ergebnisse = [];
     var termL = links;
-    for (let i = 0; i < termL.length; i++) termL = termL.replace("X", "x").replace("π", "Math.PI").replace("e", "Math.E").replace("÷", "/").replace("×", "*").replace("²", "**2").replace("³", "**3").replace("^", "**").replace("-x**", "-1*x**");
     var termR = rechts;
-    for (let i = 0; i < termR.length; i++) termR = termR.replace("X", "x").replace("π", "Math.PI").replace("e", "Math.E").replace("÷", "/").replace("×", "*").replace("²", "**2").replace("³", "**3").replace("^", "**").replace("**", "-1*x**");
     var x;
-    var ergebnisse = [];
+    ergebnisse = [];
     var unendlich = 0;
     var grenzeP = 0;
     var grenzeN = 0;
     var ergebnisseAd = "";
+    console.log("LR2");
+    e2 = [];
+
+    termL = ersetzen(termL, "X", "x");
+    termL = ersetzen(termL, "π", "Math.PI");
+    termL = ersetzen(termL, "e", "Math.E");
+    termL = ersetzen(termL, "÷", "/");
+    termL = ersetzen(termL, "×", "**2");
+    termL = ersetzen(termL, "²", "5*x");
+    termL = ersetzen(termL, "³", "**3");
+    termL = ersetzen(termL, "^", "**");
+    termL = ersetzen(termL, "-x**", "-1*x**");
+
     termL = ersetzen(termL, "0x", "0*x");
     termL = ersetzen(termL, "1x", "1*x");
     termL = ersetzen(termL, "2x", "2*x");
@@ -151,6 +165,17 @@ function gleichung() {
     termL = ersetzen(termL, "Math.COS(", "Math.cos(");
     termL = ersetzen(termL, "Math.SIN(", "Math.sin(");
     termL = ersetzen(termL, "Math.TAN(", "Math.tan(");
+
+    termR = ersetzen(termR, "X", "x");
+    termR = ersetzen(termR, "π", "Math.PI");
+    termR = ersetzen(termR, "e", "Math.E");
+    termR = ersetzen(termR, "÷", "/");
+    termR = ersetzen(termR, "×", "**2");
+    termR = ersetzen(termR, "²", "5*x");
+    termR = ersetzen(termR, "³", "**3");
+    termR = ersetzen(termR, "^", "**");
+    termR = ersetzen(termR, "-x**", "-1*x**");
+
     termR = ersetzen(termR, "0x", "0*x");
     termR = ersetzen(termR, "1x", "1*x");
     termR = ersetzen(termR, "2x", "2*x");
@@ -173,12 +198,16 @@ function gleichung() {
     termR = ersetzen(termR, "Math.COS(", "Math.cos(");
     termR = ersetzen(termR, "Math.SIN(", "Math.sin(");
     termR = ersetzen(termR, "Math.TAN(", "Math.tan(");
-    var term = termL+"-("+termR+")";
+    console.log("LR");
+    console.log(termL);
+    console.log(termR);
+    term = termL+"-("+termR+")";
     //console.log(term);
     term = ersetzen(term, "x**x", "(x)**(x)");
     term = ersetzen(term, "x**", "(x)**");
     gL = termL;
     gR = termR;
+    console.log(term);
     for(x = 10; x < 100; x++) {
         unendlich += Math.abs(eval(termL) - eval(termR)) < 0.000001;
     }
@@ -362,18 +391,7 @@ function gleichung() {
         if(q == 9) ergebnisse = "0.5*PI*n";
     }*/
     //console.log(ergebnisse);
-    var range = 10;
-    if(score < 10) range = 10000;
-    else if(score < 100) range = 400;
-    else if(score < 1000) range = 50;
-    for(var u = -100; u < 100; u += 0.1) {
-        if(Math.abs(rechnen(ersetzen(term, "x", 1*u))) == 0) {
-            for(let f = 0; f < ergebnisse.length; f++) {
-                if(ergebnisse[f] == u) break;
-            }
-            ergebnisse[ergebnisse.length] = u.toFixed(1);
-        }
-    }
+    //alert(Math.abs(rechnen(ersetzen(term, "x", -1))));
     if(ergebnisse=="" && !ergebnisseAd) ergebnisse = "keine oder zu große Lösung";
 
     if(ergebnisse.length > 5 && ergebnisse[0] != "2" && ergebnisse[0] != "P" && ergebnisse[0] != "k") ergebnisse = ergebnisse.sort(compareNumbersA);
@@ -399,8 +417,36 @@ function gleichung() {
         document.getElementById("graph").setAttribute("style", "animation: transition6 1500ms ;");
     }
     count ++;//für mehrmalige animation
+    counter99++;
 }
 
+function additional() {
+    var ergebnisse = e;
+    console.log("123");
+    console.log(ergebnisse);
+    var mogErg = [];
+    var range = 9;
+    if(score < 10) range = 9999;
+    else if(score < 100) range = 999;
+    else if(score < 1000) range = 99;
+    for(var u = -range; u < range; u += 1) {
+        if(Math.abs(rechnen(ersetzen(term, "x", 1*u))) <= Math.abs(rechnen(ersetzen(term, "x", 1*u-0.5))) && Math.abs(rechnen(ersetzen(term, "x", 1*u))) <= Math.abs(rechnen(ersetzen(term, "x", 1*u+0.5)))) {
+            for(let f = 0; f < ergebnisse.length; f++) {
+                if(ergebnisse[f] == u) break;
+                if(f == ergebnisse.length-1) {
+                    mogErg[mogErg.length] = u;
+                }
+            }
+        }
+    }
+    console.log(mogErg);
+    if(mogErg.length == 0) return;
+    document.getElementById("ergebnisGleichung").value += " ( "+(mogErg)+" ) ";
+    document.getElementById("ergebnisGleichung").value = ersetzen(document.getElementById("ergebnisGleichung").value, ",", " / ");
+    e2 = mogErg;
+    clearInterval(intval);
+    refreshGraph();
+}
 
 function refreshGraph() {
     if(e == undefined) {
@@ -438,6 +484,7 @@ function refreshGraph() {
     var inner = "";
     var innerU;
     var innerL;
+    var ergebnisse2 = e2;
 
     //console.log("yV  "+yV+"  xV  "+xV+"  yF  "+yF+"  xF  "+xF);
 
@@ -460,12 +507,23 @@ function refreshGraph() {
     
     inner += '<line x1="0" y1="'+(400-yVerschiebung)+'" x2="'+breite+'" y2="'+(400-yVerschiebung)+'" style="stroke:var(--schriftfarbe);stroke-width:1" />';
     inner += '<line x1="'+xVerschiebung+'" y1="0" x2="'+xVerschiebung+'" y2="400" style="stroke:var(--schriftfarbe);stroke-width:1" />';
+
     if(ergebnisse.length != 26 && ergebnisse.length != 24) {
         for(let k = 0; k < ergebnisse.length; k++) {
             inner += '<circle cx= "'+rechnen(ergebnisse[k]*breite/xFaktor+xVerschiebung)+'" cy= "'+(400-eval(ersetzen(termL, "x", ergebnisse[k]))*400/yFaktor-yVerschiebung)+'" r= "4" style="fill: var(--akzentfarbe3); stroke-width: 0px"/>';
         }
         for(let k = 0; k < ergebnisse.length; k++) {
             inner += '<circle cx= "'+rechnen(ergebnisse[k]*breite/xFaktor+xVerschiebung)+'" cy= "'+(400-eval(ersetzen(termL, "x", ergebnisse[k]))*400/yFaktor-yVerschiebung)+'" r= "2" style="fill: var(--hintergrundfarbe); stroke-width: 0px"/>';
+        }
+    }
+
+
+    if(ergebnisse2.length != 26 && ergebnisse2.length != 24) {
+        for(let k = 0; k < ergebnisse2.length; k++) {
+            inner += '<circle cx= "'+rechnen(ergebnisse2[k]*breite/xFaktor+xVerschiebung)+'" cy= "'+(400-eval(ersetzen(termL, "x", ergebnisse2[k]))*400/yFaktor-yVerschiebung)+'" r= "4" style="fill: var(--schriftfarbe); stroke-width: 0px"/>';
+        }
+        for(let k = 0; k < ergebnisse2.length; k++) {
+            inner += '<circle cx= "'+rechnen(ergebnisse2[k]*breite/xFaktor+xVerschiebung)+'" cy= "'+(400-eval(ersetzen(termL, "x", ergebnisse2[k]))*400/yFaktor-yVerschiebung)+'" r= "2" style="fill: var(--hintergrundfarbe); stroke-width: 0px"/>';
         }
     }
 
@@ -678,3 +736,10 @@ window.addEventListener("resize", function(event){
     breite = (window.innerWidth)*0.84-52;
     refreshGraph();
 });
+
+intval = setInterval(function() {
+    if(counter99 == 1) {
+        additional();
+        counter99 = 0;
+    }
+}, 100);
