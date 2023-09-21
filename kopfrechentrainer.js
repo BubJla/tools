@@ -176,6 +176,10 @@ function ueberpruefen() {
         level++;
         reset();
     }
+    else if(punkte > 250 && level == 3 && aufgaben > 3 && aufstieg == true) {
+        level++;
+        reset();
+    }
 }
 
 function reset() {
