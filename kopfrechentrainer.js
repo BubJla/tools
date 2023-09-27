@@ -151,7 +151,7 @@ function aufgabe() {
 
 function ueberpruefen() {
     var aufgabe = document.getElementById("aufgabenfeld").innerHTML.replace("0", 0).replace("1", 1).replace("2", 2).replace("3", 3).replace("4", 4).replace("5", 5).replace("6", 6).replace("7", 7).replace("8", 8).replace("9", 9).replace("π", "Math.PI").replace("√2", "Math.sqrt(2)").replace("√3", "Math.sqrt(3)").replace("√5", "Math.sqrt(5)").replace("√7", "Math.sqrt(7)").replace("÷", "/").replace("×", "*");
-    var ergebnis = document.getElementById("ergebnisfeld").value;
+    var ergebnis = document.getElementById("ergebnisfeld").value.replace(",", ".");
     if((Math.round(eval(aufgabe)*100)/100 == Math.round(ergebnis*100+0.5)/100) || (Math.round(eval(aufgabe)*100)/100 == Math.round(ergebnis*100-0.5)/100)) {
         aufgaben++;
         neueaufgabe = true;

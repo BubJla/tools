@@ -114,6 +114,10 @@ function compareNumbersA(a, b) {
   
 
 function gleichung() {
+    x0 = 0;
+    y0 = 0;
+    moving = false;
+
     document.getElementById("graph").setAttribute("style", "animation: none;");
     var xVerschiebung;
     var yVerschiebung;
@@ -257,52 +261,7 @@ function gleichung() {
         grenzeP = i;
         grenzeN = -i;
     }
-    var gefunden;
-    var intervalle = [];
-    while(true) {
-        jetzt = new Date().getTime();
-        if(jetzt-1000>t0)break;
-        neg = [];
-        pos = [];
-        intervalle = [];
-        gefunden = false;
-        for(let i = 0; i < ergebnisse.length; i++) {
-            intervalle[i] = ergebnisse[i];
-        }
-        intervalle[intervalle.length] = -999999;
-        intervalle[intervalle.length] = -999;
-        intervalle[intervalle.length] = 999;
-        intervalle[intervalle.length] = 999999;
-        //alert(intervalle);
-        intervalle = intervalle.sort(compareNumbers);
-        //console.log(term);
-        //console.log(intervalle);
-        for(let s = 0; s < intervalle.length; s++) intervalle[s] = parseFloat(intervalle[s]);
-        //console.log("ergebisssse:      "+ergebnisse.length);
-        //console.log("length:     "+intervalle.length);
-        for(let i = 1; i < intervalle.length; i++) {
-            jetzt = new Date().getTime();
-            //console.log("intval: 1 2   "+(intervalle[i-1]+0.5)+"       "+(intervalle[i]-0.5));
-            //console.log("ergebnis");
-            let ergebnis = gleichungGenau(term, (intervalle[i-1]+0.5), (intervalle[i]-0.5));
-            if(jetzt-1200>t0)break;
-            //console.log("erg:    "+ergebnis);
-            //console.log(ergebnis);
-            if(ergebnis > 0 || ergebnis <=0) {
-                for(let u = 0; u < ergebnisse.length; u++) {
-                    if(runden(ergebnis, 0) == runden(ergebnisse[u], 0)) ergebnis = 'null';
-                }
-            }
-            if(ergebnis != 'null' && ergebnis != 0 && ergebnis != -999998.5 && ergebnis != 999998.5) {
-                ergebnisse[ergebnisse.length] = runden(parseFloat(ergebnis), 3);
-                //console.log("ergeb:      "+parseFloat(ergebnis).toFixed(3));
-                //console.log("erge:     "+ergebnisse);
-                //console.log("intval:     "+intervalle);
-                gefunden = true;
-            }
-        }
-        if(gefunden == false) break;
-    }
+
     //console.log(jetzt-t0);
     ergebnisse = ergebnisse.sort(compareNumbers);
     //if(ergebnisse=="") ergebnisse = "keine oder zu große Lösung";
@@ -437,6 +396,317 @@ function gleichung() {
     counter99=1;
 }
 
+function additional0() {
+
+    document.getElementById("graph").setAttribute("style", "animation: none;");
+    var xVerschiebung;
+    var yVerschiebung;
+    var xFaktor;//Abstand kleinster/ hoechster x Wert
+    var yFaktor;//Abstand kleinster/ hoechster y Wert
+
+    var t0 = new Date().getTime();
+    var jetzt;
+    var links = document.getElementById("seiteL").value;
+    var rechts = document.getElementById("seiteR").value;
+    var ergebnisse = [];
+    var termL = links;
+    var termR = rechts;
+    var x;
+    ergebnisse = [];
+    var unendlich = 0;
+    var grenzeP = 0;
+    var grenzeN = 0;
+    var ergebnisseAd = "";
+    e2 = [];
+
+    termL = ersetzen(termL, "X", "x");
+    termL = ersetzen(termL, "Ï€", "Math.PI");
+    termL = ersetzen(termL, "e", "Math.E");
+    termL = ersetzen(termL, "Ã·", "/");
+    termL = ersetzen(termL, "Ã—", "**2");
+    termL = ersetzen(termL, "Â²", "5*x");
+    termL = ersetzen(termL, "Â³", "**3");
+    termL = ersetzen(termL, "^", "**");
+    termL = ersetzen(termL, "-x**", "-1*x**");
+
+    termL = ersetzen(termL, "0x", "0*x");
+    termL = ersetzen(termL, "1x", "1*x");
+    termL = ersetzen(termL, "2x", "2*x");
+    termL = ersetzen(termL, "3x", "3*x");
+    termL = ersetzen(termL, "4x", "4*x");
+    termL = ersetzen(termL, "5x", "5*x");
+    termL = ersetzen(termL, "6x", "6*x");
+    termL = ersetzen(termL, "7x", "7*x");
+    termL = ersetzen(termL, "8x", "8*x");
+    termL = ersetzen(termL, "9x", "9*x");
+    termL = ersetzen(termL, "0(", "0*(");
+    termL = ersetzen(termL, "1(", "1*(");
+    termL = ersetzen(termL, "2(", "2*(");
+    termL = ersetzen(termL, "3(", "3*(");
+    termL = ersetzen(termL, "4(", "4*(");
+    termL = ersetzen(termL, "5(", "5*(");
+    termL = ersetzen(termL, "6(", "6*(");
+    termL = ersetzen(termL, "7(", "7*(");
+    termL = ersetzen(termL, "8(", "8*(");
+    termL = ersetzen(termL, "9(", "9*(");
+    termL = ersetzen(termL, "x(", "x*(");
+    termL = ersetzen(termL, "PI", "Math.pi");
+    termL = ersetzen(termL, "Math.pi", "Math.PI");
+    termL = ersetzen(termL, ")(", ")*(");
+    termL = ersetzen(termL, "x**", "(x)**");
+    termL = ersetzen(termL, "cos(", "Math.COS(");//gegen unendlich Math.Math.Math....
+    termL = ersetzen(termL, "sin(", "Math.SIN(");
+    termL = ersetzen(termL, "tan(", "Math.TAN(");
+    termL = ersetzen(termL, "Math.COS(", "Math.cos(");
+    termL = ersetzen(termL, "Math.SIN(", "Math.sin(");
+    termL = ersetzen(termL, "Math.TAN(", "Math.tan(");
+
+    termR = ersetzen(termR, "X", "x");
+    termR = ersetzen(termR, "Ï€", "Math.PI");
+    termR = ersetzen(termR, "e", "Math.E");
+    termR = ersetzen(termR, "Ã·", "/");
+    termR = ersetzen(termR, "Ã—", "**2");
+    termR = ersetzen(termR, "Â²", "5*x");
+    termR = ersetzen(termR, "Â³", "**3");
+    termR = ersetzen(termR, "^", "**");
+    termR = ersetzen(termR, "-x**", "-1*x**");
+
+    termR = ersetzen(termR, "0x", "0*x");
+    termR = ersetzen(termR, "1x", "1*x");
+    termR = ersetzen(termR, "2x", "2*x");
+    termR = ersetzen(termR, "3x", "3*x");
+    termR = ersetzen(termR, "4x", "4*x");
+    termR = ersetzen(termR, "5x", "5*x");
+    termR = ersetzen(termR, "6x", "6*x");
+    termR = ersetzen(termR, "7x", "7*x");
+    termR = ersetzen(termR, "8x", "8*x");
+    termR = ersetzen(termR, "9x", "9*x");
+    termR = ersetzen(termR, "0(", "0*(");
+    termR = ersetzen(termR, "1(", "1*(");
+    termR = ersetzen(termR, "2(", "2*(");
+    termR = ersetzen(termR, "3(", "3*(");
+    termR = ersetzen(termR, "4(", "4*(");
+    termR = ersetzen(termR, "5(", "5*(");
+    termR = ersetzen(termR, "6(", "6*(");
+    termR = ersetzen(termR, "7(", "7*(");
+    termR = ersetzen(termR, "8(", "8*(");
+    termR = ersetzen(termR, "9(", "9*(");
+    termR = ersetzen(termR, "x(", "x*(");
+    termR = ersetzen(termR, ")(", ")*(");
+    termR = ersetzen(termR, "PI", "Math.pi");
+    termR = ersetzen(termR, "Math.pi", "Math.PI");
+    termR = ersetzen(termR, "x**", "(x)**");
+    termR = ersetzen(termR, ",", ".");
+    termR = ersetzen(termR, "cos(", "Math.COS(");
+    termR = ersetzen(termR, "sin(", "Math.SIN(");
+    termR = ersetzen(termR, "tan(", "Math.TAN(");
+    termR = ersetzen(termR, "Math.COS(", "Math.cos(");
+    termR = ersetzen(termR, "Math.SIN(", "Math.sin(");
+    termR = ersetzen(termR, "Math.TAN(", "Math.tan(");
+    term = termL+"-("+termR+")";
+    //console.log(term);
+    term = ersetzen(term, "x**x", "(x)**(x)");
+    term = ersetzen(term, "x**", "(x)**");
+    gL = termL;
+    gR = termR;
+    for(x = 10; x < 100; x++) {
+        unendlich += Math.abs(eval(termL) - eval(termR)) < 0.000001;
+    }
+    if(unendlich == 90) {
+        document.getElementById("ergebnisGleichung").value = "unendlich viele Lösungen";
+        e = "unendlich viele Lösungen";
+        xVerschiebung = breite/2;
+        yVerschiebung = 200;
+        xFaktor = 100;//Abstand kleinster/ hoechster x Wert
+        yFaktor = 50;//Abstand kleinster/ hoechster y Wert
+        refreshGraph();
+        return;
+    }
+    //alert(term);
+    if(eval(ersetzen(termL, "x", 0)) == eval(ersetzen(termR, "x", 0))) ergebnisse[0] = 0.000000;
+    for(var i = 0.0001; i < 999999999999999; i*=1.01) {
+        jetzt = new Date().getTime();
+        if(jetzt-700>t0) break;
+        //console.log(i);
+        if((eval(ersetzen(term, "x", "i"))*(eval(ersetzen(term, "x", "grenzeP")))) < 0) {
+            ueberprueftLetzt = i;
+            let ergebnis = gleichungGenau(term, grenzeP, i);
+            if(ergebnis != "null") ergebnisse[ergebnisse.length] = parseFloat(ergebnis);
+        }
+        if((eval(ersetzen(term, "x", "-1*i")))*(eval(ersetzen(term, "x", "grenzeN"))) < 0) {
+            ueberprueftLetzt = i;
+            let ergebnis = gleichungGenau(term, grenzeN, -i);
+            if(ergebnis != "null") ergebnisse[ergebnisse.length] = parseFloat(ergebnis);
+        }
+        grenzeP = i;
+        grenzeN = -i;
+    }
+    var gefunden;
+    var intervalle = [];
+    while(true) {
+        jetzt = new Date().getTime();
+        if(jetzt-1000>t0)break;
+        neg = [];
+        pos = [];
+        intervalle = [];
+        gefunden = false;
+        for(let i = 0; i < ergebnisse.length; i++) {
+            intervalle[i] = ergebnisse[i];
+        }
+        intervalle[intervalle.length] = -999999;
+        intervalle[intervalle.length] = -999;
+        intervalle[intervalle.length] = 999;
+        intervalle[intervalle.length] = 999999;
+        //alert(intervalle);
+        intervalle = intervalle.sort(compareNumbers);
+        //console.log(term);
+        //console.log(intervalle);
+        for(let s = 0; s < intervalle.length; s++) intervalle[s] = parseFloat(intervalle[s]);
+        //console.log("ergebisssse:      "+ergebnisse.length);
+        //console.log("length:     "+intervalle.length);
+        for(let i = 1; i < intervalle.length; i++) {
+            jetzt = new Date().getTime();
+            //console.log("intval: 1 2   "+(intervalle[i-1]+0.5)+"       "+(intervalle[i]-0.5));
+            //console.log("ergebnis");
+            let ergebnis = gleichungGenau(term, (intervalle[i-1]+0.5), (intervalle[i]-0.5));
+            if(jetzt-1200>t0)break;
+            //console.log("erg:    "+ergebnis);
+            //console.log(ergebnis);
+            if(ergebnis > 0 || ergebnis <=0) {
+                for(let u = 0; u < ergebnisse.length; u++) {
+                    if(runden(ergebnis, 0) == runden(ergebnisse[u], 0)) ergebnis = 'null';
+                }
+            }
+            if(ergebnis != 'null' && ergebnis != 0 && ergebnis != -999998.5 && ergebnis != 999998.5) {
+                ergebnisse[ergebnisse.length] = runden(parseFloat(ergebnis), 3);
+                //console.log("ergeb:      "+parseFloat(ergebnis).toFixed(3));
+                //console.log("erge:     "+ergebnisse);
+                //console.log("intval:     "+intervalle);
+                gefunden = true;
+            }
+        }
+        if(gefunden == false) break;
+    }
+    //console.log(jetzt-t0);
+    ergebnisse = ergebnisse.sort(compareNumbers);
+    //if(ergebnisse=="") ergebnisse = "keine oder zu groÃŸe Lösung";
+
+
+    xFaktor = ((ergebnisse[ergebnisse.length-1]-ergebnisse[0])*1.7);
+    if(xFaktor == 0) xFaktor = 1;
+    var ergWerte = [];
+    for(let p = 0; p < ergebnisse.length; p++) {
+        //alert(eval(ersetzen(termR, "x", ergebnisse[p])));
+        ergWerte[ergWerte.length] = eval(ersetzen(termR, "x", ergebnisse[p]));
+    }
+    ergWerte = ergWerte.sort(compareNumbers);
+    yFaktor = ((ergWerte[ergWerte.length-1]-ergWerte[0])*1.7);
+    if(yFaktor == 0) {
+        var mittelErgebnisse = [];
+        for(let q = 0; q < ergebnisse.length-1; q++) mittelErgebnisse[mittelErgebnisse.length] = Math.abs(rechnen(ersetzen(term, "x", (ergebnisse[q]+ergebnisse[q+1])/2)));
+        mittelErgebnisse = mittelErgebnisse.sort(compareNumbers);
+        if(mittelErgebnisse[0] != 0) yFaktor = 2*mittelErgebnisse[0]+1;
+        else {
+            //alert(mittelErgebnisse);
+            yFaktor = 1;
+        }
+    }
+    xVerschiebung = -(ergebnisse[ergebnisse.length-1]+ergebnisse[0])/2*breite/xFaktor+breite/2;
+    yVerschiebung = -(ergWerte[ergWerte.length-1]+ergWerte[0])/2*400/yFaktor+200;
+    if(ergebnisse.length == 0  || ergebnisse.length == 26 || term == "Math.cos(x)-(1)") {//kein ergebniss
+        xVerschiebung = breite/2;
+        yVerschiebung = 200;
+        xFaktor = 50;//Abstand kleinster/ hoechster x Wert
+        yFaktor = 25;//Abstand kleinster/ hoechster y Wert
+    }
+    else if(ergebnisse.length == 1) {
+        xVerschiebung = -(ergebnisse[0])/2*breite/10+breite/2;
+        yVerschiebung = -(rechnen(ersetzen(termL, "x", ergebnisse[0])))/2*400/5+200;
+        xFaktor = 20;//Abstand kleinster/ hoechster x Wert
+        yFaktor = 10;//Abstand kleinster/ hoechster y Wert
+    }
+    else if(ergebnisse.length > 10) {
+        xVerschiebung = breite/2;
+        yVerschiebung = 200;
+        xFaktor = 50;//Abstand kleinster/ hoechster x Wert
+        yFaktor = 25;//Abstand kleinster/ hoechster y Wert
+    }
+    //if(yFaktor == 2000) yFaktor = 10;
+    //if(xFaktor < 3) xFaktor = 3;
+    //if(yFaktor < 3) yFaktor = 3;
+    if(ergebnisse.length > 100) {
+        ergebnisseAd = "Fehler: viele oder keine Lösung( "+ergebnisse.length+" Lösungen): ";
+    }
+    e = ergebnisse;
+    xF = xFaktor;
+    yF = yFaktor;
+    xV = xVerschiebung;
+    yV = yVerschiebung;
+
+
+    //document.getElementById("svgGraph").innerHTML = inner;
+    for(let q = 0; q < 10; q++) {
+        if(Math.abs(rechnen(ersetzen(term, "x", 2*Math.PI*q-0.5*Math.PI))) > 0.001) break;
+        if(q == 9) ergebnisseAd = "PI*n*2-0.5*PI: ";
+    }
+    for(let q = 0; q < 10; q++) {
+        if(Math.abs(rechnen(ersetzen(term, "x", 2*Math.PI*q+0.5*Math.PI))) > 0.001) break;
+        if(q == 9) ergebnisseAd = "PI*n*2+0.5*PI: ";
+    }
+    for(let q = 0; q < 10; q++) {
+        if(Math.abs(rechnen(ersetzen(term, "x", 2*Math.PI*q))) > 0.01) break;
+        if(q == 9) ergebnisseAd = "PI*n*2: ";
+    }
+    for(let q = 0; q < 10; q++) {
+        if(Math.abs(rechnen(ersetzen(term, "x", 2*Math.PI*q-Math.PI))) > 0.01) break;
+        if(q == 9) ergebnisseAd = "PI*n*2-PI: ";
+    }
+    for(let q = 0; q < 10; q++) {
+        if(Math.abs(rechnen(ersetzen(term, "x", Math.PI*q-0.5*Math.PI))) > 0.01) break;
+        if(q == 9) ergebnisseAd = "PI*n-0.5*PI: ";
+    }
+    for(let q = 0; q < 10; q++) {
+        if(Math.abs(rechnen(ersetzen(term, "x", Math.PI*q))) > 0.01) break;
+        if(q == 9) ergebnisseAd = "PI*n: ";
+    }
+
+    /*gefunden = false;
+    for(let l = 0.01; l < 10; l+=0.01) {
+        console.log(gefunden);
+        if(gefunden == true) break;
+        for(let q = 0; q < 10; q++) {
+            if(Math.abs(rechnen(ersetzen(term, "x", Math.PI*q*l))) > 0.01) {
+                break;
+            }
+            if(q == 9) {
+                gefunden = true;
+                ergebnisse = "PI*n*"+l.toFixed(2);
+            }
+        }      
+    }*/
+    /*for(let q = 0; q < 10; q++) {
+        console.log(Math.abs(rechnen(ersetzen(term, "x", Math.PI*q))));
+        if(Math.abs(rechnen(ersetzen(term, "x", Math.PI*q))) > 0.01) {
+            break;
+        }
+        if(q == 9) ergebnisse = "0.5*PI*n";
+    }*/
+    //console.log(ergebnisse);
+    //alert(Math.abs(rechnen(ersetzen(term, "x", -1))));
+    if(ergebnisse=="" && !ergebnisseAd) ergebnisse = "keine oder zu große Lösung";
+
+    if(ergebnisse.length > 5 && ergebnisse[0] != "2" && ergebnisse[0] != "P" && ergebnisse[0] != "k") ergebnisse = ergebnisse.sort(compareNumbersA);
+    document.getElementById("ergebnisGleichung").value = ""+ergebnisseAd + ergebnisse;
+    document.getElementById("ergebnisGleichung").value = ersetzen(document.getElementById("ergebnisGleichung").value, ",", " / ");
+    e = ergebnisse;
+    xF = xFaktor;
+    yF = yFaktor;
+    xV = xVerschiebung;
+    yV = yVerschiebung;
+    mark = [];
+    refreshGraph();
+}
+
 function additional() {
     var ergebnisse = e;
     if(!(ergebnisse[0] < 0 || ergebnisse[0] >= 0)) ergebnisse = [];
@@ -513,11 +783,21 @@ function refreshGraph() {
         }
     }
     else {
+        if(document.getElementById("func0").checked == true) {
+            trm = term;
+            for(let i = 0; i < breite; i+=2) {
+                if(rechnen(ersetzen(trm, "x", (i-xVerschiebung)*xFaktor/breite))*rechnen(ersetzen(trm, "x", (i-xVerschiebung+3)*xFaktor/breite)) < -250) continue;
+                inner += '<line x1="'+rechnen((i))+'" y1="'+(400-(rechnen(ersetzen(trm, "x", (i-xVerschiebung)*xFaktor/breite)))*400/yFaktor-yVerschiebung)+'" x2="'+rechnen((i+3))+'" y2="'+(400-(rechnen(ersetzen(trm, "x", (i-xVerschiebung+3)*xFaktor/breite)))*400/yFaktor-yVerschiebung)+'" style="stroke:var(--akzentfarbe3);stroke-width:1" />';
+            }
+        }
+        trm = termL;
         for(let i = 0; i < breite; i+=2) {
+            if(rechnen(ersetzen(trm, "x", (i-xVerschiebung)*xFaktor/breite))*rechnen(ersetzen(trm, "x", (i-xVerschiebung+3)*xFaktor/breite)) < -250) continue;
             inner += '<line x1="'+rechnen((i))+'" y1="'+(400-(rechnen(ersetzen(trm, "x", (i-xVerschiebung)*xFaktor/breite)))*400/yFaktor-yVerschiebung)+'" x2="'+rechnen((i+3))+'" y2="'+(400-(rechnen(ersetzen(trm, "x", (i-xVerschiebung+3)*xFaktor/breite)))*400/yFaktor-yVerschiebung)+'" style="stroke:var(--akzentfarbe1);stroke-width:3" />';
         }
         trm = termR;
         for(let i = 0; i < breite; i+=2) {
+            if(rechnen(ersetzen(trm, "x", (i-xVerschiebung)*xFaktor/breite))*rechnen(ersetzen(trm, "x", (i-xVerschiebung+3)*xFaktor/breite)) < -250) continue;
             inner += '<line x1="'+rechnen((i))+'" y1="'+(400-(rechnen(ersetzen(trm, "x", (i-xVerschiebung)*xFaktor/breite)))*400/yFaktor-yVerschiebung)+'" x2="'+rechnen((i+3))+'" y2="'+(400-(rechnen(ersetzen(trm, "x", (i-xVerschiebung+3)*xFaktor/breite)))*400/yFaktor-yVerschiebung)+'" style="stroke:var(--akzentfarbe2);stroke-width:3" />';
         }
     }
@@ -591,19 +871,21 @@ function refreshGraph() {
 }
 
 var graph_before = "";
+var scrolled;
 
 function coordinates(event) {
     //console.log("xV:     "+xV+"    yV:     "+yV);
     const obj = document.getElementById("graph");
     const objSvg = document.getElementById("svgGraph");
     var x0, y0;
+    scrolled = window.scrollY;
     if(touch) {
         x0 = event.getX-obj.offsetLeft;
-        y0 = event.getY-obj.offsetTop;
+        y0 = event.getY-obj.offsetTop+scrolled;
     }
     else {
         x0 = event.clientX-obj.offsetLeft;
-        y0 = event.clientY-obj.offsetTop;
+        y0 = event.clientY-obj.offsetTop+scrolled;
     }
     var x = (x0-xV)*xF/breite;
     var y = -(y0-400+yV)*yF/400;
@@ -620,21 +902,22 @@ function coordinates(event) {
     let L = 0;
     let ö = 0;
     let s = 0;
-
-    for(let i = -1; i < e.length; i++) {
-        if(i == -1) {
-            dif = ((x0) - (xV))**2 + ((y0) - (400-yV))**2;
-            //console.log("d+   "+dif);
+    if((e[0] < 0 || e[0] >= 0)) {
+        for(let i = -1; i < e.length; i++) {
+            if(i == -1) {
+                dif = ((x0) - (xV))**2 + ((y0) - (400-yV))**2;
+                //console.log("d+   "+dif);
+                if(dif < 100) {
+                    x = 0;
+                    y = 0;
+                }    
+                continue;
+            }
+            dif = ((x0) - (e[i]*breite/xF+xV))**2 + ((y0) - (-eval(ersetzen(gL, "x", e[i]))*400/yF+400-yV))**2;
             if(dif < 100) {
-                x = 0;
-                y = 0;
-            }    
-            continue;
-        }
-        dif = ((x0) - (e[i]*breite/xF+xV))**2 + ((y0) - (-eval(ersetzen(gL, "x", e[i]))*400/yF+400-yV))**2;
-        if(dif < 100) {
-            x = e[i];
-            y = eval(ersetzen(gL, "x", e[i]));
+                x = e[i];
+                y = eval(ersetzen(gL, "x", e[i]));
+            }
         }
     }
     mark[0] = x;
@@ -650,6 +933,7 @@ function coordinates(event) {
     if(scroll == 0) scroll = -event.wheelDelta/40;
     console.log(scroll);
     if(scroll == 2) scroll = -3;
+    console.log("scrol:   "+scrolled);
     if(scroll == 3 && touch) {
         xF*=1.5; yF*=1.5; xV=(xV-breite/2)/1.5+breite/2; yV=(yV-200)/1.5+200;    
     }
@@ -751,11 +1035,18 @@ window.addEventListener("resize", function(event){
     breite = (window.innerWidth)*0.84-52;
     refreshGraph();
 });
-
 intval = setInterval(function() {
     if(counter99 == 1) {
+        console.log("987654321");
+        additional0();
+        counter99 = 2;
+    }
+    if(counter99 == 2) {
+        var t0 = new Date().getTime();
         console.log("123456789");
         additional();
         counter99 = 0;
+        var t1 = new Date().getTime();
+        console.log(t1-t0);
     }
 }, 100);
