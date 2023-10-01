@@ -786,18 +786,18 @@ function refreshGraph() {
         if(document.getElementById("func0").checked == true) {
             trm = term;
             for(let i = 0; i < breite; i+=2) {
-                if(rechnen(ersetzen(trm, "x", (i-xVerschiebung)*xFaktor/breite))*rechnen(ersetzen(trm, "x", (i-xVerschiebung+3)*xFaktor/breite)) < -250) continue;
+                if(rechnen(ersetzen(trm, "x", (i-xVerschiebung)*xFaktor/breite))*rechnen(ersetzen(trm, "x", (i-xVerschiebung+3)*xFaktor/breite)) < -100) continue;
                 inner += '<line x1="'+rechnen((i))+'" y1="'+(400-(rechnen(ersetzen(trm, "x", (i-xVerschiebung)*xFaktor/breite)))*400/yFaktor-yVerschiebung)+'" x2="'+rechnen((i+3))+'" y2="'+(400-(rechnen(ersetzen(trm, "x", (i-xVerschiebung+3)*xFaktor/breite)))*400/yFaktor-yVerschiebung)+'" style="stroke:var(--akzentfarbe3);stroke-width:1" />';
             }
         }
         trm = termL;
         for(let i = 0; i < breite; i+=2) {
-            if(rechnen(ersetzen(trm, "x", (i-xVerschiebung)*xFaktor/breite))*rechnen(ersetzen(trm, "x", (i-xVerschiebung+3)*xFaktor/breite)) < -250) continue;
+            if(rechnen(ersetzen(trm, "x", (i-xVerschiebung)*xFaktor/breite))*rechnen(ersetzen(trm, "x", (i-xVerschiebung+3)*xFaktor/breite)) < -100) continue;
             inner += '<line x1="'+rechnen((i))+'" y1="'+(400-(rechnen(ersetzen(trm, "x", (i-xVerschiebung)*xFaktor/breite)))*400/yFaktor-yVerschiebung)+'" x2="'+rechnen((i+3))+'" y2="'+(400-(rechnen(ersetzen(trm, "x", (i-xVerschiebung+3)*xFaktor/breite)))*400/yFaktor-yVerschiebung)+'" style="stroke:var(--akzentfarbe1);stroke-width:3" />';
         }
         trm = termR;
         for(let i = 0; i < breite; i+=2) {
-            if(rechnen(ersetzen(trm, "x", (i-xVerschiebung)*xFaktor/breite))*rechnen(ersetzen(trm, "x", (i-xVerschiebung+3)*xFaktor/breite)) < -250) continue;
+            if(rechnen(ersetzen(trm, "x", (i-xVerschiebung)*xFaktor/breite))*rechnen(ersetzen(trm, "x", (i-xVerschiebung+3)*xFaktor/breite)) < -100) continue;
             inner += '<line x1="'+rechnen((i))+'" y1="'+(400-(rechnen(ersetzen(trm, "x", (i-xVerschiebung)*xFaktor/breite)))*400/yFaktor-yVerschiebung)+'" x2="'+rechnen((i+3))+'" y2="'+(400-(rechnen(ersetzen(trm, "x", (i-xVerschiebung+3)*xFaktor/breite)))*400/yFaktor-yVerschiebung)+'" style="stroke:var(--akzentfarbe2);stroke-width:3" />';
         }
     }
