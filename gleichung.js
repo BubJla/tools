@@ -718,11 +718,23 @@ function additional() {
     else if(score < 100) range = 999;
     else if(score < 1000) range = 99;
     for(var u = -range; u < range; u += 1) {
-        if(Math.abs(rechnen(ersetzen(term, "x", 1*u))) < Math.abs(rechnen(ersetzen(term, "x", 1*u-0.5))) && Math.abs(rechnen(ersetzen(term, "x", 1*u))) < Math.abs(rechnen(ersetzen(term, "x", 1*u+0.5)))) {
+        if(Math.abs(rechnen(ersetzen(term, "x", 1*u))) < Math.abs(rechnen(ersetzen(term, "x", 1*u-1))) && Math.abs(rechnen(ersetzen(term, "x", 1*u))) < Math.abs(rechnen(ersetzen(term, "x", 1*u+1)))) {
             for(let f = 0; f < ergebnisse.length; f++) {
                 if(Math.abs(ergebnisse[f] - u) < 1) break;
                 if(f == ergebnisse.length-1) {
-                    mogErg[mogErg.length] = u;
+                    var minS = Math.abs(rechnen(ersetzen(term, "x", 1*u)));
+                    var pos = -11.11111;
+                    for(let s = u-0.5; s <= u+0.5; s+= 0.001) {
+                        if(Math.abs(rechnen(ersetzen(term, "x", 1*s))) < minS) {
+                            minS = Math.abs(rechnen(ersetzen(term, "x", 1*s)));
+                            pos = s;
+                        }
+                    }
+                    console.log("pos:  "+pos);
+                    console.log("minS:  "+minS);
+                    if(pos != -11.11111) {
+                        mogErg[mogErg.length] = pos.toFixed(3);
+                    }
                 }
             }
         }
@@ -807,20 +819,20 @@ function refreshGraph() {
 
     if(ergebnisse.length != 26 && ergebnisse.length != 24) {
         for(let k = 0; k < ergebnisse.length; k++) {
-            inner += '<circle cx= "'+rechnen(ergebnisse[k]*breite/xFaktor+xVerschiebung)+'" cy= "'+(400-eval(ersetzen(termL, "x", ergebnisse[k]))*400/yFaktor-yVerschiebung)+'" r= "4" style="fill: var(--akzentfarbe3); stroke-width: 0px"/>';
+            inner += '<circle cx= "'+rechnen(ergebnisse[k]*breite/xFaktor+xVerschiebung)+'" cy= "'+(400-(eval(ersetzen(termL, "x", ergebnisse[k]))+eval(ersetzen(termR, "x", ergebnisse[k])))/2*400/yFaktor-yVerschiebung)+'" r= "4" style="fill: var(--akzentfarbe3); stroke-width: 0px"/>';
         }
         for(let k = 0; k < ergebnisse.length; k++) {
-            inner += '<circle cx= "'+rechnen(ergebnisse[k]*breite/xFaktor+xVerschiebung)+'" cy= "'+(400-eval(ersetzen(termL, "x", ergebnisse[k]))*400/yFaktor-yVerschiebung)+'" r= "2" style="fill: var(--hintergrundfarbe); stroke-width: 0px"/>';
+            inner += '<circle cx= "'+rechnen(ergebnisse[k]*breite/xFaktor+xVerschiebung)+'" cy= "'+(400-(eval(ersetzen(termL, "x", ergebnisse[k]))+eval(ersetzen(termR, "x", ergebnisse[k])))/2*400/yFaktor-yVerschiebung)+'" r= "2" style="fill: var(--hintergrundfarbe); stroke-width: 0px"/>';
         }
     }
 
 
     if(ergebnisse2.length != 26 && ergebnisse2.length != 24) {
         for(let k = 0; k < ergebnisse2.length; k++) {
-            inner += '<circle cx= "'+rechnen(ergebnisse2[k]*breite/xFaktor+xVerschiebung)+'" cy= "'+(400-eval(ersetzen(termL, "x", ergebnisse2[k]))*400/yFaktor-yVerschiebung)+'" r= "4" style="fill: var(--schriftfarbe); stroke-width: 0px"/>';
+            inner += '<circle cx= "'+rechnen(ergebnisse2[k]*breite/xFaktor+xVerschiebung)+'" cy= "'+(400-(eval(ersetzen(termL, "x", ergebnisse2[k]))+eval(ersetzen(termR, "x", ergebnisse2[k])))/2*400/yFaktor-yVerschiebung)+'" r= "4" style="fill: var(--schriftfarbe); stroke-width: 0px"/>';
         }
         for(let k = 0; k < ergebnisse2.length; k++) {
-            inner += '<circle cx= "'+rechnen(ergebnisse2[k]*breite/xFaktor+xVerschiebung)+'" cy= "'+(400-eval(ersetzen(termL, "x", ergebnisse2[k]))*400/yFaktor-yVerschiebung)+'" r= "2" style="fill: var(--hintergrundfarbe); stroke-width: 0px"/>';
+            inner += '<circle cx= "'+rechnen(ergebnisse2[k]*breite/xFaktor+xVerschiebung)+'" cy= "'+(400-(eval(ersetzen(termL, "x", ergebnisse2[k]))+eval(ersetzen(termR, "x", ergebnisse2[k])))/2*400/yFaktor-yVerschiebung)+'" r= "2" style="fill: var(--hintergrundfarbe); stroke-width: 0px"/>';
         }
     }
 
@@ -1049,4 +1061,4 @@ intval = setInterval(function() {
         var t1 = new Date().getTime();
         console.log(t1-t0);
     }
-}, 100);
+}, 200);
