@@ -379,19 +379,6 @@ function gleichung() {
     xV = xVerschiebung;
     yV = yVerschiebung;
     mark = [];
-    refreshGraph();
-    scroll(0, 1000);
-    if(readCookie("animation") == 0) return;
-    if(count %2 == 0) {
-        document.getElementById("left").setAttribute("style", "animation: transition5 1500ms;");
-        document.getElementById("under").setAttribute("style", "animation: transition5 1500ms;");
-        document.getElementById("graph").setAttribute("style", "animation: transition5 1500ms ;");
-    }
-    else{
-        document.getElementById("left").setAttribute("style", "animation: transition6 1500ms;");
-        document.getElementById("under").setAttribute("style", "animation: transition6 1500ms;");
-        document.getElementById("graph").setAttribute("style", "animation: transition6 1500ms ;");
-    }
     count ++;//für mehrmalige animation
     counter99=1;
 }
@@ -705,33 +692,86 @@ function additional0() {
     yV = yVerschiebung;
     mark = [];
     refreshGraph();
+    scroll(0, 1000);
+    if(readCookie("animation") == 0) return;
+    if(count %2 == 0) {
+        document.getElementById("left").setAttribute("style", "animation: transition5 1500ms;");
+        document.getElementById("under").setAttribute("style", "animation: transition5 1500ms;");
+        document.getElementById("graph").setAttribute("style", "animation: transition5 1500ms ;");
+    }
+    else{
+        document.getElementById("left").setAttribute("style", "animation: transition6 1500ms;");
+        document.getElementById("under").setAttribute("style", "animation: transition6 1500ms;");
+        document.getElementById("graph").setAttribute("style", "animation: transition6 1500ms ;");
+    }
 }
 
 function additional() {
     var ergebnisse = e;
     if(!(ergebnisse[0] < 0 || ergebnisse[0] >= 0)) ergebnisse = [];
-    console.log("123");
-    console.log(ergebnisse);
+    //console.log("123");
+    //console.log(ergebnisse);
     var mogErg = [];
-    var range = 9;
-    if(score < 10) range = 9999;
-    else if(score < 100) range = 999;
-    else if(score < 1000) range = 99;
-    for(var u = -range; u < range; u += 1) {
-        if(Math.abs(rechnen(ersetzen(term, "x", 1*u))) < Math.abs(rechnen(ersetzen(term, "x", 1*u-1))) && Math.abs(rechnen(ersetzen(term, "x", 1*u))) < Math.abs(rechnen(ersetzen(term, "x", 1*u+1)))) {
+    var accuracy0 = 1;
+    var accuracy1 = 1000;
+    var range = 99;
+    if(score < 5) range = 99999;
+    else if(score < 50) range = 9999;
+    else if(score < 500) range = 999;
+    var t0 = new Date().getTime();
+    for(var u = 0; u < range; u += accuracy0) {
+
+        let t1 = new Date().getTime();
+        if(t1 - t0 > 4000) {
+            accuracy0 = 100;
+            accuracy1 = 1;        
+        }
+        else if(t1 - t0 > 3000) {
+            accuracy0 = 10;
+            accuracy1 = 1;        
+        }
+        else if(t1 - t0 > 2000) {
+            accuracy0 = 10;
+            accuracy1 = 10;        
+        }
+        else if(t1 - t0 > 1000) {
+            accuracy0 = 1;
+            accuracy1 = 10;        
+        }
+        else if(t1 - t0 > 500) {
+            accuracy0 = 1;
+            accuracy1 = 100;        
+        }
+        if(Math.abs(rechnen(ersetzen(term, "x", 1*u))) < Math.abs(rechnen(ersetzen(term, "x", 1*u-accuracy0))) && Math.abs(rechnen(ersetzen(term, "x", 1*u))) < Math.abs(rechnen(ersetzen(term, "x", 1*u+accuracy0)))) {
             for(let f = 0; f < ergebnisse.length; f++) {
                 if(Math.abs(ergebnisse[f] - u) < 1) break;
                 if(f == ergebnisse.length-1) {
                     var minS = Math.abs(rechnen(ersetzen(term, "x", 1*u)));
                     var pos = -11.11111;
-                    for(let s = u-0.5; s <= u+0.5; s+= 0.001) {
+                    for(let s = u-accuracy0/2; s <= u+accuracy0/2; s+= 1/accuracy1) {
                         if(Math.abs(rechnen(ersetzen(term, "x", 1*s))) < minS) {
                             minS = Math.abs(rechnen(ersetzen(term, "x", 1*s)));
                             pos = s;
                         }
                     }
-                    console.log("pos:  "+pos);
-                    console.log("minS:  "+minS);
+                    if(pos != -11.11111) {
+                        mogErg[mogErg.length] = pos.toFixed(3);
+                    }
+                }
+            }
+        }
+        if(Math.abs(rechnen(ersetzen(term, "x", -1*u))) < Math.abs(rechnen(ersetzen(term, "x", -1*u-accuracy0))) && Math.abs(rechnen(ersetzen(term, "x", -1*u))) < Math.abs(rechnen(ersetzen(term, "x", -1*u+accuracy0)))) {
+            for(let f = 0; f < ergebnisse.length; f++) {
+                if(Math.abs(ergebnisse[f] + u) < 1) break;
+                if(f == ergebnisse.length-1) {
+                    var minS = Math.abs(rechnen(ersetzen(term, "x", -1*u)));
+                    var pos = -11.11111;
+                    for(let s = -u-accuracy0/2; s <= -u+accuracy0/2; s+= 1/accuracy1) {
+                        if(Math.abs(rechnen(ersetzen(term, "x", 1*s))) < minS) {
+                            minS = Math.abs(rechnen(ersetzen(term, "x", 1*s)));
+                            pos = s;
+                        }
+                    }
                     if(pos != -11.11111) {
                         mogErg[mogErg.length] = pos.toFixed(3);
                     }
@@ -739,7 +779,7 @@ function additional() {
             }
         }
     }
-    console.log(mogErg);
+    //console.log(mogErg);
     if(mogErg.length == 0) return;
     document.getElementById("ergebnisGleichung").value += " ( "+(mogErg)+" ) ";
     document.getElementById("ergebnisGleichung").value = ersetzen(document.getElementById("ergebnisGleichung").value, ",", " / ");
@@ -943,9 +983,9 @@ function coordinates(event) {
     objSvg.innerHTML += '<line x1="'+x+'" y1="'+(y-10)+'" x2="'+x+'" y2="'+(y+10)+'" style="stroke:var(--schriftfarbe);stroke-width:2" />';
     var scroll = event.detail;
     if(scroll == 0) scroll = -event.wheelDelta/40;
-    console.log(scroll);
+    //console.log(scroll);
     if(scroll == 2) scroll = -3;
-    console.log("scrol:   "+scrolled);
+    //console.log("scrol:   "+scrolled);
     if(scroll == 3 && touch) {
         xF*=1.5; yF*=1.5; xV=(xV-breite/2)/1.5+breite/2; yV=(yV-200)/1.5+200;    
     }
@@ -1049,15 +1089,14 @@ window.addEventListener("resize", function(event){
 });
 intval = setInterval(function() {
     if(counter99 == 1) {
-        console.log("987654321");
         additional0();
         counter99 = 2;
     }
-    if(counter99 == 2) {
+    else if(counter99 < 5 && counter99 != 0) counter99 ++;
+    if(counter99 == 5) {
         var t0 = new Date().getTime();
-        console.log("123456789");
         additional();
-        counter99 = 0;
+        counter99 = 99;
         var t1 = new Date().getTime();
         console.log(t1-t0);
     }
