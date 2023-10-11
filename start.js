@@ -17,6 +17,10 @@ gtag('js', new Date());
 gtag('config', 'G-QPH30E9YBE');
 </script>
 
+
+<link rel="alternate" href="de.html" hreflang="de">
+  <link rel="alternate" href="en.html" hreflang="en">
+  
 `;
 
 

@@ -95,10 +95,10 @@ function level4() {
     var rechenart = Math.round(Math.random()*4-0.5);
     switch(rechenart) {
         case 0: // +
-            rechenAufgabe = (Math.round(Math.random()*400+0.5)*5+500) + "+" + (Math.round(Math.random()*400+0.5)*5+500);
+            rechenAufgabe = (Math.round(Math.random()*900+0.5)*5+500) + "+" + (Math.round(Math.random()*900+0.5)*5+500);
             break;
         case 1: // -
-            rechenAufgabe = (Math.round(Math.random()*900+0.5)*5+500) + "-" + (Math.round(Math.random()*900+0.5)*5+500);
+            rechenAufgabe = (Math.round(Math.random()*1950+0.5)*5+500) + "-" + (Math.round(Math.random()*1950+0.5)*5+500);
             break;
         case 2: // *
             rechenAufgabe = (Math.round(Math.random()*15+0.5)+10) + "×" + (Math.round(Math.random()*15+0.5)+10);
