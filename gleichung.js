@@ -989,8 +989,8 @@ function coordinates(event) {
     //console.log(scroll);
     if(scroll == 2) scroll = -3;
     //console.log("scrol:   "+scrolled);
+    alert(scroll);
     if(scroll == 3 && touch==1) {
-        alert();
         xF*=2.25; yF*=2.25; xV=(xV-breite/2)/1.5+breite/2; yV=(yV-200)/1.5+200;    
     }
     if(scroll < -2) {
