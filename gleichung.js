@@ -1085,7 +1085,6 @@ document.getElementById("graph").addEventListener('mousedown', start);
 document.getElementById("graph").addEventListener('mouseup', end);
 document.getElementById("graph").addEventListener('mousemove', print);
 document.addEventListener('touchstart', function() {
-    alert();
     touch = true;
 });
 
