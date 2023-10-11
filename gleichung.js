@@ -929,6 +929,8 @@ var graph_before = "";
 var scrolled;
 
 function coordinates(event) {
+    if(event.clientY) touch = false;
+    else if(event.getY) touch = true;
     //console.log("xV:     "+xV+"    yV:     "+yV);
     const obj = document.getElementById("graph");
     const objSvg = document.getElementById("svgGraph");
