@@ -929,6 +929,7 @@ var graph_before = "";
 var scrolled;
 
 function coordinates(event) {
+    alert(event.getY);
     //console.log("xV:     "+xV+"    yV:     "+yV);
     const obj = document.getElementById("graph");
     const objSvg = document.getElementById("svgGraph");
