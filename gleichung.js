@@ -788,6 +788,7 @@ function additional() {
 }
 
 function refreshGraph() {
+    if(!(mark[0] < 0 || mark[0] >= 0)) mark = [];
     if(e == undefined) {
         e = "keine oder zu große Lösung";
         //alert(e);
@@ -809,7 +810,9 @@ function refreshGraph() {
         xV += (breite/2-x)-offsetx;
         yV -= (200-y)-offsety;   
     }
-    /*console.log("xV:     "+xV);
+    /*console.log("xM:     "+mark[0]);
+    console.log("yM:     "+mark[1]);
+    console.log("xV:     "+xV);
     console.log("xF:     "+xF);
     console.log("yV:     "+yV);
     console.log("yF:     "+yF);*/

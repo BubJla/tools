@@ -64,12 +64,12 @@
             <span style="width: 100%; border-top: 1px solid var(--schriftfarbe);">
                 <div style="width: 100%; height: 100%;" onclick="refreshGraph()">
                     <span style="width: 100%; height: 50%; margin-top: 10px;">
-                        <div style="width: 25%;" onclick="yV-=(yF*0+70)">
+                        <div style="width: 25%;" onclick="yV-=(yF*0+70); mark[1]+=70/400*yF">
                             <span>
                                 <d>▵</d>
                             </span>
                         </div>
-                        <div style="width: 25%;" onclick="yV+=(yF*0+70)">
+                        <div style="width: 25%;" onclick="yV+=(yF*0+70); mark[1]-=70/400*yF">
                             <span>
                                 <d>▿</d>
                             </span>
@@ -88,12 +88,12 @@
                     <br>
                     <br>
                     <span style="width: 100%; height: 50%;">
-                        <div style="width: 25%;" onclick="xV+=(xF*0+140)">
+                        <div style="width: 25%;" onclick="xV+=(xF*0+140); mark[0]-=140/breite*xF">
                             <span>
                                 <d>◃</d>
                             </span>
                         </div>
-                        <div style="width: 25%;" onclick="xV-=(xF*0+140)">
+                        <div style="width: 25%;" onclick="xV-=(xF*0+140); mark[0]+=140/breite*xF">
                             <span>
                                 <d>▹</d>
                             </span>
