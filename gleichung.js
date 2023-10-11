@@ -1026,14 +1026,14 @@ var touch = false;
 function start(event) {
     /*if(event.clientY) touch = false;
     else if(event.getY) touch = true;*/
-    if(touch) {
+    /*if(touch) {
         x0 = event.getX-obj.offsetLeft;
         y0 = event.getY-obj.offsetTop;
     }
-    else {
+    else {*/
         x0 = event.clientX-obj.offsetLeft;
         y0 = event.clientY-obj.offsetTop;
-    }
+    //}
     moving = true;
     graph0 = objSvg.innerHTML;
 }
@@ -1041,14 +1041,14 @@ function start(event) {
 function end(event) {
     moving = false;
     var x, y;
-    if(touch) {
+    /*if(touch) {
         x = event.getX-obj.offsetLeft;
         y = event.getY-obj.offsetTop;
     }
-    else {
+    else {*/
         x = event.clientX-obj.offsetLeft;
         y = event.clientY-obj.offsetTop;
-    }
+    //}
     if(Math.abs(x0 - x) < 15 && Math.abs(y0 - y) < 15) {
         coordinates(event);
         return;
@@ -1066,14 +1066,14 @@ function print(event) {
     if(moving == false) return;
     objSvg.innerHTML = graph0;
     var x, y;
-    if(touch) {
+    /*if(touch) {
         x = event.getX-obj.offsetLeft;
         y = event.getY-obj.offsetTop;
     }
-    else {
+    else {*/
         x = event.clientX-obj.offsetLeft;
         y = event.clientY-obj.offsetTop;
-    }
+    //}
     objSvg.innerHTML += '<line x1="'+(breite/2)+'" y1="'+(200)+'" x2="'+(breite/2-x+x0)+'" y2="'+(200-y+y0)+'" style="stroke:var(--schriftfarbe);stroke-width:3" />';
     objSvg.innerHTML += '<line x1="'+((breite/2-x+x0)-10)+'" y1="'+((200-y+y0))+'" x2="'+((breite/2-x+x0)+10)+'" y2="'+((200-y+y0))+'" style="stroke:var(--schriftfarbe);stroke-width:1" />';
     objSvg.innerHTML += '<line x1="'+(breite/2-x+x0)+'" y1="'+(((200-y+y0))-10)+'" x2="'+(breite/2-x+x0)+'" y2="'+(((200-y+y0))+10)+'" style="stroke:var(--schriftfarbe);stroke-width:1" />';
