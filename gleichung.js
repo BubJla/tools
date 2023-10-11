@@ -929,20 +929,19 @@ var graph_before = "";
 var scrolled;
 
 function coordinates(event) {
-    alert(event.getY);
     //console.log("xV:     "+xV+"    yV:     "+yV);
     const obj = document.getElementById("graph");
     const objSvg = document.getElementById("svgGraph");
     var x0, y0;
     scrolled = window.scrollY;
-    if(touch) {
+    /*if(touch) {
         x0 = event.getX-obj.offsetLeft;
         y0 = event.getY-obj.offsetTop+scrolled;
     }
-    else {
+    else {*/
         x0 = event.clientX-obj.offsetLeft;
         y0 = event.clientY-obj.offsetTop+scrolled;
-    }
+    //}
     var x = (x0-xV)*xF/breite;
     var y = -(y0-400+yV)*yF/400;
 
@@ -1085,6 +1084,9 @@ function print(event) {
 document.getElementById("graph").addEventListener('mousedown', start);
 document.getElementById("graph").addEventListener('mouseup', end);
 document.getElementById("graph").addEventListener('mousemove', print);
+document.addEventListener('touchstart', function() {
+    alert();
+});
 
 setInterval(function () {document.getElementById("graph").addEventListener('DOMMouseScroll', coordinates);}, 200);
 setInterval(function () {document.getElementById("graph").addEventListener('mousewheel', coordinates);}, 100);
