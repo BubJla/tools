@@ -929,8 +929,6 @@ var graph_before = "";
 var scrolled;
 
 function coordinates(event) {
-    if(event.clientY) touch = false;
-    else if(event.getY) touch = true;
     //console.log("xV:     "+xV+"    yV:     "+yV);
     const obj = document.getElementById("graph");
     const objSvg = document.getElementById("svgGraph");
@@ -1088,6 +1086,10 @@ document.getElementById("graph").addEventListener('mouseup', end);
 document.getElementById("graph").addEventListener('mousemove', print);
 
 document.getElementById("graph").addEventListener('touch', coordinates);
+document.getElementById("graph").addEventListener('touch', function() {
+    touch = true;
+    alert("touch");
+});
 setInterval(function () {document.getElementById("graph").addEventListener('DOMMouseScroll', coordinates);}, 200);
 setInterval(function () {document.getElementById("graph").addEventListener('mousewheel', coordinates);}, 100);
 
