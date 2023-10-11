@@ -1085,8 +1085,6 @@ document.getElementById("graph").addEventListener('mousedown', start);
 document.getElementById("graph").addEventListener('mouseup', end);
 document.getElementById("graph").addEventListener('mousemove', print);
 
-document.getElementById("graph").addEventListener('touch', function(){
-    alert("touch"); coordinates});
 setInterval(function () {document.getElementById("graph").addEventListener('DOMMouseScroll', coordinates);}, 200);
 setInterval(function () {document.getElementById("graph").addEventListener('mousewheel', coordinates);}, 100);
 
