@@ -990,6 +990,7 @@ function coordinates(event) {
     if(scroll == 2) scroll = -3;
     //console.log("scrol:   "+scrolled);
     //alert(scroll);
+    if(Math.abs(scroll) == 3) alert();
     if(Math.abs(scroll) == 3 && touch==1) {
         alert();
         xF*=1.5; yF*=1.5; xV=(xV-breite/2)/1.5+breite/2; yV=(yV-200)/1.5+200;    
