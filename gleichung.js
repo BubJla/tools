@@ -1024,8 +1024,8 @@ var graph0 = objSvg.innerHTML;
 var touch = false;
 
 function start(event) {
-    if(event.clientY) touch = false;
-    else if(event.getY) touch = true;
+    /*if(event.clientY) touch = false;
+    else if(event.getY) touch = true;*/
     if(touch) {
         x0 = event.getX-obj.offsetLeft;
         y0 = event.getY-obj.offsetTop;
