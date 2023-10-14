@@ -180,6 +180,8 @@ function gleichung() {
     termL = ersetzen(termL, "Math.COS(", "Math.cos(");
     termL = ersetzen(termL, "Math.SIN(", "Math.sin(");
     termL = ersetzen(termL, "Math.TAN(", "Math.tan(");
+    termL = ersetzen(termL, "x²", "x**2");
+    termL = ersetzen(termL, "x³", "x**3");
 
     termR = ersetzen(termR, "X", "x");
     termR = ersetzen(termR, "π", "Math.PI");
@@ -223,6 +225,8 @@ function gleichung() {
     termR = ersetzen(termR, "Math.COS(", "Math.cos(");
     termR = ersetzen(termR, "Math.SIN(", "Math.sin(");
     termR = ersetzen(termR, "Math.TAN(", "Math.tan(");
+    termR = ersetzen(termR, "x²", "x**2");
+    termR = ersetzen(termR, "x³", "x**3");
     term = termL+"-("+termR+")";
     //console.log(term);
     term = ersetzen(term, "x**x", "(x)**(x)");
@@ -261,7 +265,7 @@ function gleichung() {
         grenzeP = i;
         grenzeN = -i;
     }
-
+    alert(term);
     //console.log(jetzt-t0);
     ergebnisse = ergebnisse.sort(compareNumbers);
     //if(ergebnisse=="") ergebnisse = "keine oder zu große Lösung";
@@ -447,6 +451,8 @@ function additional0() {
     termL = ersetzen(termL, "Math.COS(", "Math.cos(");
     termL = ersetzen(termL, "Math.SIN(", "Math.sin(");
     termL = ersetzen(termL, "Math.TAN(", "Math.tan(");
+    termL = ersetzen(termL, "x²", "x**2");
+    termL = ersetzen(termL, "x³", "x**3");
 
     termR = ersetzen(termR, "X", "x");
     termR = ersetzen(termR, "Ï€", "Math.PI");
@@ -490,6 +496,8 @@ function additional0() {
     termR = ersetzen(termR, "Math.COS(", "Math.cos(");
     termR = ersetzen(termR, "Math.SIN(", "Math.sin(");
     termR = ersetzen(termR, "Math.TAN(", "Math.tan(");
+    termR = ersetzen(termR, "x²", "x**2");
+    termR = ersetzen(termR, "x³", "x**3");
     term = termL+"-("+termR+")";
     //console.log(term);
     term = ersetzen(term, "x**x", "(x)**(x)");
