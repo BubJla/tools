@@ -140,11 +140,10 @@ function gleichung() {
     e2 = [];
 
     termL = ersetzen(termL, "X", "x");
-    termL = ersetzen(termL, "π", "Math.PI");
+    termL = ersetzen(termL, "PI", "Math.PI");
     termL = ersetzen(termL, "e", "Math.E");
     termL = ersetzen(termL, "÷", "/");
-    termL = ersetzen(termL, "×", "**2");
-    termL = ersetzen(termL, "²", "5*x");
+    termL = ersetzen(termL, "²", "**2");
     termL = ersetzen(termL, "³", "**3");
     termL = ersetzen(termL, "^", "**");
     termL = ersetzen(termL, "-x**", "-1*x**");
@@ -180,15 +179,12 @@ function gleichung() {
     termL = ersetzen(termL, "Math.COS(", "Math.cos(");
     termL = ersetzen(termL, "Math.SIN(", "Math.sin(");
     termL = ersetzen(termL, "Math.TAN(", "Math.tan(");
-    termL = ersetzen(termL, "x²", "x**2");
-    termL = ersetzen(termL, "x³", "x**3");
 
     termR = ersetzen(termR, "X", "x");
-    termR = ersetzen(termR, "π", "Math.PI");
+    termR = ersetzen(termR, "PI", "Math.PI");
     termR = ersetzen(termR, "e", "Math.E");
     termR = ersetzen(termR, "÷", "/");
-    termR = ersetzen(termR, "×", "**2");
-    termR = ersetzen(termR, "²", "5*x");
+    termR = ersetzen(termR, "²", "**2");
     termR = ersetzen(termR, "³", "**3");
     termR = ersetzen(termR, "^", "**");
     termR = ersetzen(termR, "-x**", "-1*x**");
@@ -225,8 +221,6 @@ function gleichung() {
     termR = ersetzen(termR, "Math.COS(", "Math.cos(");
     termR = ersetzen(termR, "Math.SIN(", "Math.sin(");
     termR = ersetzen(termR, "Math.TAN(", "Math.tan(");
-    termR = ersetzen(termR, "x²", "x**2");
-    termR = ersetzen(termR, "x³", "x**3");
     term = termL+"-("+termR+")";
     //console.log(term);
     term = ersetzen(term, "x**x", "(x)**(x)");
@@ -265,7 +259,7 @@ function gleichung() {
         grenzeP = i;
         grenzeN = -i;
     }
-    alert(term);
+    //alert(term);
     //console.log(jetzt-t0);
     ergebnisse = ergebnisse.sort(compareNumbers);
     //if(ergebnisse=="") ergebnisse = "keine oder zu große Lösung";
@@ -411,12 +405,11 @@ function additional0() {
     e2 = [];
 
     termL = ersetzen(termL, "X", "x");
-    termL = ersetzen(termL, "Ï€", "Math.PI");
+    termL = ersetzen(termL, "PI", "Math.PI");
     termL = ersetzen(termL, "e", "Math.E");
-    termL = ersetzen(termL, "Ã·", "/");
-    termL = ersetzen(termL, "Ã—", "**2");
-    termL = ersetzen(termL, "Â²", "5*x");
-    termL = ersetzen(termL, "Â³", "**3");
+    termL = ersetzen(termL, "÷", "/");
+    termL = ersetzen(termL, "²", "**2");
+    termL = ersetzen(termL, "³", "**3");
     termL = ersetzen(termL, "^", "**");
     termL = ersetzen(termL, "-x**", "-1*x**");
 
@@ -451,16 +444,13 @@ function additional0() {
     termL = ersetzen(termL, "Math.COS(", "Math.cos(");
     termL = ersetzen(termL, "Math.SIN(", "Math.sin(");
     termL = ersetzen(termL, "Math.TAN(", "Math.tan(");
-    termL = ersetzen(termL, "x²", "x**2");
-    termL = ersetzen(termL, "x³", "x**3");
 
     termR = ersetzen(termR, "X", "x");
-    termR = ersetzen(termR, "Ï€", "Math.PI");
+    termR = ersetzen(termR, "PI", "Math.PI");
     termR = ersetzen(termR, "e", "Math.E");
-    termR = ersetzen(termR, "Ã·", "/");
-    termR = ersetzen(termR, "Ã—", "**2");
-    termR = ersetzen(termR, "Â²", "5*x");
-    termR = ersetzen(termR, "Â³", "**3");
+    termR = ersetzen(termR, "÷", "/");
+    termR = ersetzen(termR, "²", "**2");
+    termR = ersetzen(termR, "³", "**3");
     termR = ersetzen(termR, "^", "**");
     termR = ersetzen(termR, "-x**", "-1*x**");
 
@@ -496,8 +486,6 @@ function additional0() {
     termR = ersetzen(termR, "Math.COS(", "Math.cos(");
     termR = ersetzen(termR, "Math.SIN(", "Math.sin(");
     termR = ersetzen(termR, "Math.TAN(", "Math.tan(");
-    termR = ersetzen(termR, "x²", "x**2");
-    termR = ersetzen(termR, "x³", "x**3");
     term = termL+"-("+termR+")";
     //console.log(term);
     term = ersetzen(term, "x**x", "(x)**(x)");
@@ -947,8 +935,8 @@ function coordinates(event) {
         y0 = event.getY-obj.offsetTop+scrolled;
     }
     else {*/
-        x0 = event.clientX-obj.offsetLeft;
-        y0 = event.clientY-obj.offsetTop+scrolled;
+        x0 = event.clientX-obj.offsetLeft-2;
+        y0 = event.clientY-obj.offsetTop+scrolled-2;
     //}
     var x = (x0-xV)*xF/breite;
     var y = -(y0-400+yV)*yF/400;
@@ -1086,6 +1074,14 @@ function print(event) {
     objSvg.innerHTML += '<line x1="'+(breite/2-x+x0)+'" y1="'+(((200-y+y0))-10)+'" x2="'+(breite/2-x+x0)+'" y2="'+(((200-y+y0))+10)+'" style="stroke:var(--schriftfarbe);stroke-width:1" />';
 }
 
+function cpySolution() {
+    var text = document.getElementById("ergebnisGleichung");
+  
+    text.select();
+    text.setSelectionRange(0, 99999); // For mobile devices
+  
+    navigator.clipboard.writeText("x="+text.value);
+}
 
 //document.getElementById("graph").addEventListener('click', coordinates);
 document.getElementById("graph").addEventListener('mousedown', start);

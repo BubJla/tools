@@ -825,6 +825,7 @@ body:not(.noAnimation) .sett h1 {
 }
 
 #graph{
+    cursor: crosshair;
     margin-top: 4px;
     width: 100%;
     height: 400px;
