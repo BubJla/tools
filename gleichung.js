@@ -377,7 +377,7 @@ function gleichung() {
     xV = xVerschiebung;
     yV = yVerschiebung;
     mark = [];
-    count ++;//für mehrmalige animation
+    count ++;//f&uuml;r mehrmalige animation
     counter99=1;
 }
 

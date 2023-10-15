@@ -299,7 +299,7 @@ function loeschen() {
 }
 //breite = 1;
 
-if(screen.width > 800) {
+if(window.innerWidth > 800) {
     document.getElementById("vorschau01").innerHTML = `
         <d>Vorschau*:</d>
         <span>            

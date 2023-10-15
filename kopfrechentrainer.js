@@ -221,7 +221,7 @@ for(let i = 0; i< new Date().getMilliseconds(); i++) {
 }
 
 
-if(screen.width > 800) {
+if(window.innerWidth > 800) {
     document.getElementById("auswahlLevel").innerHTML = `
             <div style="width: 11%">
                 <span>

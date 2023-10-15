@@ -531,12 +531,12 @@ ellipse{
     border: 2px solid var(--schriftfarbe);
     width: 33.3%;
     height: 150px;
-    background: yellow;
+    background: var(--akzentfarbe3);
 }
 
 .feldGewonnen ellipse{
-    stroke: black;
-    fill: yellow;
+    stroke: var(--hintergrundfarbe);
+    fill: var(--akzentfarbe3);
 }
 
 .feldGewonnen polygon{

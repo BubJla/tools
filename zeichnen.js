@@ -1,5 +1,5 @@
 touch = false;
-var breite = (screen.width)*0.84-52;
+var breite = (window.innerWidth)*0.84-52;
 var cod0 = [];
 var pressed = false;
 

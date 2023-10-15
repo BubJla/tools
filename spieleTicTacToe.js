@@ -5,10 +5,10 @@ var gestartet = 0;
 var gewinnBeteiligte = [0, 0, 0];
 var zug_letzt = 0;
 var gZug1; // 1. Zug des gegners wenn computer beginnt
-var breite = ((screen.width)*0.84-230)/3-12;
+var breite = ((window.innerWidth)*0.84-230)/3-12;
 if(breite>141) breite = 141;
 //alert(breite);
-var breiteGes = ((screen.width)*0.84-230);
+var breiteGes = ((window.innerWidth)*0.84-230);
 if(breiteGes > 450) breiteGes = 450;
 
 

@@ -94,9 +94,9 @@ function groeseplus(){
 }
 
 var groesseUhr = "300px";
-if(screen.width>2000) groesseUhr = "600px";
-else if(screen.width>1500) groesseUhr = "500px";
-else if(screen.width>1000) groesseUhr = "400px";
+if(window.innerWidth>2000) groesseUhr = "600px";
+else if(window.innerWidth>1500) groesseUhr = "500px";
+else if(window.innerWidth>1000) groesseUhr = "400px";
 
 document.querySelector(":root").style.setProperty("--groesseTime", groesseUhr);
 
