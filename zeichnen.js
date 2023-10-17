@@ -1,12 +1,12 @@
 touch = false;
-var breite = (window.innerWidth)*0.84-52;
+var breite = (screen.width)*0.84-52;
 var cod0 = [];
 var pressed = false;
+const obj = document.getElementById("zeichenfeld");
+const objSvg = document.getElementById("svg");
 
 function add(event) {
     if(!pressed) return;
-    const obj = document.getElementById("zeichenfeld");
-    const objSvg = document.getElementById("svg");
     if(touch) {
         x = event.getX-obj.offsetLeft;
         y = event.getY-obj.offsetTop;

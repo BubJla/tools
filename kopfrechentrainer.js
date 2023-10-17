@@ -276,7 +276,7 @@ if(window.innerWidth > 800) {
                 <span><input type="checkbox" id="autoPerformance" style="width: 1rem; height: 1rem;" checked></span>
             </div>
             <div style="width: 11%">
-                <input type="button" value = "NÄCHSTE" onclick="fehler++;neueaufgabe = true;" id="nextbutton" style="height: 90px; width: 100%; font-weight: 900;">
+                <input type="button" value = "N&Auml;CHSTE" onclick="fehler++;neueaufgabe = true;" id="nextbutton" style="height: 90px; width: 100%; font-weight: 900;">
             </div>
             <div style="width: 11%">
                 <input type="button" value = "ABGEBEN" onclick="ueberpruefen()" id="startbutton" style="height: 90px; width: 100%; font-weight: 900;">
@@ -347,7 +347,7 @@ else {
                 <span><input type="checkbox" id="autoPerformance" style="width: 1rem; height: 1rem;" checked></span>
             </div>
             <div style="width: 33.3%">
-                <input type="button" value = "NÄCHSTE" onclick="fehler++;neueaufgabe = true;" id="nextbutton" style="height: 90px; width: 100%; font-weight: 900;">
+                <input type="button" value = "N&Auml;CHSTE" onclick="fehler++;neueaufgabe = true;" id="nextbutton" style="height: 90px; width: 100%; font-weight: 900;">
             </div>
             <div style="width: 33.3%">
                 <input type="button" value = "ABGEBEN" onclick="ueberpruefen()" id="startbutton" style="height: 90px; width: 100%; font-weight: 900;">

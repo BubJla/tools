@@ -22,7 +22,6 @@ gtag('config', 'G-QPH30E9YBE');
   <link rel="alternate" href="en.html" hreflang="en">
   
 `;
-alert("Das ist ein Beispieltext mit einem &ouml;.");
 
 /*const date = new Date().getTime();
 switch(date%8) {
