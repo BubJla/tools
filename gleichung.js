@@ -1091,8 +1091,8 @@ document.addEventListener('touchstart', function() {
     touch = true;
 });
 
-setInterval(function () {document.getElementById("graph").addEventListener('DOMMouseScroll', coordinates);}, 200);
-setInterval(function () {document.getElementById("graph").addEventListener('mousewheel', coordinates);}, 100);
+setInterval(function () {document.getElementById("graph").addEventListener('DOMMouseScroll', coordinates);}, 20);
+setInterval(function () {document.getElementById("graph").addEventListener('mousewheel', coordinates);}, 10);
 
 window.addEventListener("resize", function(event){
     breite = (window.innerWidth)*0.84-52;
