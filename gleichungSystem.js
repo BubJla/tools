@@ -79,7 +79,7 @@ function lgs() {
   for (let l = 1; l <= array.length; l++) {
     innerErg += `
     <br>
-    <d>x` + l + `= <input type = "text" value = "` + ergebnisArray[l - 1] + `" style="border: 0px;" ></d>
+    <d>x` + l + `= <input type = "text" value = "` + ergebnisArray[l - 1] + `" style="border: 0px; width: auto;" ></d>
     `;
   }
   document.getElementById("ergebnisLGS").innerHTML = innerErg;
