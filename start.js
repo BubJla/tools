@@ -1,7 +1,7 @@
-var t00 = new Date().getTime();
+/*var t00 = new Date().getTime();
 for(let i = 0; i< 100000000; i++) ;
 var t11 = new Date().getTime();
-alert(t11-t00);
+alert(t11-t00);*/
 document.querySelector(":root").style.setProperty("--screenWidth", window.innerWidth+"px");
 
 document.head.innerHTML += `
