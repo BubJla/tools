@@ -12,24 +12,6 @@ document.head.innerHTML += `
 <link rel="manifest" href="/site.webmanifest">
 
 
-<!-- Matomo -->
-<script>
-  var _paq = window._paq = window._paq || [];
-  /* tracker methods like "setCustomDimension" should be called before "trackPageView" */
-  _paq.push(["setDoNotTrack", true]);
-  _paq.push(["disableCookies"]);
-  _paq.push(['trackPageView']);
-  _paq.push(['enableLinkTracking']);
-  (function() {
-    var u="https://brumbi0.matomo.cloud/";
-    _paq.push(['setTrackerUrl', u+'matomo.php']);
-    _paq.push(['setSiteId', '1']);
-    var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
-    g.async=true; g.src='//cdn.matomo.cloud/brumbi0.matomo.cloud/matomo.js'; s.parentNode.insertBefore(g,s);
-  })();
-</script>
-<noscript><p><img src="https://brumbi0.matomo.cloud/matomo.php?idsite=1&amp;rec=1" style="border:0;" alt="" /></p></noscript>
-<!-- End Matomo Code -->
 
 
 
@@ -251,10 +233,34 @@ document.getElementById("navigationsleiste").innerHTML=`
         </a>
     </li>
 </div> 
-<div style="height: 10vh">    
+`;
+
+document.body.innerHTML+= `
+<div class="menuTools wrapMenuIcon">    
+    <div class="wrapMenu">
+
+        <div id="menuIcon" onclick="menu();">
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+
+    </div>
+</div>
+<div class="menuTools settingsGear">    
+
     <a id="settings" class="gear" href="settings.html">&#9881;</a>
 </div>`;
 
+    var counterMenuWrap = 1;
+    document.body.classList.add("click");
+
+function menu() {
+    const list = document.body.classList;
+    if(counterMenuWrap%2 == 1) list.remove("click");
+    else list.add("click");
+    counterMenuWrap++;
+}
 
 let aktuelleSeite = document.URL;
 aktuelleSeite =  aktuelleSeite.split("/");

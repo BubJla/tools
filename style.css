@@ -225,6 +225,10 @@ html::-webkit-scrollbar-track {
     background: linear-gradient(to right, rgba(118,118,118,0.45) 0%, rgba(118,118,118,0.25) 85%);
 }
 
+body:not(.noAnimation) .navigationsleiste{
+    transition: transform 500ms;
+}
+
 .zeitauswahlClickgeschw{
     width: 90%;
 }
@@ -234,6 +238,14 @@ html::-webkit-scrollbar-track {
     height: 100vh;
     background: var(--hintergrundfarbe);
     overflow: visible;
+}
+
+body:not(.noAnimation) .divges{
+    transition: all 500ms;
+}
+
+body:not(.click) .divges{
+    margin-left: 0%;
 }
 
 .listeNebeneinander a{
@@ -250,6 +262,18 @@ body{
     font-family: var(--schriftart);
     margin: 0;
     background: var(--hintergrundfarbe);
+}
+
+body:not(.noAnimation) .listeNebeneinander{
+    transition: all 500ms;
+    /*transform 500ms, padding 500ms, margin 500ms, */
+}
+
+body:not(.click) .listeNebeneinander{
+    transform: translateX(100%);
+    padding: 0;
+    margin: 0;
+    height: 0px;
 }
 
 a{
@@ -332,10 +356,6 @@ span{
     justify-content: space-around;
 }
 
-.gear:hover{
-    font-size: calc(var(--groesse)*2.6rem);
-}
-
 input{
     width: 7%;
     accent-color: var(--akzentfarbe3)!important;
@@ -368,7 +388,7 @@ hr{
 }
 
 .listeNebeneinander{
-    height: calc((var(--groesse)+1)*1.8rem)!important;
+    height: calc((var(--groesse)+1)*1.8rem);
     list-style-type: none;
     width: 100%;
     display: flex;
@@ -775,13 +795,109 @@ body:not(.noAnimation) input:not([type="range"]):hover{
 }
 
 .gear {
-    padding-left: 10%!important;
     font-size: calc(var(--groesse)*2rem);
     justify-content: left;
 }
 
+
+
+
+
+
+
+
+
+
+#menuIcon{
+    width: 50px;
+    height: 50px;
+    overflow: visible;
+    transform: scale(0.6);
+}
+
+body:not(.click) #menuIcon{
+    background: var(--hintergrundfarbe);
+}
+
+body:not(.noAnimation) #menuIcon {
+    transition: all 0.2s;
+}
+
+#menuIcon div{
+    width: 50px;
+    height: 5px;
+    background: var(--schriftfarbe);
+    margin-bottom: 17.5px;
+    border-radius: 2px;
+}
+
+body:not(.noAnimation) #menuIcon div{
+    transition: all 700ms;
+}
+
+body.click #menuIcon div:nth-child(1){
+    transform-origin: 0%;
+    rotate: 45deg;
+    width: 63px;
+}
+
+body.click #menuIcon div:nth-child(3){
+    transform-origin: 0%;
+    rotate: -45deg;
+    width: 63px;
+}
+
+body.click #menuIcon div:nth-child(2){
+    opacity: 0;
+    transform: translateX(35px);
+}
+
+#menuIcon:hover{
+    transform: scale(0.8);
+}
+
+.menuTools{
+    top: 80%;
+    position: fixed;
+    display: flex;
+    align-items: center;
+}
+
+
+.wrapMenuIcon{
+    left: 1%;
+}
+
+.settingsGear{
+    left: 9%;
+}
+
+body:not(.noAnimation) .settingsGear{
+    transition: all 500ms;
+}
+
+body:not(.click) #navigationsleiste{
+    transform: translateX(-100%);
+}
+
+body:not(.click) .settingsGear{
+    transform: translateX(calc(var(--screenWidth)*-0.16));
+}
+
+
+
+
+
+
+
+.gear:hover{
+    font-size: calc(var(--groesse)*2.6rem);
+    margin-top: -5px;
+    margin-left: -5px;
+}
+
 body:not(.noAnimation) .gear {
-    transition: all 0.5s ease;
+    transition: all 0.3s ease;
 }
 
 d{
