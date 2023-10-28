@@ -326,10 +326,10 @@ if(window.innerWidth > 800) {
                     </div>
                     <a class="gear" style="padding-left: 0px">&#9881;</a>
                 </ul>
-                <div class = "divges" style="width: `+(breite*0.83)+`px; background: #0000">
+                <div class = "divges settings" style="width: `+(breite*0.83)+`px; background: #0000">
                     <h1 class = "head" >Überschrift</h1>
                     <hr>
-                    <ul class="listeNebeneinander">
+                    <ul class="listeNebeneinander settings">
                         <li class="nebeneinander">
                             <a class="aktiv">generiert</a>
                         </li>
@@ -387,10 +387,10 @@ else {
             </div>
             <a class="gear" style="padding-left: 0px">&#9881;</a>
         </ul>
-        <div class = "divges" style="width: `+(breite*0.83)+`px; background: #0000">
+        <div class = "divges settings" style="width: `+(breite*0.83)+`px; background: #0000">
                 <h1 class = "head" >Überschrift</h1>
                 <hr>
-                <ul class="listeNebeneinander">
+                <ul class="listeNebeneinander settings">
                     <li class="nebeneinander">
                         <a class="aktiv">generiert</a>
                     </li>

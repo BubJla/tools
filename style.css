@@ -244,7 +244,7 @@ body:not(.noAnimation) .divges{
     transition: all 500ms;
 }
 
-body:not(.click) .divges{
+body:not(.click) .divges:not(.settings){
     margin-left: 0%;
 }
 
@@ -269,11 +269,10 @@ body:not(.noAnimation) .listeNebeneinander{
     /*transform 500ms, padding 500ms, margin 500ms, */
 }
 
-body:not(.click) .listeNebeneinander{
+body:not(.click) .listeNebeneinander:not(.settings){
     transform: translateX(100%);
     padding: 0;
-    margin: 0;
-    height: 0px;
+    margin-bottom: -2%;
 }
 
 a{
@@ -382,8 +381,8 @@ body:not(.noAnimation) d{
 }
 
 hr{
-    margin-bottom: 3%;
-    margin-top: 3%;
+    margin-bottom: 1%;
+    margin-top: 1%;
     border-top: 1px solid var(--schriftfarbe);
 }
 
@@ -857,7 +856,7 @@ body.click #menuIcon div:nth-child(2){
 }
 
 .menuTools{
-    top: 80%;
+    top: 80vh;
     position: fixed;
     display: flex;
     align-items: center;
