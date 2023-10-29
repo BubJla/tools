@@ -223,6 +223,7 @@ html::-webkit-scrollbar-track {
     position: fixed;
     overflow: auto;
     background: linear-gradient(to right, rgba(118,118,118,0.45) 0%, rgba(118,118,118,0.25) 85%);
+    z-index: 10;
 }
 
 body:not(.noAnimation) .navigationsleiste{
@@ -283,6 +284,7 @@ a{
 
 li{
     overflow: hidden;
+    z-index: 10;
 }
 
 li a{
@@ -387,7 +389,7 @@ hr{
 }
 
 .listeNebeneinander{
-    height: calc((var(--groesse)+1)*1.8rem);
+    height: calc((var(--groesse) + 0.5)*1.8rem);
     list-style-type: none;
     width: 100%;
     display: flex;
@@ -397,6 +399,15 @@ hr{
     margin-bottom: 2%;
     background: linear-gradient(-90deg, rgba(118,118,118,0.6) 0%, rgba(118,118,118,0.25) 100%);
  }
+
+#activeBackground{
+    height: calc((var(--groesse) + 0.5)*1.8rem);
+    position: absolute;
+    background: var(--akzentfarbe2aktiv); 
+    z-index: 6;
+    border-radius: 10px;
+    transition: all 1000ms;
+}
 
 .nebeneinander{
     float: left;
@@ -416,8 +427,13 @@ body:not(.noAnimation) .listeNebeneinander a.aktiv{
     animation: transition3 1500ms;
 }
 
-.listeNebeneinander li a:hover:not(.aktiv){
+.listeNebeneinander li:hover:not(.aktiv){
     background: var(--akzentfarbe2);
+    border-radius: 10px;
+}
+
+.listeNebeneinander li{
+transition: all 0.5s;
 }
 
 .anderes{
@@ -860,6 +876,7 @@ body.click #menuIcon div:nth-child(2){
     position: fixed;
     display: flex;
     align-items: center;
+    z-index: 12;;
 }
 
 

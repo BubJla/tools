@@ -12,7 +12,7 @@ var xV = breite/2;
 var xF = 50;
 var yV = 200;
 var yF = 25;
-var gL;
+var gL = "";
 var gR;
 var e = [];
 var e2 = [];

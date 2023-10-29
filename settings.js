@@ -465,3 +465,5 @@ document.getElementById("akzentfarbe1").value = document.querySelector(":root").
 window.addEventListener("resize", function(event){
     location.reload();
 });
+
+document.getElementById("sans").checked = true;

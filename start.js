@@ -2,6 +2,7 @@
 for(let i = 0; i< 100000000; i++) ;
 var t11 = new Date().getTime();
 alert(t11-t00);*/
+var posBar = -99;
 document.querySelector(":root").style.setProperty("--screenWidth", window.innerWidth+"px");
 
 document.head.innerHTML += `
@@ -265,14 +266,14 @@ function menu() {
     const list = document.body.classList;
     if(counterMenuWrap%2 == 1) {
         list.remove("click");
-        if(side == "gleichung") {
+        if(side == "gleichung" && gL != "") {
             breite = (window.innerWidth)-52;
             refreshGraph();
         }
     }
     else {
         list.add("click");
-        if(side == "gleichung") {
+        if(side == "gleichung" && gL != "") {
             breite = (window.innerWidth)*0.84-52;
         }
     }
@@ -311,9 +312,45 @@ if(readCookie("animation") != 0) {
     window.addEventListener('beforeunload', function() {
         sideNow = document.querySelector(".animate");
         sessionStorage.setItem('lastSide', sideNow.innerHTML);
+        sessionStorage.setItem('lastSideBar', aktuelleSeite);
+        sessionStorage.setItem('posBar0', sessionStorage.getItem("posBar1"));
+        if(posBar != -99) sessionStorage.setItem('posBar1', posBar);
     });
 }
 
 window.addEventListener("resize", function(event){
     document.querySelector(":root").style.setProperty("--screenWidth", window.innerWidth+"px");
 });
+
+
+var num;
+var barDisabled = 0;
+if(aktuelleSeite == "mathe") num = 5;
+else if(aktuelleSeite == "zeit") num = 3;
+else if(aktuelleSeite == "spiele") num = 4;
+else if(aktuelleSeite == "sicherheit") num = 3;
+else barDisabled = 1;
+let counter88 = 0;
+let wid = window.innerWidth*0.84/num;
+if(aktuelleSeite != sessionStorage.getItem("lastSideBar")) {
+    sessionStorage.setItem('posBar0', 0);
+    sessionStorage.setItem('posBar1', 0);
+}
+let pos0 = sessionStorage.getItem("posBar0");
+let pos1 = sessionStorage.getItem("posBar1");
+console.log(pos0);
+console.log(pos1);
+if(barDisabled == 0) {
+    document.getElementById("activeBackground").style.width = wid+"px";
+    document.getElementById("activeBackground").style.left = (screen.width*0.16+wid*pos0)+"px";    
+    document.getElementById("activeBackground").style.transitionDuration = (Math.abs(pos1-pos0)*150+300)+"ms";    
+
+    var intval = setInterval(function() {
+        if(counter88 == 1) {
+            document.getElementById("activeBackground").style.width = wid+"px";
+            document.getElementById("activeBackground").style.left = (screen.width*0.16+wid*pos1)+"px";    
+            clearInterval(intval);
+        }
+        counter88++;
+    }, 1);
+}
