@@ -355,5 +355,5 @@ if(barDisabled == 0) {
     }, 1);
 }
 
-alert(window.width);
+alert(window.innerWidth);
 alert(screen.width);
