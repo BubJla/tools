@@ -338,8 +338,8 @@ if(aktuelleSeite != sessionStorage.getItem("lastSideBar")) {
 }
 let pos0 = sessionStorage.getItem("posBar0");
 let pos1 = sessionStorage.getItem("posBar1");
-console.log(pos0);
-console.log(pos1);
+/*console.log(pos0);
+console.log(pos1);*/
 if(barDisabled == 0) {
     document.getElementById("activeBackground").style.width = wid+"px";
     document.getElementById("activeBackground").style.left = (screen.width*0.16+wid*pos0)+"px";    
@@ -354,3 +354,6 @@ if(barDisabled == 0) {
         counter88++;
     }, 1);
 }
+
+alert(window.width);
+alert(screen.width);

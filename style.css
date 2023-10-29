@@ -405,8 +405,7 @@ hr{
     position: absolute;
     background: var(--akzentfarbe2aktiv); 
     z-index: 6;
-    border-radius: 10px;
-    transition: all 1000ms;
+    border-radius: 15px;
 }
 
 .nebeneinander{
@@ -429,11 +428,15 @@ body:not(.noAnimation) .listeNebeneinander a.aktiv{
 
 .listeNebeneinander li:hover:not(.aktiv){
     background: var(--akzentfarbe2);
-    border-radius: 10px;
+    border-radius: 15px;
+}
+
+.nebeneinander:hover a:not(.aktiv){
+    scale: 1.3;
 }
 
 .listeNebeneinander li{
-transition: all 0.5s;
+    transition: all 400ms;
 }
 
 .anderes{
@@ -947,10 +950,6 @@ body:not(.noAnimation) .sett h1 {
     transform: scale(0);
 }
 
-.nebeneinander:hover a:not(.aktiv){
-    font-size: calc(var(--groesse)*0.8rem);
-    transform: scaleY(1.22);
-}
 
 .clock .hand.millisecondin {
     background: var(--akzentfarbe3);
