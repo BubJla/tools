@@ -355,5 +355,3 @@ if(barDisabled == 0) {
     }, 1);
 }
 
-alert(window.innerWidth);
-alert(screen.width);
