@@ -77,9 +77,9 @@ function changeSetting(){
     var schriftart;
     var animationType;
     if(!navigator.cookieEnabled) alert("Cookies müssen aktiviert sein um diese Funktion zu nutzen");
-    if(document.getElementById("sans").checked == true) schriftart = "sans-serif"
-    else if(document.getElementById("serif").checked == true) schriftart = "serif";
-    else schriftart = "cursive";
+    if(document.getElementById("serif").checked == true) schriftart = "serif"
+    else if(document.getElementById("cursive").checked == true) schriftart = "cursive";
+    else schriftart = "sans-serif";
     if(schriftart == "cursive") groesse *= 1.3;
     document.querySelector(":root").style.setProperty("--groesse", groesse);
     document.querySelector(":root").style.setProperty("--schriftfarbe", schriftfarbe);
@@ -451,9 +451,9 @@ else {
     else document.getElementById("animationT2").checked = true;
 }
 if(document.querySelector(":root").style.getPropertyValue("--schriftart")=="") document.querySelector(":root").style.setProperty("--schriftart", "sans-serif");
-if(document.querySelector(":root").style.getPropertyValue("--schriftart")=="sans-serif") document.getElementById("sans").checked = true;
-else if(document.querySelector(":root").style.getPropertyValue("--schriftart")=="serif") document.getElementById("serif").checked = true;
-else document.getElementById("cursive").checked = true;
+if(document.querySelector(":root").style.getPropertyValue("--schriftart")=="serif") document.getElementById("serif").checked = true;
+else if(document.querySelector(":root").style.getPropertyValue("--schriftart")=="cursive") document.getElementById("cursive").checked = true;
+else document.getElementById("sans").checked = true;
 if(document.querySelector(":root").style.getPropertyValue("--schriftart")=="cursive") document.getElementById("groesseSchrift").value = document.querySelector(":root").style.getPropertyValue("--groesse")/1.3;
 else document.getElementById("groesseSchrift").value = document.querySelector(":root").style.getPropertyValue("--groesse");
 document.getElementById("schriftfarbe").value = document.querySelector(":root").style.getPropertyValue("--schriftfarbe");

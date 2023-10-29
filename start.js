@@ -256,9 +256,26 @@ document.body.innerHTML+= `
     document.body.classList.add("click");
 
 function menu() {
+    let side = document.URL;
+    side =  side.split("/");
+    side =  side[side.length-1];
+    side =  side.split(".");
+    side =  side[0];
+    //alert(side);
     const list = document.body.classList;
-    if(counterMenuWrap%2 == 1) list.remove("click");
-    else list.add("click");
+    if(counterMenuWrap%2 == 1) {
+        list.remove("click");
+        if(side == "gleichung") {
+            breite = (window.innerWidth)-52;
+            refreshGraph();
+        }
+    }
+    else {
+        list.add("click");
+        if(side == "gleichung") {
+            breite = (window.innerWidth)*0.84-52;
+        }
+    }
     counterMenuWrap++;
 }
 
