@@ -342,16 +342,22 @@ let pos1 = sessionStorage.getItem("posBar1");
 console.log(pos1);*/
 if(barDisabled == 0) {
     document.getElementById("activeBackground").style.width = wid+"px";
-    document.getElementById("activeBackground").style.left = (screen.width*0.16+wid*pos0)+"px";    
+    document.getElementById("activeBackground").style.left = (window.innerWidth*0.16+wid*pos0)+"px";    
     document.getElementById("activeBackground").style.transitionDuration = (Math.abs(pos1-pos0)*150+300)+"ms";    
 
     var intval = setInterval(function() {
         if(counter88 == 1) {
             document.getElementById("activeBackground").style.width = wid+"px";
-            document.getElementById("activeBackground").style.left = (screen.width*0.16+wid*pos1)+"px";    
+            document.getElementById("activeBackground").style.left = (window.innerWidth*0.16+wid*pos1)+"px";    
             clearInterval(intval);
         }
         counter88++;
     }, 1);
 }
 
+window.addEventListener("resize", function() {
+    let wid = window.innerWidth*0.84/num;
+    document.getElementById("activeBackground").style.width = wid+"px";
+    document.getElementById("activeBackground").style.left = (window.innerWidth*0.16+wid*pos1)+"px";    
+
+});
