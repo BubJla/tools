@@ -3,6 +3,7 @@ for(let i = 0; i< 100000000; i++) ;
 var t11 = new Date().getTime();
 alert(t11-t00);*/
 var posBar = -99;
+var posBarL = -99;
 document.querySelector(":root").style.setProperty("--screenWidth", window.innerWidth+"px");
 
 document.head.innerHTML += `
@@ -192,46 +193,48 @@ else {
 document.getElementById("navigationsleiste").innerHTML=`
 <div style="height: 84vh">
     <li> 
-        <a href="index.html" id="start">
+        <a href="index.html" id="start" onclick="posBarL = 0">
             <div>
                 Home
             </div>
         </a>
     </li>
     <li>    
-        <a id="mathe" href="gleichung.html">
+        <a id="mathe" href="gleichung.html" onclick="posBarL = 1">
             <div>
                 Mathematik
             </div>
         </a>
     </li>
     <li>    
-        <a id="zeit" href="zeit.html">
+        <a id="zeit" href="zeit.html" onclick="posBarL = 2">
             <div>
                 Zeit
             </div>
         </a>
     </li>
     <li>    
-        <a id="spiele" href="kopfrechentraining.html">
+        <a id="spiele" href="kopfrechentraining.html" onclick="posBarL = 3">
             <div>
                 Spiele
             </div>
         </a>
     </li>
     <li>    
-        <a id="sicherheit" href="eigenschaften.html">
+        <a id="sicherheit" href="eigenschaften.html" onclick="posBarL = 4">
             <div>
                 Sonstiges
             </div>
         </a>
     </li>
     <li>    
-        <a id="impressum" href="impressum.html">
+        <a id="impressum" href="impressum.html" onclick="posBarL = 5">
             <div>
                 Impressum
             </div>
         </a>
+    </li>
+    <li id="activeBackgroundLeft">    
     </li>
 </div> 
 `;
@@ -312,9 +315,6 @@ if(readCookie("animation") != 0) {
     window.addEventListener('beforeunload', function() {
         sideNow = document.querySelector(".animate");
         sessionStorage.setItem('lastSide', sideNow.innerHTML);
-        sessionStorage.setItem('lastSideBar', aktuelleSeite);
-        sessionStorage.setItem('posBar0', sessionStorage.getItem("posBar1"));
-        if(posBar != -99) sessionStorage.setItem('posBar1', posBar);
     });
 }
 
@@ -322,6 +322,13 @@ window.addEventListener("resize", function(event){
     document.querySelector(":root").style.setProperty("--screenWidth", window.innerWidth+"px");
 });
 
+window.addEventListener('beforeunload', function() {
+    sessionStorage.setItem('lastSideBar', aktuelleSeite);
+    sessionStorage.setItem('posBar0', sessionStorage.getItem("posBar1"));
+    if(posBar != -99) sessionStorage.setItem('posBar1', posBar);
+    sessionStorage.setItem('posBar0L', sessionStorage.getItem("posBar1L"));
+    if(posBarL != -99) sessionStorage.setItem('posBar1L', posBarL);
+});
 
 var num;
 var barDisabled = 0;
@@ -338,13 +345,12 @@ if(aktuelleSeite != sessionStorage.getItem("lastSideBar")) {
 }
 let pos0 = sessionStorage.getItem("posBar0");
 let pos1 = sessionStorage.getItem("posBar1");
-/*console.log(pos0);
-console.log(pos1);*/
+console.log(pos0);
+console.log(pos1);
 if(barDisabled == 0) {
     document.getElementById("activeBackground").style.width = wid+"px";
     document.getElementById("activeBackground").style.left = (window.innerWidth*0.16+wid*pos0)+"px";    
-    document.getElementById("activeBackground").style.transitionDuration = (Math.abs(pos1-pos0)*150+300)+"ms";    
-
+    if(readCookie("animation") != 0) document.getElementById("activeBackground").style.transitionDuration = (Math.abs(pos1-pos0)*150+300)+"ms";    
     var intval = setInterval(function() {
         if(counter88 == 1) {
             document.getElementById("activeBackground").style.width = wid+"px";
@@ -361,3 +367,24 @@ window.addEventListener("resize", function() {
     document.getElementById("activeBackground").style.left = (window.innerWidth*0.16+wid*pos1)+"px";    
 
 });
+
+barDisabledL = 0;
+if(aktuelleSeite != "settings") ;
+else barDisabledL = 1;
+var counter77 = 0;
+pos0L = sessionStorage.getItem("posBar0L");
+pos1L = sessionStorage.getItem("posBar1L");
+console.log("L");
+console.log(pos0L);
+console.log(pos1L);
+if(barDisabledL == 0) {
+    document.getElementById("activeBackgroundLeft").style.top = (pos0L*document.querySelector(":root").style.getPropertyValue("--groesse")*40+10)+"px";    
+    if(readCookie("animation") != 0) document.getElementById("activeBackgroundLeft").style.transitionDuration = (Math.abs(pos1L-pos0L)*110+130)+"ms";    
+    var intval2 = setInterval(function() {
+        if(counter77 == 1) {
+            document.getElementById("activeBackgroundLeft").style.top = (pos1L*document.querySelector(":root").style.getPropertyValue("--groesse")*40+10)+"px";    
+            clearInterval(intval2);
+        }
+        counter77++;
+    }, 1);
+}
