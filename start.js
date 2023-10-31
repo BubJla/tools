@@ -193,42 +193,42 @@ else {
 document.getElementById("navigationsleiste").innerHTML=`
 <div style="height: 84vh">
     <li> 
-        <a href="index.html" id="start" onclick="posBarL = 0">
+        <a href="index.html" id="start" onclick="posBarL = 0; posBar = 0;">
             <div>
                 Home
             </div>
         </a>
     </li>
     <li>    
-        <a id="mathe" href="gleichung.html" onclick="posBarL = 1">
+        <a id="mathe" href="gleichung.html" onclick="posBarL = 1; posBar = 0;">
             <div>
                 Mathematik
             </div>
         </a>
     </li>
     <li>    
-        <a id="zeit" href="zeit.html" onclick="posBarL = 2">
+        <a id="zeit" href="zeit.html" onclick="posBarL = 2; posBar = 0;">
             <div>
                 Zeit
             </div>
         </a>
     </li>
     <li>    
-        <a id="spiele" href="kopfrechentraining.html" onclick="posBarL = 3">
+        <a id="spiele" href="kopfrechentraining.html" onclick="posBarL = 3; posBar = 0;">
             <div>
                 Spiele
             </div>
         </a>
     </li>
     <li>    
-        <a id="sicherheit" href="eigenschaften.html" onclick="posBarL = 4">
+        <a id="sicherheit" href="eigenschaften.html" onclick="posBarL = 4; posBar = 0;">
             <div>
                 Sonstiges
             </div>
         </a>
     </li>
     <li>    
-        <a id="impressum" href="impressum.html" onclick="posBarL = 5">
+        <a id="impressum" href="impressum.html" onclick="posBarL = 5; posBar = 0;">
             <div>
                 Impressum
             </div>
@@ -304,6 +304,7 @@ aktuelleSeite =  aktuelleSeite.replace("zeichnen", "sicherheit");
 if(aktuelleSeite == '')aktuelleSeite = "start";
 if(aktuelleSeite != 'settings') document.getElementById(aktuelleSeite).setAttribute("class", "aktiv");
 
+if(aktuelleSeite == sessionStorage.getItem("lastSideBar")) document.body.classList.add("samesite");
 
 if(readCookie("animation") != 0) {
     var sideNow = document.querySelector(".animate");
@@ -351,11 +352,11 @@ if(barDisabled == 0) {
     document.getElementById("activeBackground").style.width = wid+"px";
     document.getElementById("activeBackground").style.left = (window.innerWidth*0.16+wid*pos0)+"px";    
     if(readCookie("animation") != 0) document.getElementById("activeBackground").style.transitionDuration = (Math.abs(pos1-pos0)*150+300)+"ms";    
-    var intval = setInterval(function() {
+    var intval99 = setInterval(function() {
         if(counter88 == 1) {
             document.getElementById("activeBackground").style.width = wid+"px";
             document.getElementById("activeBackground").style.left = (window.innerWidth*0.16+wid*pos1)+"px";    
-            clearInterval(intval);
+            clearInterval(intval99);
         }
         counter88++;
     }, 1);
@@ -368,12 +369,12 @@ window.addEventListener("resize", function() {
 
 });
 
-barDisabledL = 0;
+const barDisabledL = 0;
 if(aktuelleSeite != "settings") ;
 else barDisabledL = 1;
 var counter77 = 0;
-pos0L = sessionStorage.getItem("posBar0L");
-pos1L = sessionStorage.getItem("posBar1L");
+let pos0L = sessionStorage.getItem("posBar0L");
+let pos1L = sessionStorage.getItem("posBar1L");
 console.log("L");
 console.log(pos0L);
 console.log(pos1L);

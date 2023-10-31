@@ -330,7 +330,7 @@ if(window.innerWidth > 800) {
                     <h1 class = "head" >Überschrift</h1>
                     <hr>
                     <ul class="listeNebeneinander settings">
-                        <li class="nebeneinander">
+                        <li class="nebeneinander" style="border-radius: 15px">
                             <a class="aktiv">generiert</a>
                         </li>
                         <li class="nebeneinander">
@@ -391,7 +391,7 @@ else {
                 <h1 class = "head" >Überschrift</h1>
                 <hr>
                 <ul class="listeNebeneinander settings">
-                    <li class="nebeneinander">
+                    <li class="nebeneinander" style="border-radius: 15px">
                         <a class="aktiv">generiert</a>
                     </li>
                     <li class="nebeneinander">
