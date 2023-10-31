@@ -307,7 +307,7 @@ if(window.innerWidth > 800) {
                 <ul class = "navigationsleiste" style="height: 348px; width: `+(breite*0.16)+`px; position: absolute;">
                     <div style="height: 83%;">
                         <li>
-                            <a class="aktiv">generiert</a>
+                            <a class="aktiv" style="background: var(--akzentfarbe1aktiv)!important;border-radius: 0px 15px 15px 0px;">generiert</a>
                         </li>
                         <li>
                             <a>
@@ -368,7 +368,7 @@ else {
         <ul class = "navigationsleiste" style="height: 348px; width: `+(breite*0.16)+`px; position: absolute;">
             <div style="height: 83%;">
                 <li>
-                    <a class="aktiv">generiert</a>
+                    <a class="aktiv" style="background: var(--akzentfarbe1aktiv)!important;border-radius: 0px 15px 15px 0px;">generiert</a>
                 </li>
                 <li>
                     <a>
@@ -466,4 +466,3 @@ window.addEventListener("resize", function(event){
     location.reload();
 });
 
-document.getElementById("sans").checked = true;

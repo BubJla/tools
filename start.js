@@ -368,7 +368,10 @@ window.addEventListener("resize", function() {
     document.getElementById("activeBackground").style.left = (window.innerWidth*0.16+wid*pos1)+"px";    
 
 });
-
+if(sessionStorage.getItem("posBar0L")==null) {
+    sessionStorage.setItem('posBar0L', 0);
+    sessionStorage.setItem('posBar1L', 0);
+}
 const barDisabledL = 0;
 if(aktuelleSeite != "settings") ;
 else barDisabledL = 1;
