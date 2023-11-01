@@ -269,8 +269,8 @@ function menu() {
     const list = document.body.classList;
     if(counterMenuWrap%2 == 1) {
         list.remove("click");
+        breite = (window.innerWidth)-52;
         if(side == "gleichung" && gL != "") {
-            breite = (window.innerWidth)-52;
             refreshGraph();
         }
     }

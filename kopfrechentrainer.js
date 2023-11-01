@@ -168,7 +168,7 @@ function ueberpruefen() {
     else if(zeit != 0) Math.round(1000/(zeit/aufgaben)/((fehler/aufgaben)+1));
     document.getElementById("punkte").innerHTML = punkte;
     var aufstieg = document.getElementById("autoPerformance").checked;
-    if(punkte/level < 30 && level != 1 && level != 0 && level != 22 && aufgaben > 2 && aufstieg == true) {
+    if(punkte/level < 50 && level != 1 && level != 0 && level != 22 && aufgaben > 2 && aufstieg == true) {
         level --;
         reset();
     }
