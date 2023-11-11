@@ -140,7 +140,7 @@
         transform: translateX(10%);
     }
     100%{
-        transform: translateX(107%);
+        transform: translateX(calc(var(--screenWidth)*0.16));
     }
 }
 
