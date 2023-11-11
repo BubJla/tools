@@ -356,6 +356,9 @@ if(barDisabled == 0) {
         if(counter88 == 1) {
             document.getElementById("activeBackground").style.width = wid+"px";
             document.getElementById("activeBackground").style.left = (window.innerWidth*0.16+wid*pos1)+"px";    
+        }
+        if(counter88 == 100) {
+            document.getElementById("activeBackground").style.transitionDelay = "500ms";
             clearInterval(intval99);
         }
         counter88++;

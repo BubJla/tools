@@ -429,14 +429,22 @@ hr{
     padding: 0;
     margin-bottom: 2%;
     background: linear-gradient(-90deg, rgba(118,118,118,0.6) 0%, rgba(118,118,118,0.25) 100%);
- }
+}
 
 #activeBackground{
     height: calc((var(--groesse) + 0.5)*1.8rem);
     position: absolute;
-    background: var(--akzentfarbe2aktiv); 
     z-index: 6;
     border-radius: 15px;
+    transition: all 0ms;
+}
+
+body:not(.click) #activeBackground {
+    background: #0000; 
+}
+
+body.click #activeBackground {
+    background: var(--akzentfarbe2aktiv); 
 }
 
 input{
