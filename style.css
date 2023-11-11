@@ -980,6 +980,13 @@ body:not(.click) #navigationsleiste{
 
 body:not(.click) .settingsGear{
     transform: translateX(calc(var(--screenWidth)*-0.16));
+    opacity: 0;
+    z-index: 1;
+}
+
+body.click .settingsGear{
+    opacity: 1;
+    z-index: 10;
 }
 
 
