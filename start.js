@@ -395,3 +395,5 @@ if(barDisabledL == 0) {
         counter77++;
     }, 1);
 }
+
+alert(window.innerWidth);
