@@ -227,9 +227,9 @@ html::-webkit-scrollbar-track {
     animation: none;
     height: 100vh;
     position: fixed;
-    overflow: auto;
     background: linear-gradient(to right, rgba(118,118,118,0.45) 0%, rgba(118,118,118,0.25) 85%);
     z-index: 10;
+
 }
 
 body:not(.noAnimation) .navigationsleiste{
@@ -245,6 +245,7 @@ body:not(.noAnimation) .navigationsleiste{
     height: 100vh;
     background: var(--hintergrundfarbe);
     overflow: visible;
+    overflow-x: hidden;
 }
 
 body:not(.noAnimation) .divges{
