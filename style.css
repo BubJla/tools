@@ -84,7 +84,7 @@
         opacity: 0;
     }
     50%{
-        opacity: 0.5;
+        opacity: 0.4;
         filter: blur(2px);
     }
     100%{
@@ -181,6 +181,21 @@
 }
 
 .animate{
+    animation: transition12 700ms;
+}
+.animate2{
+    animation: transition22 700ms;
+}
+
+.animate12{
+    animation: transition1 500ms;
+}
+.animate22{
+    animation: transition2 500ms;
+}
+
+/*
+.animate{
     animation: transition1 700ms;
 }
 .animate2{
@@ -193,6 +208,7 @@
 .animate22{
     animation: transition22 500ms;
 }
+*/
 
 html{
     scrollbar-width: auto;
@@ -858,7 +874,7 @@ body:not(.noAnimation) input[type="radio"]:checked {
 }
 
 body:not(.noAnimation) input:not([type="range"]):hover{
-    transform: scale(0.95, 0.9);
+    transform: scale(0.97, 0.9);
     border-radius: 10px;
 }
 
@@ -1299,7 +1315,8 @@ body:not(.noAnimation) .information:hover{
         scale: 0.1;
     }
 }
-@keyframes transitionUnload{
+
+@keyframes transitionUnload1{
     0%{
         opacity: 1;
         scale: 1;
@@ -1308,7 +1325,7 @@ body:not(.noAnimation) .information:hover{
     }
     50%{
         filter: blur(2px);
-        opacity: 0.6;
+        opacity: 0.4;
     }
     100%{
         opacity: 0;
@@ -1329,8 +1346,12 @@ body:not(.noAnimation) .information:hover{
     height: 100vh;
 }
 
-body:not(.noAnimation) #animateUnload{
-    animation: transitionUnload 500ms;
+body:not(.noAnimation) #animateUnload.ani0{
+    animation: transitionUnload1 500ms;
+}
+
+body:not(.noAnimation) #animateUnload.ani1{
+    animation: transitionUnload0 500ms;
 }
 
 #cookieAllow{

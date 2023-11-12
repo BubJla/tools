@@ -165,6 +165,7 @@ if(readCookie("groesse") == undefined) {
     setCookie("akzentfarbe2aktiv", "#2A702A");
     setCookie("groesse", 1);
     setCookie("automatikAktiv", "true");*/
+    document.getElementById("animateUnload").classList.add("ani0");
 }
 else {
     document.querySelector(":root").style.setProperty("--groesse", readCookie("groesse"));
@@ -188,6 +189,13 @@ else {
     if(animationType == 1) for(i = 0; i < elementsHead.length; i++) elementsHead[i].classList.add("animate22");
     else if(animationType != 2) for(i = 0; i < elementsHead.length; i++) elementsHead[i].classList.remove("animate2");
     if(animationType==0) document.body.classList.add("noAnimation");
+    if(animationType == 1) {
+        document.getElementById("animateUnload").classList.remove("ani0");
+        document.getElementById("animateUnload").classList.add("ani1");
+    }
+    else if(animationType == 0) document.getElementById("animateUnload").classList.remove("ani0");
+    else document.getElementById("animateUnload").classList.add("ani0");
+
   }
 
 document.getElementById("navigationsleiste").innerHTML=`
