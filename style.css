@@ -125,12 +125,12 @@
         background: var(--akzentfarbe1);
         transform: translateX(0);
         border-radius: 0px 15px 15px 0px;
-        height: calc(var(--groesse)*20px);
+        height: calc(var(--groesse)*40px - 20px);
     }
     100%{
         background: #0000;
         border-radius: 0px 15px 15px 0px;
-        height: calc(var(--groesse)*20px);
+        height: calc(var(--groesse)*40px - 20px);
         transform: translateX(-100%);
     }
 }
@@ -323,9 +323,8 @@ body:not(.noAnimation):not(.samesite) .navigationsleiste li a.aktiv div{
 .navigationsleiste li a:not(.aktiv){
     z-index: 10;
     background: linear-gradient(90deg, var(--akzentfarbe1aktiv)0%, var(--akzentfarbe1)30%, var(--akzentfarbe1)100%);
-    padding: 10px;
     background: var(--akzentfarbe1);
-    height: calc(var(--groesse)*30px - 10px);
+    height: calc(var(--groesse)*40px - 20px);
     transform: translateX(calc(var(--screenWidth)*-0.16));
     border-radius: 0px 15px 15px 0px;
     padding: 10px;
@@ -349,6 +348,7 @@ body:not(.noAnimation):not(.samesite) .navigationsleiste li a.aktiv div{
     left: 0%;
     width: calc(var(--screenWidth)*0.16);
     transform: translateX(0);
+    height: calc(var(--groesse)*40px);
 }
 
 .navigationsleiste li a div{
@@ -397,10 +397,11 @@ input{
     font-size: calc(var(--groesse)*1rem);
     font-family: var(--schriftart);
     border-color: var(--schriftfarbe);
+    border-radius: 3px;
 }
 
 body:not(.noAnimation) input{
-    transition: all 0.3s ease;
+    transition: all 0.3s;
 }
 
 d{
@@ -445,10 +446,6 @@ body:not(.click) #activeBackground {
 
 body.click #activeBackground {
     background: var(--akzentfarbe2aktiv); 
-}
-
-input{
-    border-radius: 8px;
 }
 
 .nebeneinander{
@@ -515,7 +512,7 @@ body:not(.noAnimation) .listeNebeneinander a.aktiv{
 }
 
 body:not(.noAnimation) .listeNebeneinander li{
-    transition: all 400ms;
+    transition: background 400ms, border-radius 600ms;
 }
 
 .anderes{
@@ -708,7 +705,8 @@ div{
 }
 
 .zahlenfelder div{
-    border-radius: 5px;
+    border: 1px solid var(--hintergrundfarbe);
+    border-radius: 3px;
     height: 65px;
     width: 65px;
     margin: 5px;
@@ -720,17 +718,21 @@ div{
 }
 
 body:not(.noAnimation) .zahlenfelder div{
-    transition: all 300ms;
+    transition: scale 200ms, border-radius 500ms, background 300ms, border 1000ms;
 }
 
 .zahlenfelder div:hover{
     background: #777a;
-    scale: 1.15;
+    scale: 1.25;
+    border-radius: 20px;
+    border: 1px solid var(--akzentfarbe3);
 }
 
 .operatorenfelder div:hover{
     background: #777a;
-    scale: 1.1;
+    scale: 1.15;
+    border-radius: 20px;
+    border: 1px solid var(--akzentfarbe3);
 }
 
 body:not(.noAnimation) a{
@@ -746,7 +748,8 @@ body:not(.noAnimation) a{
 }
 
 .operatorenfelder div{
-    border-radius: 5px;
+    border: 1px solid var(--hintergrundfarbe);
+    border-radius: 3px;
     height: 65px;
     width: 65px;
     margin: 5px;
@@ -758,7 +761,7 @@ body:not(.noAnimation) a{
 }
 
 body:not(.noAnimation) .operatorenfelder div{
-    transition: all 300ms;
+    transition: scale 200ms, border-radius 500ms, background 300ms, border 1000ms;
 }
 
 .ausgabefeld input{
@@ -855,6 +858,7 @@ body:not(.noAnimation) input[type="radio"]:checked {
 
 body:not(.noAnimation) input:not([type="range"]):hover{
     transform: scale(0.95, 0.9);
+    border-radius: 10px;
 }
 
 .einheitenlaeng input{
