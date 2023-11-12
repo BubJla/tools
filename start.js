@@ -396,4 +396,3 @@ if(barDisabledL == 0) {
     }, 1);
 }
 
-alert(window.innerWidth);

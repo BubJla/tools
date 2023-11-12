@@ -79,13 +79,13 @@
 
 @keyframes transition12 {
     0%{
-        filter: blur(2px);
+        filter: blur(5px);
         transform: translateX(100%);
         opacity: 0;
     }
     50%{
         opacity: 0.5;
-        filter: blur(1px);
+        filter: blur(2px);
     }
     100%{
         transform: translateX(0%);
@@ -1289,7 +1289,7 @@ body:not(.noAnimation) .information:hover{
     position: absolute;
 }
 
-@keyframes transitionUnload{
+@keyframes transitionUnload0{
     0%{
         opacity: 1;
         scale: 1;
@@ -1297,6 +1297,24 @@ body:not(.noAnimation) .information:hover{
     100%{
         opacity: 0.3;
         scale: 0.1;
+    }
+}
+@keyframes transitionUnload{
+    0%{
+        opacity: 1;
+        scale: 1;
+        transform: translateX(0%);
+        filter: blur(0px);
+    }
+    50%{
+        filter: blur(2px);
+        opacity: 0.6;
+    }
+    100%{
+        opacity: 0;
+        scale: 1;
+        transform: translateX(-100%);
+        filter: blur(5px);
     }
 }
 

@@ -7,7 +7,7 @@ function refreshEingabe() {
 }
 
 function eingabeTastatur() {
-    var text = document.getElementById("ausgabefeld").value.replace("*", "×").replace("/", "÷").replace(".", ",");
+    var text = document.getElementById("ausgabefeld").value.replace("*", "×").replace("/", "÷");
     if (text.length < eingabe.length) {
         eingabe = "";
         for (let i = 0; i < text.length - 1; i++) eingabe += text[i];
