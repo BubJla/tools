@@ -513,7 +513,7 @@ body:not(.noAnimation) .listeNebeneinander a.aktiv{
 }
 
 body:not(.noAnimation) .listeNebeneinander li{
-    transition: background 400ms, border-radius 600ms;
+    transition: all 400ms;
 }
 
 .anderes{

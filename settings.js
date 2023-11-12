@@ -8,7 +8,7 @@ if (result) {
 }*/
 
 
-var breite = (window.innerWidth)*0.84-230;
+var breite = (window.innerWidth)*0.84-240;
 
 
 function setCookie(name, value) {
@@ -300,10 +300,14 @@ function loeschen() {
 //breite = 1;
 
 if(window.innerWidth > 800) {
+    document.getElementById("vorschau01").style.width = breite+"px";
+    document.getElementById("settin").style.left = "16%";
+    document.getElementById("settin").style.position = "absolute";
     document.getElementById("vorschau01").innerHTML = `
         <d>Vorschau*:</d>
+        <d style="font-size: 0.7rem!important;">*nicht Maßstabsgetreu</d>
         <span>            
-            <div style="width: `+breite+`px; height: 360px; border: 5px solid var(--schriftfarbe);">
+            <div style="width: `+breite+`px; height: 360px; border: 5px solid var(--schriftfarbe); position: absolute;">
                 <ul class = "navigationsleiste" style="height: 348px; width: `+(breite*0.16)+`px; position: absolute;">
                     <div style="height: 83%;">
                         <li>
@@ -355,7 +359,6 @@ if(window.innerWidth > 800) {
             
             </div>
         </span>
-        <d style="font-size: 0.7rem!important;">*nicht Maßstabsgetreu</d>
     `;
 }
 else {
@@ -363,8 +366,9 @@ else {
     document.getElementById("vorschau02").innerHTML = `
     <hr>
     <d>Vorschau*:</d>
+    <d style="font-size: 0.7rem!important;">*nicht Maßstabsgetreu</d>
     <span>            
-        <div style="width: `+breite+`px; height: 360px; border: 5px solid var(--schriftfarbe);">
+        <div style="width: `+breite+`px; height: 360px; border: 5px solid var(--schriftfarbe); position: absolute;">
         <ul class = "navigationsleiste" style="height: 348px; width: `+(breite*0.16)+`px; position: absolute;">
             <div style="height: 83%;">
                 <li>
@@ -416,7 +420,6 @@ else {
         
         </div>
     </span>
-    <d style="font-size: 0.7rem!important;">*nicht Maßstabsgetreu</d>
 `;
 }
 
