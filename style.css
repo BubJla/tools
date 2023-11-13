@@ -447,6 +447,7 @@ hr{
     padding: 0;
     margin-bottom: 2%;
     background: linear-gradient(-90deg, rgba(118,118,118,0.6) 0%, rgba(118,118,118,0.25) 100%);
+    position: relative;
 }
 
 #activeBackground{
@@ -454,11 +455,6 @@ hr{
     position: absolute;
     z-index: 6;
     border-radius: 15px;
-    transition: all 0ms;
-}
-
-body:not(.click) #activeBackground {
-    background: #0000; 
 }
 
 body.click #activeBackground {

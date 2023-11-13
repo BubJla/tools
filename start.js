@@ -358,18 +358,14 @@ console.log(pos0);
 console.log(pos1);
 if(barDisabled == 0) {
     document.getElementById("activeBackground").style.width = wid+"px";
-    document.getElementById("activeBackground").style.left = (window.innerWidth*0.16+wid*pos0)+"px";    
+    document.getElementById("activeBackground").style.left = (window.innerWidth*0.16*0+wid*pos0)+"px";    
     if(readCookie("animation") != 0) document.getElementById("activeBackground").style.transitionDuration = (Math.abs(pos1-pos0)*150+300)+"ms";    
     var intval99 = setInterval(function() {
         if(counter88 == 1) {
             document.getElementById("activeBackground").style.width = wid+"px";
-            document.getElementById("activeBackground").style.left = (window.innerWidth*0.16+wid*pos1)+"px";    
-        }
-        if(counter88 == 100) {
-            document.getElementById("activeBackground").style.transitionDelay = "500ms";
+            document.getElementById("activeBackground").style.left = (window.innerWidth*0.16*0+wid*pos1)+"px";    
             clearInterval(intval99);
         }
-        counter88++;
     }, 1);
 }
 
@@ -383,24 +379,25 @@ if(sessionStorage.getItem("posBar0L")==null) {
     sessionStorage.setItem('posBar0L', 0);
     sessionStorage.setItem('posBar1L', 0);
 }
-const barDisabledL = 0;
-if(aktuelleSeite != "settings") ;
-else barDisabledL = 1;
-var counter77 = 0;
-let pos0L = sessionStorage.getItem("posBar0L");
-let pos1L = sessionStorage.getItem("posBar1L");
-console.log("L");
-console.log(pos0L);
-console.log(pos1L);
-if(barDisabledL == 0) {
-    document.getElementById("activeBackgroundLeft").style.top = (pos0L*document.querySelector(":root").style.getPropertyValue("--groesse")*40+10)+"px";    
-    if(readCookie("animation") != 0) document.getElementById("activeBackgroundLeft").style.transitionDuration = (Math.abs(pos1L-pos0L)*110+130)+"ms";    
-    var intval2 = setInterval(function() {
-        if(counter77 == 1) {
-            document.getElementById("activeBackgroundLeft").style.top = (pos1L*document.querySelector(":root").style.getPropertyValue("--groesse")*40+10)+"px";    
-            clearInterval(intval2);
-        }
-        counter77++;
-    }, 1);
+else {
+    const barDisabledL = 0;
+    if(aktuelleSeite != "settings") ;
+    else barDisabledL = 1;
+    var counter77 = 0;
+    let pos0L = sessionStorage.getItem("posBar0L");
+    let pos1L = sessionStorage.getItem("posBar1L");
+    console.log("L");
+    console.log(pos0L);
+    console.log(pos1L);
+    if(barDisabledL == 0) {
+        document.getElementById("activeBackgroundLeft").style.top = (pos0L*document.querySelector(":root").style.getPropertyValue("--groesse")*40+10)+"px";    
+        if(readCookie("animation") != 0) document.getElementById("activeBackgroundLeft").style.transitionDuration = (Math.abs(pos1L-pos0L)*110+130)+"ms";    
+        var intval2 = setInterval(function() {
+            if(counter77 == 1) {
+                document.getElementById("activeBackgroundLeft").style.top = (pos1L*document.querySelector(":root").style.getPropertyValue("--groesse")*40+10)+"px";    
+                clearInterval(intval2);
+            }
+            counter77++;
+        }, 1);
+    }
 }
-
