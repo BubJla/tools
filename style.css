@@ -137,7 +137,7 @@
 
 @keyframes transition41 {
     0%{
-        transform: translateX(10%);
+        transform: translateX(6%);
     }
     100%{
         transform: translateX(calc(var(--screenWidth)*0.16));
@@ -382,7 +382,7 @@ body:not(.noAnimation) .navigationsleiste li a div{
 }
 
 .navigationsleiste li:hover a:not(.aktiv) div{
-    transform: translateX(10%);
+    transform: translateX(6%);
 }
 
 .head{
@@ -477,7 +477,7 @@ body:not(.noAnimation) .nebeneinander a{
 
 @keyframes scaleBarFont {
     0%{
-        scale: 1.3;
+        scale: 1.0;
     }
     100%{
         scale: 1;
@@ -1046,6 +1046,10 @@ h1{
 
 body:not(.noAnimation) .sett h1 {
     transition: all 0.5s ease;
+}
+
+#graphNavigation div span div:hover d{
+    scale: 1.8;
 }
 
 .durchsichtig {

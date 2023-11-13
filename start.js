@@ -200,42 +200,42 @@ else {
 
 document.getElementById("navigationsleiste").innerHTML=`
 <div style="height: 84vh">
-    <li> 
+    <li title="Home"> 
         <a href="index.html" id="start" onclick="posBarL = 0; posBar = 0;">
             <div>
                 Home
             </div>
         </a>
     </li>
-    <li>    
+    <li title="Gleichungslöser, Tachenrechner, Umrechner, Analysis, Gleichungssystemlöser">    
         <a id="mathe" href="gleichung.html" onclick="posBarL = 1; posBar = 0;">
             <div>
                 Mathematik
             </div>
         </a>
     </li>
-    <li>    
+    <li title="Uhr, Stoppuhr, Timer">    
         <a id="zeit" href="zeit.html" onclick="posBarL = 2; posBar = 0;">
             <div>
                 Zeit
             </div>
         </a>
     </li>
-    <li>    
+    <li title="Kopfrechentrainer, TicTacToe, Reaktionstest, Clickgeschwindigkeitstest">    
         <a id="spiele" href="kopfrechentraining.html" onclick="posBarL = 3; posBar = 0;">
             <div>
                 Spiele
             </div>
         </a>
     </li>
-    <li>    
+    <li title="BMI-Rechner/ IQ-Umrechner, Passwortgenerator">    
         <a id="sicherheit" href="eigenschaften.html" onclick="posBarL = 4; posBar = 0;">
             <div>
                 Sonstiges
             </div>
         </a>
     </li>
-    <li>    
+    <li title="Impressum">    
         <a id="impressum" href="impressum.html" onclick="posBarL = 5; posBar = 0;">
             <div>
                 Impressum
@@ -248,7 +248,7 @@ document.getElementById("navigationsleiste").innerHTML=`
 `;
 
 document.body.innerHTML+= `
-<div class="menuTools wrapMenuIcon">    
+<div class="menuTools wrapMenuIcon" title="Leiste verbergen">    
     <div class="wrapMenu">
 
         <div id="menuIcon" onclick="menu();">
@@ -259,7 +259,7 @@ document.body.innerHTML+= `
 
     </div>
 </div>
-<div class="menuTools settingsGear">    
+<div class="menuTools settingsGear" title="Einstellungen">    
 
     <a id="settings" class="gear" href="settings.html">&#9881;</a>
 </div>`;
@@ -329,6 +329,7 @@ if(readCookie("animation") != 0) {
 
 window.addEventListener("resize", function(event){
     document.querySelector(":root").style.setProperty("--screenWidth", window.innerWidth+"px");
+    wid = window.innerWidth*0.84/num;
 });
 
 window.addEventListener('beforeunload', function() {
@@ -347,16 +348,17 @@ else if(aktuelleSeite == "spiele") num = 4;
 else if(aktuelleSeite == "sicherheit") num = 3;
 else barDisabled = 1;
 let counter88 = 0;
-let wid = window.innerWidth*0.84/num;
+var wid = window.innerWidth*0.84/num;
 if(aktuelleSeite != sessionStorage.getItem("lastSideBar")) {
     sessionStorage.setItem('posBar0', 0);
     sessionStorage.setItem('posBar1', 0);
 }
 let pos0 = sessionStorage.getItem("posBar0");
 let pos1 = sessionStorage.getItem("posBar1");
-console.log(pos0);
-console.log(pos1);
+//console.log(pos0);
+//console.log(pos1);
 if(barDisabled == 0) {
+
     document.getElementById("activeBackground").style.width = wid+"px";
     document.getElementById("activeBackground").style.left = (window.innerWidth*0.16*0+wid*pos0)+"px";    
     if(readCookie("animation") != 0) document.getElementById("activeBackground").style.transitionDuration = (Math.abs(pos1-pos0)*150+300)+"ms";    
@@ -364,8 +366,12 @@ if(barDisabled == 0) {
         if(counter88 == 1) {
             document.getElementById("activeBackground").style.width = wid+"px";
             document.getElementById("activeBackground").style.left = (window.innerWidth*0.16*0+wid*pos1)+"px";    
-            clearInterval(intval99);
         }
+        if(counter88%200 == 0) {
+            document.getElementById("activeBackground").style.width = wid+"px";
+            document.getElementById("activeBackground").style.left = (window.innerWidth*0.16*0+wid*pos1)+"px";    
+        }
+        counter88++;
     }, 1);
 }
 
@@ -386,9 +392,9 @@ else {
     var counter77 = 0;
     let pos0L = sessionStorage.getItem("posBar0L");
     let pos1L = sessionStorage.getItem("posBar1L");
-    console.log("L");
-    console.log(pos0L);
-    console.log(pos1L);
+    //console.log("L");
+    //console.log(pos0L);
+    //console.log(pos1L);
     if(barDisabledL == 0) {
         document.getElementById("activeBackgroundLeft").style.top = (pos0L*document.querySelector(":root").style.getPropertyValue("--groesse")*40+10)+"px";    
         if(readCookie("animation") != 0) document.getElementById("activeBackgroundLeft").style.transitionDuration = (Math.abs(pos1L-pos0L)*110+130)+"ms";    
