@@ -140,7 +140,11 @@ function gleichung() {
     e2 = [];
 
     termL = ersetzen(termL, "X", "x");
-    termL = ersetzen(termL, "PI", "Math.PI");
+    termL = ersetzen(termL, "Math.pi", "UUPPUU");
+    termL = ersetzen(termL, "Math.PI", "UUPPUU");
+    termL = ersetzen(termL, "PI", "UUPPUU");
+    termL = ersetzen(termL, "pi", "UUPPUU");
+    termL = ersetzen(termL, "UUPPUU", "Math.PI");
     termL = ersetzen(termL, "e", "Math.E");
     termL = ersetzen(termL, "÷", "/");
     termL = ersetzen(termL, "²", "**2");
@@ -169,8 +173,6 @@ function gleichung() {
     termL = ersetzen(termL, "8(", "8*(");
     termL = ersetzen(termL, "9(", "9*(");
     termL = ersetzen(termL, "x(", "x*(");
-    termL = ersetzen(termL, "PI", "Math.pi");
-    termL = ersetzen(termL, "Math.pi", "Math.PI");
     termL = ersetzen(termL, ")(", ")*(");
     termL = ersetzen(termL, "x**", "(x)**");
     termL = ersetzen(termL, "cos(", "Math.COS(");//gegen unendlich Math.Math.Math....
@@ -181,7 +183,11 @@ function gleichung() {
     termL = ersetzen(termL, "Math.TAN(", "Math.tan(");
 
     termR = ersetzen(termR, "X", "x");
-    termR = ersetzen(termR, "PI", "Math.PI");
+    termR = ersetzen(termR, "Math.pi", "UUPPUU");
+    termR = ersetzen(termR, "Math.PI", "UUPPUU");
+    termR = ersetzen(termR, "PI", "UUPPUU");
+    termR = ersetzen(termR, "pi", "UUPPUU");
+    termR = ersetzen(termR, "UUPPUU", "Math.PI");
     termR = ersetzen(termR, "e", "Math.E");
     termR = ersetzen(termR, "÷", "/");
     termR = ersetzen(termR, "²", "**2");
@@ -211,8 +217,6 @@ function gleichung() {
     termR = ersetzen(termR, "9(", "9*(");
     termR = ersetzen(termR, "x(", "x*(");
     termR = ersetzen(termR, ")(", ")*(");
-    termR = ersetzen(termR, "PI", "Math.pi");
-    termR = ersetzen(termR, "Math.pi", "Math.PI");
     termR = ersetzen(termR, "x**", "(x)**");
     termR = ersetzen(termR, ",", ".");
     termR = ersetzen(termR, "cos(", "Math.COS(");
@@ -405,7 +409,11 @@ function additional0() {
     e2 = [];
 
     termL = ersetzen(termL, "X", "x");
-    termL = ersetzen(termL, "PI", "Math.PI");
+    termL = ersetzen(termL, "Math.pi", "UUPPUU");
+    termL = ersetzen(termL, "Math.PI", "UUPPUU");
+    termL = ersetzen(termL, "PI", "UUPPUU");
+    termL = ersetzen(termL, "pi", "UUPPUU");
+    termL = ersetzen(termL, "UUPPUU", "Math.PI");
     termL = ersetzen(termL, "e", "Math.E");
     termL = ersetzen(termL, "÷", "/");
     termL = ersetzen(termL, "²", "**2");
@@ -434,8 +442,6 @@ function additional0() {
     termL = ersetzen(termL, "8(", "8*(");
     termL = ersetzen(termL, "9(", "9*(");
     termL = ersetzen(termL, "x(", "x*(");
-    termL = ersetzen(termL, "PI", "Math.pi");
-    termL = ersetzen(termL, "Math.pi", "Math.PI");
     termL = ersetzen(termL, ")(", ")*(");
     termL = ersetzen(termL, "x**", "(x)**");
     termL = ersetzen(termL, "cos(", "Math.COS(");//gegen unendlich Math.Math.Math....
@@ -446,7 +452,11 @@ function additional0() {
     termL = ersetzen(termL, "Math.TAN(", "Math.tan(");
 
     termR = ersetzen(termR, "X", "x");
-    termR = ersetzen(termR, "PI", "Math.PI");
+    termR = ersetzen(termR, "Math.pi", "UUPPUU");
+    termR = ersetzen(termR, "Math.PI", "UUPPUU");
+    termR = ersetzen(termR, "PI", "UUPPUU");
+    termR = ersetzen(termR, "pi", "UUPPUU");
+    termR = ersetzen(termR, "UUPPUU", "Math.PI");
     termR = ersetzen(termR, "e", "Math.E");
     termR = ersetzen(termR, "÷", "/");
     termR = ersetzen(termR, "²", "**2");
@@ -476,8 +486,6 @@ function additional0() {
     termR = ersetzen(termR, "9(", "9*(");
     termR = ersetzen(termR, "x(", "x*(");
     termR = ersetzen(termR, ")(", ")*(");
-    termR = ersetzen(termR, "PI", "Math.pi");
-    termR = ersetzen(termR, "Math.pi", "Math.PI");
     termR = ersetzen(termR, "x**", "(x)**");
     termR = ersetzen(termR, ",", ".");
     termR = ersetzen(termR, "cos(", "Math.COS(");
@@ -716,6 +724,7 @@ function additional() {
     else if(score < 500) range = 999;
     var t0 = new Date().getTime();
     var exact = 0;
+    if(ergebnisse.length==0) ergebnisse="null";
     for(var u = 0; u < range; u += accuracy0) {
 
         let t1 = new Date().getTime();
@@ -745,6 +754,7 @@ function additional() {
         }
         if(Math.abs(rechnen(ersetzen(term, "x", 1*u+accuracy0)))==0) {
             exact = 1;
+            //console.log("e");
         }
         if(Math.abs(rechnen(ersetzen(term, "x", 1*u))) < Math.abs(rechnen(ersetzen(term, "x", 1*u-accuracy0))) && Math.abs(rechnen(ersetzen(term, "x", 1*u))) < Math.abs(rechnen(ersetzen(term, "x", 1*u+accuracy0)))||exact==1) {
             //console.log(u+accuracy0);
@@ -755,10 +765,10 @@ function additional() {
                         break;
                     }
                     if(g == ergebnisse.length-1) {
+                        if(ergebnisse == "null") ergebnisse=[];
                         ergebnisse[ergebnisse.length] = (u+accuracy0).toFixed(3);
                     }
                 }
-                if(ergebnisse.length==0) ergebnisse[ergebnisse.length] = (u+accuracy0).toFixed(3);
                 exact = 0;
             }
             else {
@@ -773,7 +783,8 @@ function additional() {
                                 pos = s;
                             }
                         }
-                        if(pos != -11.11111) {
+                        if(pos != -11.11111 && Math.abs(rechnen(ersetzen(term, "x", pos))) < 0.5) {
+                            //console.log("m");
                             mogErg[mogErg.length] = pos.toFixed(3);
                         }
                     }
@@ -792,14 +803,15 @@ function additional() {
                             pos = s;
                         }
                     }
-                    if(pos != -11.11111) {
+                    if(pos != -11.11111 && Math.abs(rechnen(ersetzen(term, "x", pos))) < 0.5) {
                         mogErg[mogErg.length] = pos.toFixed(3);
                     }
                 }
             }
         }
     }
-    if(ergebnisse!=document.getElementById("ergebnisGleichung").value) document.getElementById("ergebnisGleichung").value= ergebnisse;
+    if(ergebnisse == "null") ergebnisse=[];
+    if(ergebnisse!=document.getElementById("ergebnisGleichung").value&&ergebnisse.length!=0) document.getElementById("ergebnisGleichung").value= ergebnisse;
     document.getElementById("ergebnisGleichung").value = ersetzen(document.getElementById("ergebnisGleichung").value, ",", " / ");
     //console.log(mogErg);
     if(mogErg.length == 0) return;
