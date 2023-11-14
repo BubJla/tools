@@ -810,8 +810,40 @@ function additional() {
             }
         }
     }
+    var ergebnisseAd = "";
+    for(let q = 0; q < 10; q++) {
+        if(Math.abs(rechnen(ersetzen(term, "x", 2*Math.PI*q-0.5*Math.PI))) > 0.001) break;
+        if(q == 9) ergebnisseAd = "PI*n*2-0.5*PI: ";
+    }
+    for(let q = 0; q < 10; q++) {
+        if(Math.abs(rechnen(ersetzen(term, "x", 2*Math.PI*q+0.5*Math.PI))) > 0.001) break;
+        if(q == 9) ergebnisseAd = "PI*n*2+0.5*PI: ";
+    }
+    for(let q = 0; q < 10; q++) {
+        if(Math.abs(rechnen(ersetzen(term, "x", 2*Math.PI*q))) > 0.01) break;
+        if(q == 9) ergebnisseAd = "PI*n*2: ";
+    }
+    for(let q = 0; q < 10; q++) {
+        if(Math.abs(rechnen(ersetzen(term, "x", 2*Math.PI*q-Math.PI))) > 0.01) break;
+        if(q == 9) ergebnisseAd = "PI*n*2-PI: ";
+    }
+    for(let q = 0; q < 10; q++) {
+        if(Math.abs(rechnen(ersetzen(term, "x", Math.PI*q-0.5*Math.PI))) > 0.01) break;
+        if(q == 9) ergebnisseAd = "PI*n-0.5*PI: ";
+    }
+    for(let q = 0; q < 10; q++) {
+        if(Math.abs(rechnen(ersetzen(term, "x", Math.PI*q))) > 0.01) break;
+        if(q == 9) ergebnisseAd = "PI*n: ";
+    }
+
+    if(ergebnisse.length > 100 && ergebnisseAd.length==0) {
+        ergebnisseAd = "Fehler: viele oder keine Lösung( "+ergebnisse.length+" Lösungen): ";
+    }
+
     if(ergebnisse == "null") ergebnisse=[];
-    if(ergebnisse!=document.getElementById("ergebnisGleichung").value&&ergebnisse.length!=0) document.getElementById("ergebnisGleichung").value= ergebnisse;
+    if(ergebnisse!=document.getElementById("ergebnisGleichung").value&&ergebnisse.length!=0) {
+        document.getElementById("ergebnisGleichung").value = ergebnisseAd+ergebnisse;
+    }
     document.getElementById("ergebnisGleichung").value = ersetzen(document.getElementById("ergebnisGleichung").value, ",", " / ");
     //console.log(mogErg);
     if(mogErg.length == 0) return;
