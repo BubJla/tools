@@ -367,7 +367,7 @@ if(barDisabled == 0) {
             document.getElementById("activeBackground").style.width = wid+"px";
             document.getElementById("activeBackground").style.left = (window.innerWidth*0.16*0+wid*pos1)+"px";    
         }
-        if(counter88%200 == 0) {
+        if(counter88%10 == 0) {
             document.getElementById("activeBackground").style.width = wid+"px";
             document.getElementById("activeBackground").style.left = (window.innerWidth*0.16*0+wid*pos1)+"px";    
         }
