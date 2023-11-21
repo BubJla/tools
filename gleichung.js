@@ -1090,7 +1090,6 @@ var graph0 = objSvg.innerHTML;
 var touch = false;
 
 function start(event) {
-    alert();
     /*if(event.clientY) touch = false;
     else if(event.getY) touch = true;*/
     /*if(touch) {
@@ -1106,6 +1105,7 @@ function start(event) {
 }
 
 function end(event) {
+    alert();
     moving = false;
     var x, y;
     /*if(touch) {
