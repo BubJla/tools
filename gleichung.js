@@ -1105,7 +1105,6 @@ function start(event) {
 }
 
 function end(event) {
-    alert();
     moving = false;
     var x, y;
     /*if(touch) {

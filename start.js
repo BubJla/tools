@@ -407,3 +407,6 @@ else {
         }, 1);
     }
 }
+
+var lastUpdated = new Date(document.lastModified);
+alert(lastUpdated);
