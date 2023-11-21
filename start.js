@@ -408,5 +408,3 @@ else {
     }
 }
 
-var lastUpdated = new Date(document.lastModified);
-alert(lastUpdated);
