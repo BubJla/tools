@@ -13,13 +13,8 @@ document.head.innerHTML += `
 <link rel="icon" type="image/png" sizes="16x16" href="favicon/favicon-16x16.png">
 <link rel="manifest" href="/site.webmanifest">
 
-
-
-
-
-
 <link rel="alternate" href="de.html" hreflang="de">
-  <link rel="alternate" href="en.html" hreflang="en">
+<link rel="alternate" href="en.html" hreflang="en">
   
 `;
 
