@@ -9,14 +9,13 @@
     <meta name="description" content="Rechner f&uuml;r Body-Mass Index und Iq Punkte">
     <meta name="author" content="Julian Brumbi">
     <link href="style.css" rel="stylesheet">             
-    <title>Zeichnen</title>
+    <title>Kamerazugriff mit JavaScript</title>
 </head>
 <body>
     <ul class="navigationsleiste" id="navigationsleiste">
     </ul>
     <div class="divges">
-        <div id="divpopUp"></div>
-        <h1 class="head">Zeichnen</h1>
+        <h1 class="head">Passwortgenerator</h1>
         <hr>
         <ul class="listeNebeneinander" id="listeNebeneinanderSonstiges">
         </ul>
@@ -25,10 +24,23 @@
 
         <div class="animate">
 
-            <div id="zeichenfeld">
-                <svg id="svg" style="width: 100%; height: 100%;"></svg>
-            </div>
 
+            <h1>Kamerazugriff mit JavaScript</h1>
+            <video id="video" width="640" height="480" autoplay></video>
+          
+            <script>
+              // Zugriff auf die Kamera erhalten
+              navigator.mediaDevices.getUserMedia({ video: true })
+                .then(function (stream) {
+                  var video = document.getElementById('video');
+                  video.srcObject = stream;
+                })
+                .catch(function (err) {
+                  console.error('Fehler beim Zugriff auf die Kamera: ', err);
+                });
+            </script>
+            
+          
         </div>
     </div>
     <span class="information" id="textInformate">
@@ -36,21 +48,15 @@
             ?
         </div>
         <div>
-            Man kann sich seinen Body-Mass-Index und seinen IQ ausrechnen lassen.
+            Passwortgenerator mit Buchstaben, Zahlen, Zeichen und L&auml;nge. 
             <br> 
             <br> 
-            Grenzwerte des Body-Mass-Index (10,0-18,5: Untergewicht; 18,6-24,9: Normalgewicht; 25,0-29,9: &uuml;bergewicht; 30,0-50,0: Fettleibig). 
-            <br> 
-            Als Prozentsatz kann z.B. ein Wert aus Wettbewerben verwendet werden.
-            <br>
-            Es wird immer der Prozentsatz verwendet, der besser als man ist. Z.B. besten 90%(schlecht) / 10%(gut) ....
-            <br>
-            Der IQ ist lediglich Mathematisch berechnet und dient nur als Sch&auml;tzung.
+            Ein sicheres Passwort sollte mindestens 12 Zeichen lang sein. 
         </div>
     </span>
     <a href="https://www.brumbi.de"></a>
 </body>
-<script src="zeichnen.js"></script>
+</html>
 <script src="startOther.js"></script>
 <script src="start.js"></script>
 </html>
