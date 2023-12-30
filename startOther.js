@@ -8,7 +8,7 @@ document.getElementById("listeNebeneinanderSonstiges").innerHTML=`
         <a href="sicherheit.html" onclick="posBar = 1">Passwort</a>
     </li>
     <li class="nebeneinander" id="zeichnen" style="width: 33.3%">
-        <a href="zeichnen.html" onclick="posBar = 2">Zeichnen</a>
+        <a href="zeichnen.html" onclick="posBar = 2">DEV</a>
     </li>
     <li id="activeBackground"></li>
 `;

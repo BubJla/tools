@@ -241,7 +241,19 @@ document.getElementById("navigationsleiste").innerHTML=`
     </li>
 </div> 
 `;
+document.body.innerHTML+= `
+<div id="divmenuIcon">   
+    <div id="menuIcon" onclick="menu();">
+        <div></div>
+        <div></div>
+        <div></div>
+    </div>
+</div>
+<div id="divsettings">    
+    <a id="settings" class="gear" href="settings.html">&#9881;</a>
+</div>`;
 
+/*
 document.body.innerHTML+= `
 <div class="menuTools wrapMenuIcon" title="Leiste verbergen">    
     <div class="wrapMenu">
@@ -258,6 +270,30 @@ document.body.innerHTML+= `
 
     <a id="settings" class="gear" href="settings.html">&#9881;</a>
 </div>`;
+
+*/
+/*document.body.innerHTML+= `
+<span class = "menuBottom">
+    <div class = "div1"></div>
+    <div class = "div2"></div>
+</span>`;*/
+
+/*    <div class="menuTools wrapMenuIcon" title="Leiste verbergen">    
+        <div class="wrapMenu">
+
+            <div id="menuIcon" onclick="menu();">
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
+
+        </div>
+    </div>
+    <div class="menuTools settingsGear" title="Einstellungen">    
+
+        <a id="settings" class="gear" href="settings.html">&#9881;</a>
+    </div>
+*/
 
     var counterMenuWrap = 1;
     document.body.classList.add("click");

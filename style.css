@@ -246,7 +246,6 @@ html::-webkit-scrollbar-track {
     position: fixed;
     background: linear-gradient(to right, rgba(118,118,118,0.45) 0%, rgba(118,118,118,0.25) 85%);
     z-index: 10;
-
 }
 
 body:not(.noAnimation) .navigationsleiste{
@@ -924,11 +923,6 @@ body:not(.noAnimation) input:not([type="range"]):hover{
 
 
 
-
-
-
-
-
 #menuIcon{
     width: 50px;
     height: 50px;
@@ -938,6 +932,7 @@ body:not(.noAnimation) input:not([type="range"]):hover{
 
 body:not(.click) #menuIcon{
     background: var(--hintergrundfarbe);
+    position: fixed;
 }
 
 body:not(.noAnimation) #menuIcon {
@@ -977,21 +972,38 @@ body.click #menuIcon div:nth-child(2){
     scale: 1.2;
 }
 
-.menuTools{
-    top: 80vh;
-    position: fixed;
+#divmenuIcon {
+    width: calc(var(--screenWidth)*0.08);
+    height: 20vh;
+    position: absolute;
+    top : 78vh;
+    left: 0;
+    z-index: 100;
     display: flex;
+    justify-content: center;
     align-items: center;
-    z-index: 12;;
 }
 
-
-.wrapMenuIcon{
-    left: 1%;
+#divsettings {
+    width: calc(var(--screenWidth)*0.08);
+    height: 20vh;
+    position: absolute;
+    top : 78vh;
+    left: calc(var(--screenWidth)*0.08);
+    z-index: 100;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-.settingsGear{
-    left: 9%;
+#settings {
+    transform: translateX(0);
+    background: #0000;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 body:not(.noAnimation) .settingsGear{
@@ -1021,8 +1033,6 @@ body.click .settingsGear{
 
 .gear:hover{
     font-size: calc(var(--groesse)*2.6rem);
-    margin-top: -5px;
-    margin-left: -5px;
 }
 
 body:not(.noAnimation) .gear {

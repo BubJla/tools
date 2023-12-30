@@ -50,8 +50,6 @@ if(readCookie("groesse") == undefined) {
     document.querySelector(":root").style.setProperty("--akzentfarbe1aktiv", "#2A2A70");
     document.querySelector(":root").style.setProperty("--akzentfarbe2aktiv", "#2A702A");
     document.querySelector(":root").style.setProperty("--schriftart", "sans-serif");
-
-    document.getElementById("animateUnload").classList.add("ani0");
 }
 else {
     document.querySelector(":root").style.setProperty("--groesse", readCookie("groesse"));
