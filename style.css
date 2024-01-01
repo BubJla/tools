@@ -1004,6 +1004,7 @@ body.click #menuIcon div:nth-child(2){
     display: flex;
     justify-content: center;
     align-items: center;
+    transition: all 500ms;
 }
 
 body:not(.noAnimation) .settingsGear{
@@ -1012,6 +1013,41 @@ body:not(.noAnimation) .settingsGear{
 
 body:not(.click) #navigationsleiste{
     transform: translateX(-100%);
+}
+
+@keyframes transitionHeadOld{
+    0%{
+        opacity: 1;
+        transform: translateX(0);
+    }
+    50%{
+        opacity: 0.4;
+        filter: blur(2px);
+    }
+    100%{
+        transform: translateX(calc(var(--screenWidth)*0.86));
+        transform-origin: 0%;
+        filter: blur(5px);
+        opacity: 0;
+    }
+}
+
+.headOld {
+    position: fixed;
+    width: calc(var(--screenWidth)*0.84);
+    left: calc(var(--screenWidth)*0.16);
+    margin-top : 0px;
+    top : 0px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    animation: transitionHeadOld 700ms;
+    opacity: 0;
+    transform: translateX(var(--screenWidth));
+}
+
+body:not(.click) #settings{
+    transform: translateX(calc(var(--screenWidth)*-0.16));
 }
 
 body:not(.click) .settingsGear{
@@ -1059,6 +1095,7 @@ h1{
     color: var(--schriftfarbe)!important;
     font-size: calc(var(--groesse)*2rem);
     overflow: hidden;
+    padding-top: 1vh!important;
 }
 
 body:not(.noAnimation) .sett h1 {
@@ -1073,7 +1110,6 @@ body:not(.noAnimation) .sett h1 {
     opacity: 0.2;
     transform: scale(0.3) rotateX(90deg) rotateY(90deg) rotateZ(90deg)!important;
 }
-
 
 .clock .hand.millisecondin {
     background: var(--akzentfarbe3);

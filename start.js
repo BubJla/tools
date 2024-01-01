@@ -17,6 +17,7 @@ document.head.innerHTML += `
 <link rel="alternate" href="en.html" hreflang="en">
   
 `;
+document.body.innerHTML+="<h1 class='head headOld'>Umrechner</h1>";
 
 /*const date = new Date().getTime();
 switch(date%8) {
@@ -351,11 +352,19 @@ if(readCookie("animation") != 0) {
     sessionStorage.setItem('lastSide', sideNow.innerHTML);
     sessionStorage.setItem('lastUrl', sideNow.baseURI);
 
-
     window.addEventListener('beforeunload', function() {
         sideNow = document.querySelector(".animate");
         sessionStorage.setItem('lastSide', sideNow.innerHTML);
     });
+
+
+    var headNow = document.querySelector(".head");
+    var lastHead = sessionStorage.getItem("lastHead");
+    console.log(lastHead);
+    if(headNow.innerHTML != sessionStorage.getItem("lastHead")) {
+        document.querySelector(".headOld").innerHTML = lastHead;
+    }
+    sessionStorage.setItem('lastHead', headNow.innerHTML);
 }
 
 window.addEventListener("resize", function(event){
