@@ -74,6 +74,7 @@ function changeSetting(){
     let akzentfarbe2 = document.getElementById("akzentfarbe2").value;
     let akzentfarbe1 = document.getElementById("akzentfarbe1").value;
     let automatikAktiv = document.getElementById("automatisch").checked;
+    let animationsdauer = document.getElementById("lengthanimation").value;
     var schriftart;
     var animationType;
     if(!navigator.cookieEnabled) alert("Cookies müssen aktiviert sein um diese Funktion zu nutzen");
@@ -88,6 +89,7 @@ function changeSetting(){
     document.querySelector(":root").style.setProperty("--akzentfarbe1", akzentfarbe1);
     document.querySelector(":root").style.setProperty("--akzentfarbe2", akzentfarbe2);
     document.querySelector(":root").style.setProperty("--schriftart", schriftart);
+    document.querySelector(":root").style.setProperty("--animationlength", animationsdauer);
     let summe = document.getElementById("hintergrundfarbe").value.split("#");
     if(automatikAktiv && summe[1][0] <= 9 && summe[1][2] <= 9 && summe[1][4] <= 9 && summe[1][0] >= 0 && summe[1][2] >= 0 && summe[1][4] >= 0) document.querySelector(":root").style.setProperty("--schriftfarbe", "#FFFFFF");
     else if(automatikAktiv) document.querySelector(":root").style.setProperty("--schriftfarbe", "#000000");
@@ -253,6 +255,7 @@ function changeSetting(){
     setCookie("automatikAktiv", automatikAktiv);
     setCookie("schriftart", schriftart);
     setCookie("animation", animationType);
+    setCookie("animationDauer", animationsdauer);
 }
 
 function loeschen() {
@@ -264,6 +267,7 @@ function loeschen() {
     document.querySelector(":root").style.setProperty("--akzentfarbe2", "#5AA05A");
     document.querySelector(":root").style.setProperty("--akzentfarbe1aktiv", "#2A2A70");
     document.querySelector(":root").style.setProperty("--schriftart", "sans-serif");
+    document.querySelector(":root").style.setProperty("--animationlength", "0.6");
     deleteCookie("hintergrundfarbe");
     deleteCookie("schriftfarbe");
     deleteCookie("akzentfarbe1");
@@ -276,6 +280,7 @@ function loeschen() {
     deleteCookie("schriftart");
     deleteCookie("animation");
     deleteCookie("cookieAccepted");
+    deleteCookie("animationDauer");
 
     location.reload();
 
@@ -434,6 +439,7 @@ if(readCookie("groesse") == undefined) {
     document.querySelector(":root").style.setProperty("--akzentfarbe1aktiv", "#2A2A70");
     document.querySelector(":root").style.setProperty("--akzentfarbe2aktiv", "#2A702A");
     document.querySelector(":root").style.setProperty("--schriftart", "sans-serif");
+    document.querySelector(":root").style.setProperty("--animationlength", "0.6");
     document.getElementById("animationT2").checked = true;
 }
 else {
@@ -446,6 +452,7 @@ else {
     document.querySelector(":root").style.setProperty("--akzentfarbe1aktiv", readCookie("akzentfarbe1aktiv"));
     document.querySelector(":root").style.setProperty("--akzentfarbe2aktiv", readCookie("akzentfarbe2aktiv"));
     document.querySelector(":root").style.setProperty("--schriftart", readCookie("schriftart"));
+    document.querySelector(":root").style.setProperty("--animationlength", readCookie("animationDauer"));
     let summe = readCookie("hintergrundfarbe").split("#");
     if(readCookie("automatikAktiv") == "true" && summe[1][0] <= 9 && summe[1][2] <= 9 && summe[1][4] <= 9 && summe[1][0] >= 0 && summe[1][2] >= 0 && summe[1][4] >= 0) document.querySelector(":root").style.setProperty("--schriftfarbe", "#FFFFFF");
     else if(readCookie("automatikAktiv") == "true") document.querySelector(":root").style.setProperty("--schriftfarbe", "#000000");
@@ -464,6 +471,7 @@ document.getElementById("hintergrundfarbe").value = document.querySelector(":roo
 document.getElementById("akzentfarbe3").value = document.querySelector(":root").style.getPropertyValue("--akzentfarbe3");
 document.getElementById("akzentfarbe2").value = document.querySelector(":root").style.getPropertyValue("--akzentfarbe2");
 document.getElementById("akzentfarbe1").value = document.querySelector(":root").style.getPropertyValue("--akzentfarbe1");
+document.getElementById("lengthanimation").value = document.querySelector(":root").style.getPropertyValue("--animationlength");
 
 window.addEventListener("resize", function(event){
     location.reload();

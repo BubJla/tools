@@ -12,6 +12,7 @@
     --akzentfarbe3: #F66151;
     --rotation01: 0deg;
     --screenWidth: 100%;
+    --animationlength: 0.6;
 }
 
 ::selection {
@@ -178,21 +179,21 @@
 }
 
 .animate01 {
-    animation: transition5 1500ms;
+    animation: transition5 calc(var(--animationlength)*1500ms);
 }
 
 .animate{
-    animation: transition12 700ms;
+    animation: transition12 calc(var(--animationlength)*700ms);
 }
 .animate2{
-    animation: transition22 700ms;
+    animation: transition22 calc(var(--animationlength)*700ms);
 }
 
 .animate12{
-    animation: transition1 500ms;
+    animation: transition1 calc(var(--animationlength)*500ms);
 }
 .animate22{
-    animation: transition2 500ms;
+    animation: transition2 calc(var(--animationlength)*500ms);
 }
 
 /*
@@ -249,7 +250,7 @@ html::-webkit-scrollbar-track {
 }
 
 body:not(.noAnimation) .navigationsleiste{
-    transition: transform 500ms;
+    transition: transform calc(var(--animationlength)*500ms);
 }
 
 .zeitauswahlClickgeschw{
@@ -265,7 +266,7 @@ body:not(.noAnimation) .navigationsleiste{
 }
 
 body:not(.noAnimation) .divges{
-    transition: all 500ms;
+    transition: all calc(var(--animationlength)*500ms);
 }
 
 body:not(.click) .divges:not(.settings){
@@ -289,7 +290,7 @@ body{
 }
 
 body:not(.noAnimation) .listeNebeneinander{
-    transition: all 500ms;
+    transition: all calc(var(--animationlength)*500ms);
     /*transform 500ms, padding 500ms, margin 500ms, */
 }
 
@@ -317,7 +318,7 @@ li a{
 }
 
 body:not(.noAnimation) li a{
-    transition: all 0.5s ease;
+    transition: all calc(var(--animationlength)*0.5s) ease;
 }
 
 .navigationsleiste li a.aktiv{
@@ -326,7 +327,7 @@ body:not(.noAnimation) li a{
 }
 
 body:not(.noAnimation):not(.samesite) .navigationsleiste li a.aktiv{
-    animation: transition4 1000ms;
+    animation: transition4 calc(var(--animationlength)*1000ms);
 }
 
 .navigationsleiste li a.aktiv div{
@@ -334,7 +335,7 @@ body:not(.noAnimation):not(.samesite) .navigationsleiste li a.aktiv{
 }
 
 body:not(.noAnimation):not(.samesite) .navigationsleiste li a.aktiv div{
-    animation: transition41 1000ms;
+    animation: transition41 calc(var(--animationlength)*1000ms);
 }
 
 .navigationsleiste li a:not(.aktiv){
@@ -380,7 +381,7 @@ body:not(.noAnimation):not(.samesite) .navigationsleiste li a.aktiv div{
 }
 
 body:not(.noAnimation) .navigationsleiste li a div{
-    transition: all 0.5s ease;
+    transition: all calc(var(--animationlength)*0.5s) ease;
 }
 
 .navigationsleiste li:hover a:not(.aktiv){
@@ -424,7 +425,7 @@ input{
 }
 
 body:not(.noAnimation) input{
-    transition: all 0.3s;
+    transition: all calc(var(--animationlength)*0.3s);
 }
 
 d{
@@ -434,7 +435,7 @@ d{
 }
 
 body:not(.noAnimation) d{
-    transition: all 0.5s ease;
+    transition: all calc(var(--animationlength)*0.5s) ease;
 }
 
 hr{
@@ -474,7 +475,7 @@ body.click #activeBackground {
 }
     
 body:not(.noAnimation) .nebeneinander a{
-    transition: all 0.3s!important;
+    transition: all calc(var(--animationlength)*0.3s)!important;
 }
 
 .listeNebeneinander a.aktiv{
@@ -491,7 +492,7 @@ body:not(.noAnimation) .nebeneinander a{
 }
 
 body:not(.noAnimation) .listeNebeneinander li.aktiv a{
-    animation: scaleBarFont 500ms;
+    animation: scaleBarFont calc(var(--animationlength)*500ms);
 }
 
 @keyframes backgroundLoadAktiv {
@@ -506,7 +507,7 @@ body:not(.noAnimation) .listeNebeneinander li.aktiv a{
 }
 
 body:not(.noAnimation) .listeNebeneinander li.aktiv{
-    animation: backgroundLoadAktiv 800ms;
+    animation: backgroundLoadAktiv calc(var(--animationlength)*800ms);
 }
 
 .listeNebeneinander li a{
@@ -517,7 +518,7 @@ body:not(.noAnimation) .listeNebeneinander li.aktiv{
 }
 
 body:not(.noAnimation) .listeNebeneinander a.aktiv{
-    animation: transition3 1500ms;
+    animation: transition3 calc(var(--animationlength)*1500ms);
 }
 
 .listeNebeneinander li:hover:not(.aktiv){
@@ -531,7 +532,7 @@ body:not(.noAnimation) .listeNebeneinander a.aktiv{
 }
 
 body:not(.noAnimation) .listeNebeneinander li{
-    transition: all 400ms;
+    transition: all calc(var(--animationlength)*400ms);
 }
 
 .anderes{
@@ -737,7 +738,7 @@ div{
 }
 
 body:not(.noAnimation) .zahlenfelder div{
-    transition: scale 200ms, border-radius 500ms, background 300ms, border 1000ms;
+    transition: scale calc(var(--animationlength)*200ms), border-radius calc(var(--animationlength)*500ms), background calc(var(--animationlength)*300ms), border calc(var(--animationlength)*1000ms);
 }
 
 .zahlenfelder div:hover{
@@ -755,7 +756,7 @@ body:not(.noAnimation) .zahlenfelder div{
 }
 
 body:not(.noAnimation) a{
-    transition: all 400ms;
+    transition: all calc(var(--animationlength)*400ms);
 }
 
 .ausgabefeld{
@@ -780,7 +781,7 @@ body:not(.noAnimation) a{
 }
 
 body:not(.noAnimation) .operatorenfelder div{
-    transition: scale 200ms, border-radius 500ms, background 300ms, border 1000ms;
+    transition: scale calc(var(--animationlength)*200ms), border-radius calc(var(--animationlength)*500ms), background calc(var(--animationlength)*300ms), border calc(var(--animationlength)*1000ms);
 }
 
 .ausgabefeld input{
@@ -855,11 +856,11 @@ body:not(.noAnimation) input[type="checkbox"] {
 }
 
 body:not(.noAnimation) input[type="checkbox"]:checked {
-    animation: trans11 0.5s;
+    animation: trans11 calc(var(--animationlength)*0.5s);
 }
 
 body:not(.noAnimation) input[type="checkbox"]:not(:checked) {
-    animation: trans12 0.5s;
+    animation: trans12 calc(var(--animationlength)*0.5s);
     rotate: 0;
 }
 
@@ -872,7 +873,7 @@ body:not(.noAnimation) input[type="checkbox"]:checked:hover {
 }
 
 body:not(.noAnimation) input[type="radio"]:checked {
-    animation: trans31 0.5s;
+    animation: trans31 calc(var(--animationlength)*0.5s);
 }
 
 body:not(.noAnimation) input:not([type="range"]):hover{
@@ -936,7 +937,7 @@ body:not(.click) #menuIcon{
 }
 
 body:not(.noAnimation) #menuIcon {
-    transition: all 0.2s;
+    transition: all calc(var(--animationlength)*0.2s);
 }
 
 #menuIcon div{
@@ -948,7 +949,7 @@ body:not(.noAnimation) #menuIcon {
 }
 
 body:not(.noAnimation) #menuIcon div{
-    transition: all 700ms;
+    transition: all calc(var(--animationlength)*700ms);
 }
 
 body.click #menuIcon div:nth-child(1){
@@ -1004,11 +1005,11 @@ body.click #menuIcon div:nth-child(2){
     display: flex;
     justify-content: center;
     align-items: center;
-    transition: all 500ms;
+    transition: all calc(var(--animationlength)*500ms);
 }
 
 body:not(.noAnimation) .settingsGear{
-    transition: all 500ms;
+    transition: all calc(var(--animationlength)*500ms);
 }
 
 body:not(.click) #navigationsleiste{
@@ -1032,6 +1033,10 @@ body:not(.click) #navigationsleiste{
     }
 }
 
+body:not(.noAnimation)  .headOld {
+    animation: transitionHeadOld calc(var(--animationlength)*700ms);
+}
+
 .headOld {
     position: fixed;
     width: calc(var(--screenWidth)*0.84);
@@ -1041,7 +1046,6 @@ body:not(.click) #navigationsleiste{
     display: flex;
     align-items: center;
     justify-content: center;
-    animation: transitionHeadOld 700ms;
     opacity: 0;
     transform: translateX(var(--screenWidth));
 }
@@ -1072,7 +1076,7 @@ body.click .settingsGear{
 }
 
 body:not(.noAnimation) .gear {
-    transition: all 0.3s ease;
+    transition: all calc(var(--animationlength)*0.3s) ease;
 }
 
 d{
@@ -1099,7 +1103,7 @@ h1{
 }
 
 body:not(.noAnimation) .sett h1 {
-    transition: all 0.5s ease;
+    transition: all calc(var(--animationlength)*0.5s) ease;
 }
 
 #graphNavigation div span div:hover d{
@@ -1237,8 +1241,8 @@ iframe {
 
 body:not(.noAnimation) #aufford{
     transform-style: preserve-3d;
-    animation: transitionpopup 800ms linear;
-    transition: all 700ms;
+    animation: transitionpopup calc(var(--animationlength)*800ms) linear;
+    transition: all calc(var(--animationlength)*700ms);
 
 }
 
@@ -1263,7 +1267,7 @@ body:not(.noAnimation) #aufford{
 }
 
 body:not(.noAnimation) #JANEIN div{
-    transition: all 250ms;
+    transition: all calc(var(--animationlength)*250ms);
 }
 
 #JANEIN div:hover d{
@@ -1336,7 +1340,7 @@ body:not(.noAnimation) .information{
 }
 
 body:not(.noAnimation) .information:hover{
-    transition: width 0.5s, height 0.5s;
+    transition: width calc(var(--animationlength)*0.5s), height calc(var(--animationlength)*0.5s);
 }
 
 .information:hover > div:nth-child(1){
@@ -1405,11 +1409,11 @@ body:not(.noAnimation) .information:hover{
 }
 
 body:not(.noAnimation) #animateUnload.ani0{
-    animation: transitionUnload1 500ms;
+    animation: transitionUnload1 calc(var(--animationlength)*500ms);
 }
 
 body:not(.noAnimation) #animateUnload.ani1{
-    animation: transitionUnload0 500ms;
+    animation: transitionUnload0 calc(var(--animationlength)*500ms);
 }
 
 #cookieAllow{
@@ -1428,7 +1432,7 @@ body:not(.noAnimation) #animateUnload.ani1{
 }
 
 body:not(.noAnimation) #cookieAllow{
-    transition: all 500ms;
+    transition: all calc(var(--animationlength)*500ms);
 }
 
 .cookieAllowHide{
@@ -1443,7 +1447,7 @@ body:not(.noAnimation) #cookieAllow{
 }
 
 body:not(.noAnimation) #cookieAllow a{
-    transition: all 300ms;
+    transition: all calc(var(--animationlength)*300ms);
 }
 
 #cookieAllow a:hover{
@@ -1463,7 +1467,7 @@ body:not(.noAnimation) #cookieAllow a{
 }
 
 body:not(.noAnimation) #cookieAllow div{
-    transition: all 300ms;
+    transition: all calc(var(--animationlength)*300ms);
 }
 
 #cookieAllow div:hover{
@@ -1742,3 +1746,9 @@ p{
   }
   
 /*Z.1000*/
+
+input[type="button"]:hover{
+    border: 1px solid var(--schriftfarbe)!important;
+    box-shadow: 2px 2px 20px var(--schriftfarbe);
+}
+

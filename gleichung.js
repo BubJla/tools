@@ -719,12 +719,13 @@ function additional() {
     var accuracy0 = 1;
     var accuracy1 = 1000;
     var range = 99;
+    var factor = 1;
     if(score < 5) range = 99999;
     else if(score < 50) range = 9999;
     else if(score < 500) range = 999;
-    var t0 = new Date().getTime();
     var exact = 0;
     if(ergebnisse.length==0) ergebnisse="null";
+    var t0 = new Date().getTime();
     for(var u = 0; u < range; u += accuracy0) {
 
         let t1 = new Date().getTime();
@@ -750,23 +751,33 @@ function additional() {
         }
         else if(t1 - t0 > 500) {
             accuracy0 = 1;
-            accuracy1 = 100;        
+            accuracy1 = 100;
         }
         if(Math.abs(rechnen(ersetzen(term, "x", 1*u+accuracy0)))==0) {
             exact = 1;
+            factor = 1;
+            //alert(1*u+accuracy0);
+            //console.log("e");
+        }
+        if(Math.abs(rechnen(ersetzen(term, "x", -1*u+accuracy0)))==0) {
+            exact = 1;
+            factor = -1;
+            //alert(-1*u+accuracy0);
             //console.log("e");
         }
         if(Math.abs(rechnen(ersetzen(term, "x", 1*u))) < Math.abs(rechnen(ersetzen(term, "x", 1*u-accuracy0))) && Math.abs(rechnen(ersetzen(term, "x", 1*u))) < Math.abs(rechnen(ersetzen(term, "x", 1*u+accuracy0)))||exact==1) {
             //console.log(u+accuracy0);
             if(exact==1) {
                 //console.log(u+accuracy0);
-                for(let g = 0; g < ergebnisse.length-1; g++) {
-                    if(Math.abs(ergebnisse[g] - u+accuracy0)<0.1) {
+                for(let g = 0; g <= ergebnisse.length-1; g++) {
+                    if(Math.abs(ergebnisse[g] - factor*u+accuracy0)<0.1 || ergebnisse[g] == factor*u+accuracy0) {
                         break;
                     }
                     if(g == ergebnisse.length-1) {
+                        console.log(ergebnisse);
                         if(ergebnisse == "null") ergebnisse=[];
-                        ergebnisse[ergebnisse.length] = (u+accuracy0).toFixed(3);
+                        ergebnisse[ergebnisse.length] = parseInt(factor*u+accuracy0).toFixed(3);
+                        console.log(ergebnisse);
                     }
                 }
                 exact = 0;

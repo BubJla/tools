@@ -50,6 +50,7 @@ if(readCookie("groesse") == undefined) {
     document.querySelector(":root").style.setProperty("--akzentfarbe1aktiv", "#2A2A70");
     document.querySelector(":root").style.setProperty("--akzentfarbe2aktiv", "#2A702A");
     document.querySelector(":root").style.setProperty("--schriftart", "sans-serif");
+    document.querySelector(":root").style.setProperty("--lengthanimation", "0.6");
 }
 else {
     document.querySelector(":root").style.setProperty("--groesse", readCookie("groesse"));
@@ -61,6 +62,7 @@ else {
     document.querySelector(":root").style.setProperty("--akzentfarbe1aktiv", readCookie("akzentfarbe1aktiv"));
     document.querySelector(":root").style.setProperty("--akzentfarbe2aktiv", readCookie("akzentfarbe2aktiv"));
     document.querySelector(":root").style.setProperty("--schriftart", readCookie("schriftart"));
+    document.querySelector(":root").style.setProperty("--animationlength", readCookie("animationDauer"));
   }
 
 

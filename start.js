@@ -323,6 +323,9 @@ function menu() {
     counterMenuWrap++;
 }
 
+var animationMultiply = document.querySelector(":root").style.getPropertyValue("--animationlength");
+if(!(animationMultiply > 0)) animationMultiply = 0.6
+
 let aktuelleSeite = document.URL;
 aktuelleSeite =  aktuelleSeite.split("/");
 aktuelleSeite =  aktuelleSeite[aktuelleSeite.length-1];
@@ -401,7 +404,7 @@ if(barDisabled == 0) {
 
     document.getElementById("activeBackground").style.width = wid+"px";
     document.getElementById("activeBackground").style.left = (window.innerWidth*0.16*0+wid*pos0)+"px";    
-    if(readCookie("animation") != 0) document.getElementById("activeBackground").style.transitionDuration = (Math.abs(pos1-pos0)*150+300)+"ms";    
+    if(readCookie("animation") != 0) document.getElementById("activeBackground").style.transitionDuration = (Math.abs(pos1-pos0)*150+300)*animationMultiply+"ms";    
     var intval99 = setInterval(function() {
         if(counter88 == 1) {
             document.getElementById("activeBackground").style.width = wid+"px";
@@ -437,7 +440,7 @@ else {
     //console.log(pos1L);
     if(barDisabledL == 0) {
         document.getElementById("activeBackgroundLeft").style.top = (pos0L*document.querySelector(":root").style.getPropertyValue("--groesse")*40+10)+"px";    
-        if(readCookie("animation") != 0) document.getElementById("activeBackgroundLeft").style.transitionDuration = (Math.abs(pos1L-pos0L)*110+130)+"ms";    
+        if(readCookie("animation") != 0) document.getElementById("activeBackgroundLeft").style.transitionDuration = (Math.abs(pos1L-pos0L)*110+130)*animationMultiply+"ms";    
         var intval2 = setInterval(function() {
             if(counter77 == 1) {
                 document.getElementById("activeBackgroundLeft").style.top = (pos1L*document.querySelector(":root").style.getPropertyValue("--groesse")*40+10)+"px";    
